@@ -87,6 +87,18 @@ namespace PhotoFun.Models
         [Display(Name = "Confirmer le mot de passe ")]
         [Compare("Password", ErrorMessage = "Le mot de passe et le mot de passe de confirmation ne correspondent pas.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name = "Courriel")]
+        public string Courriel { get; set; }
+
+        [Required]
+        [Display(Name = "Nom")]
+        public string NomUtil { get; set; }
+
+        [Required]
+        [Display(Name = "Prénom")]
+        public string PrenomUtil { get; set; }
     }
 
     public class ExternalLogin
