@@ -1,24 +1,25 @@
-﻿@{
-    ViewBag.Title = "À propos de";
-}
-
-<hgroup class="title">
-    <h1>@ViewBag.Title.</h1>
-    <h2>@ViewBag.Message</h2>
+﻿<hgroup class="title">
+    <h1>Importer des photos</h1>
 </hgroup>
 
 <article>
-    <p>
-        Indiquez des informations supplémentaires à l'aide de cette zone.
-    </p>
+   
+   <button>Importer</button>
+   <label>Chemin d'accès</label><br />
+   <div>
+        <p>Catégorie</p>
+        <input type="checkbox" name="categorie" value="Sport" />Sport      
+        <input type="checkbox" name="categorie" value="Nature" />Nature<br />
+        <input type="checkbox" name="categorie" value="Famille" />Famille          
+        <input type="checkbox" name="categorie" value="Paysage" />Paysage<br />
+        <input type="checkbox" name="categorie" value="Cuisine" />Cuisine          
+        <input type="checkbox" name="categorie" value="Animaux" />Animaux<br />
+   </div>
+   
 
-    <p>
-        Indiquez des informations supplémentaires à l'aide de cette zone.
-    </p>
+   <p>Se connecter</p>
+   
 
-    <p>
-        Indiquez des informations supplémentaires à l'aide de cette zone.
-    </p>
 </article>
 
 <aside>
@@ -28,7 +29,7 @@
     </p>
     <ul>
         <li>@Html.ActionLink("Accueil", "Index", "Home")</li>
-        <li>@Html.ActionLink("À propos de", "About", "Home")</li>
+        <li>@Html.ActionLink("Importer", "About", "Home")</li>
         <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
     </ul>
 </aside>
