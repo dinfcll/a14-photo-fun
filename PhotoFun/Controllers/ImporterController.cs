@@ -26,7 +26,7 @@ namespace PhotoFun.Controllers
                 if (file != null && file.ContentLength > 0)
                 {
                     var fileName = Path.GetFileName(file.FileName);
-                    var path = Path.Combine(Server.MapPath("/App_Data/"), fileName);
+                    var path = Path.Combine(Server.MapPath("/Content/Photo"), fileName);
                     file.SaveAs(path);
                 }
             }
