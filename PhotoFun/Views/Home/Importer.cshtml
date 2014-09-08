@@ -3,10 +3,15 @@
 </hgroup>
 
 <article>
+@using (Html.BeginForm("Upload", "Importer", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{ 
+    <input type="file" name="file" />
+    <input type="submit" name="Submit" id="Submit" value="Importer" />
+}
+
    
-   <input type=file name="photo" />
-   <input type=submit  value="Importer"/>
-   <label>Chemin d'accès</label><br />
+   <img src="G:\souris.jpg" alt="Souris" width="300px"/>
+
    <div>
         <p>Catégorie</p>
         <input type="checkbox" name="categorie" value="Sport" />Sport      
