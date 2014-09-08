@@ -23,10 +23,10 @@ namespace PhotoFun
             //    consumerSecret: "");
 
             //OAuthWebSecurity.RegisterFacebookClient(
-            //    appId: "",
-            //    appSecret: "");
+              // appId: "Votre nom facebook",
+               //appSecret: "Votre mots de passe facebook");
 
-            //OAuthWebSecurity.RegisterGoogleClient();
+            OAuthWebSecurity.RegisterGoogleClient();
         }
     }
 }
