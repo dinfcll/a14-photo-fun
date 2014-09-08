@@ -17,7 +17,7 @@ namespace PhotoFun.Controllers
     [InitializeSimpleMembership]
     public class AccountController : Controller
     {
-        //
+        
         // GET: /Account/Login
 
         [AllowAnonymous]
@@ -26,8 +26,6 @@ namespace PhotoFun.Controllers
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
-
-        //
         // POST: /Account/Login
 
         [HttpPost]
@@ -39,13 +37,10 @@ namespace PhotoFun.Controllers
             {
                 return RedirectToLocal(returnUrl);
             }
-
-            // Si nous sommes arrivés là, quelque chose a échoué, réafficher le formulaire
             ModelState.AddModelError("", "Le nom d'utilisateur ou mot de passe fourni est incorrect.");
             return View(model);
         }
 
-        //
         // POST: /Account/LogOff
 
         [HttpPost]
@@ -57,7 +52,6 @@ namespace PhotoFun.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        //
         // GET: /Account/Register
 
         [AllowAnonymous]
@@ -66,7 +60,6 @@ namespace PhotoFun.Controllers
             return View();
         }
 
-        //
         // POST: /Account/Register
 
         [HttpPost]
@@ -76,7 +69,6 @@ namespace PhotoFun.Controllers
         {
             if (ModelState.IsValid)
             {
-                // Tentative d'inscription de l'utilisateur
                 try
                 {
                     WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
@@ -88,12 +80,9 @@ namespace PhotoFun.Controllers
                     ModelState.AddModelError("", ErrorCodeToString(e.StatusCode));
                 }
             }
-
-            // Si nous sommes arrivés là, quelque chose a échoué, réafficher le formulaire
             return View(model);
         }
 
-        //
         // POST: /Account/Disassociate
 
         [HttpPost]
@@ -103,10 +92,8 @@ namespace PhotoFun.Controllers
             string ownerAccount = OAuthWebSecurity.GetUserName(provider, providerUserId);
             ManageMessageId? message = null;
 
-            // Dissocier uniquement le compte si l’utilisateur actuellement connecté est le propriétaire
             if (ownerAccount == User.Identity.Name)
-            {
-                // Utiliser une transaction pour empêcher l’utilisateur de supprimer ses dernières informations d’identification de connexion
+            {  
                 using (var scope = new TransactionScope(TransactionScopeOption.Required, new TransactionOptions { IsolationLevel = IsolationLevel.Serializable }))
                 {
                     bool hasLocalAccount = OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
@@ -122,7 +109,6 @@ namespace PhotoFun.Controllers
             return RedirectToAction("Manage", new { Message = message });
         }
 
-        //
         // GET: /Account/Manage
 
         public ActionResult Manage(ManageMessageId? message)
@@ -137,7 +123,6 @@ namespace PhotoFun.Controllers
             return View();
         }
 
-        //
         // POST: /Account/Manage
 
         [HttpPost]
@@ -151,7 +136,6 @@ namespace PhotoFun.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    // ChangePassword va lever une exception plutôt que de renvoyer la valeur False dans certains scénarios de défaillance.
                     bool changePasswordSucceeded;
                     try
                     {
@@ -174,8 +158,6 @@ namespace PhotoFun.Controllers
             }
             else
             {
-                // L’utilisateur n’a pas de mot de passe local. Veuillez donc supprimer les erreurs de validation provoquées par un
-                // champ OldPassword manquant
                 ModelState state = ModelState["OldPassword"];
                 if (state != null)
                 {
@@ -195,8 +177,6 @@ namespace PhotoFun.Controllers
                     }
                 }
             }
-
-            // Si nous sommes arrivés là, quelque chose a échoué, réafficher le formulaire
             return View(model);
         }
 
@@ -239,8 +219,6 @@ namespace PhotoFun.Controllers
 
         private static string ErrorCodeToString(MembershipCreateStatus createStatus)
         {
-            // Consultez http://go.microsoft.com/fwlink/?LinkID=177550 pour
-            // obtenir la liste complète des codes d'état.
             switch (createStatus)
             {
                 case MembershipCreateStatus.DuplicateUserName:
