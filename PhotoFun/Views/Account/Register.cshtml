@@ -27,6 +27,19 @@
                 @Html.LabelFor(m => m.ConfirmPassword)
                 @Html.PasswordFor(m => m.ConfirmPassword)
             </li>
+            <li>
+                @Html.LabelFor(m => m.Courriel)
+                @Html.TextBoxFor(m => m.Courriel)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.PrenomUtil)
+                @Html.TextBoxFor(m => m.PrenomUtil)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.NomUtil)
+                @Html.TextBoxFor(m => m.NomUtil)
+            </li>
+           
         </ol>
         <input type="submit" value="S'inscrire" />
     </fieldset>
