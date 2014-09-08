@@ -17,7 +17,7 @@ namespace PhotoFun.Controllers
     [InitializeSimpleMembership]
     public class AccountController : Controller
     {
-        //
+        
         // GET: /Account/Login
 
         [AllowAnonymous]
@@ -26,8 +26,6 @@ namespace PhotoFun.Controllers
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
-
-        //
         // POST: /Account/Login
 
         [HttpPost]
@@ -39,13 +37,10 @@ namespace PhotoFun.Controllers
             {
                 return RedirectToLocal(returnUrl);
             }
-
-            // Si nous sommes arrivés là, quelque chose a échoué, réafficher le formulaire
             ModelState.AddModelError("", "Le nom d'utilisateur ou mot de passe fourni est incorrect.");
             return View(model);
         }
 
-        //
         // POST: /Account/LogOff
 
         [HttpPost]
@@ -57,7 +52,6 @@ namespace PhotoFun.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        //
         // GET: /Account/Register
 
         [AllowAnonymous]
@@ -66,7 +60,6 @@ namespace PhotoFun.Controllers
             return View();
         }
 
-        //
         // POST: /Account/Register
 
         [HttpPost]
@@ -76,7 +69,6 @@ namespace PhotoFun.Controllers
         {
             if (ModelState.IsValid)
             {
-                // Tentative d'inscription de l'utilisateur
                 try
                 {
                     WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
@@ -88,12 +80,9 @@ namespace PhotoFun.Controllers
                     ModelState.AddModelError("", ErrorCodeToString(e.StatusCode));
                 }
             }
-
-            // Si nous sommes arrivés là, quelque chose a échoué, réafficher le formulaire
             return View(model);
         }
 
-        //
         // POST: /Account/Disassociate
 
         [HttpPost]
@@ -103,10 +92,8 @@ namespace PhotoFun.Controllers
             string ownerAccount = OAuthWebSecurity.GetUserName(provider, providerUserId);
             ManageMessageId? message = null;
 
-            // Dissocier uniquement le compte si l’utilisateur actuellement connecté est le propriétaire
             if (ownerAccount == User.Identity.Name)
-            {
-                // Utiliser une transaction pour empêcher l’utilisateur de supprimer ses dernières informations d’identification de connexion
+            {  
                 using (var scope = new TransactionScope(TransactionScopeOption.Required, new TransactionOptions { IsolationLevel = IsolationLevel.Serializable }))
                 {
                     bool hasLocalAccount = OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
@@ -122,7 +109,6 @@ namespace PhotoFun.Controllers
             return RedirectToAction("Manage", new { Message = message });
         }
 
-        //
         // GET: /Account/Manage
 
         public ActionResult Manage(ManageMessageId? message)
@@ -137,7 +123,6 @@ namespace PhotoFun.Controllers
             return View();
         }
 
-        //
         // POST: /Account/Manage
 
         [HttpPost]
@@ -151,7 +136,6 @@ namespace PhotoFun.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    // ChangePassword va lever une exception plutôt que de renvoyer la valeur False dans certains scénarios de défaillance.
                     bool changePasswordSucceeded;
                     try
                     {
@@ -174,8 +158,6 @@ namespace PhotoFun.Controllers
             }
             else
             {
-                // L’utilisateur n’a pas de mot de passe local. Veuillez donc supprimer les erreurs de validation provoquées par un
-                // champ OldPassword manquant
                 ModelState state = ModelState["OldPassword"];
                 if (state != null)
                 {
@@ -195,137 +177,7 @@ namespace PhotoFun.Controllers
                     }
                 }
             }
-
-            // Si nous sommes arrivés là, quelque chose a échoué, réafficher le formulaire
             return View(model);
-        }
-
-        //
-        // POST: /Account/ExternalLogin
-
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public ActionResult ExternalLogin(string provider, string returnUrl)
-        {
-            return new ExternalLoginResult(provider, Url.Action("ExternalLoginCallback", new { ReturnUrl = returnUrl }));
-        }
-
-        //
-        // GET: /Account/ExternalLoginCallback
-
-        [AllowAnonymous]
-        public ActionResult ExternalLoginCallback(string returnUrl)
-        {
-            AuthenticationResult result = OAuthWebSecurity.VerifyAuthentication(Url.Action("ExternalLoginCallback", new { ReturnUrl = returnUrl }));
-            if (!result.IsSuccessful)
-            {
-                return RedirectToAction("ExternalLoginFailure");
-            }
-
-            if (OAuthWebSecurity.Login(result.Provider, result.ProviderUserId, createPersistentCookie: false))
-            {
-                return RedirectToLocal(returnUrl);
-            }
-
-            if (User.Identity.IsAuthenticated)
-            {
-                // Si l’utilisateur actuel est connecté, ajoutez le nouveau compte
-                OAuthWebSecurity.CreateOrUpdateAccount(result.Provider, result.ProviderUserId, User.Identity.Name);
-                return RedirectToLocal(returnUrl);
-            }
-            else
-            {
-                // L’utilisateur est nouveau. Demander le nom d’appartenance souhaité
-                string loginData = OAuthWebSecurity.SerializeProviderUserId(result.Provider, result.ProviderUserId);
-                ViewBag.ProviderDisplayName = OAuthWebSecurity.GetOAuthClientData(result.Provider).DisplayName;
-                ViewBag.ReturnUrl = returnUrl;
-                return View("ExternalLoginConfirmation", new RegisterExternalLoginModel { UserName = result.UserName, ExternalLoginData = loginData });
-            }
-        }
-
-        //
-        // POST: /Account/ExternalLoginConfirmation
-
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public ActionResult ExternalLoginConfirmation(RegisterExternalLoginModel model, string returnUrl)
-        {
-            string provider = null;
-            string providerUserId = null;
-
-            if (User.Identity.IsAuthenticated || !OAuthWebSecurity.TryDeserializeProviderUserId(model.ExternalLoginData, out provider, out providerUserId))
-            {
-                return RedirectToAction("Manage");
-            }
-
-            if (ModelState.IsValid)
-            {
-                // Insérer un nouvel utilisateur dans la base de données
-                using (UsersContext db = new UsersContext())
-                {
-                    UserProfile user = db.UserProfiles.FirstOrDefault(u => u.UserName.ToLower() == model.UserName.ToLower());
-                    // Vérifier si l'utilisateur n'existe pas déjà
-                    if (user == null)
-                    {
-                        // Insérer le nom dans la table des profils
-                        db.UserProfiles.Add(new UserProfile { UserName = model.UserName });
-                        db.SaveChanges();
-
-                        OAuthWebSecurity.CreateOrUpdateAccount(provider, providerUserId, model.UserName);
-                        OAuthWebSecurity.Login(provider, providerUserId, createPersistentCookie: false);
-
-                        return RedirectToLocal(returnUrl);
-                    }
-                    else
-                    {
-                        ModelState.AddModelError("UserName", "Le nom d'utilisateur existe déjà. Entrez un nom d'utilisateur différent.");
-                    }
-                }
-            }
-
-            ViewBag.ProviderDisplayName = OAuthWebSecurity.GetOAuthClientData(provider).DisplayName;
-            ViewBag.ReturnUrl = returnUrl;
-            return View(model);
-        }
-
-        //
-        // GET: /Account/ExternalLoginFailure
-
-        [AllowAnonymous]
-        public ActionResult ExternalLoginFailure()
-        {
-            return View();
-        }
-
-        [AllowAnonymous]
-        [ChildActionOnly]
-        public ActionResult ExternalLoginsList(string returnUrl)
-        {
-            ViewBag.ReturnUrl = returnUrl;
-            return PartialView("_ExternalLoginsListPartial", OAuthWebSecurity.RegisteredClientData);
-        }
-
-        [ChildActionOnly]
-        public ActionResult RemoveExternalLogins()
-        {
-            ICollection<OAuthAccount> accounts = OAuthWebSecurity.GetAccountsFromUserName(User.Identity.Name);
-            List<ExternalLogin> externalLogins = new List<ExternalLogin>();
-            foreach (OAuthAccount account in accounts)
-            {
-                AuthenticationClientData clientData = OAuthWebSecurity.GetOAuthClientData(account.Provider);
-
-                externalLogins.Add(new ExternalLogin
-                {
-                    Provider = account.Provider,
-                    ProviderDisplayName = clientData.DisplayName,
-                    ProviderUserId = account.ProviderUserId,
-                });
-            }
-
-            ViewBag.ShowRemoveButton = externalLogins.Count > 1 || OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
-            return PartialView("_RemoveExternalLoginsPartial", externalLogins);
         }
 
         #region Applications auxiliaires
@@ -367,8 +219,6 @@ namespace PhotoFun.Controllers
 
         private static string ErrorCodeToString(MembershipCreateStatus createStatus)
         {
-            // Consultez http://go.microsoft.com/fwlink/?LinkID=177550 pour
-            // obtenir la liste complète des codes d'état.
             switch (createStatus)
             {
                 case MembershipCreateStatus.DuplicateUserName:
