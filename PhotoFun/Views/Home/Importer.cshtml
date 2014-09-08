@@ -4,7 +4,8 @@
 
 <article>
    
-   <button>Importer</button>
+   <input type=file name="photo" />
+   <input type=submit  value="Importer"/>
    <label>Chemin d'accès</label><br />
    <div>
         <p>Catégorie</p>
@@ -29,7 +30,7 @@
     </p>
     <ul>
         <li>@Html.ActionLink("Accueil", "Index", "Home")</li>
-        <li>@Html.ActionLink("Importer", "About", "Home")</li>
+        <li>@Html.ActionLink("Importer", "Importer", "Home")</li>
         <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
     </ul>
 </aside>

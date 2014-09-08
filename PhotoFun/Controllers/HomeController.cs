@@ -15,7 +15,7 @@ namespace PhotoFun.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult Importer()
         {
             ViewBag.Message = "Votre page de description d’application.";
 
