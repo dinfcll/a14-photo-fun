@@ -26,6 +26,9 @@ namespace PhotoFun.Models
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int UserId { get; set; }
         public string UserName { get; set; }
+        public string Courriel { get; set; }
+        public string NomUtil { get; set; }
+        public string PrenomUtil { get; set; }
     }
 
     public class RegisterExternalLoginModel

@@ -37,6 +37,15 @@ namespace PhotoFun.Controllers
         {
             if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
             {
+                //var context = new UsersContext();
+                //var username = User.Identity.Name;
+                //UserProfile userProfile = null;
+
+                //if (!string.IsNullOrEmpty(username))
+                //{
+                //    var user = context.UserProfiles.SingleOrDefault(u => u.UserName == username);
+                //    userProfile = user;
+                //}
                 return RedirectToLocal(returnUrl);
             }
 
