@@ -17,9 +17,16 @@ namespace PhotoFun.Controllers
 
         public ActionResult Importer()
         {
-            ViewBag.Message = "Votre page de description d’application.";
+            if (User.Identity.IsAuthenticated)
+            {
+                ViewBag.Message = "Votre page de description d’application.";
 
-            return View();
+                return View();
+            }
+            else
+            {
+                return View();//À retourner vers la vue Login
+            }
         }
 
         public ActionResult Contact()
