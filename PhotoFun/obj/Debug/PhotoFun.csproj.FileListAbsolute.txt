@@ -1,4 +1,3 @@
-﻿
 E:\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\PhotoFun.dll
 E:\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\PhotoFun.pdb
 E:\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\Antlr3.Runtime.dll
@@ -68,3 +67,72 @@ E:\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\fr\WebMatr
 E:\Implantation d'un système informatique\a14-photo-fun\PhotoFun\obj\Debug\PhotoFun.csprojResolveAssemblyReference.cache
 E:\Implantation d'un système informatique\a14-photo-fun\PhotoFun\obj\Debug\PhotoFun.dll
 E:\Implantation d'un système informatique\a14-photo-fun\PhotoFun\obj\Debug\PhotoFun.pdb
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\PhotoFun.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\PhotoFun.pdb
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\Antlr3.Runtime.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\DotNetOpenAuth.AspNet.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\DotNetOpenAuth.Core.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\DotNetOpenAuth.OAuth.Consumer.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\DotNetOpenAuth.OAuth.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\DotNetOpenAuth.OpenId.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\DotNetOpenAuth.OpenId.RelyingParty.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\EntityFramework.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\Microsoft.Web.Infrastructure.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\Microsoft.Web.WebPages.OAuth.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\Newtonsoft.Json.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\System.Net.Http.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\System.Net.Http.Formatting.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\System.Net.Http.WebRequest.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\System.Web.Helpers.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\System.Web.Http.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\System.Web.Http.WebHost.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\System.Web.Mvc.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\System.Web.Optimization.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\System.Web.Razor.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\System.Web.WebPages.Deployment.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\System.Web.WebPages.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\System.Web.WebPages.Razor.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\WebGrease.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\WebMatrix.Data.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\WebMatrix.WebData.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\EntityFramework.xml
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\Newtonsoft.Json.xml
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\System.Net.Http.xml
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\System.Net.Http.Formatting.xml
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\System.Net.Http.WebRequest.xml
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\System.Web.Helpers.xml
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\System.Web.Http.xml
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\System.Web.Http.WebHost.xml
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\System.Web.Mvc.xml
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\System.Web.Razor.xml
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\System.Web.WebPages.xml
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\System.Web.WebPages.Deployment.xml
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\System.Web.WebPages.Razor.xml
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\WebMatrix.Data.xml
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\Microsoft.Web.WebPages.OAuth.xml
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\WebMatrix.WebData.xml
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\DotNetOpenAuth.AspNet.xml
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\DotNetOpenAuth.Core.xml
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\DotNetOpenAuth.OAuth.Consumer.xml
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\DotNetOpenAuth.OAuth.xml
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\DotNetOpenAuth.OpenId.xml
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\fr\EntityFramework.resources.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\fr\System.Net.Http.resources.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\fr\System.Net.Http.Formatting.resources.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\fr\System.Net.Http.WebRequest.resources.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\fr\System.Web.Helpers.resources.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\fr\System.Web.Http.resources.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\fr\System.Web.Http.WebHost.resources.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\fr\System.Web.Mvc.resources.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\fr\System.Web.Optimization.resources.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\fr\System.Web.Razor.resources.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\fr\System.Web.WebPages.resources.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\fr\System.Web.WebPages.Deployment.resources.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\fr\System.Web.WebPages.Razor.resources.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\fr\WebMatrix.Data.resources.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\fr\Microsoft.Web.WebPages.OAuth.resources.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\fr\WebMatrix.WebData.resources.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\obj\Debug\PhotoFun.csprojResolveAssemblyReference.cache
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\obj\Debug\PhotoFun.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\obj\Debug\PhotoFun.pdb
