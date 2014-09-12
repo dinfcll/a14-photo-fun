@@ -1,30 +1,23 @@
 ﻿<hgroup class="title">
     <h1>Importer des photos</h1>
 </hgroup>
-
 <article>
 @using (Html.BeginForm("Upload", "Importer", FormMethod.Post, new { enctype = "multipart/form-data" }))
 { 
     <input type="file" name="file" />
-    <input type="submit" name="Submit" id="Submit" value="Importer" />
+    <input type="submit" name="SubImporter" value="Importer" />
 }
-
-   
-   <img src=@Url.Content("/App_Data/souris.jpg") width="300px"/>
-
    <div>
         <p>Catégorie</p>
-        <input type="checkbox" name="categorie" value="Sport" />Sport      
+        <input type="checkbox" name="categorie" value="Sport"  />Sport      
         <input type="checkbox" name="categorie" value="Nature" />Nature<br />
         <input type="checkbox" name="categorie" value="Famille" />Famille          
         <input type="checkbox" name="categorie" value="Paysage" />Paysage<br />
         <input type="checkbox" name="categorie" value="Cuisine" />Cuisine          
         <input type="checkbox" name="categorie" value="Animaux" />Animaux<br />
    </div>
-   
-
    <p>Se connecter</p>
-   
+    <div id="Photo Importer" style="background-image:url(/content/Photo/souris.jpg); background-repeat:no-repeat; height:500px; width:500px"></div>
 
 </article>
 
