@@ -26,15 +26,9 @@ namespace PhotoFun.Models
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int UserId { get; set; }
         public string UserName { get; set; }
-    }
-
-    public class RegisterExternalLoginModel
-    {
-        [Required]
-        [Display(Name = "Nom d'utilisateur")]
-        public string UserName { get; set; }
-
-        public string ExternalLoginData { get; set; }
+        public string Courriel { get; set; }
+        public string NomUtil { get; set; }
+        public string PrenomUtil { get; set; }
     }
 
     public class LocalPasswordModel
@@ -87,12 +81,17 @@ namespace PhotoFun.Models
         [Display(Name = "Confirmer le mot de passe ")]
         [Compare("Password", ErrorMessage = "Le mot de passe et le mot de passe de confirmation ne correspondent pas.")]
         public string ConfirmPassword { get; set; }
-    }
 
-    public class ExternalLogin
-    {
-        public string Provider { get; set; }
-        public string ProviderDisplayName { get; set; }
-        public string ProviderUserId { get; set; }
+        [Required]
+        [Display(Name = "Courriel")]
+        public string Courriel { get; set; }
+
+        [Required]
+        [Display(Name = "Nom")]
+        public string NomUtil { get; set; }
+
+        [Required]
+        [Display(Name = "Prénom")]
+        public string PrenomUtil { get; set; }
     }
 }
