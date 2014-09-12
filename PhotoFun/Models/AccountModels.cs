@@ -83,8 +83,8 @@ namespace PhotoFun.Models
         public string ConfirmPassword { get; set; }
 
         [Required]
-        [Display(Name = "Courriel")]
-        public string Courriel { get; set; }
+        [Display(Name = "Courriela")]
+        public string Courriela { get; set; }
 
         [Required]
         [Display(Name = "Nom")]
