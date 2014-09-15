@@ -10,8 +10,6 @@ namespace PhotoFun.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Message = "Modifiez ce modèle pour dynamiser votre application ASP.NET MVC.";
-
             return View();
         }
 
@@ -19,8 +17,6 @@ namespace PhotoFun.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
-                ViewBag.Message = "Votre page de description d’application.";
-
                 return View();
             }
             else
@@ -31,8 +27,6 @@ namespace PhotoFun.Controllers
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Votre page de contact.";
-
             return View();
         }
     }
