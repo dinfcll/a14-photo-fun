@@ -135,4 +135,3 @@ E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\
 E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\fr\WebMatrix.WebData.resources.dll
 E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\obj\Debug\PhotoFun.dll
 E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\obj\Debug\PhotoFun.pdb
-E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\obj\Debug\PhotoFun.csprojResolveAssemblyReference.cache

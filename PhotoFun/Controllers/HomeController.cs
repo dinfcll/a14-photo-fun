@@ -25,7 +25,6 @@ namespace PhotoFun.Controllers
             }
             else
             {
-               // return View("~/Views/Account/Login.cshtml");
                return RedirectToAction("Login", "Account");
             }
         }
