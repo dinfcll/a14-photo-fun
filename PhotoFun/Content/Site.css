@@ -740,7 +740,7 @@ tr.pager td {
     /* footer
     ----------------------------------------------------------*/
     footer .float-left,
-    footer .float-right {
+    footer .float-right{
         float: none;
     }
 

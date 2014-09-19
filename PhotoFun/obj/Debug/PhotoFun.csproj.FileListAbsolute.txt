@@ -64,6 +64,5 @@ E:\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\fr\System.
 E:\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\fr\WebMatrix.Data.resources.dll
 E:\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\fr\Microsoft.Web.WebPages.OAuth.resources.dll
 E:\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\fr\WebMatrix.WebData.resources.dll
-E:\Implantation d'un système informatique\a14-photo-fun\PhotoFun\obj\Debug\PhotoFun.csprojResolveAssemblyReference.cache
 E:\Implantation d'un système informatique\a14-photo-fun\PhotoFun\obj\Debug\PhotoFun.dll
 E:\Implantation d'un système informatique\a14-photo-fun\PhotoFun\obj\Debug\PhotoFun.pdb

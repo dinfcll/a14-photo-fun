@@ -10,22 +10,23 @@ namespace PhotoFun.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Message = "Modifiez ce modèle pour dynamiser votre application ASP.NET MVC.";
-
             return View();
         }
 
         public ActionResult Importer()
         {
-            ViewBag.Message = "Votre page de description d’application.";
-
-            return View();
+            if (User.Identity.IsAuthenticated)
+            {
+                return View();
+            }
+            else
+            {
+               return RedirectToAction("Login", "Account");
+            }
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Votre page de contact.";
-
             return View();
         }
     }
