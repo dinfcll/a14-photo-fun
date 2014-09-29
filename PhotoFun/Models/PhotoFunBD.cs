@@ -13,21 +13,25 @@ namespace PhotoFun.Models
         public bool InsererUtil(RegisterModel model)
         {
             bool resultat;
-            try
+            string cs ="Data Source=G264-09/SQLEXPRESS;Initial Catalog=tempdb;Integrated Security=True";
+            using (SqlConnection conn = new SqlConnection(cs))
             {
-                SqlConnection conn = new SqlConnection("ConnectionMaBD");
-                SqlCommand scAjouter = new SqlCommand("Insert into Utilisateur values(NumUtil.NextVal" + model.UserName + ", " + model.Password + ", "
-                    + model.Courriel + ", " + model.PrenomUtil + ", " + model.NomUtil + ");");
-                scAjouter.Connection.Open();
-                scAjouter.ExecuteNonQuery();
-                resultat = true;
+                try
+                {
+                    SqlCommand scAjouter = new SqlCommand("Insert into Utilisateur values (NumUtil.NextVal, " + model.UserName + ", " + model.Password + ", "
+                        + model.Courriel + ", " + model.PrenomUtil + ", " + model.NomUtil + ");", conn);
+                    conn.Open();
+                    scAjouter.ExecuteReader();
+                    conn.Close();
+                    resultat = true;
 
+                }
+                catch
+                {
+                    resultat = false;
+                }
+                return resultat;
             }
-            catch
-            {
-                resultat = false;
-            }
-            return resultat;
         }
     }
 }
