@@ -66,3 +66,4 @@ E:\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\fr\Microso
 E:\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\fr\WebMatrix.WebData.resources.dll
 E:\Implantation d'un système informatique\a14-photo-fun\PhotoFun\obj\Debug\PhotoFun.dll
 E:\Implantation d'un système informatique\a14-photo-fun\PhotoFun\obj\Debug\PhotoFun.pdb
+E:\Implantation d'un système informatique\a14-photo-fun\PhotoFun\obj\Debug\PhotoFun.csprojResolveAssemblyReference.cache
