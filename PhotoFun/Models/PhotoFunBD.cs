@@ -19,17 +19,11 @@ namespace PhotoFun.Models
                 try
                 {
                     conn.Open();
-                    SqlCommand scAjouter = new SqlCommand("Insert into Utilisateur (NumUtil,IDUtil,MotPasse,CourrielUtil,PrenomUtil,NomUtil) values (100,'"
+                    SqlCommand scAjouter = new SqlCommand("Insert into Utilisateur (IDUtil,MotPasse,CourrielUtil,PrenomUtil,NomUtil) values ('"
                         + model.UserName + "', '" + model.Password + "', '" + model.Courriel + "', '" + model.PrenomUtil + "', '" + model.NomUtil + "');", conn);
-                    scAjouter.Parameters.AddWithValue("IDUtil", model.UserName);
-                    scAjouter.Parameters.AddWithValue("MotPasse", model.Password);
-                    scAjouter.Parameters.AddWithValue("CourrielUtil", model.Courriel);
-                    scAjouter.Parameters.AddWithValue("PrenomUtil", model.PrenomUtil);
-                    scAjouter.Parameters.AddWithValue("NomUtil", model.NomUtil);
                     scAjouter.ExecuteNonQuery();
                     conn.Close();
                     resultat = true;
-
                 }
                 catch
                 {
