@@ -5,11 +5,11 @@
 @using (Html.BeginForm("Upload", "Importer", FormMethod.Post, new { enctype = "multipart/form-data" }))
 { 
     <input type="file" name="file" />
-    <input type="submit" name="SubImporter" value="Importer" />
+    
 }
    <div>
         <p>Catégorie</p>
-        <ul>
+        <ol>
              <input type="radio" name="categorie" />Sport
              <input type="radio" name="categorie" />Nature
              <input type="radio" name="categorie" />Famille
@@ -17,10 +17,9 @@
              <input type="radio" name="categorie" />Cuisine
              <input type="radio" name="categorie" />Animaux
              <input type="radio" name="categorie" />Autres
-        </ul>
+        </ol>
    </div>
-    <div id="Photo Importer" style="background-image:url(/content/Photo/souris.jpg); background-repeat:no-repeat; height:500px; width:500px"></div>
-
+<input type="submit" name="SubImporter" value="Importer" />
 
 </article>
 
