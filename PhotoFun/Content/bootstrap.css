@@ -27,6 +27,15 @@ section,
 summary {
   display: block;
 }
+/******************Ajout*****************/
+.footer {
+  padding-top: 19px;
+  color: #777;
+  margin-top: 100px;
+  border-top: 1px solid #e5e5e5;
+  
+}
+
 audio,
 canvas,
 progress,
@@ -5721,6 +5730,7 @@ button.close {
   overflow: hidden;
 }
 .carousel-inner > .item {
+  max-height: 720px;
   position: relative;
   display: none;
   -webkit-transition: .6s ease-in-out left;

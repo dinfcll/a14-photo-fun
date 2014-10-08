@@ -305,6 +305,13 @@
     <None Include="fonts\glyphicons-halflings-regular.ttf" />
     <None Include="fonts\glyphicons-halflings-regular.woff" />
     <None Include="Scripts\jquery-1.9.1.min.map" />
+    <Content Include="Views\Home\Sport.cshtml" />
+    <Content Include="Views\Home\Nature.cshtml" />
+    <Content Include="Views\Home\Famille.cshtml" />
+    <Content Include="Views\Home\Paysage.cshtml" />
+    <Content Include="Views\Home\Cuisine.cshtml" />
+    <Content Include="Views\Home\Animaux.cshtml" />
+    <Content Include="Views\Home\Autre.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -322,7 +329,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>3633</DevelopmentServerPort>
+          <DevelopmentServerPort>2987</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

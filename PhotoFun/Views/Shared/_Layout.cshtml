@@ -4,14 +4,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <meta charset="utf-8" />
         <title>@ViewBag.Title - PhotoFun</title>
-        @*<link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />*@
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
         <link rel="stylesheet" href="~/Content/dashboard.css">
         <meta name="viewport" content="width=device-width" />
         @Styles.Render("~/Content/bootstrap.css")
         @Scripts.Render("~/bundles/modernizr")
     </head>
     <body>
-        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="container-fluid">
                 <div class="navbar-header"> 
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
@@ -22,7 +22,7 @@
                     </button> 
                     <a class="navbar-brand" href="~/Home/Index">PhotoFun</a>
                 </div>
-                    <div class="navbar-collapse collapse">
+                    <div class="navbar-collapse collapse" style="height: 1px;">
                         <ul class="nav navbar-nav navbar-right">
                                 @Html.Partial("_LoginPartial")
                             <li>@Html.ActionLink("Accueil", "Index", "Home")</li>
@@ -36,35 +36,33 @@
         </div>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-sm-3 col-md-2 sidebar">
+                <div class="col-xs-3 col-sm-2 col-md-2 col-lg-1 sidebar">
                     <ul class="nav nav-sidebar">
-                        <li><a href="~/Home/Index">Sport</a></li>
-                        <li><a href="~/Home/Index">Nature</a></li>
-                        <li><a href="~/Home/Index">Famille</a></li>
-                        <li><a href="~/Home/Index">Paysage</a></li>
-                        <li><a href="~/Home/Index">Cuisine</a></li>
-                        <li><a href="~/Home/Index">Animaux</a></li>
-                        <li><a href="~/Home/Index">Autre</a></li>
+                        <li><a href="~/Home/Sport">Sport</a></li>
+                        <li><a href="~/Home/Nature">Nature</a></li>
+                        <li><a href="~/Home/Famille">Famille</a></li>
+                        <li><a href="~/Home/Paysage">Paysage</a></li>
+                        <li><a href="~/Home/Cuisine">Cuisine</a></li>
+                        <li><a href="~/Home/Animaux">Animaux</a></li>
+                        <li><a href="~/Home/Autre">Autre</a></li>
                     </ul>
                 </div>
-                <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <div class="row placeholders">
-                        @RenderSection("featured", required: false)
-                        @RenderBody()
-                     </div>
+                <div class="col-xs-9 col-sm-8 col-md-8 col-lg-9 main">
+                    @RenderSection("featured", required: false)
+                    @RenderBody()
                 </div>
-            </div>
         </div>
-        <footer>
-            <div class="content-wrapper">
-                <div class="float-left">
-                    <p>&copy; @DateTime.Now.Year - PhotoFun</p>
-                </div>
-            </div>
-        </footer>
+    </div>
+    <div class="container">
+        <div class="footer">
+             <p>&copy; @DateTime.Now.Year - PhotoFun</p>
+        </div>
+    </div>
+       
 
         @Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/Scripts/bootstrap.js")
         @RenderSection("scripts", required: false)
     </body>
-</html>       
+</html>     
+  
