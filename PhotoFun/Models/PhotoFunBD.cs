@@ -76,5 +76,27 @@ namespace PhotoFun.Models
                 return resultat;
             }
         }
+
+        public bool EnregistrerPhoto(string path)
+        {
+            bool resultat;
+            string cs = "Data Source=G264-09\\SQLEXPRESS;Initial Catalog=tempdb;Integrated Security=True";
+            using (SqlConnection conn = new SqlConnection(cs))
+            {
+                try
+                {
+                    conn.Open();
+                    SqlCommand scAjouter = new SqlCommand("Insert into Photo values IdPhoto.Nextval, ...");
+                    scAjouter.ExecuteNonQuery();
+                    conn.Close();
+                    resultat = true;
+                }
+                catch
+                {
+                    resultat = false;
+                }
+                return resultat;
+            }
+        }
     }
 }
