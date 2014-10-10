@@ -1,0 +1,72 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace PhotoFun.Models
+{
+    public class PhotoModels
+    {
+        private string m_cat;
+        private string m_img;
+        private string m_idutil;
+
+        public string Categorie 
+        {
+            get
+            {
+                return m_cat;
+            }
+            set
+            {
+                m_cat = value;
+            }
+        }
+        public string image 
+        {
+            get
+            {
+                return m_img;
+            }
+            set
+            {
+                m_img = value;
+            }
+        }
+        public string util
+        {
+            get
+            {
+                return m_idutil;
+            }
+            set
+            {
+                m_idutil = value;
+            }
+        }
+
+        public PhotoModels()
+        {
+            m_cat = null;
+            m_idutil = null;
+            m_img = null;
+        }
+
+        public bool ReinitialiserPhotoModel()
+        {
+            return true;
+        }
+
+        public bool ConfirmeDonnees()
+        {
+            if (m_cat != null && m_idutil != null && m_img != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }
+}

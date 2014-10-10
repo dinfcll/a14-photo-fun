@@ -86,7 +86,7 @@ namespace PhotoFun.Models
                 try
                 {
                     conn.Open();
-                    SqlCommand scAjouter = new SqlCommand("Insert into Photo values IdPhoto.Nextval, ...");
+                    SqlCommand scAjouter = new SqlCommand("Insert into Photo values IdPhoto.Nextval,");
                     scAjouter.ExecuteNonQuery();
                     conn.Close();
                     resultat = true;

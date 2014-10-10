@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.IO;
 using System.Collections;
 using System.Threading;
+using PhotoFun.Models;
 namespace PhotoFun.Controllers
 {
     public class ImporterController : Controller
@@ -20,7 +21,7 @@ namespace PhotoFun.Controllers
         }
 
         [HttpPost]
-        public ActionResult Upload()
+        public ActionResult Upload(PhotoModels model)
         {
             string path= Server.MapPath("Images/");
 
@@ -35,39 +36,13 @@ namespace PhotoFun.Controllers
                     if(ext == ".jpg" || ext==".png")
                     {
                         fichier.SaveAs(path + fichier.FileName);
-                        string name= "~/images/"+fichier.FileName;
+                        string name= "~/Images/"+fichier.FileName;
+                        model.image = name;
                     }
                 }
-            }
-            //FileStream fs = new FileStream("E:/Implantation d'un système informatique/a14-photo-fun/PhotoFun/Content/FichierText/NomPhoto.txt", FileMode.Open, FileAccess.ReadWrite, FileShare.None);
-            //StreamWriter sw = new StreamWriter(fs);
-            //string contenuFichier = "";
-           
-           
-            //if (Request.Files.Count > 0)
-            //{
-                
-            //    var file = Request.Files[0];
-
-            //    if (file != null && file.ContentLength > 0)
-            //    {
-            //        var fileName = Path.GetFileName(file.FileName);
-            //        var path = Path.Combine(Server.MapPath("/Content/Photo"), fileName);
-            //        file.SaveAs(path);
-            //        //ajouter le fichier dans un fichier text
-            //        contenuFichier = fileName+";";
-            //        Thread.Sleep(10);
-            //        fs.Seek(0, SeekOrigin.End);
-            //        sw.Write(contenuFichier);
-                              
-                }
-            }
-            sw.Close();
-            fs.Close();
-            
+            }           
             
             return RedirectToAction("UploadDocument");
         }
     }
 }
-
