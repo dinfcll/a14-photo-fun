@@ -10,6 +10,7 @@ namespace PhotoFun.Models
         private string m_cat;
         private string m_img;
         private string m_idutil;
+        private int m_idphoto=1;
 
         public string Categorie 
         {
@@ -44,12 +45,19 @@ namespace PhotoFun.Models
                 m_idutil = value;
             }
         }
-
+        public int IdPhoto
+        {
+            get
+            {
+                return m_idphoto;
+            }
+        }
         public PhotoModels()
         {
             m_cat = null;
             m_idutil = null;
             m_img = null;
+            m_idphoto++;
         }
 
         public bool ReinitialiserPhotoModel()

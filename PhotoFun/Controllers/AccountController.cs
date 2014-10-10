@@ -67,20 +67,16 @@ namespace PhotoFun.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Register(RegisterModel model)
         {
-            PhotoFunBD pfTest = new PhotoFunBD();
+            PhotoFunBD AjouterUtil = new PhotoFunBD();
             if (ModelState.IsValid)
             {
                 try
                 {
                     WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
                     WebSecurity.Login(model.UserName, model.Password);
-                    if (pfTest.InsererUtil(model))
+                    if (AjouterUtil.InsererUtil(model))
                     {
-                        return RedirectToAction("UploadDocument");
-                    }
-                    else
-                    {
-                        return RedirectToAction("Index", "Home");
+                       return RedirectToAction("Index", "Home"); 
                     }
                 }
                 catch (MembershipCreateUserException e)

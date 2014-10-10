@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data.SqlClient;
+using PhotoFun.Models;
 
 
 namespace PhotoFun.Models
@@ -42,8 +43,8 @@ namespace PhotoFun.Models
                 try
                 {
                     conn.Open();
-                    SqlCommand scAjouter = new SqlCommand("Select * from Utilisateurs where IDUtil='"+IDUtil+"';", conn);
-                    scAjouter.ExecuteNonQuery();
+                    SqlCommand scExtraire = new SqlCommand("Select * from Utilisateurs where IDUtil='"+IDUtil+"';", conn);
+                    scExtraire.ExecuteNonQuery();
                     conn.Close();
                     resultat = true;
                 }
@@ -64,7 +65,29 @@ namespace PhotoFun.Models
                 try
                 {
                     conn.Open();
-                    SqlCommand scAjouter = new SqlCommand("Update Utilisateurs set MotPasse='"+lpm.NewPassword+"' where IDUtil='"+usager+"';", conn);
+                    SqlCommand scModifier= new SqlCommand("Update Utilisateurs set MotPasse='"+lpm.NewPassword+"' where IDUtil='"+usager+"';", conn);
+                    scModifier.ExecuteNonQuery();
+                    conn.Close();
+                    resultat = true;
+                }
+                catch
+                {
+                    resultat = false;
+                }
+                return resultat;
+            }
+        }
+
+        public bool EnregistrerPhoto(PhotoModels pm)
+        {
+            bool resultat;
+            string cs = "Data Source=G264-09\\SQLEXPRESS;Initial Catalog=tempdb;Integrated Security=True";
+            using (SqlConnection conn = new SqlConnection(cs))
+            {
+                try
+                {
+                    conn.Open();
+                    SqlCommand scAjouter = new SqlCommand("Insert into Photo (Categorie, Image, IDUtil) values ('" + pm.Categorie + "', '" + pm.image + "', '" + pm.util + "');", conn);
                     scAjouter.ExecuteNonQuery();
                     conn.Close();
                     resultat = true;
@@ -77,7 +100,7 @@ namespace PhotoFun.Models
             }
         }
 
-        public bool EnregistrerPhoto(string path)
+        public bool ExtrairePhotoSelonUtil()
         {
             bool resultat;
             string cs = "Data Source=G264-09\\SQLEXPRESS;Initial Catalog=tempdb;Integrated Security=True";
@@ -86,7 +109,7 @@ namespace PhotoFun.Models
                 try
                 {
                     conn.Open();
-                    SqlCommand scAjouter = new SqlCommand("Insert into Photo values IdPhoto.Nextval,");
+                    SqlCommand scAjouter = new SqlCommand("Select Image from Photo where IdPhoto=1;", conn);
                     scAjouter.ExecuteNonQuery();
                     conn.Close();
                     resultat = true;
