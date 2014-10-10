@@ -1,36 +1,31 @@
 ﻿@{
     ViewBag.Title = "Importer";
 }
-<hgroup class="title">
+<div class="page-header">
     <h1>Importer des photos</h1>
-</hgroup>
+</div>
 <article>
 @using (Html.BeginForm("Upload", "Importer", FormMethod.Post, new { enctype = "multipart/form-data" }))
 { 
-    <input type="file" name="file" />
-    <input type="submit" name="SubImporter" value="Importer" />
+    <input class="btnchoisirfich" type="file" name="file" />
+    <input type="submit" name="SubImporter" value="Importer"/>
 }
-   <div>
-        <p>Catégorie</p>
-        <ul>
-             <input type="radio" name="categorie" />Sport
-             <input type="radio" name="categorie" />Nature
-             <input type="radio" name="categorie" />Famille
-             <input type="radio" name="categorie" />Paysage
-             <input type="radio" name="categorie" />Cuisine
-             <input type="radio" name="categorie" />Animaux
-             <input type="radio" name="categorie" />Autres
-        </ul>
+    <h3 class="sub-header">Catégorie</h3>
+   <div class="row placeholders">
+      <div class="col-xs-6 col-sm-3 placeholder">
+            Sport<input type="radio" name="categorie"/>
+            Nature<input type="radio" name="categorie"/>
+            Famille<input type="radio" name="categorie"/>
+            Autres<input type="radio" name="categorie" checked/>
+      </div>
+      <div class="col-xs-6 col-sm-3 placeholder">
+            Paysage<input type="radio" name="categorie"/>
+            Cuisine<input type="radio" name="categorie" />
+            Animaux<input type="radio" name="categorie">
+      </div>
+      
+                
+                
+        
    </div>
-    <div id="Photo Importer" style="background-image:url(/content/Photo/souris.jpg); background-repeat:no-repeat; height:500px; width:500px"></div>
-
-
 </article>
-
-<aside>
-        <ul>
-        <li>@Html.ActionLink("Accueil", "Index", "Home")</li>
-        <li>@Html.ActionLink("Importer", "Importer", "Home")</li>
-        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-    </ul>
-</aside>
