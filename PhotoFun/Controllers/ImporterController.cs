@@ -23,8 +23,11 @@ namespace PhotoFun.Controllers
         [HttpPost]
         public ActionResult Upload(PhotoModels model)
         {
+            model.Categorie = "autre"; //Temporaire, a ajuster avec radio button
+            model.util = "xxdomxx";//idem
             PhotoFunBD Ajouterphoto = new PhotoFunBD();
             string path= Server.MapPath("~/Images/");
+            string NouveauNomPhoto = model.util + "_";//NomUtil_NomPhoto
 
             if (Request.Files.Count > 0)
             {
@@ -36,11 +39,11 @@ namespace PhotoFun.Controllers
                     
                     if(ext == ".jpg" || ext==".png")
                     {
-                        fichier.SaveAs(path + fichier.FileName);
-                        string name= "~/Images/"+fichier.FileName;
+                        NouveauNomPhoto += fichier.FileName;
+                        fichier.SaveAs(path + NouveauNomPhoto);
+                        string name= "~/Images/"+NouveauNomPhoto;
                         model.image = name;
-                        model.Categorie = "autre"; //Temporaire a ajuster avec radio button
-                        model.util = "xxdomxx";//idem
+                        
                         Ajouterphoto.EnregistrerPhoto(model);
                     }
                 }

@@ -87,7 +87,7 @@ namespace PhotoFun.Models
                 try
                 {
                     conn.Open();
-                    SqlCommand scAjouter = new SqlCommand("Insert into Photo (Categorie, Image, IDUtil) values ('" + pm.Categorie + "', '" + pm.image + "', '" + pm.util + "');", conn);
+                    SqlCommand scAjouter = new SqlCommand("Insert into Photos (Categorie, Image, IDUtil) values ('" + pm.Categorie + "', '" + pm.image + "', '" + pm.util + "');", conn);
                     scAjouter.ExecuteNonQuery();
                     conn.Close();
                     resultat = true;
@@ -109,7 +109,7 @@ namespace PhotoFun.Models
                 try
                 {
                     conn.Open();
-                    SqlCommand scAjouter = new SqlCommand("Select Image from Photo where IdPhoto=1;", conn);
+                    SqlCommand scAjouter = new SqlCommand("Select Image from Photos where IdPhoto=1;", conn);
                     scAjouter.ExecuteNonQuery();
                     conn.Close();
                     resultat = true;
