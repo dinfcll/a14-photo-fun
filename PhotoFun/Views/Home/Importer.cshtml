@@ -31,6 +31,6 @@
              @Html.Label("Autres")
         </div>
         @Html.Label("Commentaires")
-        @Html.TextAreaFor(PhotoModels => PhotoModels.Commentaires)
+        @Html.TextAreaFor(PhotoModels => PhotoModels.Commentaires, new { @maxlength= 200 })
     </div>
 }
