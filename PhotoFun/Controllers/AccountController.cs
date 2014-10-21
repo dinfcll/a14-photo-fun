@@ -113,6 +113,11 @@ namespace PhotoFun.Controllers
             return RedirectToAction("Manage", new { Message = message });
         }
 
+        public ActionResult Profil()
+        {
+            return View();
+        }
+
         // GET: /Account/Manage
 
         public ActionResult Manage(ManageMessageId? message)

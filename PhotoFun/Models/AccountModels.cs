@@ -84,6 +84,8 @@ namespace PhotoFun.Models
 
         [Required]
         [Display(Name = "Courriel")]
+        [RegularExpression(@"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))" +
+                @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-\w]*[0-9a-z]*\.)+[a-z0-9][\-a-z0-9]{0,22}[a-z0-9]))$", ErrorMessage = "L'adresse courriel doit être valide")]
         public string Courriel { get; set; }
 
         [Required]

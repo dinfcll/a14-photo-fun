@@ -1,110 +1,108 @@
-E:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\TestPhotoFun.dll.config
-E:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\TestPhotoFun.dll
-E:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\TestPhotoFun.pdb
-E:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\Microsoft.Web.Infrastructure.dll
-E:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\PagedList.dll
-E:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\PagedList.Mvc.dll
-E:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\PhotoFun.dll
-E:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\System.Web.Helpers.dll
-E:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\System.Web.Mvc.dll
-E:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\System.Web.Razor.dll
-E:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\System.Web.WebPages.Deployment.dll
-E:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\System.Web.WebPages.dll
-E:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\System.Web.WebPages.Razor.dll
-E:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\EntityFramework.dll
-E:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\System.Web.Optimization.dll
-E:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\System.Web.Http.dll
-E:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\Microsoft.Web.WebPages.OAuth.dll
-E:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\System.Web.Http.WebHost.dll
-E:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\WebGrease.dll
-E:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\System.Net.Http.dll
-E:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\System.Net.Http.Formatting.dll
-E:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\Newtonsoft.Json.dll
-E:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\DotNetOpenAuth.AspNet.dll
-E:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\DotNetOpenAuth.Core.dll
-E:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\Antlr3.Runtime.dll
-E:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\DotNetOpenAuth.OAuth.Consumer.dll
-E:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\DotNetOpenAuth.OAuth.dll
-E:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\DotNetOpenAuth.OpenId.RelyingParty.dll
-E:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\DotNetOpenAuth.OpenId.dll
-E:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\PhotoFun.pdb
-E:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\PagedList.xml
-E:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\PagedList.Mvc.xml
-E:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\System.Web.Helpers.xml
-E:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\System.Web.Mvc.xml
-E:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\System.Web.Razor.xml
-E:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\System.Web.WebPages.xml
-E:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\System.Web.WebPages.Deployment.xml
-E:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\System.Web.WebPages.Razor.xml
-E:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\EntityFramework.xml
-E:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\System.Web.Http.xml
-E:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\Microsoft.Web.WebPages.OAuth.xml
-E:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\System.Web.Http.WebHost.xml
-E:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\System.Net.Http.xml
-E:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\System.Net.Http.Formatting.xml
-E:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\Newtonsoft.Json.xml
-E:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\DotNetOpenAuth.AspNet.xml
-E:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\DotNetOpenAuth.Core.xml
-E:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\DotNetOpenAuth.OAuth.Consumer.xml
-E:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\DotNetOpenAuth.OAuth.xml
-E:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\DotNetOpenAuth.OpenId.RelyingParty.xml
-E:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\DotNetOpenAuth.OpenId.xml
-E:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\fr\EntityFramework.resources.dll
-E:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\fr\System.Web.Optimization.resources.dll
-E:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\fr\System.Web.Http.resources.dll
-E:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\fr\Microsoft.Web.WebPages.OAuth.resources.dll
-E:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\fr\System.Web.Http.WebHost.resources.dll
-E:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\fr\System.Net.Http.resources.dll
-E:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\fr\System.Net.Http.Formatting.resources.dll
-E:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\obj\Debug\TestPhotoFun.csprojResolveAssemblyReference.cache
-E:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\obj\Debug\TestPhotoFun.dll
-E:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\obj\Debug\TestPhotoFun.pdb
-K:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\TestPhotoFun.dll.config
-K:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\TestPhotoFun.dll
-K:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\TestPhotoFun.pdb
-K:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\Microsoft.Web.Infrastructure.dll
-K:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\PagedList.dll
-K:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\PagedList.Mvc.dll
-K:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\PhotoFun.dll
-K:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\System.Web.Helpers.dll
-K:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\System.Web.Mvc.dll
-K:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\System.Web.Razor.dll
-K:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\System.Web.WebPages.Deployment.dll
-K:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\System.Web.WebPages.dll
-K:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\System.Web.WebPages.Razor.dll
-K:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\EntityFramework.dll
-K:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\System.Web.Optimization.dll
-K:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\Microsoft.Web.WebPages.OAuth.dll
-K:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\Newtonsoft.Json.dll
-K:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\WebGrease.dll
-K:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\DotNetOpenAuth.AspNet.dll
-K:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\DotNetOpenAuth.Core.dll
-K:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\Antlr3.Runtime.dll
-K:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\DotNetOpenAuth.OAuth.Consumer.dll
-K:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\DotNetOpenAuth.OAuth.dll
-K:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\DotNetOpenAuth.OpenId.RelyingParty.dll
-K:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\DotNetOpenAuth.OpenId.dll
-K:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\PhotoFun.pdb
-K:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\PagedList.xml
-K:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\PagedList.Mvc.xml
-K:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\System.Web.Helpers.xml
-K:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\System.Web.Mvc.xml
-K:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\System.Web.Razor.xml
-K:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\System.Web.WebPages.xml
-K:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\System.Web.WebPages.Deployment.xml
-K:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\System.Web.WebPages.Razor.xml
-K:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\EntityFramework.xml
-K:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\Microsoft.Web.WebPages.OAuth.xml
-K:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\Newtonsoft.Json.xml
-K:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\DotNetOpenAuth.AspNet.xml
-K:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\DotNetOpenAuth.Core.xml
-K:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\DotNetOpenAuth.OAuth.Consumer.xml
-K:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\DotNetOpenAuth.OAuth.xml
-K:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\DotNetOpenAuth.OpenId.RelyingParty.xml
-K:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\DotNetOpenAuth.OpenId.xml
-K:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\fr\EntityFramework.resources.dll
-K:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\fr\System.Web.Optimization.resources.dll
-K:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\fr\Microsoft.Web.WebPages.OAuth.resources.dll
-K:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\obj\Debug\TestPhotoFun.csprojResolveAssemblyReference.cache
-K:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\obj\Debug\TestPhotoFun.dll
-K:\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\obj\Debug\TestPhotoFun.pdb
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\obj\Debug\TestPhotoFun.csprojResolveAssemblyReference.cache
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\TestPhotoFun.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\TestPhotoFun.pdb
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\PhotoFun.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\EntityFramework.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\System.Web.Optimization.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\System.Web.Http.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\Microsoft.Web.WebPages.OAuth.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\System.Web.Http.WebHost.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\WebGrease.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\System.Net.Http.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\System.Net.Http.Formatting.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\Newtonsoft.Json.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\DotNetOpenAuth.AspNet.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\DotNetOpenAuth.Core.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\Antlr3.Runtime.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\DotNetOpenAuth.OAuth.Consumer.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\DotNetOpenAuth.OAuth.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\DotNetOpenAuth.OpenId.RelyingParty.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\DotNetOpenAuth.OpenId.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\PhotoFun.pdb
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\EntityFramework.xml
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\System.Web.Http.xml
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\Microsoft.Web.WebPages.OAuth.xml
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\System.Web.Http.WebHost.xml
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\System.Net.Http.xml
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\System.Net.Http.Formatting.xml
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\Newtonsoft.Json.xml
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\DotNetOpenAuth.AspNet.xml
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\DotNetOpenAuth.Core.xml
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\DotNetOpenAuth.OAuth.Consumer.xml
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\DotNetOpenAuth.OAuth.xml
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\DotNetOpenAuth.OpenId.RelyingParty.xml
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\DotNetOpenAuth.OpenId.xml
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\fr\EntityFramework.resources.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\fr\System.Web.Optimization.resources.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\fr\System.Web.Http.resources.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\fr\Microsoft.Web.WebPages.OAuth.resources.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\fr\System.Web.Http.WebHost.resources.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\fr\System.Net.Http.resources.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\fr\System.Net.Http.Formatting.resources.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\obj\Debug\TestPhotoFun.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\obj\Debug\TestPhotoFun.pdb
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\TestPhotoFun.dll.config
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\Microsoft.Web.Infrastructure.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\PagedList.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\PagedList.Mvc.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\System.Web.Helpers.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\System.Web.Mvc.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\System.Web.Razor.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\System.Web.WebPages.Deployment.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\System.Web.WebPages.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\System.Web.WebPages.Razor.dll
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\PagedList.xml
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\PagedList.Mvc.xml
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\System.Web.Helpers.xml
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\System.Web.Mvc.xml
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\System.Web.Razor.xml
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\System.Web.WebPages.xml
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\System.Web.WebPages.Deployment.xml
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\System.Web.WebPages.Razor.xml
+H:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\TestPhotoFun.dll.config
+H:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\TestPhotoFun.dll
+H:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\TestPhotoFun.pdb
+H:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\Microsoft.Web.Infrastructure.dll
+H:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\PagedList.dll
+H:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\PagedList.Mvc.dll
+H:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\PhotoFun.dll
+H:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\System.Web.Helpers.dll
+H:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\System.Web.Mvc.dll
+H:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\System.Web.Razor.dll
+H:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\System.Web.WebPages.Deployment.dll
+H:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\System.Web.WebPages.dll
+H:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\System.Web.WebPages.Razor.dll
+H:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\EntityFramework.dll
+H:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\System.Web.Optimization.dll
+H:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\Microsoft.Web.WebPages.OAuth.dll
+H:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\WebGrease.dll
+H:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\DotNetOpenAuth.AspNet.dll
+H:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\DotNetOpenAuth.Core.dll
+H:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\Antlr3.Runtime.dll
+H:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\DotNetOpenAuth.OAuth.Consumer.dll
+H:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\DotNetOpenAuth.OAuth.dll
+H:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\DotNetOpenAuth.OpenId.RelyingParty.dll
+H:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\DotNetOpenAuth.OpenId.dll
+H:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\PhotoFun.pdb
+H:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\PagedList.xml
+H:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\PagedList.Mvc.xml
+H:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\System.Web.Helpers.xml
+H:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\System.Web.Mvc.xml
+H:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\System.Web.Razor.xml
+H:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\System.Web.WebPages.xml
+H:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\System.Web.WebPages.Deployment.xml
+H:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\System.Web.WebPages.Razor.xml
+H:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\EntityFramework.xml
+H:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\Microsoft.Web.WebPages.OAuth.xml
+H:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\DotNetOpenAuth.AspNet.xml
+H:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\DotNetOpenAuth.Core.xml
+H:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\DotNetOpenAuth.OAuth.Consumer.xml
+H:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\DotNetOpenAuth.OAuth.xml
+H:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\DotNetOpenAuth.OpenId.RelyingParty.xml
+H:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\DotNetOpenAuth.OpenId.xml
+H:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\fr\EntityFramework.resources.dll
+H:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\fr\System.Web.Optimization.resources.dll
+H:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\fr\Microsoft.Web.WebPages.OAuth.resources.dll
+H:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\obj\Debug\TestPhotoFun.csprojResolveAssemblyReference.cache
+H:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\obj\Debug\TestPhotoFun.dll
+H:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\obj\Debug\TestPhotoFun.pdb
