@@ -9,7 +9,7 @@
     <input class="btnchoisirfich" type="file" name="file" />
     <input type="submit" name="SubImporter" value="Importer"/>
 
-    <h3 class="sub-header">Catégorie</h3>
+   <span><h3 class="sub-header">Catégorie</h3></span>
     <div >
         @model PhotoFun.Models.PhotoModels
         <div class="col-md-2 radio radio-inline">
@@ -30,5 +30,7 @@
              @Html.RadioButtonFor(PhotoModels => PhotoModels.Categorie, "Autres", new { id = "Autres", @checked = "checked"})
              @Html.Label("Autres")
         </div>
+        @Html.Label("Commentaires")
+        @Html.TextAreaFor(PhotoModels => PhotoModels.Commentaires, new { @maxlength= 200 })
     </div>
 }

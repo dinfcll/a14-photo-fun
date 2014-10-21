@@ -84,7 +84,7 @@ namespace PhotoFun.Models
                 try
                 {
                     conn.Open();
-                    SqlCommand scAjouter = new SqlCommand("Insert into Photos (Categorie, Image, IDUtil) values ('" + pm.Categorie + "', '" + pm.image + "', '" + pm.util + "');", conn);
+                    SqlCommand scAjouter = new SqlCommand("Insert into Photos (Categorie, Image, IDUtil, Commentaire) values ('" + pm.Categorie + "', '" + pm.image + "', '" + pm.util + "', '"+pm.Commentaires+"');", conn);
                     scAjouter.ExecuteNonQuery();
                     conn.Close();
                     resultat = true;
