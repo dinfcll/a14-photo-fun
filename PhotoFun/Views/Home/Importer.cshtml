@@ -1,4 +1,4 @@
-﻿@{
+@{
     ViewBag.Title = "Importer";
 }
 @using (Html.BeginForm("Upload", "Importer", FormMethod.Post, new { enctype = "multipart/form-data" }))
@@ -11,23 +11,24 @@
 
     <h3 class="sub-header">Catégorie</h3>
     <div >
+        @model PhotoFun.Models.PhotoModels
         <div class="col-md-2 radio radio-inline">
-            @Html.RadioButton("rdCategorie", "Sport")
-            @Html.Label("Sport")
-            @Html.RadioButton("rdCategorie", "Paysage")
-            @Html.Label("Paysage")
-            @Html.RadioButton("rdCategorie", "Famille")
-            @Html.Label("Famille")
-            @Html.RadioButton("rdCategorie", "Animaux")
-            @Html.Label("Animaux")
+             @Html.RadioButtonFor(PhotoModels => PhotoModels.Categorie, "Sport", new { id = "Sport" })
+             @Html.Label("Sport")
+             @Html.RadioButtonFor(PhotoModels => PhotoModels.Categorie, "Nature", new { id = "Nature" })
+             @Html.Label("Nature")
+             @Html.RadioButtonFor(PhotoModels => PhotoModels.Categorie, "Famille", new { id = "Famille" })
+             @Html.Label("Famille")
+             @Html.RadioButtonFor(PhotoModels => PhotoModels.Categorie, "Paysage", new { id = "Paysage" })
+             @Html.Label("Paysage")
         </div>
         <div class="col-md-2 radio radio-inline" style="padding-top:10px">
-            @Html.RadioButton("rdCategorie", "Nature")
-            @Html.Label("Nature")
-            @Html.RadioButton("rdCategorie", "Cuisine")
-            @Html.Label("Cuisine")
-            @Html.RadioButton("rdCategorie", "Autres",true)
-            @Html.Label("Autres")
+            @Html.RadioButtonFor(PhotoModels => PhotoModels.Categorie, "Cuisine", new { id = "Cuisine" })
+             @Html.Label("Cuisine")
+             @Html.RadioButtonFor(PhotoModels => PhotoModels.Categorie, "Animaux", new { id = "Animaux" })
+             @Html.Label("Animaux")
+             @Html.RadioButtonFor(PhotoModels => PhotoModels.Categorie, "Autres", new { id = "Autres", @checked = "checked"})
+             @Html.Label("Autres")
         </div>
     </div>
 }
