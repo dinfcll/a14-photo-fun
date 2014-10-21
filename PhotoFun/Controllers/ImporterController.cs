@@ -23,11 +23,10 @@ namespace PhotoFun.Controllers
         [HttpPost]
         public ActionResult Upload(PhotoModels model)
         {
-            
             model.util = User.Identity.Name;
             PhotoFunBD Ajouterphoto = new PhotoFunBD();
             string path= Server.MapPath("~/Images/");
-            string NouveauNomPhoto = model.util + "_";//NomUtil_NomPhoto
+            string NouveauNomPhoto = model.util + "_";
 
             if (Request.Files.Count > 0)
             {

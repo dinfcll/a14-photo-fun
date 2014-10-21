@@ -10,11 +10,11 @@ namespace PhotoFun.Models
 {
     public class PhotoFunBD
     {
-
+        private const string cs = "Data Source=G264-09\\SQLEXPRESS;Initial Catalog=tempdb;Integrated Security=True";
         public bool InsererUtil(RegisterModel rm)
         {
             bool resultat;
-            string cs = "Data Source=G264-09\\SQLEXPRESS;Initial Catalog=tempdb;Integrated Security=True";
+            
             using (SqlConnection conn = new SqlConnection(cs))
             {
                 try
@@ -37,7 +37,6 @@ namespace PhotoFun.Models
         public bool ExtraireUtil(string IDUtil)
         {
             bool resultat;
-            string cs = "Data Source=G264-09\\SQLEXPRESS;Initial Catalog=tempdb;Integrated Security=True";
             using (SqlConnection conn = new SqlConnection(cs))
             {
                 try
@@ -59,7 +58,6 @@ namespace PhotoFun.Models
         public bool MettreAJourUtil(LocalPasswordModel lpm, string usager)
         {
             bool resultat;
-            string cs = "Data Source=G264-09\\SQLEXPRESS;Initial Catalog=tempdb;Integrated Security=True";
             using (SqlConnection conn = new SqlConnection(cs))
             {
                 try
@@ -81,7 +79,6 @@ namespace PhotoFun.Models
         public bool EnregistrerPhoto(PhotoModels pm)
         {
             bool resultat;
-            string cs = "Data Source=G264-09\\SQLEXPRESS;Initial Catalog=tempdb;Integrated Security=True";
             using (SqlConnection conn = new SqlConnection(cs))
             {
                 try
@@ -103,7 +100,6 @@ namespace PhotoFun.Models
         public bool ExtrairePhotoSelonUtil()
         {
             bool resultat;
-            string cs = "Data Source=G264-09\\SQLEXPRESS;Initial Catalog=tempdb;Integrated Security=True";
             using (SqlConnection conn = new SqlConnection(cs))
             {
                 try
