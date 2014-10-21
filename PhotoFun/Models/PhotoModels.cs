@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Security.Util;
 
 namespace PhotoFun.Models
 {
@@ -55,7 +56,7 @@ namespace PhotoFun.Models
         public PhotoModels()
         {
             m_cat = null;
-            m_idutil = null;
+            m_idutil = 
             m_img = null;
             m_idphoto++;
         }

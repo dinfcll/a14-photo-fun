@@ -11,13 +11,21 @@
    <div>
         <p>Catégorie</p>
         <ol>
-             <input type="radio" name="categorie" />Sport
-             <input type="radio" name="categorie" />Nature
-             <input type="radio" name="categorie" />Famille
-             <input type="radio" name="categorie" />Paysage
-             <input type="radio" name="categorie" />Cuisine
-             <input type="radio" name="categorie" />Animaux
-             <input type="radio" name="categorie" />Autres
+             @model PhotoFun.Models.PhotoModels
+             @Html.RadioButtonFor(PhotoModels => PhotoModels.Categorie, "Sport", new { id = "Sport" })
+             @Html.Label("Sport")
+             @Html.RadioButtonFor(PhotoModels => PhotoModels.Categorie, "Nature", new { id = "Nature" })
+             @Html.Label("Nature")
+             @Html.RadioButtonFor(PhotoModels => PhotoModels.Categorie, "Famille", new { id = "Famille" })
+             @Html.Label("Famille")
+             @Html.RadioButtonFor(PhotoModels => PhotoModels.Categorie, "Paysage", new { id = "Paysage" })
+             @Html.Label("Paysage")
+             @Html.RadioButtonFor(PhotoModels => PhotoModels.Categorie, "Cuisine", new { id = "Cuisine" })
+             @Html.Label("Cuisine")
+             @Html.RadioButtonFor(PhotoModels => PhotoModels.Categorie, "Animaux", new { id = "Animaux" })
+             @Html.Label("Animaux")
+             @Html.RadioButtonFor(PhotoModels => PhotoModels.Categorie, "Autres", new { id = "Autres" })
+             @Html.Label("Autres")
         </ol>
    </div>
 <input type="submit" name="SubImporter" value="Importer" />
