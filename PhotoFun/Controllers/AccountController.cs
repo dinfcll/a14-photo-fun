@@ -67,13 +67,17 @@ namespace PhotoFun.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Register(RegisterModel model)
         {
+            PhotoFunBD AjouterUtil = new PhotoFunBD();
             if (ModelState.IsValid)
             {
                 try
                 {
                     WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
                     WebSecurity.Login(model.UserName, model.Password);
-                    return RedirectToAction("Index", "Home");
+                    if (AjouterUtil.InsererUtil(model))
+                    {
+                       return RedirectToAction("Index", "Home"); 
+                    }
                 }
                 catch (MembershipCreateUserException e)
                 {
@@ -129,6 +133,7 @@ namespace PhotoFun.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Manage(LocalPasswordModel model)
         {
+            PhotoFunBD pfAjour = new PhotoFunBD();
             bool hasLocalAccount = OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
             ViewBag.HasLocalPassword = hasLocalAccount;
             ViewBag.ReturnUrl = Url.Action("Manage");
@@ -140,6 +145,7 @@ namespace PhotoFun.Controllers
                     try
                     {
                         changePasswordSucceeded = WebSecurity.ChangePassword(User.Identity.Name, model.OldPassword, model.NewPassword);
+                        pfAjour.MettreAJourUtil(model, User.Identity.Name);
                     }
                     catch (Exception)
                     {
