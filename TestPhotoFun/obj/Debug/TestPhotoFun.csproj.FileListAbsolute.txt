@@ -1,4 +1,4 @@
-﻿E:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\obj\Debug\TestPhotoFun.csprojResolveAssemblyReference.cache
+E:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\obj\Debug\TestPhotoFun.csprojResolveAssemblyReference.cache
 E:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\TestPhotoFun.dll
 E:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\TestPhotoFun.pdb
 E:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\PhotoFun.dll
