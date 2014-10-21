@@ -1,14 +1,14 @@
-﻿@if (Request.IsAuthenticated){
+﻿@Styles.Render("~/Content/bootstrap.css");
+@if (Request.IsAuthenticated){
     <text>
-        Bonjour, @Html.ActionLink(User.Identity.Name, "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" })!
-        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" })) {
-            @Html.AntiForgeryToken()
+       <li>@Html.ActionLink(User.Identity.Name, "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" })</li>
+       <li>
             <a href="javascript:document.getElementById('logoutForm').submit()">Se déconnecter</a>
-        }
+        </li>
+        
     </text>
 } else {
-    <ul>
-        <li>@Html.ActionLink("S'inscrire", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-        <li>@Html.ActionLink("Se connecter", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-    </ul>
+       <li> @Html.ActionLink("S'inscrire", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+       <li> @Html.ActionLink("Se connecter", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
 }
+@Scripts.Render("~/Scripts/bootstrap.js")

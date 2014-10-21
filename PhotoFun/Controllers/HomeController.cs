@@ -29,5 +29,40 @@ namespace PhotoFun.Controllers
         {
             return View();
         }
+
+        public ActionResult Sport()
+        {
+            return View();
+        }
+        
+        public ActionResult Nature()
+        {
+            return View();
+        }
+
+        public ActionResult Famille()
+        {
+            return View();
+        }
+
+        public ActionResult Paysage()
+        {
+            return View();
+        }
+
+        public ActionResult Cuisine()
+        {
+            return View();
+        }
+
+        public ActionResult Animaux()
+        {
+            return View();
+        }
+
+        public ActionResult Autre()
+        {
+            return View();
+        }
     }
 }

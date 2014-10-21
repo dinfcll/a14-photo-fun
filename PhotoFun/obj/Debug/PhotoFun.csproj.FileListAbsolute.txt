@@ -1,4 +1,4 @@
-E:\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\PhotoFun.dll
+﻿E:\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\PhotoFun.dll
 E:\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\PhotoFun.pdb
 E:\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\Antlr3.Runtime.dll
 E:\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\DotNetOpenAuth.AspNet.dll
