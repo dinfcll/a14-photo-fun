@@ -297,9 +297,6 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Importer\UploadDocument.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Content\bootstrap-theme.css.map" />
     <None Include="Content\bootstrap.css.map" />
     <None Include="fonts\glyphicons-halflings-regular.eot" />
@@ -314,6 +311,8 @@
     <Content Include="Views\Home\Animaux.cshtml" />
     <Content Include="Views\Home\Autre.cshtml" />
     <Content Include="Views\Account\Profil.cshtml" />
+    <Content Include="Views\Importer\TransfertReussi.cshtml" />
+    <Content Include="Views\Importer\TransfertEchoue.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

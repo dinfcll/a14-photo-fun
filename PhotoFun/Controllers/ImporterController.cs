@@ -15,7 +15,11 @@ namespace PhotoFun.Controllers
         //
         // GET: /Importer/
 
-        public ActionResult UploadDocument()
+        public ActionResult TransfertReussi()
+        {
+            return View();
+        }
+        public ActionResult TransfertEchoue()
         {
             return View();
         }
@@ -30,25 +34,37 @@ namespace PhotoFun.Controllers
 
             if (Request.Files.Count > 0)
             {
-                var fichier= Request.Files[0];
-                
-                if(fichier != null && fichier.ContentLength > 0)
+                var fichier = Request.Files[0];
+
+                if (fichier != null && fichier.ContentLength > 0)
                 {
                     string ext = Path.GetExtension(fichier.FileName);
-                    
-                    if(ext == ".jpg" || ext==".png")
+
+                    if (ext == ".jpg" || ext == ".png")
                     {
                         NouveauNomPhoto += fichier.FileName;
                         fichier.SaveAs(path + NouveauNomPhoto);
-                        string name= "~/Images/"+NouveauNomPhoto;
+                        string name = "~/Images/" + NouveauNomPhoto;
                         model.image = name;
-                        
+
                         Ajouterphoto.EnregistrerPhoto(model);
                     }
+                    else
+                    {
+                        return RedirectToAction("TransfertEchoue");
+                    }
                 }
-            }           
-            
-            return RedirectToAction("UploadDocument");
+                else
+                {
+                    return RedirectToAction("TransfertEchoue");
+                }
+            }
+            else
+            {
+                return RedirectToAction("TransfertEchoue");
+            }
+
+            return RedirectToAction("TransfertReussi");
         }
     }
 }
