@@ -12,6 +12,10 @@ namespace PhotoFun.Controllers
         {
             return View();
         }
+        public ActionResult Erreur()
+        {
+            return View();
+        }
 
         public ActionResult Importer()
         {
