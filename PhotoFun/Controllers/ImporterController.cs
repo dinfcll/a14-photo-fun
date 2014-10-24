@@ -42,9 +42,9 @@ namespace PhotoFun.Controllers
 
                     if (ext == ".jpg" || ext == ".png")
                     {
-                        NouveauNomPhoto += fichier.FileName;
-                        fichier.SaveAs(path + NouveauNomPhoto);
-                        string name = "~/Images/" + NouveauNomPhoto;
+                        string nomfich = model.util+ '_' + Path.GetFileNameWithoutExtension(fichier.FileName) + model.IDUniqueNomPhoto + ext;
+                        string name = "~/Images/" +nomfich;
+                        fichier.SaveAs(path + nomfich);
                         model.image = name;
 
                         Ajouterphoto.EnregistrerPhoto(model);
