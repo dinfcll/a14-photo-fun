@@ -57,6 +57,14 @@ namespace PhotoFun.Models
                 m_Commentaires = value;
             }
         }
+        public string Date
+        {
+            get
+            {
+                string s = DateTime.Now.Day.ToString()+DateTime.Now.Hour.ToString() + DateTime.Now.Minute.ToString() + DateTime.Now.Second.ToString();
+                return s;
+            }
+        }
         public PhotoModels()
         {
             m_cat = null;
