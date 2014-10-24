@@ -57,7 +57,7 @@ namespace PhotoFun.Models
                 m_Commentaires = value;
             }
         }
-        public string Date
+        public string IDUniqueNomPhoto
         {
             get
             {
