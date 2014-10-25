@@ -4,15 +4,13 @@
 }
 <div class="page-header">
     <h2>Vos photos</h2>
-    @using(Html.BeginForm()){
-        if (lstimage != null && lstimage.Count > 0)
+</div>
+@using(Html.BeginForm()){
+    if (lstimage != null && lstimage.Count > 0)
+    {
+        foreach (var PhotoUtil in lstimage)
         {
-            foreach (var PhotoUtil in lstimage)
-            {
-            <div>
-                <img src="@PhotoUtil" alt="Image inaccessible" width=18%/>
-            </div>
-            }
+            <img src="@PhotoUtil" alt="Image inaccessible" width="36%"/>
         }
     }
-</div>
+}

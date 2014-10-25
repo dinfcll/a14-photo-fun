@@ -40,7 +40,7 @@ namespace PhotoFun.Controllers
                 {
                     string ext = Path.GetExtension(fichier.FileName);
 
-                    if (ext == ".jpg" || ext == ".png")
+                    if (ext == ".jpg" || ext == ".png" || ext == ".jpeg")
                     {
                         string nomfich = model.util+ '_' + Path.GetFileNameWithoutExtension(fichier.FileName) + model.IDUniqueNomPhoto + ext;
                         string name = "/Images/" +nomfich;

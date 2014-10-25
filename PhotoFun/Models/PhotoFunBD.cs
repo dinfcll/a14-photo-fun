@@ -11,7 +11,9 @@ namespace PhotoFun.Models
 {
     public class PhotoFunBD
     {
-        private const string cs = "Data Source=G264-10\\SQLEXPRESS;Initial Catalog=tempdb;Integrated Security=True";
+        //private const string cs = "Data Source=G264-10\\SQLEXPRESS;Initial Catalog=tempdb;Integrated Security=True";
+        //private const string cs = "Data Source=G264-09\\SQLEXPRESS;Initial Catalog=tempdb;Integrated Security=True";
+        private const string cs = "Data Source=EQUIPE-01\\SQLEXPRESS ;Initial Catalog=tempdb;Integrated Security=True";
         public bool InsererUtil(RegisterModel rm)
         {
             bool resultat;
@@ -108,6 +110,33 @@ namespace PhotoFun.Models
                 {
                     conn.Open();
                     SqlCommand scExtrairePhotoSelonUtil = new SqlCommand("Select Image from Photos where IDUtil='" + NomUtil + "';", conn);
+                    SqlDataReader sdr = scExtrairePhotoSelonUtil.ExecuteReader();
+                    while (sdr.Read())
+                    {
+                        lstimage.Add(ReadSingleRow((IDataRecord)sdr));
+                    }
+                    sdr.Close();
+                    conn.Close();
+                    resultat = true;
+                }
+                catch
+                {
+                    resultat = false;
+                }
+                return resultat;
+            }
+        }
+
+        public bool ExtrairePhotoSelonCategorie(string Categorie, out List<string> lstimage)
+        {
+            bool resultat;
+            lstimage = new List<string>();
+            using (SqlConnection conn = new SqlConnection(cs))
+            {
+                try
+                {
+                    conn.Open();
+                    SqlCommand scExtrairePhotoSelonUtil = new SqlCommand("Select Image from Photos where Categorie='" + Categorie + "';", conn);
                     SqlDataReader sdr = scExtrairePhotoSelonUtil.ExecuteReader();
                     while (sdr.Read())
                     {

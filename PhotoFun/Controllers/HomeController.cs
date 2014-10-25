@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PhotoFun.Models;
 
 namespace PhotoFun.Controllers
 {
@@ -36,37 +37,107 @@ namespace PhotoFun.Controllers
 
         public ActionResult Sport()
         {
-            return View();
+            PhotoFunBD pfbd = new PhotoFunBD();
+            List<string> lstimage = new List<string>();
+            if (pfbd.ExtrairePhotoSelonCategorie("Sport", out lstimage))
+            {
+                ViewData["lstimage"] = lstimage;
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Erreur", "Home");
+            }
         }
         
         public ActionResult Nature()
         {
-            return View();
+            PhotoFunBD pfbd = new PhotoFunBD();
+            List<string> lstimage = new List<string>();
+            if (pfbd.ExtrairePhotoSelonCategorie("Nature", out lstimage))
+            {
+                ViewData["lstimage"] = lstimage;
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Erreur", "Home");
+            }
         }
 
         public ActionResult Famille()
         {
-            return View();
+            PhotoFunBD pfbd = new PhotoFunBD();
+            List<string> lstimage = new List<string>();
+            if (pfbd.ExtrairePhotoSelonCategorie("Famille", out lstimage))
+            {
+                ViewData["lstimage"] = lstimage;
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Erreur", "Home");
+            }
         }
 
         public ActionResult Paysage()
         {
-            return View();
+            PhotoFunBD pfbd = new PhotoFunBD();
+            List<string> lstimage = new List<string>();
+            if (pfbd.ExtrairePhotoSelonCategorie("Paysage", out lstimage))
+            {
+                ViewData["lstimage"] = lstimage;
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Erreur", "Home");
+            }
         }
 
         public ActionResult Cuisine()
         {
-            return View();
+            PhotoFunBD pfbd = new PhotoFunBD();
+            List<string> lstimage = new List<string>();
+            if (pfbd.ExtrairePhotoSelonCategorie("Cuisine", out lstimage))
+            {
+                ViewData["lstimage"] = lstimage;
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Erreur", "Home");
+            }
         }
 
         public ActionResult Animaux()
         {
-            return View();
+            PhotoFunBD pfbd = new PhotoFunBD();
+            List<string> lstimage = new List<string>();
+            if (pfbd.ExtrairePhotoSelonCategorie("Animaux", out lstimage))
+            {
+                ViewData["lstimage"] = lstimage;
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Erreur", "Home");
+            }
         }
 
         public ActionResult Autre()
         {
-            return View();
+            PhotoFunBD pfbd = new PhotoFunBD();
+            List<string> lstimage = new List<string>();
+            if (pfbd.ExtrairePhotoSelonCategorie("Autres", out lstimage))
+            {
+                ViewData["lstimage"] = lstimage;
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Erreur", "Home");
+            }
         }
     }
 }
