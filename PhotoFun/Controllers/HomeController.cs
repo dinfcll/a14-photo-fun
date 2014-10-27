@@ -3,12 +3,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PhotoFun.Models;
 
 namespace PhotoFun.Controllers
 {
     public class HomeController : Controller
     {
         public ActionResult Index()
+        {
+            var pfbd = new PhotoFunBD();
+            List<string> lstimage = new List<string>();
+            if (pfbd.ExtraireDernieresPhotos(5, out lstimage))
+            {
+                ViewData["lstimage"] = lstimage;
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Erreur", "Home");
+            }
+        }
+        public ActionResult Erreur()
         {
             return View();
         }
@@ -32,37 +47,52 @@ namespace PhotoFun.Controllers
 
         public ActionResult Sport()
         {
-            return View();
+            return RetourneLaVueSelonCategorie("Sport");
         }
         
         public ActionResult Nature()
         {
-            return View();
+            return RetourneLaVueSelonCategorie("Nature");
         }
 
         public ActionResult Famille()
         {
-            return View();
+            return RetourneLaVueSelonCategorie("Famille");
         }
 
         public ActionResult Paysage()
         {
-            return View();
+            return RetourneLaVueSelonCategorie("Paysage");
         }
 
         public ActionResult Cuisine()
         {
-            return View();
+            return RetourneLaVueSelonCategorie("Cuisine");
         }
 
         public ActionResult Animaux()
         {
-            return View();
+            return RetourneLaVueSelonCategorie("Animaux");
         }
 
         public ActionResult Autre()
         {
-            return View();
+            return RetourneLaVueSelonCategorie("Autres");
+        }
+
+        private ActionResult RetourneLaVueSelonCategorie(string categorie)
+        {
+            PhotoFunBD pfbd = new PhotoFunBD();
+            List<string> lstimage = new List<string>();
+            if (pfbd.ExtrairePhotoSelonCategorie(categorie, out lstimage))
+            {
+                ViewData["lstimage"] = lstimage;
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Erreur", "Home");
+            }
         }
     }
 }

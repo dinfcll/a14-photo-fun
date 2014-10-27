@@ -1,16 +1,16 @@
 ﻿@{
-    ViewBag.Title = "Famille";
+    ViewBag.Title = "Vos Photos";
     List<string> lstimage = ViewData["lstimage"] as List<string>;
 }
 <div class="page-header">
-    <h2>Famille</h2>
+    <h2>Vos photos</h2>
 </div>
 @using(Html.BeginForm()){
     if (lstimage != null && lstimage.Count > 0)
     {
-        foreach (var PhotoFamille in lstimage)
+        foreach (var PhotoUtil in lstimage)
         {
-            <img src="@PhotoFamille" alt="Image inaccessible" width="36%"/>
+            <img src="@PhotoUtil" alt="Image inaccessible" width="36%"/>
         }
     }
 }

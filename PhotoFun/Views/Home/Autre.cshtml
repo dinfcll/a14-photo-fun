@@ -1,7 +1,16 @@
 ﻿@{
     ViewBag.Title = "Autre";
+    List<string> lstimage = ViewData["lstimage"] as List<string>;
 }
-
 <div class="page-header">
     <h2>Autre</h2>
 </div>
+@using(Html.BeginForm()){
+    if (lstimage != null && lstimage.Count > 0)
+    {
+        foreach (var PhotoAutres in lstimage)
+        {
+            <img src="@PhotoAutres" alt="Image inaccessible" width="36%"/>
+        }
+    }
+}
