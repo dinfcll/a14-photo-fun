@@ -6,13 +6,12 @@
 <div class="page-header">
     <h2>Sport</h2>
 </div>
-    @using(Html.BeginForm()){
-        if (lstimage != null && lstimage.Count > 0)
+@using(Html.BeginForm()){
+    if (lstimage != null && lstimage.Count > 0)
+    {
+        foreach (var PhotoSport in lstimage)
         {
-            foreach (var PhotoSport in lstimage)
-            {
-                <img src="@PhotoSport" alt="Image inaccessible" width="36%"/>
-            }
+            <img src="@PhotoSport" alt="Image inaccessible" width="36%"/>
         }
     }
-
+}

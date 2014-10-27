@@ -5,13 +5,12 @@
 <div class="page-header">
     <h2>Cuisine</h2>
 </div>
-    @using(Html.BeginForm()){
-        if (lstimage != null && lstimage.Count > 0)
+@using(Html.BeginForm()){
+    if (lstimage != null && lstimage.Count > 0)
+    {
+        foreach (var PhotoCuisine in lstimage)
         {
-            foreach (var PhotoCuisine in lstimage)
-            {
-                <img src="@PhotoCuisine" alt="Image inaccessible" width="36%"/>
-            }
+            <img src="@PhotoCuisine" alt="Image inaccessible" width="36%"/>
         }
     }
-
+}
