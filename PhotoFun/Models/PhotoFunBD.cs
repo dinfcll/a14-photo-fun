@@ -154,6 +154,33 @@ namespace PhotoFun.Models
             }
         }
 
+        public bool ExtraireDernieresPhotos(int nbimage, out List<string> lstimage)
+        {
+            bool resultat;
+            lstimage = new List<string>();
+            using (SqlConnection conn = new SqlConnection(cs))
+            {
+                try
+                {
+                    conn.Open();
+                    SqlCommand scExtraireDernieresPhotos = new SqlCommand("SELECT IMAGE FROM PHOTOS WHERE IdPhoto>(SELECT MAX(IdPhoto)-"+nbimage+" FROM PHOTOS);",conn);
+                    SqlDataReader sdr = scExtraireDernieresPhotos.ExecuteReader();
+                    while(sdr.Read())
+                    {
+                        lstimage.Add(ReadSingleRow((IDataRecord)sdr));
+                    }
+                    sdr.Close();
+                    conn.Close();
+                    resultat=true;
+                }
+                catch
+                {
+                    resultat = false;
+                }
+                return resultat;
+            }
+        }
+
         private string ReadSingleRow(IDataRecord record)
         {
             return String.Format("{0}", record[0]);
