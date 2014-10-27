@@ -76,12 +76,10 @@ namespace PhotoFun.Controllers
                     {
                         WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
                         WebSecurity.Login(model.UserName, model.Password);
+                       
                         return RedirectToAction("Index", "Home");
                     }
-                    else
-                    {
-                        return RedirectToAction("Erreur", "Home");
-                    }
+                    return RedirectToAction("Erreur", "Home");
                 }
                 catch (MembershipCreateUserException e)
                 {
@@ -91,36 +89,10 @@ namespace PhotoFun.Controllers
             return View(model);
         }
 
-        // POST: /Account/Disassociate
-
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Disassociate(string provider, string providerUserId)
-        //{
-        //    string ownerAccount = OAuthWebSecurity.GetUserName(provider, providerUserId);
-        //    ManageMessageId? message = null;
-
-        //    if (ownerAccount == User.Identity.Name)
-        //    {  
-        //        using (var scope = new TransactionScope(TransactionScopeOption.Required, new TransactionOptions { IsolationLevel = IsolationLevel.Serializable }))
-        //        {
-        //            bool hasLocalAccount = OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
-        //            if (hasLocalAccount || OAuthWebSecurity.GetAccountsFromUserName(User.Identity.Name).Count > 1)
-        //            {
-        //                OAuthWebSecurity.DeleteAccount(provider, providerUserId);
-        //                scope.Complete();
-        //                message = ManageMessageId.RemoveLoginSuccess;
-        //            }
-        //        }
-        //    }
-
-        //    return RedirectToAction("Manage", new { Message = message });
-        //}
-
         public ActionResult PhotoUtil()
         {
             PhotoFunBD pfbd = new PhotoFunBD();
-            List<string> lstimage=new List<string>(); 
+            var lstimage=new List<string>(); 
             if (pfbd.ExtrairePhotoSelonUtil(User.Identity.Name,out lstimage))
             {
                 ViewData["lstimage"]=lstimage;

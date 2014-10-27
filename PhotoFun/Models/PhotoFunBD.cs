@@ -18,12 +18,12 @@ namespace PhotoFun.Models
         {
             bool resultat;
             
-            using (SqlConnection conn = new SqlConnection(cs))
+            using (var conn = new SqlConnection(cs))
             {
                 try
                 {
                     conn.Open();
-                    SqlCommand scAjouter = new SqlCommand("Insert into Utilisateurs (IDUtil, MotPasse, CourrielUtil, PrenomUtil, NomUtil) values ('"
+                    var scAjouter = new SqlCommand("Insert into Utilisateurs (IDUtil, MotPasse, CourrielUtil, PrenomUtil, NomUtil) values ('"
                         + rm.UserName + "', '" + rm.Password + "', '" + rm.Courriel + "', '" + rm.PrenomUtil + "', '" + rm.NomUtil + "');", conn);
                     scAjouter.ExecuteNonQuery();
                     conn.Close();
@@ -40,12 +40,12 @@ namespace PhotoFun.Models
         public bool ExtraireUtil(string IDUtil)
         {
             bool resultat;
-            using (SqlConnection conn = new SqlConnection(cs))
+            using (var conn = new SqlConnection(cs))
             {
                 try
                 {
                     conn.Open();
-                    SqlCommand scExtraire = new SqlCommand("Select * from Utilisateurs where IDUtil='"+IDUtil+"';", conn);
+                    var scExtraire = new SqlCommand("Select * from Utilisateurs where IDUtil='"+IDUtil+"';", conn);
                     scExtraire.ExecuteNonQuery();
                     conn.Close();
                     resultat = true;
@@ -61,12 +61,12 @@ namespace PhotoFun.Models
         public bool MettreAJourUtil(LocalPasswordModel lpm, string usager)
         {
             bool resultat;
-            using (SqlConnection conn = new SqlConnection(cs))
+            using (var conn = new SqlConnection(cs))
             {
                 try
                 {
                     conn.Open();
-                    SqlCommand scModifier= new SqlCommand("Update Utilisateurs set MotPasse='"+lpm.NewPassword+"' where IDUtil='"+usager+"';", conn);
+                    var scModifier= new SqlCommand("Update Utilisateurs set MotPasse='"+lpm.NewPassword+"' where IDUtil='"+usager+"';", conn);
                     scModifier.ExecuteNonQuery();
                     conn.Close();
                     resultat = true;
@@ -82,12 +82,12 @@ namespace PhotoFun.Models
         public bool EnregistrerPhoto(PhotoModels pm)
         {
             bool resultat;
-            using (SqlConnection conn = new SqlConnection(cs))
+            using (var conn = new SqlConnection(cs))
             {
                 try
                 {
                     conn.Open();
-                    SqlCommand scEnregistrerPhoto = new SqlCommand("Insert into Photos (Categorie, Image, IDUtil, Commentaire) values ('" + pm.Categorie + "', '" + pm.image + "', '" + pm.util + "', '"+pm.Commentaires+"');", conn);
+                    var scEnregistrerPhoto = new SqlCommand("Insert into Photos (Categorie, Image, IDUtil, Commentaire) values ('" + pm.Categorie + "', '" + pm.image + "', '" + pm.util + "', '"+pm.Commentaires+"');", conn);
                     scEnregistrerPhoto.ExecuteNonQuery();
                     conn.Close();
                     resultat = true;
@@ -104,13 +104,13 @@ namespace PhotoFun.Models
         {
             bool resultat;
             lstimage= new List<string>();
-            using (SqlConnection conn = new SqlConnection(cs))
+            using (var conn = new SqlConnection(cs))
             {
                 try
                 {
                     conn.Open();
-                    SqlCommand scExtrairePhotoSelonUtil = new SqlCommand("Select Image from Photos where IDUtil='" + NomUtil + "';", conn);
-                    SqlDataReader sdr = scExtrairePhotoSelonUtil.ExecuteReader();
+                    var scExtrairePhotoSelonUtil = new SqlCommand("Select Image from Photos where IDUtil='" + NomUtil + "';", conn);
+                    var sdr = scExtrairePhotoSelonUtil.ExecuteReader();
                     while (sdr.Read())
                     {
                         lstimage.Add(ReadSingleRow((IDataRecord)sdr));
@@ -131,13 +131,13 @@ namespace PhotoFun.Models
         {
             bool resultat;
             lstimage = new List<string>();
-            using (SqlConnection conn = new SqlConnection(cs))
+            using (var conn = new SqlConnection(cs))
             {
                 try
                 {
                     conn.Open();
-                    SqlCommand scExtrairePhotoSelonUtil = new SqlCommand("Select Image from Photos where Categorie='" + Categorie + "';", conn);
-                    SqlDataReader sdr = scExtrairePhotoSelonUtil.ExecuteReader();
+                    var scExtrairePhotoSelonUtil = new SqlCommand("Select Image from Photos where Categorie='" + Categorie + "';", conn);
+                    var sdr = scExtrairePhotoSelonUtil.ExecuteReader();
                     while (sdr.Read())
                     {
                         lstimage.Add(ReadSingleRow((IDataRecord)sdr));
@@ -158,13 +158,13 @@ namespace PhotoFun.Models
         {
             bool resultat;
             lstimage = new List<string>();
-            using (SqlConnection conn = new SqlConnection(cs))
+            using (var conn = new SqlConnection(cs))
             {
                 try
                 {
                     conn.Open();
-                    SqlCommand scExtraireDernieresPhotos = new SqlCommand("SELECT IMAGE FROM PHOTOS WHERE IdPhoto>(SELECT MAX(IdPhoto)-"+nbimage+" FROM PHOTOS);",conn);
-                    SqlDataReader sdr = scExtraireDernieresPhotos.ExecuteReader();
+                    var scExtraireDernieresPhotos = new SqlCommand("SELECT IMAGE FROM PHOTOS WHERE IdPhoto>(SELECT MAX(IdPhoto)-"+nbimage+" FROM PHOTOS);",conn);
+                    var sdr = scExtraireDernieresPhotos.ExecuteReader();
                     while(sdr.Read())
                     {
                         lstimage.Add(ReadSingleRow((IDataRecord)sdr));

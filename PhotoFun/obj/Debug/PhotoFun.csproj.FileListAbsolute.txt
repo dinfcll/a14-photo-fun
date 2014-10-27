@@ -262,3 +262,4 @@ C:\Users\Administrateur\Documents\GitHub\a14-photo-fun\PhotoFun\bin\fr\Microsoft
 C:\Users\Administrateur\Documents\GitHub\a14-photo-fun\PhotoFun\bin\fr\WebMatrix.WebData.resources.dll
 C:\Users\Administrateur\Documents\GitHub\a14-photo-fun\PhotoFun\obj\Debug\PhotoFun.dll
 C:\Users\Administrateur\Documents\GitHub\a14-photo-fun\PhotoFun\obj\Debug\PhotoFun.pdb
+C:\Users\Administrateur\Documents\GitHub\a14-photo-fun\PhotoFun\obj\Debug\PhotoFun.csprojResolveAssemblyReference.cache

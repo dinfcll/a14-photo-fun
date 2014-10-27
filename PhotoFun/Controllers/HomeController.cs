@@ -11,7 +11,7 @@ namespace PhotoFun.Controllers
     {
         public ActionResult Index()
         {
-            PhotoFunBD pfbd = new PhotoFunBD();
+            var pfbd = new PhotoFunBD();
             List<string> lstimage = new List<string>();
             if (pfbd.ExtraireDernieresPhotos(5, out lstimage))
             {
@@ -47,99 +47,44 @@ namespace PhotoFun.Controllers
 
         public ActionResult Sport()
         {
-            PhotoFunBD pfbd = new PhotoFunBD();
-            List<string> lstimage = new List<string>();
-            if (pfbd.ExtrairePhotoSelonCategorie("Sport", out lstimage))
-            {
-                ViewData["lstimage"] = lstimage;
-                return View();
-            }
-            else
-            {
-                return RedirectToAction("Erreur", "Home");
-            }
+            return RetourneLaVueSelonCategorie("Sport");
         }
         
         public ActionResult Nature()
         {
-            PhotoFunBD pfbd = new PhotoFunBD();
-            List<string> lstimage = new List<string>();
-            if (pfbd.ExtrairePhotoSelonCategorie("Nature", out lstimage))
-            {
-                ViewData["lstimage"] = lstimage;
-                return View();
-            }
-            else
-            {
-                return RedirectToAction("Erreur", "Home");
-            }
+            return RetourneLaVueSelonCategorie("Nature");
         }
 
         public ActionResult Famille()
         {
-            PhotoFunBD pfbd = new PhotoFunBD();
-            List<string> lstimage = new List<string>();
-            if (pfbd.ExtrairePhotoSelonCategorie("Famille", out lstimage))
-            {
-                ViewData["lstimage"] = lstimage;
-                return View();
-            }
-            else
-            {
-                return RedirectToAction("Erreur", "Home");
-            }
+            return RetourneLaVueSelonCategorie("Famille");
         }
 
         public ActionResult Paysage()
         {
-            PhotoFunBD pfbd = new PhotoFunBD();
-            List<string> lstimage = new List<string>();
-            if (pfbd.ExtrairePhotoSelonCategorie("Paysage", out lstimage))
-            {
-                ViewData["lstimage"] = lstimage;
-                return View();
-            }
-            else
-            {
-                return RedirectToAction("Erreur", "Home");
-            }
+            return RetourneLaVueSelonCategorie("Paysage");
         }
 
         public ActionResult Cuisine()
         {
-            PhotoFunBD pfbd = new PhotoFunBD();
-            List<string> lstimage = new List<string>();
-            if (pfbd.ExtrairePhotoSelonCategorie("Cuisine", out lstimage))
-            {
-                ViewData["lstimage"] = lstimage;
-                return View();
-            }
-            else
-            {
-                return RedirectToAction("Erreur", "Home");
-            }
+            return RetourneLaVueSelonCategorie("Cuisine");
         }
 
         public ActionResult Animaux()
         {
-            PhotoFunBD pfbd = new PhotoFunBD();
-            List<string> lstimage = new List<string>();
-            if (pfbd.ExtrairePhotoSelonCategorie("Animaux", out lstimage))
-            {
-                ViewData["lstimage"] = lstimage;
-                return View();
-            }
-            else
-            {
-                return RedirectToAction("Erreur", "Home");
-            }
+            return RetourneLaVueSelonCategorie("Animaux");
         }
 
         public ActionResult Autre()
         {
+            return RetourneLaVueSelonCategorie("Autres");
+        }
+
+        private ActionResult RetourneLaVueSelonCategorie(string categorie)
+        {
             PhotoFunBD pfbd = new PhotoFunBD();
             List<string> lstimage = new List<string>();
-            if (pfbd.ExtrairePhotoSelonCategorie("Autres", out lstimage))
+            if (pfbd.ExtrairePhotoSelonCategorie(categorie, out lstimage))
             {
                 ViewData["lstimage"] = lstimage;
                 return View();
