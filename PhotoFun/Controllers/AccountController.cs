@@ -79,6 +79,7 @@ namespace PhotoFun.Controllers
                        
                         return RedirectToAction("Index", "Home");
                     }
+                    ViewData["Erreur"] = "Ce nom d'utilisateur est déjà utilisé.";
                     return RedirectToAction("Erreur", "Home");
                 }
                 catch (MembershipCreateUserException e)
@@ -99,7 +100,7 @@ namespace PhotoFun.Controllers
                 return View();
             }
             else
-            {
+            { 
                 return RedirectToAction("Erreur", "Home");
             }
         }
