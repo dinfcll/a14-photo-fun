@@ -1,14 +1,14 @@
 ﻿@Styles.Render("~/Content/bootstrap.css");
 @if (Request.IsAuthenticated){
     <text>
-       <li>@Html.ActionLink(User.Identity.Name, "Profil", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Gérer mon profil" })</li>
+       <li>@Html.ActionLink(User.Identity.Name, "Profil", "Account", null, new { @class = "username", title = "Gérer mon profil" })</li>
        <li>
             <a href="javascript:document.getElementById('logoutForm').submit()">Se déconnecter</a>
         </li>
         
     </text>
 } else {
-       <li> @Html.ActionLink("S'inscrire", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-       <li> @Html.ActionLink("Se connecter", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+       <li> @Html.ActionLink("S'inscrire", "Register", "Account", null, new { id = "registerLink" })</li>
+       <li> @Html.ActionLink("Se connecter", "Login", "Account", null, new { id = "loginLink" })</li>
 }
 @Scripts.Render("~/Scripts/bootstrap.js")
