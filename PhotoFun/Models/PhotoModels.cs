@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Security.Util;
+using System.Globalization;
 
 namespace PhotoFun.Models
 {
@@ -61,7 +58,7 @@ namespace PhotoFun.Models
         {
             get
             {
-                string s = DateTime.Now.Day.ToString()+DateTime.Now.Hour.ToString() + DateTime.Now.Minute.ToString() + DateTime.Now.Second.ToString();
+                string s = DateTime.Now.Day+DateTime.Now.Hour.ToString(CultureInfo.InvariantCulture) + DateTime.Now.Minute + DateTime.Now.Second;
                 return s;
             }
         }
@@ -84,10 +81,7 @@ namespace PhotoFun.Models
             {
                 return true;
             }
-            else
-            {
-                return false;
-            }
+            return false;
         }
     }
 }

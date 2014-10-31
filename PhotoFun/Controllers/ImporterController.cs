@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.IO;
-using System.Collections;
-using System.Threading;
 using PhotoFun.Models;
 namespace PhotoFun.Controllers
 {
@@ -28,7 +22,7 @@ namespace PhotoFun.Controllers
         public ActionResult Upload(PhotoModels model)
         {
             model.util = User.Identity.Name;
-            PhotoFunBD Ajouterphoto = new PhotoFunBD();
+            var ajouterphoto = new PhotoFunBD();
             string path= Server.MapPath("~/Images/");
             string NouveauNomPhoto = model.util + "_";
 
@@ -47,7 +41,7 @@ namespace PhotoFun.Controllers
                         fichier.SaveAs(path + nomfich);
                         model.image = name;
 
-                        Ajouterphoto.EnregistrerPhoto(model);
+                        ajouterphoto.EnregistrerPhoto(model);
                     }
                     else
                     {

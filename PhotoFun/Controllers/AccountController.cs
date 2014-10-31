@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Transactions;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
-using DotNetOpenAuth.AspNet;
 using Microsoft.Web.WebPages.OAuth;
 using WebMatrix.WebData;
 using PhotoFun.Filters;
@@ -34,7 +30,7 @@ namespace PhotoFun.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(LoginModel model, string returnUrl)
         {
-            if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
+            if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, model.RememberMe))
             {
                 return RedirectToLocal(returnUrl);
             }
@@ -68,14 +64,13 @@ namespace PhotoFun.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Register(RegisterModel model)
         {
-            PhotoFunBD AjouterUtil = new PhotoFunBD();
+            var ajouterUtil = new PhotoFunBD();
             if (ModelState.IsValid)
             {
                 try
                 {
                     WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
-
-                    if (AjouterUtil.InsererUtil(model))
+                    if (ajouterUtil.InsererUtil(model))
                     {
                         WebSecurity.Login(model.UserName, model.Password);
 
@@ -92,14 +87,14 @@ namespace PhotoFun.Controllers
 
         public ActionResult PhotoUtil()
         {
-            PhotoFunBD pfbd = new PhotoFunBD();
-            var lstimage=new List<string>(); 
+            var pfbd = new PhotoFunBD();
+            List<string> lstimage; 
             if (pfbd.ExtrairePhotoSelonUtil(User.Identity.Name,out lstimage))
             {
                 ViewData["lstimage"]=lstimage;
                 return View();
             }
-            return RedirectToAction("Erreur", "Home"); 
+            return RedirectToAction("Erreur", "Home");
         }
 
         public ActionResult Profil()
@@ -127,7 +122,7 @@ namespace PhotoFun.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Manage(LocalPasswordModel model)
         {
-            PhotoFunBD pfAjour = new PhotoFunBD();
+            var pfAjour = new PhotoFunBD();
             bool hasLocalAccount = OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
             ViewBag.HasLocalPassword = hasLocalAccount;
             ViewBag.ReturnUrl = Url.Action("Manage");
@@ -150,10 +145,7 @@ namespace PhotoFun.Controllers
                     {
                         return RedirectToAction("Manage", new { Message = ManageMessageId.ChangePasswordSuccess });
                     }
-                    else
-                    {
-                        ModelState.AddModelError("", "Le mot de passe actuel est incorrect ou le nouveau mot de passe n'est pas valide.");
-                    }
+                    ModelState.AddModelError("", "Le mot de passe actuel est incorrect ou le nouveau mot de passe n'est pas valide.");
                 }
             }
             else
@@ -187,10 +179,7 @@ namespace PhotoFun.Controllers
             {
                 return Redirect(returnUrl);
             }
-            else
-            {
-                return RedirectToAction("Index", "Home");
-            }
+            return RedirectToAction("Index", "Home");
         }
 
         public enum ManageMessageId
