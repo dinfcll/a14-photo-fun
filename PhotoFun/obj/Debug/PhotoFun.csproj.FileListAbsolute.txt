@@ -262,7 +262,6 @@ C:\Users\Administrateur\Documents\GitHub\a14-photo-fun\PhotoFun\bin\fr\Microsoft
 C:\Users\Administrateur\Documents\GitHub\a14-photo-fun\PhotoFun\bin\fr\WebMatrix.WebData.resources.dll
 C:\Users\Administrateur\Documents\GitHub\a14-photo-fun\PhotoFun\obj\Debug\PhotoFun.dll
 C:\Users\Administrateur\Documents\GitHub\a14-photo-fun\PhotoFun\obj\Debug\PhotoFun.pdb
-C:\Users\Administrateur\Documents\GitHub\a14-photo-fun\PhotoFun\obj\Debug\PhotoFun.csprojResolveAssemblyReference.cache
 C:\a14-photo-fun\PhotoFun\bin\PhotoFun.dll
 C:\a14-photo-fun\PhotoFun\bin\PhotoFun.pdb
 C:\a14-photo-fun\PhotoFun\bin\Antlr3.Runtime.dll
@@ -331,3 +330,4 @@ C:\a14-photo-fun\PhotoFun\bin\fr\Microsoft.Web.WebPages.OAuth.resources.dll
 C:\a14-photo-fun\PhotoFun\bin\fr\WebMatrix.WebData.resources.dll
 C:\a14-photo-fun\PhotoFun\obj\Debug\PhotoFun.dll
 C:\a14-photo-fun\PhotoFun\obj\Debug\PhotoFun.pdb
+C:\Users\Administrateur\Documents\GitHub\a14-photo-fun\PhotoFun\obj\Debug\PhotoFun.csprojResolveAssemblyReference.cache

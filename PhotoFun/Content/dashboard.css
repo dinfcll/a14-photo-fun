@@ -91,3 +91,13 @@ margin-bottom: 20px;
 display: inline-block;
 border-radius: 50%;
 } 
+
+/*********Ajout*********/
+.validation-summary-errors {
+    color: #e80c4d;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+input.input-validation-error {
+    border: 1px solid #e80c4d;
+}

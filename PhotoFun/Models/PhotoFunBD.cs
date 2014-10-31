@@ -8,7 +8,7 @@ namespace PhotoFun.Models
 {
     public class PhotoFunBD
     {
-        private const string cs = "Data Source=G264-09\\SQLEXPRESS;Initial Catalog=tempdb;Integrated Security=True";
+        private const string cs = "Data Source=EQUIPE-01\\SQLEXPRESS ;Initial Catalog=tempdb;Integrated Security=True";
         public bool InsererUtil(RegisterModel rm)
         {
             using (var conn = new SqlConnection(cs))

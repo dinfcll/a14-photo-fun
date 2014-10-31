@@ -6,6 +6,7 @@ using Microsoft.Web.WebPages.OAuth;
 using WebMatrix.WebData;
 using PhotoFun.Filters;
 using PhotoFun.Models;
+using System.Data.SqlClient;
 
 namespace PhotoFun.Controllers
 {
@@ -68,14 +69,13 @@ namespace PhotoFun.Controllers
             {
                 try
                 {
+                    WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
                     if (ajouterUtil.InsererUtil(model))
                     {
-                        WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
                         WebSecurity.Login(model.UserName, model.Password);
-                       
+
                         return RedirectToAction("Index", "Home");
-                    }
-                    return RedirectToAction("Erreur", "Home");
+                    } 
                 }
                 catch (MembershipCreateUserException e)
                 {
