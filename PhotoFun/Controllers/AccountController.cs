@@ -99,10 +99,7 @@ namespace PhotoFun.Controllers
                 ViewData["lstimage"]=lstimage;
                 return View();
             }
-            else
-            { 
-                return RedirectToAction("Erreur", "Home");
-            }
+            return RedirectToAction("Erreur", "Home"); 
         }
 
         public ActionResult Profil()
