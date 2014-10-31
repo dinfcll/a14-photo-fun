@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Data.SqlClient;
-using PhotoFun.Models;
 using System.Data;
 
 
@@ -11,15 +8,12 @@ namespace PhotoFun.Models
 {
     public class PhotoFunBD
     {
-        //private const string cs = "Data Source=G264-10\\SQLEXPRESS;Initial Catalog=tempdb;Integrated Security=True";
-        //private const string cs = "Data Source=G264-09\\SQLEXPRESS;Initial Catalog=tempdb;Integrated Security=True";
-        private const string cs = "Data Source=EQUIPE-01\\SQLEXPRESS ;Initial Catalog=tempdb;Integrated Security=True";
+        private const string cs = "Data Source=G264-09\\SQLEXPRESS;Initial Catalog=tempdb;Integrated Security=True";
         public bool InsererUtil(RegisterModel rm)
         {
-            bool resultat;
-            
             using (var conn = new SqlConnection(cs))
             {
+                bool resultat;
                 try
                 {
                     conn.Open();
@@ -39,9 +33,9 @@ namespace PhotoFun.Models
 
         public bool ExtraireUtil(string IDUtil)
         {
-            bool resultat;
             using (var conn = new SqlConnection(cs))
             {
+                bool resultat;
                 try
                 {
                     conn.Open();
@@ -60,9 +54,9 @@ namespace PhotoFun.Models
 
         public bool MettreAJourUtil(LocalPasswordModel lpm, string usager)
         {
-            bool resultat;
             using (var conn = new SqlConnection(cs))
             {
+                bool resultat;
                 try
                 {
                     conn.Open();
@@ -81,9 +75,9 @@ namespace PhotoFun.Models
 
         public bool EnregistrerPhoto(PhotoModels pm)
         {
-            bool resultat;
             using (var conn = new SqlConnection(cs))
             {
+                bool resultat;
                 try
                 {
                     conn.Open();
@@ -102,10 +96,10 @@ namespace PhotoFun.Models
 
         public bool ExtrairePhotoSelonUtil(string NomUtil,out List<string> lstimage)
         {
-            bool resultat;
             lstimage= new List<string>();
             using (var conn = new SqlConnection(cs))
             {
+                bool resultat;
                 try
                 {
                     conn.Open();
@@ -113,7 +107,7 @@ namespace PhotoFun.Models
                     var sdr = scExtrairePhotoSelonUtil.ExecuteReader();
                     while (sdr.Read())
                     {
-                        lstimage.Add(ReadSingleRow((IDataRecord)sdr));
+                        lstimage.Add(ReadSingleRow(sdr));
                     }
                     sdr.Close();
                     conn.Close();
@@ -129,10 +123,10 @@ namespace PhotoFun.Models
 
         public bool ExtrairePhotoSelonCategorie(string Categorie, out List<string> lstimage)
         {
-            bool resultat;
             lstimage = new List<string>();
             using (var conn = new SqlConnection(cs))
             {
+                bool resultat;
                 try
                 {
                     conn.Open();
@@ -140,7 +134,7 @@ namespace PhotoFun.Models
                     var sdr = scExtrairePhotoSelonUtil.ExecuteReader();
                     while (sdr.Read())
                     {
-                        lstimage.Add(ReadSingleRow((IDataRecord)sdr));
+                        lstimage.Add(ReadSingleRow(sdr));
                     }
                     sdr.Close();
                     conn.Close();
@@ -156,10 +150,10 @@ namespace PhotoFun.Models
 
         public bool ExtraireDernieresPhotos(int nbimage, out List<string> lstimage)
         {
-            bool resultat;
             lstimage = new List<string>();
             using (var conn = new SqlConnection(cs))
             {
+                bool resultat;
                 try
                 {
                     conn.Open();
@@ -167,7 +161,7 @@ namespace PhotoFun.Models
                     var sdr = scExtraireDernieresPhotos.ExecuteReader();
                     while(sdr.Read())
                     {
-                        lstimage.Add(ReadSingleRow((IDataRecord)sdr));
+                        lstimage.Add(ReadSingleRow(sdr));
                     }
                     sdr.Close();
                     conn.Close();

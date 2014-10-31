@@ -1,6 +1,6 @@
 ﻿@{
     ViewBag.Title = "Page d'accueil";
-    List<string> lstimage = ViewData["lstimage"] as List<string>;
+    var lstimage = ViewData["lstimage"] as List<string>;
 }
 @section featured {
     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">

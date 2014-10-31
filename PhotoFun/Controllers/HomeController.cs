@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using PhotoFun.Models;
 
@@ -12,16 +9,13 @@ namespace PhotoFun.Controllers
         public ActionResult Index()
         {
             var pfbd = new PhotoFunBD();
-            List<string> lstimage = new List<string>();
+            List<string> lstimage;
             if (pfbd.ExtraireDernieresPhotos(5, out lstimage))
             {
                 ViewData["lstimage"] = lstimage;
                 return View();
             }
-            else
-            {
-                return RedirectToAction("Erreur", "Home");
-            }
+            return RedirectToAction("Erreur", "Home");
         }
         public ActionResult Erreur()
         {
@@ -34,10 +28,7 @@ namespace PhotoFun.Controllers
             {
                 return View();
             }
-            else
-            {
-               return RedirectToAction("Login", "Account");
-            }
+            return RedirectToAction("Login", "Account");
         }
 
         public ActionResult Contact()
@@ -82,17 +73,14 @@ namespace PhotoFun.Controllers
 
         private ActionResult RetourneLaVueSelonCategorie(string categorie)
         {
-            PhotoFunBD pfbd = new PhotoFunBD();
-            List<string> lstimage = new List<string>();
+            var pfbd = new PhotoFunBD();
+            List<string> lstimage;
             if (pfbd.ExtrairePhotoSelonCategorie(categorie, out lstimage))
             {
                 ViewData["lstimage"] = lstimage;
                 return View();
             }
-            else
-            {
-                return RedirectToAction("Erreur", "Home");
-            }
+            return RedirectToAction("Erreur", "Home");
         }
     }
 }
