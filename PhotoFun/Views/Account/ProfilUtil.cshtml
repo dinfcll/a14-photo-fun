@@ -1,5 +1,7 @@
 ﻿@{
     ViewBag.Title = "ProfilUtil";
+    var NomProfil = ViewData["NomProfil"] as string;
 }
-
-<h2>ProfilUtil</h2>
+<div class="page-header">
+    @Html.Label(NomProfil)
+</div>

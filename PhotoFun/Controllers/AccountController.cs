@@ -101,6 +101,13 @@ namespace PhotoFun.Controllers
         {
             return View();
         }
+      
+        [HttpPost]
+        public ActionResult ProfilUtil()
+        {
+            ViewData["NomProfil"] = "PAPa";
+            return View();
+        }
 
         // GET: /Account/Manage
 
