@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using PhotoFun.Models;
+using System.IO;
 
 namespace PhotoFun.Controllers
 {
@@ -22,6 +23,7 @@ namespace PhotoFun.Controllers
             return View();
         }
 
+        [HttpGet]
         public ActionResult Importer()
         {
             if (User.Identity.IsAuthenticated)
@@ -81,6 +83,50 @@ namespace PhotoFun.Controllers
                 return View();
             }
             return RedirectToAction("Erreur", "Home");
+        }
+
+        [HttpPost]
+        public ActionResult Importer(PhotoModels model)
+        {
+            model.util = User.Identity.Name;
+            var ajouterphoto = new PhotoFunBD();
+            string path= Server.MapPath("~/Images/");
+            string NouveauNomPhoto = model.util + "_";
+
+            if (Request.Files.Count > 0)
+            {
+                var fichier = Request.Files[0];
+
+                if (fichier != null && fichier.ContentLength > 0)
+                {
+                    string ext = Path.GetExtension(fichier.FileName);
+
+                    if (ext == ".jpg" || ext == ".png" || ext == ".jpeg")
+                    {
+                        string nomfich = model.util+ '_' + Path.GetFileNameWithoutExtension(fichier.FileName) + model.IDUniqueNomPhoto + ext;
+                        string name = "/Images/" +nomfich;
+                        fichier.SaveAs(path + nomfich);
+                        model.image = name;
+
+                        ajouterphoto.EnregistrerPhoto(model);
+                        ViewData["VerifierImporter"] = "TransfertReussi";
+                    }
+                    else
+                    {
+                         ViewData["VerifierImporter"] = "TransfertEchoue";
+                    }
+                }
+                else
+                {
+                    ViewData["VerifierImporter"] = "TransfertEchoue";
+                }
+            }
+            else
+            {
+                ViewData["VerifierImporter"] = "TransfertEchoue";
+            }
+            
+            return View();
         }
     }
 }

@@ -163,7 +163,6 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ImporterController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -311,10 +310,11 @@
     <Content Include="Views\Home\Animaux.cshtml" />
     <Content Include="Views\Home\Autre.cshtml" />
     <Content Include="Views\Account\Profil.cshtml" />
-    <Content Include="Views\Importer\TransfertReussi.cshtml" />
-    <Content Include="Views\Importer\TransfertEchoue.cshtml" />
+    <Content Include="Views\Home\_TransfertReussi.cshtml" />
+    <Content Include="Views\Home\_TransfertEchoue.cshtml" />
     <Content Include="Views\Home\Erreur.cshtml" />
     <Content Include="Views\Account\PhotoUtil.cshtml" />
+    <Content Include="Views\Home\_PasPhotoCategorie.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
