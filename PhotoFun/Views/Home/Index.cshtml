@@ -9,7 +9,7 @@
         {
             int indice = 0;
             bool unefois = true;
-            bool unefois2= true;
+            bool jamaispasser= true;
             <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
                 @foreach (var PhotoAccueil in lstimage)
@@ -28,12 +28,12 @@
                 <div class="carousel-inner">
                 @foreach (var PhotoAccueil in lstimage)
                 {
-                    if(unefois2)
+                    if (jamaispasser)
                     {
                         <div class="item active">
                              <img src="@PhotoAccueil" alt="Image inaccessible"/>
                         </div>
-                        unefois2 = false;
+                        jamaispasser = false;
                     }
                     else
                     {

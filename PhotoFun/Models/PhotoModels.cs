@@ -58,7 +58,7 @@ namespace PhotoFun.Models
         {
             get
             {
-                string s = DateTime.Now.Day+DateTime.Now.Hour.ToString(CultureInfo.InvariantCulture) + DateTime.Now.Minute + DateTime.Now.Second;
+                string s = DateTime.Now.Year+DateTime.Now.Day+DateTime.Now.Hour.ToString(CultureInfo.InvariantCulture) + DateTime.Now.Minute + DateTime.Now.Second;
                 return s;
             }
         }
