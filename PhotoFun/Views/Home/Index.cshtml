@@ -4,18 +4,26 @@
 }
 @section featured {
     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-            <li data-target="#carousel-example-generic" data-slide-to="1" class></li>
-            <li data-target="#carousel-example-generic" data-slide-to="2" class></li>
-            <li data-target="#carousel-example-generic" data-slide-to="3" class></li>
-            <li data-target="#carousel-example-generic" data-slide-to="4" class></li>
-        </ol>
-        
-    @using(Html.BeginForm()){
-        bool unefois=true;        
+        @using(Html.BeginForm()){
         if (lstimage != null && lstimage.Count > 0)
         {
+            int indice = 0;
+            bool unefois = true;
+            <ol class="carousel-indicators">
+            @foreach (var PhotoAccueil in lstimage)
+            {
+                if (unefois)
+                {
+                    <li data-target="#carousel-example-generic" data-slide-to="@indice" class="active"></li>
+                    unefois = false;
+                }
+                else
+                {
+                    <li data-target="#carousel-example-generic" data-slide-to="@indice" class></li>
+                }
+            }
+            </ol>
+            unefois=true;    
             <div class="carousel-inner">
             @foreach (var PhotoAccueil in lstimage)
             {

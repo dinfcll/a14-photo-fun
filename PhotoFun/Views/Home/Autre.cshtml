@@ -13,4 +13,8 @@
             <img src="@PhotoAutres" alt="Image inaccessible" width="36%"/>
         }
     }
+    else
+    {
+        <span>Il n'y a pas de photos dans cette catégorie. @Html.ActionLink("Importez", "Importer", "Home") en une pour voir des photos dans cette catégorie.</span>
+    }
 }
