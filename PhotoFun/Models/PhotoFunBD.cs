@@ -8,7 +8,7 @@ namespace PhotoFun.Models
 {
     public class PhotoFunBD
     {
-        private const string cs = "Data Source=G264-10\\SQLEXPRESS ;Initial Catalog=tempdb;Integrated Security=True";
+        private const string cs = "Data Source=G264-09\\SQLEXPRESS ;Initial Catalog=tempdb;Integrated Security=True";
         public bool InsererUtil(RegisterModel rm)
         {
             using (var conn = new SqlConnection(cs))
@@ -130,8 +130,8 @@ namespace PhotoFun.Models
                 try
                 {
                     conn.Open();
-                    var scExtrairePhotoSelonUtil = new SqlCommand("Select Image from Photos where Categorie='" + Categorie + "';", conn);
-                    var sdr = scExtrairePhotoSelonUtil.ExecuteReader();
+                    var scExtrairePhotoSelonCategorie = new SqlCommand("Select Image from Photos where Categorie='" + Categorie + "';", conn);
+                    var sdr = scExtrairePhotoSelonCategorie.ExecuteReader();
                     while (sdr.Read())
                     {
                         lstimage.Add(ReadSingleRow(sdr));
@@ -166,6 +166,27 @@ namespace PhotoFun.Models
                     sdr.Close();
                     conn.Close();
                     resultat=true;
+                }
+                catch
+                {
+                    resultat = false;
+                }
+                return resultat;
+            }
+        }
+
+        public bool AbonnerUtil(string NomUtilCourant, string NomUtilAbonner)
+        {
+            using (var conn = new SqlConnection(cs))
+            {
+                bool resultat;
+                try
+                {
+                    conn.Open();
+                    var scEnregistrerAbonnement = new SqlCommand("Insert into AbonnementUtil (IdUtilConnecter, IdUtilAbonner) values ('"+NomUtilCourant+"', '"+NomUtilAbonner+"');", conn);
+                    scEnregistrerAbonnement.ExecuteNonQuery();
+                    conn.Close();
+                    resultat = true;
                 }
                 catch
                 {

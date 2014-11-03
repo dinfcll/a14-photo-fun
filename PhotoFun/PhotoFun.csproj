@@ -315,6 +315,7 @@
     <Content Include="Views\Home\Erreur.cshtml" />
     <Content Include="Views\Account\PhotoUtil.cshtml" />
     <Content Include="Views\Home\_PasPhotoCategorie.cshtml" />
+    <Content Include="Views\Account\ProfilUtil.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

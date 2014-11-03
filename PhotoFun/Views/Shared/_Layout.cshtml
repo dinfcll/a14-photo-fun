@@ -23,7 +23,13 @@
                     <a class="navbar-brand" href="/Home/Index">PhotoFun</a>
                 </div>
                     <div class="navbar-collapse collapse" style="height: 1px;">
-                        <ul class="nav navbar-nav navbar-right">
+                       @model PhotoFun.Models.PhotoModels
+                       @Html.TextBoxFor(PhotoModels => PhotoModels.util,"UtilRechercher",new{ id="UtilRechercher"})
+                       <input type="text" /> 
+                       <input type="submit" value="Rechercher" />
+                      
+                       <ul class="nav navbar-nav navbar-right">
+                            
                                 @Html.Partial("_LoginPartial")
                             <li>@Html.ActionLink("Accueil", "Index", "Home")</li>
                             <li>@Html.ActionLink("Importer", "Importer", "Home")</li>
