@@ -3,53 +3,60 @@
     var lstimage = ViewData["lstimage"] as List<string>;
 }
 @section featured {
-    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+    
         @using(Html.BeginForm()){
         if (lstimage != null && lstimage.Count > 0)
         {
             int indice = 0;
             bool unefois = true;
-            <ol class="carousel-indicators">
-            @foreach (var PhotoAccueil in lstimage)
-            {
-                if (unefois)
+            bool unefois2= true;
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                @foreach (var PhotoAccueil in lstimage)
                 {
-                    <li data-target="#carousel-example-generic" data-slide-to="@indice" class="active"></li>
-                    unefois = false;
+                    if (unefois)
+                    {
+                        <li data-target="#carousel-example-generic" data-slide-to="@indice" class="active"></li>
+                        unefois = false;
+                    }
+                    else
+                    {
+                        <li data-target="#carousel-example-generic" data-slide-to="@indice" class></li>
+                    }
                 }
-                else
+                </ol>  
+                <div class="carousel-inner">
+                @foreach (var PhotoAccueil in lstimage)
                 {
-                    <li data-target="#carousel-example-generic" data-slide-to="@indice" class></li>
+                    if(unefois2)
+                    {
+                        <div class="item active">
+                             <img src="@PhotoAccueil" alt="Image inaccessible"/>
+                        </div>
+                        unefois2 = false;
+                    }
+                    else
+                    {
+                       <div class="item">
+                             <img src="@PhotoAccueil" alt="Image inaccessible"/>
+                        </div> 
+                    } 
                 }
-            }
-            </ol>
-            unefois=true;    
-            <div class="carousel-inner">
-            @foreach (var PhotoAccueil in lstimage)
-            {
-                if(unefois)
-                {
-                    <div class="item active">
-                         <img src="@PhotoAccueil" alt="Image inaccessible"/>
-                    </div>
-                    unefois = false;
-                }
-                else
-                {
-                   <div class="item">
-                         <img src="@PhotoAccueil" alt="Image inaccessible"/>
-                    </div> 
-                } 
-            }
+                </div> 
+                <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+                <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                </a>
             </div>
         }
-    }           
-       
-        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-            <span class="glyphicon glyphicon-chevron-left"></span>
-        </a>
-        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-            <span class="glyphicon glyphicon-chevron-right"></span>
-        </a>
-    </div>
+        else
+        {
+            <div class="page-header">
+            <br/>
+                <span>Il n'y a pas de photos. @Html.ActionLink("Importez", "Importer", "Home") en une pour voir des photos.</span>
+            </div>
+        }
+    }      
 }
