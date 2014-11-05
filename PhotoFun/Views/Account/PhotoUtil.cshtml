@@ -10,7 +10,9 @@
     {
         foreach (var PhotoUtil in lstimage)
         {
-            <img src="@PhotoUtil" alt="Image inaccessible" width="36%"/>
+            <div style="width:35%">
+               <img src="@PhotoUtil" class="img-thumbnail" alt="Image inaccessible" width="89%"/><button type="button" class="close"><span class="glyphicon glyphicon-remove"></span></button>
+            </div>
         }
     }
 }
