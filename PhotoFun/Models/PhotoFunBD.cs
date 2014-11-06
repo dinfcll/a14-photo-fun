@@ -94,6 +94,27 @@ namespace PhotoFun.Models
             }
         }
 
+        public bool DetruirePhotoSelonUtil(string util,string image)
+        {
+            using (var conn = new SqlConnection(cs))
+            {
+                bool resultat;
+                try
+                {
+                    conn.Open();
+                    var scDetruirePhotoSelonUtil = new SqlCommand("DELETE FROM PHOTOS WHERE IDUtil='"+util+"' and Image='"+image+"';",conn);
+                    scDetruirePhotoSelonUtil.ExecuteNonQuery();
+                    conn.Close();
+                    resultat = true;
+                }
+                catch
+                {
+                    resultat = false;
+                }
+                return resultat;
+            }
+        }
+
         public bool ExtrairePhotoSelonUtil(string NomUtil,out List<string> lstimage)
         {
             lstimage= new List<string>();

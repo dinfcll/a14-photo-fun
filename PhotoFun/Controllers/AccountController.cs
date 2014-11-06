@@ -85,6 +85,7 @@ namespace PhotoFun.Controllers
             return View(model);
         }
 
+        [HttpGet]
         public ActionResult PhotoUtil()
         {
             var pfbd = new PhotoFunBD();
@@ -93,6 +94,22 @@ namespace PhotoFun.Controllers
             {
                 ViewData["lstimage"]=lstimage;
                 return View();
+            }
+            return RedirectToAction("Erreur", "Home");
+        }
+
+        [HttpPost]//??
+        public ActionResult PhotoUtil(PhotoModels pm)
+        {
+            var pfbd = new PhotoFunBD();
+            List<string> lstimage;
+            if (pfbd.DetruirePhotoSelonUtil(User.Identity.Name, pm.image)) //Reste à faire passer les bons utils et images
+            {
+                if (pfbd.ExtrairePhotoSelonUtil(User.Identity.Name, out lstimage))
+                {
+                    ViewData["lstimage"] = lstimage;
+                    return View();
+                }
             }
             return RedirectToAction("Erreur", "Home");
         }
