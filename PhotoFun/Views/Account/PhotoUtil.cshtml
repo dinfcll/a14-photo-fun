@@ -2,8 +2,7 @@
     ViewBag.Title = "Vos Photos";
     var lstimage = ViewData["lstimage"] as List<string>;
 }
-@using (Html.BeginForm("PhotoUtil", "Account", FormMethod.Post))  
-{ 
+@{ 
     <!--??-->
     @model PhotoFun.Models.PhotoModels
     <div class="page-header">
@@ -13,10 +12,14 @@
     {
         foreach (var PhotoUtil in lstimage)
         {
-            <div style="width:35%">
-                <img src="@PhotoUtil" class="img-thumbnail" alt="Image inaccessible" width="89%"/>
-                <button type="submit" class="close" id="@PhotoUtil"><span class="glyphicon glyphicon-remove"></span></button>
-            </div>
+            using (Html.BeginForm("PhotoUtil", "Account", FormMethod.Post))
+            {
+                <div style="width:35%">
+                    <img src="@PhotoUtil" class="img-thumbnail" alt="Image inaccessible" width="89%"/>
+                    @Html.HiddenFor(m => m.image)
+                    <button type="submit" class="close" id="@PhotoUtil"><span class="glyphicon glyphicon-remove"></span></button>
+                </div>
+            }
         }
     }
 }
