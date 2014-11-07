@@ -12,7 +12,7 @@ GO
 USE [tempdb]
 GO
 
-/****** Object:  Table [dbo].[AbonnementUtil]    Script Date: 11/03/2014 11:46:09 ******/
+/****** Object:  Table [dbo].[AbonnementUtil]    Script Date: 11/07/2014 14:04:22 ******/
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[AbonnementUtil]') AND type in (N'U'))
 DROP TABLE [dbo].[AbonnementUtil]
 GO
@@ -20,7 +20,7 @@ GO
 USE [tempdb]
 GO
 
-/****** Object:  Table [dbo].[AbonnementUtil]    Script Date: 11/03/2014 11:46:09 ******/
+/****** Object:  Table [dbo].[AbonnementUtil]    Script Date: 11/07/2014 14:04:22 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -52,7 +52,7 @@ GO
 ALTER TABLE [dbo].[AbonnementUtil] CHECK CONSTRAINT [FK_AbonnementUtil_Utilisateurs]
 GO
 
-ALTER TABLE [dbo].[AbonnementUtil]  WITH CHECK ADD  CONSTRAINT [FK_AbonnementUtil_Utilisateurs1] FOREIGN KEY([IdUtilConnecter])
+ALTER TABLE [dbo].[AbonnementUtil]  WITH CHECK ADD  CONSTRAINT [FK_AbonnementUtil_Utilisateurs1] FOREIGN KEY([IdUtilAbonner])
 REFERENCES [dbo].[Utilisateurs] ([IDUtil])
 GO
 

@@ -105,7 +105,16 @@ namespace PhotoFun.Controllers
         [HttpPost]
         public ActionResult ProfilUtil()
         {
-            ViewData["NomProfil"] = "PAPa";
+            if (Request.TotalBytes > 0)
+            {
+                var nomUtil = Request.Form.GetValues(0);
+                ViewData["UtilRechercher"] = nomUtil;
+            }
+            else
+            {
+                var erreur = "Une erreur est survenu";
+                ViewData["UtilRechercher"] = erreur;
+            }
             return View();
         }
 
@@ -129,7 +138,6 @@ namespace PhotoFun.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Manage(LocalPasswordModel model)
         {
-            var pfAjour = new PhotoFunBD();
             bool hasLocalAccount = OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
             ViewBag.HasLocalPassword = hasLocalAccount;
             ViewBag.ReturnUrl = Url.Action("Manage");
@@ -141,7 +149,6 @@ namespace PhotoFun.Controllers
                     try
                     {
                         changePasswordSucceeded = WebSecurity.ChangePassword(User.Identity.Name, model.OldPassword, model.NewPassword);
-                        pfAjour.MettreAJourUtil(model, User.Identity.Name);
                     }
                     catch (Exception)
                     {

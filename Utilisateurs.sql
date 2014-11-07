@@ -1,7 +1,7 @@
 USE [tempdb]
 GO
 
-/****** Object:  Table [dbo].[Utilisateurs]    Script Date: 10/10/2014 11:54:37 ******/
+/****** Object:  Table [dbo].[Utilisateurs]    Script Date: 11/07/2014 14:33:57 ******/
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Utilisateurs]') AND type in (N'U'))
 DROP TABLE [dbo].[Utilisateurs]
 GO
@@ -9,7 +9,7 @@ GO
 USE [tempdb]
 GO
 
-/****** Object:  Table [dbo].[Utilisateurs]    Script Date: 10/10/2014 11:54:37 ******/
+/****** Object:  Table [dbo].[Utilisateurs]    Script Date: 11/07/2014 14:33:57 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -21,7 +21,6 @@ GO
 
 CREATE TABLE [dbo].[Utilisateurs](
 	[IDUtil] [varchar](20) NOT NULL,
-	[MotPasse] [varchar](20) NOT NULL,
 	[CourrielUtil] [varchar](50) NOT NULL,
 	[PrenomUtil] [varchar](25) NOT NULL,
 	[NomUtil] [varchar](25) NOT NULL,
@@ -35,4 +34,5 @@ GO
 
 SET ANSI_PADDING OFF
 GO
+
 
