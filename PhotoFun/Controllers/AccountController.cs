@@ -73,7 +73,6 @@ namespace PhotoFun.Controllers
                     if (ajouterUtil.InsererUtil(model))
                     {
                         WebSecurity.Login(model.UserName, model.Password);
-
                         return RedirectToAction("Index", "Home");
                     } 
                 }

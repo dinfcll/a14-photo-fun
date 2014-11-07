@@ -5,16 +5,22 @@
 <div class="page-header">
     <h2>Sport</h2>
 </div>
-@using(Html.BeginForm()){
+@{   
     if (lstimage != null && lstimage.Count > 0)
     {
-        foreach (var PhotoSport in lstimage)
+        foreach (var Photo in lstimage)
         {
-            <img src="@PhotoSport" class="img-thumbnail" alt="Image inaccessible" width="36%"/>
+           <div class="divdesimages">
+                @using (Html.BeginForm("PhotoUtil", "Account", FormMethod.Post))
+                {
+                    <button type="submit" class="close boutonliker"><span class="glyphicon glyphicon-heart"></span></button> 
+                    <img src="@Photo" class="img-thumbnail" alt="Image inaccessible" width="100%"/>
+                }
+            </div>  
         }
     }
     else
     {
-        @Html.Partial("_PasPhotoCategorie")
+         @Html.Partial("_PasPhotoCategorie")
     }
 }
