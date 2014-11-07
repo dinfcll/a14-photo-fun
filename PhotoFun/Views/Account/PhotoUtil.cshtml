@@ -3,8 +3,6 @@
     var lstimage = ViewData["lstimage"] as List<string>;
 }
 @{ 
-    <!--??-->
-    @model PhotoFun.Models.PhotoModels
     <div class="page-header">
         <h2>Vos photos</h2>
     </div>
@@ -16,8 +14,8 @@
             {
                 <div style="width:35%">
                     <img src="@PhotoUtil" class="img-thumbnail" alt="Image inaccessible" width="89%"/>
-                    @Html.HiddenFor(m => m.image)
-                    <button type="submit" class="close" id="@PhotoUtil"><span class="glyphicon glyphicon-remove"></span></button>
+                    <button type="submit" class="close"><span class="glyphicon glyphicon-remove"></span></button>
+                    @Html.Hidden("Image", PhotoUtil)
                 </div>
             }
         }
