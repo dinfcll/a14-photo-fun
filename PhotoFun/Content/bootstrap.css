@@ -33,7 +33,11 @@ summary {
   color: #777;
   margin-top: 70px;
   border-top: 1px solid #e5e5e5;
-  
+  margin-left: 145px;
+}
+.main
+{
+    margin-left: 130px;
 }
 
 audio,
@@ -1423,7 +1427,6 @@ pre code {
 }
 .container-fluid {
   padding-right: 15px;
-  padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
 }
@@ -3891,6 +3894,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   float: left;
   height: 50px;
   padding: 15px 15px;
+  padding-left:30px;
   font-size: 18px;
   line-height: 20px;
 }
@@ -5724,6 +5728,7 @@ button.close {
 }
 .carousel {
   position: relative;
+  margin-top:55px;
 }
 .carousel-inner {
   position: relative;
@@ -6332,4 +6337,45 @@ textarea {
         padding: 5px;
         width: 450px;
     }
+    
+.menucotegauche
+{
+   padding-top:60px;
+   position:fixed;
+   padding-left: 0;
+   margin-bottom: 0;
+   list-style: none; 
+   background-color:Lime;   
+}
+    
+.menucotegauche > li {
+  position: relative;
+  display: block;
+  color:#777;
+}
+.menucotegauche > li > a {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+  color:#777;
+}
+.menucotegauche > li > a:hover,
+.menucotegauche > li > a:focus {
+  text-decoration: none;
+  color:#fff
+}
+
+.sidebar {
+position: fixed;
+top: 51px;
+bottom: 0;
+left: 0;
+z-index: 1000;
+display: block;
+padding: 20px;
+overflow-x: hidden;
+overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+background-color: #101010;
+border-right: 1px solid #eee;
+}
     

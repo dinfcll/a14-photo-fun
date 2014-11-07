@@ -8,7 +8,7 @@ namespace PhotoFun.Models
 {
     public class PhotoFunBD
     {
-        private const string cs = "Data Source=G264-10\\SQLEXPRESS ;Initial Catalog=tempdb;Integrated Security=True";
+        private const string cs = "Data Source=EQUIPE-01\\SQLEXPRESS ;Initial Catalog=tempdb;Integrated Security=True";
         public bool InsererUtil(RegisterModel rm)
         {
             using (var conn = new SqlConnection(cs))
@@ -83,6 +83,27 @@ namespace PhotoFun.Models
                     conn.Open();
                     var scEnregistrerPhoto = new SqlCommand("Insert into Photos (Categorie, Image, IDUtil, Commentaire) values ('" + pm.Categorie + "', '" + pm.image + "', '" + pm.util + "', '"+pm.Commentaires+"');", conn);
                     scEnregistrerPhoto.ExecuteNonQuery();
+                    conn.Close();
+                    resultat = true;
+                }
+                catch
+                {
+                    resultat = false;
+                }
+                return resultat;
+            }
+        }
+
+        public bool DetruirePhotoSelonUtil(string util,string image)
+        {
+            using (var conn = new SqlConnection(cs))
+            {
+                bool resultat;
+                try
+                {
+                    conn.Open();
+                    var scDetruirePhotoSelonUtil = new SqlCommand("DELETE FROM PHOTOS WHERE IDUtil='"+util+"' and Image='"+image+"';",conn);
+                    scDetruirePhotoSelonUtil.ExecuteNonQuery();
                     conn.Close();
                     resultat = true;
                 }

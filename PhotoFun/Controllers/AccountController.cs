@@ -97,6 +97,17 @@ namespace PhotoFun.Controllers
             return RedirectToAction("Erreur", "Home");
         }
 
+        [HttpPost]
+        public ActionResult PhotoUtil(string image)
+        {
+            var pfbd = new PhotoFunBD();
+            if (pfbd.DetruirePhotoSelonUtil(User.Identity.Name, image))
+            {    
+                return RedirectToAction("PhotoUtil","Account"); 
+            }
+            return RedirectToAction("Erreur", "Home");
+        }
+
         public ActionResult Profil()
         {
             return View();

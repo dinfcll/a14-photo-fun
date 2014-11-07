@@ -5,7 +5,6 @@
         <meta charset="utf-8" />
         <title>@ViewBag.Title - PhotoFun</title>
         <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-        <link rel="stylesheet" href="/Content/dashboard.css">
         <meta name="viewport" content="width=device-width" />
         @Styles.Render("~/Content/bootstrap.css")
         @Scripts.Render("~/bundles/modernizr")
@@ -36,30 +35,26 @@
         </div>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-xs-3 col-sm-2 col-md-2 col-lg-1 sidebar">
-                    <ul class="nav nav-sidebar">
-                        <li><a href="/Home/Sport">Sport</a></li>
-                        <li><a href="/Home/Nature">Nature</a></li>
-                        <li><a href="/Home/Famille">Famille</a></li>
-                        <li><a href="/Home/Paysage">Paysage</a></li>
-                        <li><a href="/Home/Cuisine">Cuisine</a></li>
-                        <li><a href="/Home/Animaux">Animaux</a></li>
-                        <li><a href="/Home/Autre">Autre</a></li>
+                <div class="col-xs-3 col-sm-2 col-md-2 col-lg-1">
+                    <ul class="menucotegauche sidebar">
+                        <li>@Html.ActionLink("Sport", "Sport", "Home")</li>
+                        <li>@Html.ActionLink("Nature", "Nature", "Home")</li>
+                        <li>@Html.ActionLink("Famille", "Famille", "Home")</li>
+                        <li>@Html.ActionLink("Paysage", "Paysage", "Home")</li>
+                        <li>@Html.ActionLink("Cuisine", "Cuisine", "Home")</li>
+                        <li>@Html.ActionLink("Animaux", "Animaux", "Home")</li>
+                        <li>@Html.ActionLink("Autre", "Autre", "Home")</li>
                     </ul>
                 </div>
-                <div class="col-xs-9 col-sm-8 col-md-8 col-lg-9 main">
+                <div class="col-xs-8 col-sm-8 col-md-9 col-lg-9 main">
                     @RenderSection("featured", required: false)
                     @RenderBody()
-                </div>
+                </div>   
         </div>
-    </div>
-    <div class="container">
         <div class="footer">
              <p>&copy; @DateTime.Now.Year - PhotoFun</p>
         </div>
     </div>
-       
-
         @Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/Scripts/bootstrap.js")
         @RenderSection("scripts", required: false)

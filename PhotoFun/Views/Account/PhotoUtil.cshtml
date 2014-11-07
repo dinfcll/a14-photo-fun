@@ -2,15 +2,22 @@
     ViewBag.Title = "Vos Photos";
     var lstimage = ViewData["lstimage"] as List<string>;
 }
-<div class="page-header">
-    <h2>Vos photos</h2>
-</div>
-@using(Html.BeginForm()){
+@{ 
+    <div class="page-header">
+        <h2>Vos photos</h2>
+    </div>
     if (lstimage != null && lstimage.Count > 0)
     {
         foreach (var PhotoUtil in lstimage)
         {
-            <img src="@PhotoUtil" alt="Image inaccessible" width="36%"/>
+            using (Html.BeginForm("PhotoUtil", "Account", FormMethod.Post))
+            {
+                <div style="width:35%">
+                    <img src="@PhotoUtil" class="img-thumbnail" alt="Image inaccessible" width="89%"/>
+                    <button type="submit" class="close"><span class="glyphicon glyphicon-remove"></span></button>
+                    @Html.Hidden("Image", PhotoUtil)
+                </div>
+            }
         }
     }
 }
