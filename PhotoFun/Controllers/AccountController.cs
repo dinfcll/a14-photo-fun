@@ -133,7 +133,6 @@ namespace PhotoFun.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Manage(LocalPasswordModel model)
         {
-            var pfAjour = new PhotoFunBD();
             bool hasLocalAccount = OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
             ViewBag.HasLocalPassword = hasLocalAccount;
             ViewBag.ReturnUrl = Url.Action("Manage");
@@ -145,7 +144,6 @@ namespace PhotoFun.Controllers
                     try
                     {
                         changePasswordSucceeded = WebSecurity.ChangePassword(User.Identity.Name, model.OldPassword, model.NewPassword);
-                        pfAjour.MettreAJourUtil(model, User.Identity.Name);
                     }
                     catch (Exception)
                     {
