@@ -80,6 +80,7 @@ namespace PhotoFun.Controllers
             if (pfbd.ExtrairePhotoSelonCategorie(categorie, out lstimage))
             {
                 ViewData["lstimage"] = lstimage;
+                ViewBag.Title = categorie;
                 return View();
             }
             return RedirectToAction("Erreur", "Home");
