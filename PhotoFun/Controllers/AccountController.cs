@@ -107,13 +107,27 @@ namespace PhotoFun.Controllers
         {
             if (Request.TotalBytes > 0)
             {
-                var nomUtil = Request.Form.GetValues(0);
-                ViewData["UtilRechercher"] = nomUtil;
+                var pm = new ProfilModel();
+                var pfbd = new PhotoFunBD();
+                int retour;
+                var nomUtil = Request.Form.GetValues(0).GetValue(0);
+                int i = 5;
+                while (i > 0)
+                {
+                    pfbd.AbonnerUtil("Nicolas", "papa");
+                    i--;
+                }
+                pm.IdUtilRechercher = nomUtil.ToString();
+                if (pfbd.CompteNbAbonnement(pm, out retour))
+                {
+                    pm.NbAbonnement = retour;
+                }
+                ViewData["Rechercher"] = pm;
             }
             else
             {
-                var erreur = "Une erreur est survenu";
-                ViewData["UtilRechercher"] = erreur;
+                string erreur = "Une erreur est survenu";
+                ViewData["Rechercher"] = erreur;
             }
             return View();
         }

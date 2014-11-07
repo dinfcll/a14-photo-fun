@@ -196,6 +196,50 @@ namespace PhotoFun.Models
             }
         }
 
+        public bool InsererDonneesProfil(ProfilModel pm)
+        {
+            using (var conn = new SqlConnection(cs))
+            {
+                bool resultat;
+                try
+                {
+                    conn.Open();
+                    var scAjouterProfil = new SqlCommand("Insert into ProfilUtil ( IDUtilRechercher, nbAbonnement) values ('"
+                        + pm.IdUtilRechercher + "', '" + pm.NbAbonnement + "');", conn);
+                    scAjouterProfil.ExecuteNonQuery();
+                    conn.Close();
+                    resultat = true;
+                }
+                catch
+                {
+                    resultat = false;
+                }
+                return resultat;
+            }
+        }
+
+        public bool CompteNbAbonnement(ProfilModel pm, out int nbabonn)
+        {
+            using (var conn = new SqlConnection(cs))
+            {
+                bool resultat;
+                try
+                {
+                    conn.Open();
+                    var scNbAbonnement = new SqlCommand("Select count(IdUtilConnecter) from AbonnementUtil where IdUtilAbonner='"
+                        + pm.IdUtilRechercher + "'", conn);
+                    nbabonn=scNbAbonnement.ExecuteNonQuery();
+                    conn.Close();
+                    resultat = true;
+                }
+                catch
+                {
+                    resultat = false;
+                    nbabonn = 0;
+                }
+                return resultat;
+            }
+        }
         private string ReadSingleRow(IDataRecord record)
         {
             return String.Format("{0}", record[0]);

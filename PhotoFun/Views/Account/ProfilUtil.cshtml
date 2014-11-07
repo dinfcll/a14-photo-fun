@@ -1,7 +1,8 @@
 ﻿@{
     ViewBag.Title = "ProfilUtil";
-    var NomProfil = ViewData["UtilRechercher"] as string;
+    var NomProfil = ViewData["Rechercher"] as PhotoFun.Models.ProfilModel;
 }
 <div class="page-header">
-    @Html.Label(NomProfil)
+    @Html.Label(NomProfil.IdUtilRechercher)
+    @Html.Label(NomProfil.NbAbonnement.ToString())
 </div>
