@@ -8,7 +8,7 @@ namespace PhotoFun.Models
 {
     public class PhotoFunBD
     {
-        private const string cs = "Data Source=G264-11\\SQLEXPRESS ;Initial Catalog=tempdb;Integrated Security=True";
+        private const string cs = "Data Source=DOMINIC_PC\\SQLEXPRESS ;Initial Catalog=tempdb;Integrated Security=True";
         public bool InsererUtil(RegisterModel rm)
         {
             using (var conn = new SqlConnection(cs))
@@ -187,6 +187,38 @@ namespace PhotoFun.Models
                     sdr.Close();
                     conn.Close();
                     resultat=true;
+                }
+                catch
+                {
+                    resultat = false;
+                }
+                return resultat;
+            }
+        }
+
+        public bool AjouterUnLike(string nomimage)
+        {
+            using (var conn = new SqlConnection(cs))
+            {
+                bool resultat;
+                string like="";
+                int nblike;
+                try
+                {
+                    conn.Open();
+                    var scAjouterUnLike = new SqlCommand("SELECT NbJaime FROM PHOTOS WHERE Image='" + nomimage + "' FROM PHOTOS);", conn);
+                    var sdr = scAjouterUnLike.ExecuteReader();
+                    while (sdr.Read())
+                    {
+                       like=ReadSingleRow(sdr);
+                    }
+                    sdr.Close();
+                    nblike = Convert.ToInt32(like);
+                    nblike++;
+                    scAjouterUnLike = new SqlCommand("UPDATE PHOTOS set NbLike="+nblike+" where Image='"+nomimage+"';",conn);
+                    scAjouterUnLike.ExecuteNonQuery();
+                    conn.Close();
+                    resultat = true;
                 }
                 catch
                 {
