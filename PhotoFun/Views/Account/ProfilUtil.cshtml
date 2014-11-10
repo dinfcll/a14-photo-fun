@@ -15,5 +15,5 @@
             @Html.ActionLink("Suivre", "Suivre", "Account", new { nom = NomProfil.IdUtilRechercher, abonner=NomProfil.Abonner }, null)
         }
     }
-    
+    @Html.ActionLink("Vos photos", "PhotoUtil", "Account", new { nom = NomProfil.IdUtilRechercher })
 </div>

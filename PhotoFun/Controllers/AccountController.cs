@@ -85,11 +85,11 @@ namespace PhotoFun.Controllers
             return View(model);
         }
 
-        public ActionResult PhotoUtil()
+        public ActionResult PhotoUtil(string nom)
         {
             var pfbd = new PhotoFunBD();
             List<string> lstimage; 
-            if (pfbd.ExtrairePhotoSelonUtil(User.Identity.Name,out lstimage))
+            if (pfbd.ExtrairePhotoSelonUtil(nom, out lstimage))
             {
                 ViewData["lstimage"]=lstimage;
                 return View();

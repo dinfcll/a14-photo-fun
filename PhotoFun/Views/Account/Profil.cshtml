@@ -8,5 +8,5 @@
     @Html.ActionLink("Modifier le mot de passe","Manage","Account")
 </div>  
 <div>
-    @Html.ActionLink("Vos photos","PhotoUtil","Account")
+    @Html.ActionLink("Vos photos", "PhotoUtil", "Account", new { nom = User.Identity.Name },null)
 </div>
