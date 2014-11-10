@@ -147,7 +147,6 @@ H:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\
 H:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\fr\WebMatrix.WebData.resources.dll
 H:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\obj\Debug\PhotoFun.dll
 H:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\obj\Debug\PhotoFun.pdb
-E:\Implantation d'un système informatique\a14-photo-fun\PhotoFun\obj\Debug\PhotoFun.csprojResolveAssemblyReference.cache
 E:\Implantation d'un système informatique\a14-photo-fun\PhotoFun\obj\Debug\PhotoFun.dll
 E:\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\System.Web.WebPages.Deployment.dll
 E:\Implantation d'un système informatique\a14-photo-fun\PhotoFun\bin\System.Web.WebPages.dll
