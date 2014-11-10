@@ -302,19 +302,13 @@
     <None Include="fonts\glyphicons-halflings-regular.ttf" />
     <None Include="fonts\glyphicons-halflings-regular.woff" />
     <None Include="Scripts\jquery-1.9.1.min.map" />
-    <Content Include="Views\Home\Sport.cshtml" />
-    <Content Include="Views\Home\Nature.cshtml" />
-    <Content Include="Views\Home\Famille.cshtml" />
-    <Content Include="Views\Home\Paysage.cshtml" />
-    <Content Include="Views\Home\Cuisine.cshtml" />
-    <Content Include="Views\Home\Animaux.cshtml" />
-    <Content Include="Views\Home\Autre.cshtml" />
     <Content Include="Views\Account\Profil.cshtml" />
     <Content Include="Views\Home\_TransfertReussi.cshtml" />
     <Content Include="Views\Home\_TransfertEchoue.cshtml" />
     <Content Include="Views\Home\Erreur.cshtml" />
     <Content Include="Views\Account\PhotoUtil.cshtml" />
     <Content Include="Views\Home\_PasPhotoCategorie.cshtml" />
+    <Content Include="Views\Home\RetourneLaVueSelonCategorie.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

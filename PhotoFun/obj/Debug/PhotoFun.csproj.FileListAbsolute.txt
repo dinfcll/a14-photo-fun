@@ -390,4 +390,3 @@ C:\Users\Dominic\Desktop\a14-photo-fun\PhotoFun\bin\fr\Microsoft.Web.WebPages.OA
 C:\Users\Dominic\Desktop\a14-photo-fun\PhotoFun\bin\fr\WebMatrix.WebData.resources.dll
 C:\Users\Dominic\Desktop\a14-photo-fun\PhotoFun\obj\Debug\PhotoFun.dll
 C:\Users\Dominic\Desktop\a14-photo-fun\PhotoFun\obj\Debug\PhotoFun.pdb
-E:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\obj\Debug\PhotoFun.csprojResolveAssemblyReference.cache

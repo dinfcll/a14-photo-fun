@@ -1,4 +1,4 @@
-﻿@Styles.Render("~/Content/bootstrap.css");
+﻿@Styles.Render("~/Content/bootstrap.css")
 @if (Request.IsAuthenticated){
        <li>@Html.ActionLink(User.Identity.Name, "Profil", "Account", null, new { @class = "username", title = "Gérer mon profil" })</li>
        <li>

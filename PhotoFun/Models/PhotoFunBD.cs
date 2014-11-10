@@ -8,7 +8,7 @@ namespace PhotoFun.Models
 {
     public class PhotoFunBD
     {
-        private const string cs = "Data Source=DOMINIC_PC\\SQLEXPRESS ;Initial Catalog=tempdb;Integrated Security=True";
+        private const string cs = "Data Source=G264-10\\SQLEXPRESS ;Initial Catalog=tempdb;Integrated Security=True";
         public bool InsererUtil(RegisterModel rm)
         {
             using (var conn = new SqlConnection(cs))
@@ -142,9 +142,10 @@ namespace PhotoFun.Models
             }
         }
 
-        public bool ExtrairePhotoSelonCategorie(string Categorie, out List<string> lstimage)
+        public bool ExtrairePhotoSelonCategorie(string Categorie, out List<string> lstimage,out List<string> lstjaime)
         {
             lstimage = new List<string>();
+            lstjaime = new List<string>();
             using (var conn = new SqlConnection(cs))
             {
                 bool resultat;
@@ -206,7 +207,7 @@ namespace PhotoFun.Models
                 try
                 {
                     conn.Open();
-                    var scAjouterUnLike = new SqlCommand("SELECT NbJaime FROM PHOTOS WHERE Image='" + nomimage + "' FROM PHOTOS);", conn);
+                    var scAjouterUnLike = new SqlCommand("SELECT NbJaime FROM PHOTOS WHERE Image='" + nomimage + "';", conn);
                     var sdr = scAjouterUnLike.ExecuteReader();
                     while (sdr.Read())
                     {
@@ -215,7 +216,7 @@ namespace PhotoFun.Models
                     sdr.Close();
                     nblike = Convert.ToInt32(like);
                     nblike++;
-                    scAjouterUnLike = new SqlCommand("UPDATE PHOTOS set NbLike="+nblike+" where Image='"+nomimage+"';",conn);
+                    scAjouterUnLike = new SqlCommand("UPDATE PHOTOS set NbJaime=" + nblike + " where Image='" + nomimage + "';", conn);
                     scAjouterUnLike.ExecuteNonQuery();
                     conn.Close();
                     resultat = true;

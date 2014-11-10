@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html lang="fr">
     <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="Content-Type" content="text/html charset=utf-8"/>
         <meta charset="utf-8" />
         <title>@ViewBag.Title - PhotoFun</title>
         <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
@@ -22,7 +22,7 @@
                     </button> 
                     <a class="navbar-brand" href="/Home/Index">PhotoFun</a>
                 </div>
-                <div class="navbar-collapse collapse" style="height: 1px;">
+                <div class="navbar-collapse collapse" style="height: 1px">
                     <div class="col-sm-3 col-md-3">
                         <form class="navbar-form" role="search">
                         <div class="input-group">
@@ -48,13 +48,13 @@
             <div class="row">
                 <div class="col-xs-3 col-sm-2 col-md-2 col-lg-1">
                     <ul class="menucotegauche sidebar">
-                        <li>@Html.ActionLink("Sport", "Sport", "Home")</li>
-                        <li>@Html.ActionLink("Nature", "Nature", "Home")</li>
-                        <li>@Html.ActionLink("Famille", "Famille", "Home")</li>
-                        <li>@Html.ActionLink("Paysage", "Paysage", "Home")</li>
-                        <li>@Html.ActionLink("Cuisine", "Cuisine", "Home")</li>
-                        <li>@Html.ActionLink("Animaux", "Animaux", "Home")</li>
-                        <li>@Html.ActionLink("Autre", "Autre", "Home")</li>
+                        <li>@Html.ActionLink("Sport", "RetourneLaVueSelonCategorie", "Home", new { categorie="Sport" },null)</li>
+                        <li>@Html.ActionLink("Nature", "RetourneLaVueSelonCategorie", "Home",new { categorie="Nature" },null)</li>
+                        <li>@Html.ActionLink("Famille", "RetourneLaVueSelonCategorie", "Home",new { categorie="Famille" },null)</li>
+                        <li>@Html.ActionLink("Paysage", "RetourneLaVueSelonCategorie", "Home",new { categorie="Paysage" },null)</li>
+                        <li>@Html.ActionLink("Cuisine", "RetourneLaVueSelonCategorie", "Home",new { categorie="Cuisine"},null)</li>
+                        <li>@Html.ActionLink("Animaux", "RetourneLaVueSelonCategorie", "Home",new { categorie="Animaux"},null)</li>
+                        <li>@Html.ActionLink("Autres", "RetourneLaVueSelonCategorie", "Home",new { categorie="Autres" },null)</li>
                     </ul>
                 </div>
                 <div class="col-xs-8 col-sm-8 col-md-9 col-lg-9 main">
