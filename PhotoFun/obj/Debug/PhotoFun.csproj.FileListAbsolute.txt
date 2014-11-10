@@ -330,3 +330,4 @@ C:\a14-photo-fun\PhotoFun\bin\fr\WebMatrix.WebData.resources.dll
 C:\a14-photo-fun\PhotoFun\obj\Debug\PhotoFun.dll
 C:\a14-photo-fun\PhotoFun\obj\Debug\PhotoFun.pdb
 C:\Users\Administrateur\Documents\GitHub\a14-photo-fun\PhotoFun\obj\Debug\PhotoFun.csprojResolveAssemblyReference.cache
+E:\Implantation d'un système informatique\a14-photo-fun\PhotoFun\obj\Debug\PhotoFun.csprojResolveAssemblyReference.cache

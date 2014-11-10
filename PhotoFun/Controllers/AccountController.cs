@@ -92,6 +92,14 @@ namespace PhotoFun.Controllers
             if (pfbd.ExtrairePhotoSelonUtil(nom, out lstimage))
             {
                 ViewData["lstimage"]=lstimage;
+                if (nom != User.Identity.Name)
+                {
+                    ViewBag.Title = "Les photos de " + nom;
+                }
+                else
+                {
+                    ViewBag.Title = "Mes Photos";
+                }
                 return View();
             }
             return RedirectToAction("Erreur", "Home");

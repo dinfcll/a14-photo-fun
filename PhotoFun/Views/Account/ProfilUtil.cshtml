@@ -1,9 +1,10 @@
 ﻿@{
-    ViewBag.Title = "ProfilUtil";
+    ViewBag.Title = "Profil recherché";
     var NomProfil = ViewData["Rechercher"] as PhotoFun.Models.ProfilModel;
 }
 <div class="page-header">
     @Html.Label(NomProfil.IdUtilRechercher)
+</div>
     @Html.Label(NomProfil.NbAbonnement.ToString())
     @{
         if (NomProfil.Abonner)
@@ -14,6 +15,8 @@
         {
             @Html.ActionLink("Suivre", "Suivre", "Account", new { nom = NomProfil.IdUtilRechercher, abonner=NomProfil.Abonner }, null)
         }
+        <br />
+    @Html.ActionLink("Photos", "PhotoUtil", "Account", new { nom = NomProfil.IdUtilRechercher },null)
     }
-    @Html.ActionLink("Vos photos", "PhotoUtil", "Account", new { nom = NomProfil.IdUtilRechercher })
-</div>
+    
+

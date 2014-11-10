@@ -1,9 +1,8 @@
 ﻿@{
-    ViewBag.Title = "Vos Photos";
     var lstimage = ViewData["lstimage"] as List<string>;
 }
 <div class="page-header">
-    <h2>Vos photos</h2>
+    <h2>@ViewBag.Title</h2>
 </div>
 @using(Html.BeginForm()){
     if (lstimage != null && lstimage.Count > 0)
