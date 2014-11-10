@@ -109,7 +109,7 @@ namespace PhotoFun.Controllers
             {
                 var pm = new ProfilModel();
                 var pfbd = new PhotoFunBD();
-                int retour;
+                var retour = new List<string>();
                 var nomUtil = Request.Form.GetValues(0).GetValue(0);
                 int i = 5;
                 while (i > 0)
@@ -120,7 +120,7 @@ namespace PhotoFun.Controllers
                 pm.IdUtilRechercher = nomUtil.ToString();
                 if (pfbd.CompteNbAbonnement(pm, out retour))
                 {
-                    pm.NbAbonnement = retour;
+                    pm.NbAbonnement = Convert.ToInt32(retour[0]);
                 }
                 ViewData["Rechercher"] = pm;
             }

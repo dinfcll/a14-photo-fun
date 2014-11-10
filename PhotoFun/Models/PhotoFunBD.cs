@@ -8,7 +8,7 @@ namespace PhotoFun.Models
 {
     public class PhotoFunBD
     {
-        private const string cs = "Data Source=G264-10\\SQLEXPRESS ;Initial Catalog=tempdb;Integrated Security=True";
+        private const string cs = "Data Source=G264-09\\SQLEXPRESS ;Initial Catalog=tempdb;Integrated Security=True";
         public bool InsererUtil(RegisterModel rm)
         {
             using (var conn = new SqlConnection(cs))
@@ -218,8 +218,9 @@ namespace PhotoFun.Models
             }
         }
 
-        public bool CompteNbAbonnement(ProfilModel pm, out int nbabonn)
+        public bool CompteNbAbonnement(ProfilModel pm, out List<string> lstNbAbonnement)
         {
+            lstNbAbonnement = new List<string>();
             using (var conn = new SqlConnection(cs))
             {
                 bool resultat;
@@ -228,14 +229,18 @@ namespace PhotoFun.Models
                     conn.Open();
                     var scNbAbonnement = new SqlCommand("Select count(IdUtilConnecter) from AbonnementUtil where IdUtilAbonner='"
                         + pm.IdUtilRechercher + "'", conn);
-                    nbabonn=scNbAbonnement.ExecuteNonQuery();
+                    var sdr = scNbAbonnement.ExecuteReader();
+                    while (sdr.Read())
+                    {
+                        lstNbAbonnement.Add(ReadSingleRow(sdr));
+                    }
+                    sdr.Close();
                     conn.Close();
                     resultat = true;
                 }
                 catch
                 {
                     resultat = false;
-                    nbabonn = 0;
                 }
                 return resultat;
             }
