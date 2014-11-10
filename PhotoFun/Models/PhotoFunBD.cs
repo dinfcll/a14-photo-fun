@@ -210,10 +210,17 @@ namespace PhotoFun.Models
                 try
                 {
                     conn.Open();
-                    var scEnregistrerAbonnement = new SqlCommand("Insert into AbonnementUtil (IdUtilConnecter, IdUtilAbonner) values ('"+NomUtilCourant+"', '"+NomUtilAbonner+"');", conn);
-                    scEnregistrerAbonnement.ExecuteNonQuery();
-                    conn.Close();
-                    resultat = true;
+                    if (VerifAbonnement(NomUtilAbonner, NomUtilCourant)==false)
+                    {
+                        var scEnregistrerAbonnement = new SqlCommand("Insert into AbonnementUtil (IdUtilConnecter, IdUtilAbonner) values ('" + NomUtilCourant + "', '" + NomUtilAbonner + "');", conn);
+                        scEnregistrerAbonnement.ExecuteNonQuery();
+                        conn.Close();
+                        resultat = true;
+                    }
+                    else
+                    {
+                        resultat = false;
+                    }
                 }
                 catch
                 {
@@ -273,7 +280,7 @@ namespace PhotoFun.Models
             }
         }
 
-        public bool VerifAbonnement(ProfilModel pm, string UtilConnecter)
+        public bool VerifAbonnement(string pm, string UtilConnecter)
         {
             var lstNbAbonnement = new List<string>();
             using (var conn = new SqlConnection(cs))
@@ -283,7 +290,7 @@ namespace PhotoFun.Models
                 {
                     conn.Open();
                     var scNbAbonnement = new SqlCommand("Select count(*) from AbonnementUtil where IdUtilAbonner='"
-                        + pm.IdUtilRechercher + "' and IdUtilConnecter='"+UtilConnecter+"'", conn);
+                        + pm + "' and IdUtilConnecter='"+UtilConnecter+"'", conn);
                     var sdr = scNbAbonnement.ExecuteReader();
                     while (sdr.Read())
                     {
