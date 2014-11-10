@@ -9,6 +9,7 @@ namespace PhotoFun.Models
     {
        private string m_IdUtilRechercher;
        private int m_nbAbonnement;
+       private bool m_Abonner;
 
        public string IdUtilRechercher
        {
@@ -34,10 +35,23 @@ namespace PhotoFun.Models
            }
        }
 
+       public bool Abonner
+       {
+           get
+           {
+               return m_Abonner;
+           }
+           set
+           {
+               m_Abonner = value;
+           }
+       }
+
        public ProfilModel()
        {
            m_IdUtilRechercher = null;
            m_nbAbonnement = 0;
+           m_Abonner = false;
        }
     }
 }

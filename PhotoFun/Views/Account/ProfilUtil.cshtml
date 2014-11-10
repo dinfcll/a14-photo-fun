@@ -5,5 +5,14 @@
 <div class="page-header">
     @Html.Label(NomProfil.IdUtilRechercher)
     @Html.Label(NomProfil.NbAbonnement.ToString())
-    @Html.ActionLink("Suivre", "Suivre", "Account", new { nom=NomProfil.IdUtilRechercher },null)
+    @{
+        if (NomProfil.Abonner)
+        {
+            @Html.ActionLink("Ne plus suivre","Suivre",new{ nom=NomProfil.IdUtilRechercher, abonner=NomProfil.Abonner}, null)
+        }
+        else
+        {
+            @Html.ActionLink("Suivre", "Suivre", "Account", new { nom = NomProfil.IdUtilRechercher, abonner=NomProfil.Abonner }, null)
+        }
+    }
 </div>

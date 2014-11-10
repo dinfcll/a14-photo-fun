@@ -245,6 +245,63 @@ namespace PhotoFun.Models
                 return resultat;
             }
         }
+
+        public bool VerifAbonnement(ProfilModel pm, string UtilConnecter)
+        {
+            var lstNbAbonnement = new List<string>();
+            using (var conn = new SqlConnection(cs))
+            {
+                bool resultat;
+                try
+                {
+                    conn.Open();
+                    var scNbAbonnement = new SqlCommand("Select count(*) from AbonnementUtil where IdUtilAbonner='"
+                        + pm.IdUtilRechercher + "' and IdUtilConnecter='"+UtilConnecter+"'", conn);
+                    var sdr = scNbAbonnement.ExecuteReader();
+                    while (sdr.Read())
+                    {
+                        lstNbAbonnement.Add(ReadSingleRow(sdr));
+                    }
+                    sdr.Close();
+                    conn.Close();
+                    if (Convert.ToInt32(lstNbAbonnement[0]) > 0)
+                    {
+                        resultat = true;
+                    }
+                    else
+                    {
+                        resultat = false;
+                    }
+                }
+                catch
+                {
+                    resultat = false;
+                }
+                return resultat;
+            }
+        }
+
+        public bool SupprimerRelAbonnement(string UtilAbonner, string UtilConnecter)
+        {
+            using (var conn = new SqlConnection(cs))
+            {
+                bool resultat;
+                try
+                {
+                    conn.Open();
+                    var scSupprimer = new SqlCommand("Delete from AbonnementUtil where IdUtilAbonner='"
+                        + UtilAbonner + "' and IdUtilConnecter='" + UtilConnecter + "'", conn);
+                    scSupprimer.ExecuteNonQuery();
+                    conn.Close();
+                    resultat = true;
+                }
+                catch
+                {
+                    resultat = false;
+                }
+                return resultat;
+            }
+        }
         private string ReadSingleRow(IDataRecord record)
         {
             return String.Format("{0}", record[0]);
