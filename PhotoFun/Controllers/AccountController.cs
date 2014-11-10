@@ -118,6 +118,7 @@ namespace PhotoFun.Controllers
                 var pm = new ProfilModel();
                 var pfbd = new PhotoFunBD();
                 var retour = new List<string>();
+                int nbAbonnement;
                 var nomUtil = Request.Form.GetValues(0).GetValue(0);
                 if (pfbd.ExtraireUtil(nomUtil.ToString(), out retour))
                 {
@@ -125,9 +126,9 @@ namespace PhotoFun.Controllers
                     {
                         pm.IdUtilRechercher = nomUtil.ToString();
 
-                        if (pfbd.CompteNbAbonnement(pm, out retour))
+                        if (pfbd.CompteNbAbonnement(pm, out nbAbonnement))
                         {
-                            pm.NbAbonnement = Convert.ToInt32(retour[0]);
+                            pm.NbAbonnement = nbAbonnement;
                         }
                         pm.Abonner = pfbd.VerifAbonnement(pm.IdUtilRechercher, User.Identity.Name);
                         ViewData["Rechercher"] = pm;
@@ -157,7 +158,7 @@ namespace PhotoFun.Controllers
         {
             var pfbd = new PhotoFunBD();
             var pm = new ProfilModel();
-            var retour = new List<string>();
+            int retour;
             
             if (Abonner)
             {
@@ -172,7 +173,7 @@ namespace PhotoFun.Controllers
             pm.IdUtilRechercher = nom;
             if (pfbd.CompteNbAbonnement(pm, out retour))
             {
-                pm.NbAbonnement = Convert.ToInt32(retour[0]);
+                pm.NbAbonnement = retour;
             }
             
             ViewData["Rechercher"] = pm;
