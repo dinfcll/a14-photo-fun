@@ -42,8 +42,7 @@ namespace PhotoFun.Controllers
         {
             var pfbd = new PhotoFunBD();
             List<string> lstimage;
-            List<string> lstjaime;
-            if (pfbd.ExtrairePhotoSelonCategorie(categorie, out lstimage,out lstjaime))
+            if (pfbd.ExtrairePhotoSelonCategorie(categorie, out lstimage))
             {
                 ViewData["lstimage"] = lstimage;
                 ViewBag.Title = categorie;
@@ -55,11 +54,17 @@ namespace PhotoFun.Controllers
         [HttpPost]
         public ActionResult RetourneLaVueSelonCategorie(string categorie,string image)
         {
-            var pfbd = new PhotoFunBD();
-            if (pfbd.AjouterUnLike(image))
+            if (image != null && categorie != null)
             {
-                ViewBag.Title = categorie;
-                return View("RetourneLaVueSelonCategorie");
+                var pfbd = new PhotoFunBD();
+                if (pfbd.AjouterUnLike(image))
+                {
+                    return RedirectToAction("RetourneLaVueSelonCategorie", "Home", new { categorie = categorie });
+                }
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account");
             }
             return RedirectToAction("Erreur", "Home");
         }

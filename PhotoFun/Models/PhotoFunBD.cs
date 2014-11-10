@@ -142,10 +142,9 @@ namespace PhotoFun.Models
             }
         }
 
-        public bool ExtrairePhotoSelonCategorie(string Categorie, out List<string> lstimage,out List<string> lstjaime)
+        public bool ExtrairePhotoSelonCategorie(string Categorie, out List<string> lstimage)
         {
             lstimage = new List<string>();
-            lstjaime = new List<string>();
             using (var conn = new SqlConnection(cs))
             {
                 bool resultat;
@@ -167,6 +166,33 @@ namespace PhotoFun.Models
                     resultat = false;
                 }
                 return resultat;
+            }
+        }
+
+        public int RetourneLeNombreDeJAimeSelonPhoto(string Photo)
+        {
+            using (var conn = new SqlConnection(cs))
+            {
+                string sJaime = "";
+                int Jaime;
+                try
+                {
+                    conn.Open();
+                    var scRetourneLeNombreDeJAimeSelonPhoto = new SqlCommand("SELECT NbJaime FROM PHOTOS WHERE Image='" + Photo + "';", conn);
+                    var sdr = scRetourneLeNombreDeJAimeSelonPhoto.ExecuteReader();
+                    while (sdr.Read())
+                    {
+                        sJaime = ReadSingleRow(sdr);
+                    }
+                    sdr.Close();
+                    conn.Close();
+                    Jaime= Convert.ToInt32(sJaime);
+                    return Jaime;
+                }
+                catch
+                {
+                    return 0;
+                }
             }
         }
 
