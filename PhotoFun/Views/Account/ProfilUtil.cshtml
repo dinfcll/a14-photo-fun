@@ -2,7 +2,8 @@
     ViewBag.Title = "ProfilUtil";
     var NomProfil = ViewData["Rechercher"] as PhotoFun.Models.ProfilModel;
 }
-<div class="body">
+<div class="page-header">
     @Html.Label(NomProfil.IdUtilRechercher)
     @Html.Label(NomProfil.NbAbonnement.ToString())
+    @Html.ActionLink("Suivre", "Suivre", "Account", new { nom=NomProfil.IdUtilRechercher },null)
 </div>
