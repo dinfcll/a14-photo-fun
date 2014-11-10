@@ -252,9 +252,9 @@ namespace PhotoFun.Models
             }
         }
 
-        public bool CompteNbAbonnement(ProfilModel pm, out List<string> lstNbAbonnement)
+        public bool CompteNbAbonnement(ProfilModel pm, out int NbAbonnement)
         {
-            lstNbAbonnement = new List<string>();
+            NbAbonnement = 0;
             using (var conn = new SqlConnection(cs))
             {
                 bool resultat;
@@ -266,7 +266,7 @@ namespace PhotoFun.Models
                     var sdr = scNbAbonnement.ExecuteReader();
                     while (sdr.Read())
                     {
-                        lstNbAbonnement.Add(ReadSingleRow(sdr));
+                        NbAbonnement=Convert.ToInt32(ReadSingleRow(sdr));
                     }
                     sdr.Close();
                     conn.Close();
@@ -282,7 +282,7 @@ namespace PhotoFun.Models
 
         public bool VerifAbonnement(string pm, string UtilConnecter)
         {
-            var lstNbAbonnement = new List<string>();
+            int NbAbonnement=0;
             using (var conn = new SqlConnection(cs))
             {
                 bool resultat;
@@ -294,11 +294,11 @@ namespace PhotoFun.Models
                     var sdr = scNbAbonnement.ExecuteReader();
                     while (sdr.Read())
                     {
-                        lstNbAbonnement.Add(ReadSingleRow(sdr));
+                        NbAbonnement=Convert.ToInt32(ReadSingleRow(sdr));
                     }
                     sdr.Close();
                     conn.Close();
-                    if (Convert.ToInt32(lstNbAbonnement[0]) > 0)
+                    if (NbAbonnement > 0)
                     {
                         resultat = true;
                     }
