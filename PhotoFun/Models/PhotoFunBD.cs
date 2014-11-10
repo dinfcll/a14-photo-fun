@@ -52,6 +52,33 @@ namespace PhotoFun.Models
             }
         }
 
+        public bool ExtraireUtil(string IDUtil, out List<string> NomUtil)
+        {
+            NomUtil = new List<string>();
+            using (var conn = new SqlConnection(cs))
+            {
+                bool resultat;
+                try
+                {
+                    conn.Open();
+                    var scExtraire = new SqlCommand("Select * from Utilisateurs where IDUtil='" + IDUtil + "';", conn);
+                    var sdr = scExtraire.ExecuteReader();
+                    while (sdr.Read())
+                    {
+                        NomUtil.Add(ReadSingleRow(sdr));
+                    }
+                    sdr.Close();
+                    conn.Close();
+                    resultat = true;
+                }
+                catch
+                {
+                    resultat = false;
+                }
+                return resultat;
+            }
+        }
+
         public bool MettreAJourUtil(LocalPasswordModel lpm, string usager)
         {
             using (var conn = new SqlConnection(cs))

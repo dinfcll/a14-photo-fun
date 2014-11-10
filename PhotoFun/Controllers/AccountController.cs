@@ -119,13 +119,31 @@ namespace PhotoFun.Controllers
                 var pfbd = new PhotoFunBD();
                 var retour = new List<string>();
                 var nomUtil = Request.Form.GetValues(0).GetValue(0);
-                pm.IdUtilRechercher = nomUtil.ToString();
-                if (pfbd.CompteNbAbonnement(pm, out retour))
+                if (pfbd.ExtraireUtil(nomUtil.ToString(), out retour))
                 {
-                    pm.NbAbonnement = Convert.ToInt32(retour[0]);
+                    if (retour.Count > 0)
+                    {
+                        pm.IdUtilRechercher = nomUtil.ToString();
+
+                        if (pfbd.CompteNbAbonnement(pm, out retour))
+                        {
+                            pm.NbAbonnement = Convert.ToInt32(retour[0]);
+                        }
+                        pm.Abonner = pfbd.VerifAbonnement(pm, User.Identity.Name);
+                        ViewData["Rechercher"] = pm;
+                    }
+                    else
+                    {
+                        pm.Abonner = false;
+                        pm.IdUtilRechercher = "Utilisateur Inexistant";
+                        pm.NbAbonnement = 0;
+                        ViewData["Rechercher"] = pm;
+                    }
                 }
-                pm.Abonner = pfbd.VerifAbonnement(pm, User.Identity.Name);
-                ViewData["Rechercher"] = pm;
+                else
+                {
+                    return RedirectToAction("Erreur", "Home");
+                }
             }
             else
             {
