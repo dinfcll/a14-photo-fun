@@ -57,9 +57,25 @@ namespace PhotoFun.Controllers
             if (image != null && categorie != null)
             {
                 var pfbd = new PhotoFunBD();
-                if (pfbd.AjouterUnLike(image))
+                if (pfbd.VerifLiaisonPhotoUtil(User.Identity.Name, image))
                 {
-                    return RedirectToAction("RetourneLaVueSelonCategorie", "Home", new { categorie = categorie });
+                    if (pfbd.AjoutRelationUtilPhoto(User.Identity.Name, image))
+                    {
+                        if (pfbd.AjouterUnLike(image))
+                        {
+                            return RedirectToAction("RetourneLaVueSelonCategorie", "Home", new { categorie = categorie });
+                        }
+                    }
+                }
+                else 
+                {
+                    if(pfbd.EnleveLiaisonPhotoUtil(User.Identity.Name,image))
+                    {
+                        if (pfbd.EnleveUnLike(image))
+                        {
+                            return RedirectToAction("RetourneLaVueSelonCategorie", "Home", new { categorie = categorie });
+                        }
+                    }
                 }
             }
             else
