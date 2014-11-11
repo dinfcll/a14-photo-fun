@@ -30,7 +30,7 @@
                             }
                             else
                             {
-                                <button type="submit" class="close boutonliker" title="J'aime"><span class="glyphicon glyphicon-heart-empty"></span><span class="badge">@NbJaime</span></button> 
+                                <button type="submit" class="close boutonliker" title="Je n'aime plus"><span class="glyphicon glyphicon-heart-empty"></span><span class="badge">@NbJaime</span></button> 
                                 <img src="@Photo" class="img-thumbnail" alt="Image inaccessible" width="100%"/>
                                 @Html.Hidden("categorie", cat)
                                 @Html.Hidden("Image", Photo)
@@ -39,8 +39,7 @@
                         else
                         {
                             <img src="@Photo" class="img-thumbnail" alt="Image inaccessible" width="100%"/>
-                            <button type="submit" class="close boutonliker"><span class="glyphicon glyphicon-heart"></span><span class="badge">@NbJaime</span></button>
-                            
+                            <button type="submit" class="close boutonliker" title="J'aime"><span class="glyphicon glyphicon-heart"></span><span class="badge">@NbJaime</span></button> 
                         }
                     }
             </div>  

@@ -97,12 +97,63 @@ namespace PhotoFun.Controllers
         }
 
         [HttpPost]
-        public ActionResult PhotoUtil(string image)
+        public ActionResult PhotoUtil(string image, string actionafaire)
         {
             var pfbd = new PhotoFunBD();
-            if (pfbd.DetruirePhotoSelonUtil(User.Identity.Name, image))
-            {    
-                return RedirectToAction("PhotoUtil","Account"); 
+            if (image != null && actionafaire=="LIKE")
+            {
+                
+                if (pfbd.VerifLiaisonPhotoUtil(User.Identity.Name, image))
+                {
+                    if (pfbd.AjoutRelationUtilPhoto(User.Identity.Name, image))
+                    {
+                        if (pfbd.AjouterUnLike(image))
+                        {
+                            return RedirectToAction("PhotoUtil", "Account");
+                        }
+                    }
+                }
+                else
+                {
+                    if (pfbd.EnleveLiaisonPhotoUtil(User.Identity.Name, image))
+                    {
+                        if (pfbd.EnleveUnLike(image))
+                        {
+                            return RedirectToAction("PhotoUtil", "Account");
+                        }
+                    }
+                }
+            }
+            else
+            {
+                if(image!=null && actionafaire=="DELETE")
+                {
+                    if (pfbd.VerifLiaisonPhotoUtil(User.Identity.Name, image))
+                    {
+                        if (pfbd.EnleveTousLesLiaisonsAvecLesUtils(image))
+                        {
+                            if (pfbd.DetruirePhotoSelonUtil(User.Identity.Name, image))
+                            {
+
+                                return RedirectToAction("PhotoUtil", "Account");
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (pfbd.EnleveLiaisonPhotoUtil(User.Identity.Name, image))
+                        {
+                            if (pfbd.EnleveTousLesLiaisonsAvecLesUtils(image))
+                            {
+                                if (pfbd.DetruirePhotoSelonUtil(User.Identity.Name, image))
+                                {
+
+                                    return RedirectToAction("PhotoUtil", "Account");
+                                }
+                            }
+                        }
+                    }
+                }
             }
             return RedirectToAction("Erreur", "Home");
         }

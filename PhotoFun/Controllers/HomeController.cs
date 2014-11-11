@@ -67,7 +67,7 @@ namespace PhotoFun.Controllers
                         }
                     }
                 }
-                else 
+                else
                 {
                     if(pfbd.EnleveLiaisonPhotoUtil(User.Identity.Name,image))
                     {

@@ -8,14 +8,31 @@
     </div>
     if (lstimage != null && lstimage.Count > 0)
     {
+        var pm = new PhotoFun.Models.PhotoFunBD();
+        int NbJaime;
         foreach (var PhotoUtil in lstimage)
         {
+            NbJaime = pm.RetourneLeNombreDeJAimeSelonPhoto(PhotoUtil);
             <div class="divdesimages">
             @using (Html.BeginForm("PhotoUtil", "Account", FormMethod.Post))
             {
-                    <img src="@PhotoUtil" class="img-thumbnail" alt="Image inaccessible" width="100%"/>
-                    <button type="submit" class="close boutonsupprimer"><span class="glyphicon glyphicon-remove"></span></button>
-                    @Html.Hidden("Image", PhotoUtil)
+                if (User.Identity.IsAuthenticated)
+                {
+                    if (pm.VerifLiaisonPhotoUtil(User.Identity.Name, PhotoUtil))
+                    {
+                        <button type="submit" class="close boutonliker" title="J'aime" name="actionafaire" value="LIKE"><span class="glyphicon glyphicon-heart"></span><span class="badge">@NbJaime</span></button> 
+                        <img src="@PhotoUtil" class="img-thumbnail" alt="Image inaccessible" width="100%"/>
+                        <button type="submit" class="close boutonsupprimer" name="actionafaire" value="DELETE"><span class="glyphicon glyphicon-remove"></span></button>
+                        @Html.Hidden("Image", PhotoUtil)
+                    }
+                    else
+                    {
+                        <button type="submit" class="close boutonliker" title="Je n'aime plus" name="actionafaire" value="LIKE"><span class="glyphicon glyphicon-heart-empty"></span><span class="badge">@NbJaime</span></button> 
+                        <img src="@PhotoUtil" class="img-thumbnail" alt="Image inaccessible" width="100%"/>
+                        <button type="submit" class="close boutonsupprimer" name="actionafaire" value="DELETE"><span class="glyphicon glyphicon-remove"></span></button>
+                        @Html.Hidden("Image", PhotoUtil)
+                    }
+                }
             }
             </div>
         }

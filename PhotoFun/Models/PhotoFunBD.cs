@@ -8,7 +8,7 @@ namespace PhotoFun.Models
 {
     public class PhotoFunBD
     {
-        private const string cs = "Data Source=G264-10\\SQLEXPRESS ;Initial Catalog=tempdb;Integrated Security=True";
+        private const string cs = "Data Source=DOMINIC_PC\\SQLEXPRESS ;Initial Catalog=tempdb;Integrated Security=True";
         public bool InsererUtil(RegisterModel rm)
         {
             using (var conn = new SqlConnection(cs))
@@ -287,6 +287,28 @@ namespace PhotoFun.Models
             }
         }
 
+        public bool EnleveTousLesLiaisonsAvecLesUtils(string nomPhoto)
+        {
+            using(var conn=new SqlConnection(cs))
+            {
+                bool resultat;
+                try
+                {
+                    conn.Open();
+                    var scEnleveLiaisonPhotoUtil = new SqlCommand("Delete FROM relUtilPhoto WHERE IdPhoto= (Select IdPhoto from Photos where Image='" + nomPhoto + "');", conn);
+                    scEnleveLiaisonPhotoUtil.ExecuteNonQuery();
+                    conn.Close();
+                    resultat = true;
+                }
+                catch
+                {
+                    resultat = false;
+                }
+                return resultat;
+            }
+ 
+        }
+
         public bool EnleveLiaisonPhotoUtil(string nomUtil, string nomPhoto)
         {
             using(var conn=new SqlConnection(cs))
@@ -317,8 +339,7 @@ namespace PhotoFun.Models
                 {
                     conn.Open();
                     int nbrelation=0;
-                    var scAjouterUnLike = new SqlCommand("SELECT count(*) FROM relUtilPhoto join Photos on relUtilPhoto.IdPhoto=Photos.IdPhoto WHERE Image='" +
-                        nomPhoto + "';", conn);
+                    var scAjouterUnLike = new SqlCommand("SELECT count(*) FROM relUtilPhoto WHERE IdUtil='" + nomUtil + "' and IdPhoto= (Select IdPhoto from Photos where Image='" + nomPhoto + "');", conn);
                     var sdr = scAjouterUnLike.ExecuteReader();
                     while (sdr.Read())
                     {
