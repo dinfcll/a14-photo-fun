@@ -97,12 +97,11 @@ namespace PhotoFun.Controllers
         }
 
         [HttpPost]
-        public ActionResult PhotoUtil(string image, string actionafaire)
+        public ActionResult PhotoUtil(string image, string actionAFaire)
         {
             var pfbd = new PhotoFunBD();
-            if (image != null && actionafaire=="LIKE")
+            if (image != null && actionAFaire == "LIKE")
             {
-                
                 if (pfbd.VerifLiaisonPhotoUtil(User.Identity.Name, image))
                 {
                     if (pfbd.AjoutRelationUtilPhoto(User.Identity.Name, image))
@@ -126,31 +125,13 @@ namespace PhotoFun.Controllers
             }
             else
             {
-                if(image!=null && actionafaire=="DELETE")
+                if (image != null && actionAFaire == "DELETE")
                 {
-                    if (pfbd.VerifLiaisonPhotoUtil(User.Identity.Name, image))
+                    if (pfbd.EnleveTousLesLiaisonsAvecLesUtils(image))
                     {
-                        if (pfbd.EnleveTousLesLiaisonsAvecLesUtils(image))
+                        if (pfbd.DetruirePhotoSelonUtil(User.Identity.Name, image))
                         {
-                            if (pfbd.DetruirePhotoSelonUtil(User.Identity.Name, image))
-                            {
-
-                                return RedirectToAction("PhotoUtil", "Account");
-                            }
-                        }
-                    }
-                    else
-                    {
-                        if (pfbd.EnleveLiaisonPhotoUtil(User.Identity.Name, image))
-                        {
-                            if (pfbd.EnleveTousLesLiaisonsAvecLesUtils(image))
-                            {
-                                if (pfbd.DetruirePhotoSelonUtil(User.Identity.Name, image))
-                                {
-
-                                    return RedirectToAction("PhotoUtil", "Account");
-                                }
-                            }
+                            return RedirectToAction("PhotoUtil", "Account");
                         }
                     }
                 }

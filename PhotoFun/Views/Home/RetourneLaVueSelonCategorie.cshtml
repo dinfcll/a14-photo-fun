@@ -1,6 +1,5 @@
 ﻿@{ 
-    var lstimage = ViewData["lstimage"] as List<string>;
-    
+    var lstimage = ViewData["lstimage"] as List<string>; 
 }
 
 <div class="page-header">
@@ -15,7 +14,6 @@
         {
             NbJaime = pm.RetourneLeNombreDeJAimeSelonPhoto(Photo);
            <div class="divdesimages">
-               
                     @using (Html.BeginForm("RetourneLaVueSelonCategorie", "Home", FormMethod.Post))
                     {
                         string cat = ViewBag.Title;
