@@ -17,7 +17,7 @@ namespace TestPhotoFun
             //given
             var controller = new HomeController();
             //when
-            var result = controller.Importer() as ViewResult;
+            var result = controller.Importer("TransfertEchoue") as ViewResult;
             //then
             Assert.AreEqual("Index", result.ViewName);
         }

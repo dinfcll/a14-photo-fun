@@ -24,10 +24,21 @@ namespace PhotoFun.Controllers
         }
 
         [HttpGet]
-        public ActionResult Importer()
+        public ActionResult Importer(string viewdata)
         {
             if (User.Identity.IsAuthenticated)
             {
+                if (viewdata == "TransfertReussi")
+                {
+                    ViewData["VerifierImporter"] = "TransfertReussi";
+                }
+                else
+                {
+                    if (viewdata == "TransfertEchoue")
+                    {
+                        ViewData["VerifierImporter"] = "TransfertEchoue";
+                    }
+                }
                 return View();
             }
             return RedirectToAction("Login", "Account");
@@ -125,8 +136,8 @@ namespace PhotoFun.Controllers
             {
                 ViewData["VerifierImporter"] = "TransfertEchoue";
             }
-            
-            return View();
+
+            return RedirectToAction("Importer", "Home", new { viewdata = ViewData["VerifierImporter"] });
         }
     }
 }
