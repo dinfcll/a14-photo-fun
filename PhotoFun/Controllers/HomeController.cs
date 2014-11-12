@@ -24,10 +24,21 @@ namespace PhotoFun.Controllers
         }
 
         [HttpGet]
-        public ActionResult Importer()
+        public ActionResult Importer(string viewdata)
         {
             if (User.Identity.IsAuthenticated)
             {
+                if (viewdata == "TransfertReussi")
+                {
+                    ViewData["VerifierImporter"] = "TransfertReussi";
+                }
+                else
+                {
+                    if (viewdata == "TransfertEchoue")
+                    {
+                        ViewData["VerifierImporter"] = "TransfertEchoue";
+                    }
+                }
                 return View();
             }
             return RedirectToAction("Login", "Account");
@@ -37,50 +48,50 @@ namespace PhotoFun.Controllers
         {
             return View();
         }
-
-        public ActionResult Sport()
-        {
-            return RetourneLaVueSelonCategorie("Sport");
-        }
-        
-        public ActionResult Nature()
-        {
-            return RetourneLaVueSelonCategorie("Nature");
-        }
-
-        public ActionResult Famille()
-        {
-            return RetourneLaVueSelonCategorie("Famille");
-        }
-
-        public ActionResult Paysage()
-        {
-            return RetourneLaVueSelonCategorie("Paysage");
-        }
-
-        public ActionResult Cuisine()
-        {
-            return RetourneLaVueSelonCategorie("Cuisine");
-        }
-
-        public ActionResult Animaux()
-        {
-            return RetourneLaVueSelonCategorie("Animaux");
-        }
-
-        public ActionResult Autre()
-        {
-            return RetourneLaVueSelonCategorie("Autres");
-        }
-
-        private ActionResult RetourneLaVueSelonCategorie(string categorie)
+       
+        public ActionResult RetourneLaVueSelonCategorie(string categorie)
         {
             var pfbd = new PhotoFunBD();
             List<string> lstimage;
             if (pfbd.ExtrairePhotoSelonCategorie(categorie, out lstimage))
             {
                 ViewData["lstimage"] = lstimage;
+                ViewBag.Title = categorie;
                 return View();
+            }
+            return RedirectToAction("Erreur", "Home");
+        }
+
+        [HttpPost]
+        public ActionResult RetourneLaVueSelonCategorie(string categorie,string image)
+        {
+            if (image != null && categorie != null)
+            {
+                var pfbd = new PhotoFunBD();
+                if (pfbd.VerifLiaisonPhotoUtil(User.Identity.Name, image))
+                {
+                    if (pfbd.AjoutRelationUtilPhoto(User.Identity.Name, image))
+                    {
+                        if (pfbd.AjouterUnLike(image))
+                        {
+                            return RedirectToAction("RetourneLaVueSelonCategorie", "Home", new { categorie = categorie });
+                        }
+                    }
+                }
+                else
+                {
+                    if(pfbd.EnleveLiaisonPhotoUtil(User.Identity.Name,image))
+                    {
+                        if (pfbd.EnleveUnLike(image))
+                        {
+                            return RedirectToAction("RetourneLaVueSelonCategorie", "Home", new { categorie = categorie });
+                        }
+                    }
+                }
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account");
             }
             return RedirectToAction("Erreur", "Home");
         }
@@ -125,8 +136,8 @@ namespace PhotoFun.Controllers
             {
                 ViewData["VerifierImporter"] = "TransfertEchoue";
             }
-            
-            return View();
+
+            return RedirectToAction("Importer", "Home", new { viewdata = ViewData["VerifierImporter"] });
         }
     }
 }

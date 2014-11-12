@@ -1,12 +1,9 @@
 ﻿@Styles.Render("~/Content/bootstrap.css")
 @if (Request.IsAuthenticated){
-    <text>
        <li>@Html.ActionLink(User.Identity.Name, "Profil", "Account", null, new { @class = "username", title = "Gérer mon profil" })</li>
        <li>
             <a href="javascript:document.getElementById('logoutForm').submit()">Se déconnecter</a>
-        </li>
-        
-    </text>
+       </li>
 } else {
        <li> @Html.ActionLink("S'inscrire", "Register", "Account", null, new { id = "registerLink" })</li>
        <li> @Html.ActionLink("Se connecter", "Login", "Account", null, new { id = "loginLink" })</li>

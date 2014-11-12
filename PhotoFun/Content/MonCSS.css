@@ -1,0 +1,27 @@
+.divdesimages
+{
+    width:45%;
+    display:inline-block;
+    position:relative;
+}
+
+.boutonsupprimer
+{
+    float:right;
+    position:absolute;
+    right:1%;
+    top:2%;
+}
+
+.boutonliker
+{
+    position:absolute;
+    float:left;
+    left:2%;
+    bottom:2%;
+}
+
+.menulorsquepetit
+{
+    padding-left:2%;
+}
