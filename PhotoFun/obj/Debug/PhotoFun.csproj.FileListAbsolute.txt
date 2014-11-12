@@ -391,3 +391,4 @@ C:\Users\Dominic\Desktop\a14-photo-fun\PhotoFun\obj\Debug\PhotoFun.dll
 C:\Users\Dominic\Desktop\a14-photo-fun\PhotoFun\obj\Debug\PhotoFun.pdb
 H:\Session 5\Implantation d'un système informatique\a14-photo-fun\PhotoFun\obj\Debug\PhotoFun.csprojResolveAssemblyReference.cache
 C:\Users\Dominic\Desktop\a14-photo-fun\PhotoFun\obj\Debug\PhotoFun.csprojResolveAssemblyReference.cache
+C:\a14-photo-fun\PhotoFun\obj\Debug\PhotoFun.csprojResolveAssemblyReference.cache
