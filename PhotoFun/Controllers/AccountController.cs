@@ -73,7 +73,6 @@ namespace PhotoFun.Controllers
                     if (ajouterUtil.InsererUtil(model))
                     {
                         WebSecurity.Login(model.UserName, model.Password);
-
                         return RedirectToAction("Index", "Home");
                     } 
                 }
@@ -98,12 +97,44 @@ namespace PhotoFun.Controllers
         }
 
         [HttpPost]
-        public ActionResult PhotoUtil(string image)
+        public ActionResult PhotoUtil(string image, string actionAFaire)
         {
             var pfbd = new PhotoFunBD();
-            if (pfbd.DetruirePhotoSelonUtil(User.Identity.Name, image))
-            {    
-                return RedirectToAction("PhotoUtil","Account"); 
+            if (image != null && actionAFaire == "LIKE")
+            {
+                if (pfbd.VerifLiaisonPhotoUtil(User.Identity.Name, image))
+                {
+                    if (pfbd.AjoutRelationUtilPhoto(User.Identity.Name, image))
+                    {
+                        if (pfbd.AjouterUnLike(image))
+                        {
+                            return RedirectToAction("PhotoUtil", "Account");
+                        }
+                    }
+                }
+                else
+                {
+                    if (pfbd.EnleveLiaisonPhotoUtil(User.Identity.Name, image))
+                    {
+                        if (pfbd.EnleveUnLike(image))
+                        {
+                            return RedirectToAction("PhotoUtil", "Account");
+                        }
+                    }
+                }
+            }
+            else
+            {
+                if (image != null && actionAFaire == "DELETE")
+                {
+                    if (pfbd.EnleveTousLesLiaisonsAvecLesUtils(image))
+                    {
+                        if (pfbd.DetruirePhotoSelonUtil(User.Identity.Name, image))
+                        {
+                            return RedirectToAction("PhotoUtil", "Account");
+                        }
+                    }
+                }
             }
             return RedirectToAction("Erreur", "Home");
         }

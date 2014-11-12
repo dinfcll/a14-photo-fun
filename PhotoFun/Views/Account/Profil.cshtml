@@ -5,8 +5,8 @@
     <h2>Profil</h2>
 </div>
 <div>
-    <a href="~/Account/Manage">Modifier le mot de passe</a>
+    @Html.ActionLink("Modifier le mot de passe", "Manage", "Account")
 </div>  
 <div>
-  <a href="~/Account/PhotoUtil">Vos photos</a>
+    @Html.ActionLink("Vos photos","PhotoUtil","Account")
 </div>

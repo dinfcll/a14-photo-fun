@@ -11,28 +11,42 @@
     <input type="submit" name="SubImporter" value="Importer"/>
 
    <h3 class="sub-header">Cat&eacute;gorie</h3>
-    <div >
-        @model PhotoFun.Models.PhotoModels
-        <div class="col-md-2 radio radio-inline">
-             @Html.RadioButtonFor(PhotoModels => PhotoModels.Categorie, "Sport", new { id = "Sport" })
-             @Html.Label("Sport")
-             @Html.RadioButtonFor(PhotoModels => PhotoModels.Categorie, "Nature", new { id = "Nature" })
-             @Html.Label("Nature")
-             @Html.RadioButtonFor(PhotoModels => PhotoModels.Categorie, "Famille", new { id = "Famille" })
-             @Html.Label("Famille")
-             @Html.RadioButtonFor(PhotoModels => PhotoModels.Categorie, "Paysage", new { id = "Paysage" })
-             @Html.Label("Paysage")
-        </div>
-        <div class="col-md-2 radio radio-inline" style="padding-top:10px">
-            @Html.RadioButtonFor(PhotoModels => PhotoModels.Categorie, "Cuisine", new { id = "Cuisine" })
-             @Html.Label("Cuisine")
-             @Html.RadioButtonFor(PhotoModels => PhotoModels.Categorie, "Animaux", new { id = "Animaux" })
-             @Html.Label("Animaux")
-             @Html.RadioButtonFor(PhotoModels => PhotoModels.Categorie, "Autres", new { id = "Autres", @checked = "checked"})
-             @Html.Label("Autres")
-        </div>
+    @model PhotoFun.Models.PhotoModels
+    <div class="col-md-2 radio radio-inline">
+            @Html.RadioButtonFor(PhotoModels => PhotoModels.Categorie, "Sport", new { id = "Sport" })
+            @Html.Label("Sport")
+            @Html.RadioButtonFor(PhotoModels => PhotoModels.Categorie, "Nature", new { id = "Nature" })
+            @Html.Label("Nature")
+            @Html.RadioButtonFor(PhotoModels => PhotoModels.Categorie, "Famille", new { id = "Famille" })
+            @Html.Label("Famille")
+            @Html.RadioButtonFor(PhotoModels => PhotoModels.Categorie, "Paysage", new { id = "Paysage" })
+            @Html.Label("Paysage")
+    </div>
+    <div class="col-md-2 radio radio-inline" style="padding-top:10px">
+        @Html.RadioButtonFor(PhotoModels => PhotoModels.Categorie, "Cuisine", new { id = "Cuisine" })
+            @Html.Label("Cuisine")
+            @Html.RadioButtonFor(PhotoModels => PhotoModels.Categorie, "Animaux", new { id = "Animaux" })
+            @Html.Label("Animaux")
+            @Html.RadioButtonFor(PhotoModels => PhotoModels.Categorie, "Autres", new { id = "Autres", @checked = "checked"})
+            @Html.Label("Autres")
+    </div>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <div>
         @Html.Label("Commentaires")
-        @Html.TextAreaFor(PhotoModels => PhotoModels.Commentaires, new { @maxlength= 200 })
+        @Html.TextAreaFor(PhotoModels => PhotoModels.Commentaires, new { @maxlength = 200, onkeyup = "reste(this.value);" }) 
+        <br/>
+        <span id="caracteres">200</span> caractères restants
+        <script type="text/javascript">
+            function reste(texte) {
+                var restants = 200 - texte.length;
+                document.getElementById('caracteres').innerHTML = restants;
+            }
+        </script>
     </div>
     <div>
     <br/>

@@ -177,6 +177,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\MonCSS.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -301,19 +302,13 @@
     <None Include="fonts\glyphicons-halflings-regular.ttf" />
     <None Include="fonts\glyphicons-halflings-regular.woff" />
     <None Include="Scripts\jquery-1.9.1.min.map" />
-    <Content Include="Views\Home\Sport.cshtml" />
-    <Content Include="Views\Home\Nature.cshtml" />
-    <Content Include="Views\Home\Famille.cshtml" />
-    <Content Include="Views\Home\Paysage.cshtml" />
-    <Content Include="Views\Home\Cuisine.cshtml" />
-    <Content Include="Views\Home\Animaux.cshtml" />
-    <Content Include="Views\Home\Autre.cshtml" />
     <Content Include="Views\Account\Profil.cshtml" />
     <Content Include="Views\Home\_TransfertReussi.cshtml" />
     <Content Include="Views\Home\_TransfertEchoue.cshtml" />
     <Content Include="Views\Home\Erreur.cshtml" />
     <Content Include="Views\Account\PhotoUtil.cshtml" />
     <Content Include="Views\Home\_PasPhotoCategorie.cshtml" />
+    <Content Include="Views\Home\RetourneLaVueSelonCategorie.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -331,7 +326,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>2987</DevelopmentServerPort>
+          <DevelopmentServerPort>5027</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>
