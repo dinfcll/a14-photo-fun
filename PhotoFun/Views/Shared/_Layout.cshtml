@@ -23,14 +23,12 @@
                     <a class="navbar-brand" href="/Home/Index">PhotoFun</a>
                 </div>
                     <div class="navbar-collapse collapse" style="height: 1px;">
-
-                     @Html.BeginForm("ProfilUtil", "Account", FormMethod.Post)
+                       @Html.BeginForm("ProfilUtil", "Account", FormMethod.Post)
                        {
                             <input type="text" name="RechercheUtil"/>
                             <input type="submit" value="Rechercher" />
                        }
                        <ul class="nav navbar-nav navbar-right">
-                            
                                 @Html.Partial("_LoginPartial")
                             <li>@Html.ActionLink("Accueil", "Index", "Home")</li>
                             <li>@Html.ActionLink("Importer", "Importer", "Home")</li>

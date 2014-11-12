@@ -148,35 +148,35 @@ namespace PhotoFun.Controllers
             }
             else
             {
-                string erreur = "Une erreur est survenu";
+                string erreur = "Une erreur est survenue";
                 ViewData["Rechercher"] = erreur;
             }
             return View();
         }
 
-        public ActionResult Suivre(string nom, bool Abonner)
+        public ActionResult Suivre(string nom, bool Abonne)
         {
-            var pfbd = new PhotoFunBD();
-            var pm = new ProfilModel();
+            var photoFunBD = new PhotoFunBD();
+            var profilModel = new ProfilModel();
             int retour;
             
-            if (Abonner)
+            if (Abonne)
             {
-                pfbd.SupprimerRelAbonnement(nom, User.Identity.Name);
+                photoFunBD.SupprimerRelAbonnement(nom, User.Identity.Name);
             }
             else
             {
-                pfbd.AbonnerUtil(User.Identity.Name, nom);
-                pm.Abonner = true;
+                photoFunBD.AbonnerUtil(User.Identity.Name, nom);
+                profilModel.Abonner = true;
             }
 
-            pm.IdUtilRechercher = nom;
-            if (pfbd.CompteNbAbonnement(pm, out retour))
+            profilModel.IdUtilRechercher = nom;
+            if (photoFunBD.CompteNbAbonnement(profilModel, out retour))
             {
-                pm.NbAbonnement = retour;
+                profilModel.NbAbonnement = retour;
             }
             
-            ViewData["Rechercher"] = pm;
+            ViewData["Rechercher"] = profilModel;
             return View("ProfilUtil");
         }
 
