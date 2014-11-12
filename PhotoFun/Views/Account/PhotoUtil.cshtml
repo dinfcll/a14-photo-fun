@@ -9,17 +9,18 @@
 {
     if (lstimage != null && lstimage.Count > 0)
     {
+        var nomutil = nom;
         var photoFunBd = new PhotoFun.Models.PhotoFunBD();
         int nbJaime;
         foreach (var PhotoUtil in lstimage)
         {
             nbJaime = photoFunBd.RetourneLeNombreDeJAimeSelonPhoto(PhotoUtil);
             <div class="divdesimages">
-            @using (Html.BeginForm("PhotoUtil", "Account", FormMethod.Post, new { nom = nom }))
+            @using (Html.BeginForm("PhotoUtil", "Account", FormMethod.Post))
             {
                 if (User.Identity.IsAuthenticated)
                 {
-                    if (nom == User.Identity.Name)
+                    if (nomutil == User.Identity.Name)
                     {
                         if (photoFunBd.VerifLiaisonPhotoUtil(User.Identity.Name, PhotoUtil))
                         {
@@ -27,6 +28,7 @@
                             <img src="@PhotoUtil" class="img-thumbnail" alt="Image inaccessible" width="100%"/>
                             <button type="submit" class="close boutonsupprimer" name="actionAFaire" value="DELETE"><span class="glyphicon glyphicon-remove"></span></button>
                             @Html.Hidden("Image", PhotoUtil)
+                            @Html.Hidden("nom",nomutil)
                         }
                         else
                         {
@@ -34,6 +36,7 @@
                             <img src="@PhotoUtil" class="img-thumbnail" alt="Image inaccessible" width="100%"/>
                             <button type="submit" class="close boutonsupprimer" name="actionAFaire" value="DELETE"><span class="glyphicon glyphicon-remove"></span></button>
                             @Html.Hidden("Image", PhotoUtil)
+                            @Html.Hidden("nom", nomutil)
                         }
                     }
                     else
@@ -43,12 +46,14 @@
                             <button type="submit" class="close boutonliker" title="J'aime" name="actionAFaire" value="LIKE"><span class="glyphicon glyphicon-heart"></span><span class="badge">@nbJaime</span></button> 
                             <img src="@PhotoUtil" class="img-thumbnail" alt="Image inaccessible" width="100%"/>
                             @Html.Hidden("Image", PhotoUtil)
+                            @Html.Hidden("nom", nomutil)
                         }
                         else
                         {
                             <button type="submit" class="close boutonliker" title="Je n'aime plus" name="actionAFaire" value="LIKE"><span class="glyphicon glyphicon-heart-empty"></span><span class="badge">@nbJaime</span></button> 
                             <img src="@PhotoUtil" class="img-thumbnail" alt="Image inaccessible" width="100%"/>
                             @Html.Hidden("Image", PhotoUtil)
+                            @Html.Hidden("nom", nomutil)
                         }
                     }
                 }
