@@ -84,6 +84,7 @@ namespace PhotoFun.Controllers
             return View(model);
         }
 
+        [AllowAnonymous]
         public ActionResult PhotoUtil(string nom)
         {
             var photoFunBD = new PhotoFunBD();
@@ -152,7 +153,8 @@ namespace PhotoFun.Controllers
         {
             return View();
         }
-      
+
+        [AllowAnonymous]
         [HttpPost]
         public ActionResult ProfilUtil()
         {
