@@ -1,7 +1,7 @@
 USE [tempdb]
 GO
 
-/****** Object:  Table [dbo].[Utilisateurs]    Script Date: 11/07/2014 14:33:57 ******/
+/****** Object:  Table [dbo].[Utilisateurs]    Script Date: 11/07/2014 15:10:54 ******/
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Utilisateurs]') AND type in (N'U'))
 DROP TABLE [dbo].[Utilisateurs]
 GO
@@ -9,7 +9,7 @@ GO
 USE [tempdb]
 GO
 
-/****** Object:  Table [dbo].[Utilisateurs]    Script Date: 11/07/2014 14:33:57 ******/
+/****** Object:  Table [dbo].[Utilisateurs]    Script Date: 11/07/2014 15:10:54 ******/
 SET ANSI_NULLS ON
 GO
 

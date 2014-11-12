@@ -24,9 +24,7 @@
                 </div>
                 <div class="navbar-collapse collapse" style="height: 1px">
                     <div class="col-sm-3 col-md-3">
-                    @*@Html.BeginForm("ProfilUtil", "Account", FormMethod.Post)
-                        {*@
-                        <form class="navbar-form" role="search">
+                        <form class="navbar-form" role="search" action="/Account/ProfilUtil" method="post">
                             <div class="input-group">
                                 <input type="text" class="form-control" placeholder="Chercher quelqu'un" name="RechercheUtil">
                                 <div class="input-group-btn">
@@ -34,7 +32,6 @@
                                 </div>
                             </div>
                         </form>
-                        @*}*@
                     </div>
                     <ul class="nav navbar-nav navbar-right" style="margin-left:2%">
                             @Html.Partial("_LoginPartial")

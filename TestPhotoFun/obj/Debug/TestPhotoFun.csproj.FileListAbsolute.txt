@@ -338,3 +338,5 @@ C:\Users\Dominic\Desktop\a14-photo-fun\TestPhotoFun\bin\Debug\fr\Microsoft.Web.W
 C:\Users\Dominic\Desktop\a14-photo-fun\TestPhotoFun\obj\Debug\TestPhotoFun.csprojResolveAssemblyReference.cache
 C:\Users\Dominic\Desktop\a14-photo-fun\TestPhotoFun\obj\Debug\TestPhotoFun.dll
 C:\Users\Dominic\Desktop\a14-photo-fun\TestPhotoFun\obj\Debug\TestPhotoFun.pdb
+H:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\Newtonsoft.Json.dll
+H:\Session 5\Implantation d'un système informatique\a14-photo-fun\TestPhotoFun\bin\Debug\Newtonsoft.Json.xml

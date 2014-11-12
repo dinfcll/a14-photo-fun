@@ -1,7 +1,17 @@
 USE [tempdb]
 GO
 
-/****** Object:  Table [dbo].[Photos]    Script Date: 11/07/2014 14:36:34 ******/
+IF  EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[DF_Photos_NbJaime]') AND type = 'D')
+BEGIN
+ALTER TABLE [dbo].[Photos] DROP CONSTRAINT [DF_Photos_NbJaime]
+END
+
+GO
+
+USE [tempdb]
+GO
+
+/****** Object:  Table [dbo].[Photos]    Script Date: 11/07/2014 13:06:06 ******/
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Photos]') AND type in (N'U'))
 DROP TABLE [dbo].[Photos]
 GO
@@ -9,7 +19,7 @@ GO
 USE [tempdb]
 GO
 
-/****** Object:  Table [dbo].[Photos]    Script Date: 11/07/2014 14:36:34 ******/
+/****** Object:  Table [dbo].[Photos]    Script Date: 11/07/2014 13:06:07 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -25,6 +35,7 @@ CREATE TABLE [dbo].[Photos](
 	[Image] [varchar](150) NOT NULL,
 	[IDUtil] [varchar](20) NOT NULL,
 	[Commentaire] [varchar](200) NULL,
+	[NbJaime] [int] NOT NULL,
  CONSTRAINT [PK_Photos] PRIMARY KEY CLUSTERED 
 (
 	[IdPhoto] ASC
@@ -34,6 +45,9 @@ CREATE TABLE [dbo].[Photos](
 GO
 
 SET ANSI_PADDING OFF
+GO
+
+ALTER TABLE [dbo].[Photos] ADD  CONSTRAINT [DF_Photos_NbJaime]  DEFAULT ((0)) FOR [NbJaime]
 GO
 
 

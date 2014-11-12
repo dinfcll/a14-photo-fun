@@ -3,7 +3,7 @@
     var NomProfil = ViewData["Rechercher"] as PhotoFun.Models.ProfilModel;
 }
 <div class="page-header">
-    @Html.Label(NomProfil.IdUtilRechercher)
+    <h1>@NomProfil.IdUtilRechercher</h1>
 </div>
     @{
         if(NomProfil.IdUtilRechercher != "Utilisateur Inexistant")
@@ -13,11 +13,11 @@
              {
                   if (NomProfil.Abonner)
                   {
-                     @Html.ActionLink("Ne plus suivre","Suivre",new{ nom=NomProfil.IdUtilRechercher, abonner=NomProfil.Abonner}, null)
+                     @Html.ActionLink("Ne plus suivre","Suivre",new{ nom=NomProfil.IdUtilRechercher, abonne=NomProfil.Abonner}, null)
                   }
                   else
                   {
-                     @Html.ActionLink("Suivre", "Suivre", "Account", new { nom = NomProfil.IdUtilRechercher, abonner=NomProfil.Abonner }, null)
+                     @Html.ActionLink("Suivre", "Suivre", "Account", new { nom = NomProfil.IdUtilRechercher, abonne=NomProfil.Abonner }, null)
                   }
              }
              <br />
