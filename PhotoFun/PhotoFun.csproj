@@ -170,6 +170,7 @@
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\PhotoFunBD.cs" />
     <Compile Include="Models\PhotoModels.cs" />
+    <Compile Include="Models\ProfilModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -308,6 +309,7 @@
     <Content Include="Views\Home\Erreur.cshtml" />
     <Content Include="Views\Account\PhotoUtil.cshtml" />
     <Content Include="Views\Home\_PasPhotoCategorie.cshtml" />
+    <Content Include="Views\Account\ProfilUtil.cshtml" />
     <Content Include="Views\Home\RetourneLaVueSelonCategorie.cshtml" />
   </ItemGroup>
   <PropertyGroup>
@@ -326,7 +328,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>5027</DevelopmentServerPort>
+          <DevelopmentServerPort>1558</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

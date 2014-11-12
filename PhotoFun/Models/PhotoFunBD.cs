@@ -52,6 +52,33 @@ namespace PhotoFun.Models
             }
         }
 
+        public bool ExtraireUtil(string IDUtil, out List<string> NomUtil)
+        {
+            NomUtil = new List<string>();
+            using (var conn = new SqlConnection(cs))
+            {
+                bool resultat;
+                try
+                {
+                    conn.Open();
+                    var scExtraire = new SqlCommand("Select * from Utilisateurs where IDUtil='" + IDUtil + "';", conn);
+                    var sdr = scExtraire.ExecuteReader();
+                    while (sdr.Read())
+                    {
+                        NomUtil.Add(ReadSingleRow(sdr));
+                    }
+                    sdr.Close();
+                    conn.Close();
+                    resultat = true;
+                }
+                catch
+                {
+                    resultat = false;
+                }
+                return resultat;
+            }
+        }
+
         public bool MettreAJourUtil(LocalPasswordModel lpm, string usager)
         {
             using (var conn = new SqlConnection(cs))
@@ -151,8 +178,8 @@ namespace PhotoFun.Models
                 try
                 {
                     conn.Open();
-                    var scExtrairePhotoSelonUtil = new SqlCommand("Select Image from Photos where Categorie='" + Categorie + "';", conn);
-                    var sdr = scExtrairePhotoSelonUtil.ExecuteReader();
+                    var scExtrairePhotoSelonCategorie = new SqlCommand("Select Image from Photos where Categorie='" + Categorie + "';", conn);
+                    var sdr = scExtrairePhotoSelonCategorie.ExecuteReader();
                     while (sdr.Read())
                     {
                         lstimage.Add(ReadSingleRow(sdr));
@@ -214,6 +241,34 @@ namespace PhotoFun.Models
                     sdr.Close();
                     conn.Close();
                     resultat=true;
+                }
+                catch
+                {
+                    resultat = false;
+                }
+                return resultat;
+            }
+        }
+
+        public bool AbonnerUtil(string NomUtilCourant, string NomUtilAbonner)
+        {
+            using (var conn = new SqlConnection(cs))
+            {
+                bool resultat;
+                try
+                {
+                    conn.Open();
+                    if (VerifAbonnement(NomUtilAbonner, NomUtilCourant)==false)
+                    {
+                        var scEnregistrerAbonnement = new SqlCommand("Insert into AbonnementUtil (IdUtilConnecter, IdUtilAbonner) values ('" + NomUtilCourant + "', '" + NomUtilAbonner + "');", conn);
+                        scEnregistrerAbonnement.ExecuteNonQuery();
+                        conn.Close();
+                        resultat = true;
+                    }
+                    else
+                    {
+                        resultat = false;
+                    }
                 }
                 catch
                 {
@@ -287,6 +342,27 @@ namespace PhotoFun.Models
             }
         }
 
+        public bool InsererDonneesProfil(ProfilModel pm)
+        {
+            using(var conn=new SqlConnection(cs))
+            {
+                bool resultat;
+                try
+                {
+                    conn.Open();
+                    var scAjouterProfil = new SqlCommand("Insert into ProfilUtil ( IDUtilRechercher, nbAbonnement) values ('"
+                        + pm.IdUtilRechercher + "', '" + pm.NbAbonnement + "');", conn);
+                    scAjouterProfil.ExecuteNonQuery();
+                    conn.Close();
+                    resultat = true;
+                }
+                catch
+                {
+                    resultat = false;
+                }
+                return resultat;
+            }
+        }
         public bool EnleveTousLesLiaisonsAvecLesUtils(string nomPhoto)
         {
             using(var conn=new SqlConnection(cs))
@@ -306,7 +382,34 @@ namespace PhotoFun.Models
                 }
                 return resultat;
             }
- 
+        }
+
+        public bool CompteNbAbonnement(ProfilModel pm, out int NbAbonnement)
+        {
+            NbAbonnement = 0;
+            using (var conn = new SqlConnection(cs))
+            {
+                bool resultat;
+                try
+                {
+                    conn.Open();
+                    var scNbAbonnement = new SqlCommand("Select count(IdUtilConnecter) from AbonnementUtil where IdUtilAbonner='"
+                        + pm.IdUtilRechercher + "'", conn);
+                    var sdr = scNbAbonnement.ExecuteReader();
+                    while (sdr.Read())
+                    {
+                        NbAbonnement=Convert.ToInt32(ReadSingleRow(sdr));
+                    }
+                    sdr.Close();
+                    conn.Close();
+                    resultat = true;
+                }
+                catch
+                {
+                    resultat = false;
+                }
+                return resultat;
+            }
         }
 
         public bool EnleveLiaisonPhotoUtil(string nomUtil, string nomPhoto)
@@ -330,6 +433,40 @@ namespace PhotoFun.Models
             }
         }
 
+        public bool VerifAbonnement(string pm, string UtilConnecter)
+        {
+            int NbAbonnement=0;
+            using (var conn = new SqlConnection(cs))
+            {
+                bool resultat;
+                try
+                {
+                    conn.Open();
+                    var scNbAbonnement = new SqlCommand("Select count(*) from AbonnementUtil where IdUtilAbonner='"
+                        + pm + "' and IdUtilConnecter='"+UtilConnecter+"'", conn);
+                    var sdr = scNbAbonnement.ExecuteReader();
+                    while (sdr.Read())
+                    {
+                        NbAbonnement=Convert.ToInt32(ReadSingleRow(sdr));
+                    }
+                    sdr.Close();
+                    conn.Close();
+                    if (NbAbonnement > 0)
+                    {
+                        resultat = true;
+                    }
+                    else
+                    {
+                        resultat = false;
+                    }
+                }
+                catch
+                {
+                    resultat = false;
+                }
+                return resultat;
+            }
+        }
         public bool VerifLiaisonPhotoUtil(string nomUtil, string nomPhoto)
         {
             using (var conn = new SqlConnection(cs))
@@ -364,6 +501,28 @@ namespace PhotoFun.Models
             }
         }
 
+
+        public bool SupprimerRelAbonnement(string UtilAbonner, string UtilConnecter)
+        {
+            using (var conn = new SqlConnection(cs))
+            {
+                bool resultat;
+                try
+                {
+                    conn.Open();
+                    var scSupprimer = new SqlCommand("Delete from AbonnementUtil where IdUtilAbonner='"
+                        + UtilAbonner + "' and IdUtilConnecter='" + UtilConnecter + "'", conn);
+                    scSupprimer.ExecuteNonQuery();
+                    conn.Close();
+                    resultat = true;
+                }
+                catch
+                {
+                    resultat = false;
+                }
+                return resultat;
+            }
+        }
         public bool AjoutRelationUtilPhoto(string nomUtil, string nomPhoto)
         {
             using (var conn = new SqlConnection(cs))

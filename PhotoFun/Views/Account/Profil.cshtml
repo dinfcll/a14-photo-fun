@@ -5,8 +5,8 @@
     <h2>Profil</h2>
 </div>
 <div>
-    @Html.ActionLink("Modifier le mot de passe", "Manage", "Account")
-</div>  
+    @Html.ActionLink("Modifier le mot de passe","Manage","Account")
+</div>
 <div>
-    @Html.ActionLink("Vos photos","PhotoUtil","Account")
+    @Html.ActionLink("Mes photos", "PhotoUtil", "Account", new { nom = User.Identity.Name },null)
 </div>

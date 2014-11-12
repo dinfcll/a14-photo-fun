@@ -84,20 +84,30 @@ namespace PhotoFun.Controllers
             return View(model);
         }
 
-        public ActionResult PhotoUtil()
+        [AllowAnonymous]
+        public ActionResult PhotoUtil(string nom)
         {
-            var pfbd = new PhotoFunBD();
+            var photoFunBD = new PhotoFunBD();
             List<string> lstimage; 
-            if (pfbd.ExtrairePhotoSelonUtil(User.Identity.Name,out lstimage))
+            if (photoFunBD.ExtrairePhotoSelonUtil(nom, out lstimage))
             {
                 ViewData["lstimage"]=lstimage;
+                ViewData["nom"] = nom;
+                if (nom != User.Identity.Name)
+                {
+                    ViewBag.Title = "Les photos de " + nom;
+                }
+                else
+                {
+                    ViewBag.Title = "Mes Photos";
+                }
                 return View();
             }
             return RedirectToAction("Erreur", "Home");
         }
 
         [HttpPost]
-        public ActionResult PhotoUtil(string image, string actionAFaire)
+        public ActionResult PhotoUtil(string image, string actionAFaire,string nom)
         {
             var pfbd = new PhotoFunBD();
             if (image != null && actionAFaire == "LIKE")
@@ -108,7 +118,7 @@ namespace PhotoFun.Controllers
                     {
                         if (pfbd.AjouterUnLike(image))
                         {
-                            return RedirectToAction("PhotoUtil", "Account");
+                            return RedirectToAction("PhotoUtil", "Account", new { nom = nom });
                         }
                     }
                 }
@@ -118,7 +128,7 @@ namespace PhotoFun.Controllers
                     {
                         if (pfbd.EnleveUnLike(image))
                         {
-                            return RedirectToAction("PhotoUtil", "Account");
+                            return RedirectToAction("PhotoUtil", "Account", new { nom = nom });
                         }
                     }
                 }
@@ -131,7 +141,7 @@ namespace PhotoFun.Controllers
                     {
                         if (pfbd.DetruirePhotoSelonUtil(User.Identity.Name, image))
                         {
-                            return RedirectToAction("PhotoUtil", "Account");
+                            return RedirectToAction("PhotoUtil", "Account", new { nom = nom });
                         }
                     }
                 }
@@ -142,6 +152,77 @@ namespace PhotoFun.Controllers
         public ActionResult Profil()
         {
             return View();
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        public ActionResult ProfilUtil()
+        {
+            if (Request.TotalBytes > 0)
+            {
+                var profilModel = new ProfilModel();
+                var photoFunBD = new PhotoFunBD();
+                var retour = new List<string>();
+                int nbAbonnement;
+                var nomUtil = Request.Form.GetValues(0).GetValue(0);
+                if (photoFunBD.ExtraireUtil(nomUtil.ToString(), out retour))
+                {
+                    if (retour.Count > 0)
+                    {
+                        profilModel.IdUtilRechercher = nomUtil.ToString();
+
+                        if (photoFunBD.CompteNbAbonnement(profilModel, out nbAbonnement))
+                        {
+                            profilModel.NbAbonnement = nbAbonnement;
+                        }
+                        profilModel.Abonner = photoFunBD.VerifAbonnement(profilModel.IdUtilRechercher, User.Identity.Name);
+                        ViewData["Rechercher"] = profilModel;
+                    }
+                    else
+                    {
+                        profilModel.Abonner = false;
+                        profilModel.IdUtilRechercher = "Utilisateur Inexistant";
+                        profilModel.NbAbonnement = 0;
+                        ViewData["Rechercher"] = profilModel;
+                    }
+                }
+                else
+                {
+                    return RedirectToAction("Erreur", "Home");
+                }
+            }
+            else
+            {
+                string erreur = "Une erreur est survenue";
+                ViewData["Rechercher"] = erreur;
+            }
+            return View();
+        }
+
+        public ActionResult Suivre(string nom, bool Abonne)
+        {
+            var photoFunBD = new PhotoFunBD();
+            var profilModel = new ProfilModel();
+            int retour;
+            
+            if (Abonne)
+            {
+                photoFunBD.SupprimerRelAbonnement(nom, User.Identity.Name);
+            }
+            else
+            {
+                photoFunBD.AbonnerUtil(User.Identity.Name, nom);
+                profilModel.Abonner = true;
+            }
+
+            profilModel.IdUtilRechercher = nom;
+            if (photoFunBD.CompteNbAbonnement(profilModel, out retour))
+            {
+                profilModel.NbAbonnement = retour;
+            }
+            
+            ViewData["Rechercher"] = profilModel;
+            return View("ProfilUtil");
         }
 
         // GET: /Account/Manage
