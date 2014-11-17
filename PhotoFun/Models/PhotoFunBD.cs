@@ -79,6 +79,33 @@ namespace PhotoFun.Models
             }
         }
 
+        public bool ExtraireCommentaireSelonPhoto(string image, out string commentaire)
+        {
+            using (var conn = new SqlConnection(cs))
+            {
+                commentaire = "";
+                bool resultat;
+                try
+                {
+                    conn.Open();
+                    var scExtraireCommentaireSelonPhoto = new SqlCommand("Select Commentaire from Photos where Image='" + image + "';", conn);
+                    var sdr = scExtraireCommentaireSelonPhoto.ExecuteReader();
+                    while (sdr.Read())
+                    {
+                        commentaire=ReadSingleRow(sdr);
+                    }
+                    sdr.Close();
+                    conn.Close();
+                    resultat = true;
+                }
+                catch
+                {
+                    resultat = false;
+                }
+                return resultat;
+            }
+        }
+
         public bool MettreAJourUtil(LocalPasswordModel lpm, string usager)
         {
             using (var conn = new SqlConnection(cs))
@@ -156,6 +183,33 @@ namespace PhotoFun.Models
                     while (sdr.Read())
                     {
                         lstimage.Add(ReadSingleRow(sdr));
+                    }
+                    sdr.Close();
+                    conn.Close();
+                    resultat = true;
+                }
+                catch
+                {
+                    resultat = false;
+                }
+                return resultat;
+            }
+        }
+
+        public bool ExtraireUtilSelonPhoto(string image, out string nomUtil)
+        {
+            using (var conn = new SqlConnection(cs))
+            {
+                nomUtil = "";
+                bool resultat;
+                try
+                {
+                    conn.Open();
+                    var scExtraireUtilSelonPhoto = new SqlCommand("Select IDUtil from Photos where Image='" + image + "';", conn);
+                    var sdr = scExtraireUtilSelonPhoto.ExecuteReader();
+                    while (sdr.Read())
+                    {
+                        nomUtil=ReadSingleRow(sdr);
                     }
                     sdr.Close();
                     conn.Close();

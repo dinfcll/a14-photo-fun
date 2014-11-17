@@ -2,29 +2,32 @@
     var lstimage = ViewData["lstimage"] as List<string>; 
 }
 @Styles.Render("~/Content/PopPhoto.css")
-<script src="//rawgithub.com/ashleydw/lightbox/master/dist/ekko-lightbox.js"></script>
 <div class="page-header">
     <h2>@ViewBag.Title</h2>
 </div>
 @{   
     if (lstimage != null && lstimage.Count > 0)
     {
-        var pm = new PhotoFun.Models.PhotoFunBD();
+        var photoFunBD = new PhotoFun.Models.PhotoFunBD();
         int NbJaime;
+        string nomUtil="";
+        string commentaire;
+        //string sNomPhoto="";
+            
         foreach (var Photo in lstimage)
         {
-            NbJaime = pm.RetourneLeNombreDeJAimeSelonPhoto(Photo);
+            NbJaime = photoFunBD.RetourneLeNombreDeJAimeSelonPhoto(Photo);
            <div class="divdesimages">
                     @using (Html.BeginForm("RetourneLaVueSelonCategorie", "Home", FormMethod.Post))
                     { 
                         string cat = ViewBag.Title;
                         if (User.Identity.IsAuthenticated)
                         {
-                            if (pm.VerifLiaisonPhotoUtil(User.Identity.Name, Photo))
+                            if (photoFunBD.VerifLiaisonPhotoUtil(User.Identity.Name, Photo))
                             {
                                 <button type="submit" class="close boutonliker" title="J'aime"><span class="glyphicon glyphicon-heart"></span><span class="badge">@NbJaime</span></button>
                                 <img src="@Photo" class="img-thumbnail" alt="Image inaccessible" width="100%"/>
-                                <button type="button" class="close boutonsupprimer" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-fullscreen"></span></button>
+                                <button type="button" class="fullscreen close boutonsupprimer" data-toggle="modal" data-target="#PhotoModal"><span class="glyphicon glyphicon-fullscreen"></span></button>
                                 @Html.Hidden("categorie", cat)
                                 @Html.Hidden("Image", Photo)
                             }
@@ -32,6 +35,7 @@
                             {
                                 <button type="submit" class="close boutonliker" title="Je n'aime plus"><span class="glyphicon glyphicon-heart-empty"></span><span class="badge">@NbJaime</span></button> 
                                 <img src="@Photo" class="img-thumbnail" alt="Image inaccessible" width="100%"/>
+                                <button type="button" class="fullscreen close boutonsupprimer" data-toggle="modal" data-target="#PhotoModal"><span class="glyphicon glyphicon-fullscreen"></span></button>
                                 @Html.Hidden("categorie", cat)
                                 @Html.Hidden("Image", Photo)
                             }
@@ -39,27 +43,44 @@
                         else
                         {
                             <img src="@Photo" class="img-thumbnail" alt="Image inaccessible" width="100%"/>
-                            <button type="submit" class="close boutonliker" title="J'aime"><span class="glyphicon glyphicon-heart"></span><span class="badge">@NbJaime</span></button> 
+                            <button type="submit" class="close boutonliker" title="J'aime"><span class="glyphicon glyphicon-heart"></span><span class="badge">@NbJaime</span></button>
+                            <button type="button" class="fullscreen close boutonsupprimer" data-toggle="modal" data-target="#PhotoModal"><span class="glyphicon glyphicon-fullscreen"></span></button> 
                         }
                     }
             </div>
-            <div class="modal fade" id="myModal">
-                <div class="modal-dialog">
+            
+        }
+        
+        @*<text>
+            @sNomPhoto = document.getElementById("#PhotoModal img").toString();
+        </text>*@
+
+        if (photoFunBD.ExtraireUtilSelonPhoto("/Images/xxdomxx_Lighthouse20141117135550.jpg", out nomUtil))
+        {
+            <div class="modal fade bs-example-modal-lg" id="PhotoModal">
+                <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                            <h4 class="modal-title">Modal title</h4>
+                            <button type="button" class="close boutonsupprimer" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                            <h4 class="modal-title">
+                                @Html.ActionLink(nomUtil, "PhotoUtil", "Account", new { nom = nomUtil }, null)
+                            </h4>
                         </div>
                         <div class="modal-body">
-                            <img src="@Photo" alt="Image inaccessible" width="100%"/>
+                            <img src="" alt="Image inaccessible" width="100%"/>
                         </div>
                         <div class="modal-footer">
+                            @{
+                                if (photoFunBD.ExtraireCommentaireSelonPhoto("/Images/xxdomxx_Lighthouse20141117135550.jpg", out commentaire))
+                                {
+                                    <p>@commentaire</p>
+                                }
+                             }
                         </div>
                     </div>
-                </div>
-            </div>  
-        }
-
+                 </div>
+             </div>  
+            }
     }
     else
     {
