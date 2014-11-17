@@ -1,7 +1,8 @@
 ﻿@{ 
     var lstimage = ViewData["lstimage"] as List<string>; 
 }
-
+@Styles.Render("~/Content/PopPhoto.css")
+<script src="//rawgithub.com/ashleydw/lightbox/master/dist/ekko-lightbox.js"></script>
 <div class="page-header">
     <h2>@ViewBag.Title</h2>
 </div>
@@ -15,14 +16,15 @@
             NbJaime = pm.RetourneLeNombreDeJAimeSelonPhoto(Photo);
            <div class="divdesimages">
                     @using (Html.BeginForm("RetourneLaVueSelonCategorie", "Home", FormMethod.Post))
-                    {
+                    { 
                         string cat = ViewBag.Title;
                         if (User.Identity.IsAuthenticated)
                         {
                             if (pm.VerifLiaisonPhotoUtil(User.Identity.Name, Photo))
                             {
-                                <button type="submit" class="close boutonliker" title="J'aime"><span class="glyphicon glyphicon-heart"></span><span class="badge">@NbJaime</span></button> 
+                                <button type="submit" class="close boutonliker" title="J'aime"><span class="glyphicon glyphicon-heart"></span><span class="badge">@NbJaime</span></button>
                                 <img src="@Photo" class="img-thumbnail" alt="Image inaccessible" width="100%"/>
+                                <button type="button" class="close boutonsupprimer" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-fullscreen"></span></button>
                                 @Html.Hidden("categorie", cat)
                                 @Html.Hidden("Image", Photo)
                             }
@@ -40,8 +42,24 @@
                             <button type="submit" class="close boutonliker" title="J'aime"><span class="glyphicon glyphicon-heart"></span><span class="badge">@NbJaime</span></button> 
                         }
                     }
+            </div>
+            <div class="modal fade" id="myModal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                            <h4 class="modal-title">Modal title</h4>
+                        </div>
+                        <div class="modal-body">
+                            <img src="@Photo" alt="Image inaccessible" width="100%"/>
+                        </div>
+                        <div class="modal-footer">
+                        </div>
+                    </div>
+                </div>
             </div>  
         }
+
     }
     else
     {
