@@ -155,6 +155,37 @@ namespace PhotoFun.Controllers
         }
 
         [AllowAnonymous]
+        public ActionResult ProfilUtil(string nomUtil)
+        {
+            var photoFunBD = new PhotoFunBD();
+            var profilModel = new ProfilModel();
+            var retour = new List<string>();
+            int nbAbonnement;
+            if (photoFunBD.ExtraireUtil(nomUtil, out retour))
+            {
+                if (retour.Count > 0)
+                {
+                    profilModel.IdUtilRechercher = nomUtil;
+
+                    if (photoFunBD.CompteNbAbonnement(profilModel, out nbAbonnement))
+                    {
+                        profilModel.NbAbonnement = nbAbonnement;
+                    }
+                    profilModel.Abonner = photoFunBD.VerifAbonnement(profilModel.IdUtilRechercher, User.Identity.Name);
+                    ViewData["Rechercher"] = profilModel;
+                }
+                else
+                {
+                    profilModel.Abonner = false;
+                    profilModel.IdUtilRechercher = "Utilisateur Inexistant";
+                    profilModel.NbAbonnement = 0;
+                    ViewData["Rechercher"] = profilModel;
+                }
+            }
+            return View();
+        }
+
+        [AllowAnonymous]
         [HttpPost]
         public ActionResult ProfilUtil()
         {

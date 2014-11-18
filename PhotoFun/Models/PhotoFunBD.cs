@@ -8,7 +8,7 @@ namespace PhotoFun.Models
 {
     public class PhotoFunBD
     {
-        private const string cs = "Data Source=G264-11\\SQLEXPRESS ;Initial Catalog=tempdb;Integrated Security=True";
+        private const string cs = "Data Source=Dominic_Pc\\SQLEXPRESS ;Initial Catalog=tempdb;Integrated Security=True";
         public bool InsererUtil(RegisterModel rm)
         {
             using (var conn = new SqlConnection(cs))
@@ -79,12 +79,11 @@ namespace PhotoFun.Models
             }
         }
 
-        public bool ExtraireCommentaireSelonPhoto(string image, out string commentaire)
+        public string ExtraireCommentaireSelonPhoto(string image)
         {
             using (var conn = new SqlConnection(cs))
             {
-                commentaire = "";
-                bool resultat;
+                string commentaire = "";
                 try
                 {
                     conn.Open();
@@ -96,13 +95,11 @@ namespace PhotoFun.Models
                     }
                     sdr.Close();
                     conn.Close();
-                    resultat = true;
                 }
                 catch
                 {
-                    resultat = false;
                 }
-                return resultat;
+                return commentaire;
             }
         }
 
@@ -196,12 +193,11 @@ namespace PhotoFun.Models
             }
         }
 
-        public bool ExtraireUtilSelonPhoto(string image, out string nomUtil)
+        public string ExtraireUtilSelonPhoto(string image)
         {
             using (var conn = new SqlConnection(cs))
             {
-                nomUtil = "";
-                bool resultat;
+                string nomUtil = "";
                 try
                 {
                     conn.Open();
@@ -213,13 +209,11 @@ namespace PhotoFun.Models
                     }
                     sdr.Close();
                     conn.Close();
-                    resultat = true;
                 }
                 catch
                 {
-                    resultat = false;
                 }
-                return resultat;
+                return nomUtil;
             }
         }
 

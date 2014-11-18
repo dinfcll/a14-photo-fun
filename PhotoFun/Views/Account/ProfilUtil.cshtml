@@ -9,7 +9,7 @@
         if(NomProfil.IdUtilRechercher != "Utilisateur Inexistant")
         {
              @Html.Label(NomProfil.NbAbonnement.ToString())
-             if(NomProfil.IdUtilRechercher != User.Identity.Name)
+             if(NomProfil.IdUtilRechercher != User.Identity.Name && User.Identity.IsAuthenticated)
              {
                   if (NomProfil.Abonner)
                   {
