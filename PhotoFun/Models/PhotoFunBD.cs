@@ -8,7 +8,8 @@ namespace PhotoFun.Models
 {
     public class PhotoFunBD
     {
-        private const string cs = "Data Source=Dominic_Pc\\SQLEXPRESS ;Initial Catalog=tempdb;Integrated Security=True";
+        private const string cs = "Data Source=EQUIPE-01\\SQLEXPRESS ;Initial Catalog=tempdb;Integrated Security=True";
+
         public bool InsererUtil(RegisterModel rm)
         {
             using (var conn = new SqlConnection(cs))
@@ -78,6 +79,7 @@ namespace PhotoFun.Models
                 return resultat;
             }
         }
+
         public bool MettreAJourLeCommentaireDeLaPhoto(string commentaire, string photo)
         {
             using (var conn = new SqlConnection(cs))
@@ -431,6 +433,7 @@ namespace PhotoFun.Models
                 return resultat;
             }
         }
+
         public bool EnleveTousLesLiaisonsAvecLesUtils(string nomPhoto)
         {
             using(var conn=new SqlConnection(cs))
@@ -535,6 +538,7 @@ namespace PhotoFun.Models
                 return resultat;
             }
         }
+
         public bool VerifLiaisonPhotoUtil(string nomUtil, string nomPhoto)
         {
             using (var conn = new SqlConnection(cs))
@@ -569,7 +573,6 @@ namespace PhotoFun.Models
             }
         }
 
-
         public bool SupprimerRelAbonnement(string UtilAbonner, string UtilConnecter)
         {
             using (var conn = new SqlConnection(cs))
@@ -591,6 +594,7 @@ namespace PhotoFun.Models
                 return resultat;
             }
         }
+
         public bool AjoutRelationUtilPhoto(string nomUtil, string nomPhoto)
         {
             using (var conn = new SqlConnection(cs))
