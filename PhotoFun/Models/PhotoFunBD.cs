@@ -78,6 +78,26 @@ namespace PhotoFun.Models
                 return resultat;
             }
         }
+        public bool MettreAJourLeCommentaireDeLaPhoto(string commentaire, string photo)
+        {
+            using (var conn = new SqlConnection(cs))
+            {
+                bool resultat;
+                try
+                {
+                    conn.Open();
+                    var scModifier= new SqlCommand("Update Photos set Commentaire='"+commentaire+"' where Image='"+photo+"';", conn);
+                    scModifier.ExecuteNonQuery();
+                    conn.Close();
+                    resultat = true;
+                }
+                catch
+                {
+                    resultat = false;
+                }
+                return resultat;
+            }
+        }
 
         public string ExtraireCommentaireSelonPhoto(string image)
         {

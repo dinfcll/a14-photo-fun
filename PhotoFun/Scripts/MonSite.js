@@ -7,4 +7,8 @@
     $("#nomUtil").attr("href", href);
     document.getElementById('nomUtil').innerHTML = nomUtilisateur;
     document.getElementById('commentaire').innerHTML = commentaire;
-});  
+});
+function reste(texte) {
+    var restants = 200 - texte.length;
+    document.getElementById('caracteres').innerHTML = restants;
+};

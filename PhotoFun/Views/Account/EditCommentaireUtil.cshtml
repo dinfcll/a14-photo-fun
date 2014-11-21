@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "Éditez votre commentaire";
+    var commentaire = ViewData["commentaire"] as string;
+    var image = ViewData["image"] as string;
+}
+
+<div class="page-header">
+    <h2>@ViewBag.Title</h2>
+</div>
+<div>
+    <img src="@image" class="img-thumbnail" alt="Image inaccessible" width="65%" />
+    <div>
+        @using (Html.BeginForm("EditCommentaireUtil", "Account", FormMethod.Post))
+        {
+            <h3>Commentaires</h3>
+            <br/>
+            <textarea autofocus onkeyup = "reste(this.value);" maxlength = "200" rows="5" cols="50" name="Commentaire">@commentaire</textarea> 
+            @Html.Hidden("Image", image)
+            <br/>
+            <span id="caracteres">200</span><span> caractères restants</span>
+            <br/>
+            <input class="btn btn-lg btn-info" type="submit" value="Appliquer"/>
+        }
+    </div>
+</div>
