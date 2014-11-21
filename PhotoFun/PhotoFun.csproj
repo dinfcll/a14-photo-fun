@@ -253,6 +253,7 @@
     <Content Include="Scripts\knockout-2.1.0.debug.js" />
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
+    <Content Include="Scripts\MonSite.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -311,6 +312,7 @@
     <Content Include="Views\Home\_PasPhotoCategorie.cshtml" />
     <Content Include="Views\Account\ProfilUtil.cshtml" />
     <Content Include="Views\Home\RetourneLaVueSelonCategorie.cshtml" />
+    <Content Include="Views\Account\EditCommentaireUtil.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

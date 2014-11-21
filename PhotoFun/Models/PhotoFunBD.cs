@@ -9,6 +9,7 @@ namespace PhotoFun.Models
     public class PhotoFunBD
     {
         private const string cs = "Data Source=EQUIPE-01\\SQLEXPRESS ;Initial Catalog=tempdb;Integrated Security=True";
+
         public bool InsererUtil(RegisterModel rm)
         {
             using (var conn = new SqlConnection(cs))
@@ -76,6 +77,51 @@ namespace PhotoFun.Models
                     resultat = false;
                 }
                 return resultat;
+            }
+        }
+
+        public bool MettreAJourLeCommentaireDeLaPhoto(string commentaire, string photo)
+        {
+            using (var conn = new SqlConnection(cs))
+            {
+                bool resultat;
+                try
+                {
+                    conn.Open();
+                    var scModifier= new SqlCommand("Update Photos set Commentaire='"+commentaire+"' where Image='"+photo+"';", conn);
+                    scModifier.ExecuteNonQuery();
+                    conn.Close();
+                    resultat = true;
+                }
+                catch
+                {
+                    resultat = false;
+                }
+                return resultat;
+            }
+        }
+
+        public string ExtraireCommentaireSelonPhoto(string image)
+        {
+            using (var conn = new SqlConnection(cs))
+            {
+                string commentaire = "";
+                try
+                {
+                    conn.Open();
+                    var scExtraireCommentaireSelonPhoto = new SqlCommand("Select Commentaire from Photos where Image='" + image + "';", conn);
+                    var sdr = scExtraireCommentaireSelonPhoto.ExecuteReader();
+                    while (sdr.Read())
+                    {
+                        commentaire=ReadSingleRow(sdr);
+                    }
+                    sdr.Close();
+                    conn.Close();
+                }
+                catch
+                {
+                }
+                return commentaire;
             }
         }
 
@@ -166,6 +212,30 @@ namespace PhotoFun.Models
                     resultat = false;
                 }
                 return resultat;
+            }
+        }
+
+        public string ExtraireUtilSelonPhoto(string image)
+        {
+            using (var conn = new SqlConnection(cs))
+            {
+                string nomUtil = "";
+                try
+                {
+                    conn.Open();
+                    var scExtraireUtilSelonPhoto = new SqlCommand("Select IDUtil from Photos where Image='" + image + "';", conn);
+                    var sdr = scExtraireUtilSelonPhoto.ExecuteReader();
+                    while (sdr.Read())
+                    {
+                        nomUtil=ReadSingleRow(sdr);
+                    }
+                    sdr.Close();
+                    conn.Close();
+                }
+                catch
+                {
+                }
+                return nomUtil;
             }
         }
 
@@ -363,6 +433,7 @@ namespace PhotoFun.Models
                 return resultat;
             }
         }
+
         public bool EnleveTousLesLiaisonsAvecLesUtils(string nomPhoto)
         {
             using(var conn=new SqlConnection(cs))
@@ -467,6 +538,7 @@ namespace PhotoFun.Models
                 return resultat;
             }
         }
+
         public bool VerifLiaisonPhotoUtil(string nomUtil, string nomPhoto)
         {
             using (var conn = new SqlConnection(cs))
@@ -501,7 +573,6 @@ namespace PhotoFun.Models
             }
         }
 
-
         public bool SupprimerRelAbonnement(string UtilAbonner, string UtilConnecter)
         {
             using (var conn = new SqlConnection(cs))
@@ -523,6 +594,7 @@ namespace PhotoFun.Models
                 return resultat;
             }
         }
+
         public bool AjoutRelationUtilPhoto(string nomUtil, string nomPhoto)
         {
             using (var conn = new SqlConnection(cs))

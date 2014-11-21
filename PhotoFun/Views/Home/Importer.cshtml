@@ -5,10 +5,10 @@
 @using (Html.BeginForm("Importer", "Home", FormMethod.Post, new { enctype = "multipart/form-data"}))
 { 
     <div class="page-header">
-        <h1>Importer des photos</h1>
+        <h2>Importer des photos</h2>
     </div>
     <input class="btnchoisirfich" type="file" name="file" accept=".jpg,.png,.jpeg"/>
-    <input type="submit" name="SubImporter" value="Importer"/>
+    <input class="btn btn-lg btn-info" type="submit" name="SubImporter" value="Importer"/>
 
    <h3 class="sub-header">Cat&eacute;gorie</h3>
     @model PhotoFun.Models.PhotoModels
@@ -41,12 +41,6 @@
         @Html.TextAreaFor(PhotoModels => PhotoModels.Commentaires, new { @maxlength = 200, onkeyup = "reste(this.value);" }) 
         <br/>
         <span id="caracteres">200</span> caractères restants
-        <script type="text/javascript">
-            function reste(texte) {
-                var restants = 200 - texte.length;
-                document.getElementById('caracteres').innerHTML = restants;
-            }
-        </script>
     </div>
     <div>
     <br/>

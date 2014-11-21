@@ -5,24 +5,22 @@
 <div class="page-header">
     <h1>@NomProfil.IdUtilRechercher</h1>
 </div>
-    @{
-        if(NomProfil.IdUtilRechercher != "Utilisateur Inexistant")
-        {
-             @Html.Label(NomProfil.NbAbonnement.ToString())
-             if(NomProfil.IdUtilRechercher != User.Identity.Name)
-             {
-                  if (NomProfil.Abonner)
-                  {
-                     @Html.ActionLink("Ne plus suivre","Suivre",new{ nom=NomProfil.IdUtilRechercher, abonne=NomProfil.Abonner}, null)
-                  }
-                  else
-                  {
-                     @Html.ActionLink("Suivre", "Suivre", "Account", new { nom = NomProfil.IdUtilRechercher, abonne=NomProfil.Abonner }, null)
-                  }
-             }
-             <br />
-             @Html.ActionLink("Photos", "PhotoUtil", "Account", new { nom = NomProfil.IdUtilRechercher },null)
-        }
+@{
+    if(NomProfil.IdUtilRechercher != "Utilisateur Inexistant")
+    {
+            @Html.Label(NomProfil.NbAbonnement.ToString())
+            if(NomProfil.IdUtilRechercher != User.Identity.Name && User.Identity.IsAuthenticated)
+            {
+                if (NomProfil.Abonner)
+                {
+                    @Html.ActionLink("Ne plus suivre","Suivre",new{ nom=NomProfil.IdUtilRechercher, abonne=NomProfil.Abonner}, null)
+                }
+                else
+                {
+                    @Html.ActionLink("Suivre", "Suivre", "Account", new { nom = NomProfil.IdUtilRechercher, abonne=NomProfil.Abonner }, null)
+                }
+            }
+            <br />
+            @Html.ActionLink("Photos", "PhotoUtil", "Account", new { nom = NomProfil.IdUtilRechercher },null)
     }
-    
-
+}

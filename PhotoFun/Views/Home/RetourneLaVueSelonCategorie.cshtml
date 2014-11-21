@@ -1,47 +1,82 @@
 ﻿@{ 
     var lstimage = ViewData["lstimage"] as List<string>; 
 }
-
 <div class="page-header">
     <h2>@ViewBag.Title</h2>
 </div>
 @{   
     if (lstimage != null && lstimage.Count > 0)
     {
-        var pm = new PhotoFun.Models.PhotoFunBD();
+        var photoFunBD = new PhotoFun.Models.PhotoFunBD();
         int NbJaime;
+        string nomUtil="";
+        string commentaire="";
+            
         foreach (var Photo in lstimage)
         {
-            NbJaime = pm.RetourneLeNombreDeJAimeSelonPhoto(Photo);
+            NbJaime = photoFunBD.RetourneLeNombreDeJAimeSelonPhoto(Photo);
            <div class="divdesimages">
                     @using (Html.BeginForm("RetourneLaVueSelonCategorie", "Home", FormMethod.Post))
-                    {
+                    { 
                         string cat = ViewBag.Title;
+                        nomUtil= photoFunBD.ExtraireUtilSelonPhoto(Photo);
+                        commentaire=photoFunBD.ExtraireCommentaireSelonPhoto(Photo);
+                        
                         if (User.Identity.IsAuthenticated)
                         {
-                            if (pm.VerifLiaisonPhotoUtil(User.Identity.Name, Photo))
+                            if (photoFunBD.VerifLiaisonPhotoUtil(User.Identity.Name, Photo))
                             {
-                                <button type="submit" class="close boutonliker" title="J'aime"><span class="glyphicon glyphicon-heart"></span><span class="badge">@NbJaime</span></button> 
+                                <button type="submit" class="close boutonliker" title="J'aime"><span class="glyphicon glyphicon-heart"></span><span class="badge">@NbJaime</span></button>
                                 <img src="@Photo" class="img-thumbnail" alt="Image inaccessible" width="100%"/>
+                                <button type="button" class="fullscreen close boutonsupprimer" data-toggle="modal" data-target="#PhotoModal"><span class="glyphicon glyphicon-fullscreen"></span></button>
                                 @Html.Hidden("categorie", cat)
                                 @Html.Hidden("Image", Photo)
+                                <span hidden class="nomUtil" item="@nomUtil"></span>
+                                <span hidden class="commentaire" item="@commentaire"></span> 
                             }
                             else
                             {
                                 <button type="submit" class="close boutonliker" title="Je n'aime plus"><span class="glyphicon glyphicon-heart-empty"></span><span class="badge">@NbJaime</span></button> 
                                 <img src="@Photo" class="img-thumbnail" alt="Image inaccessible" width="100%"/>
+                                <button type="button" class="fullscreen close boutonsupprimer" data-toggle="modal" data-target="#PhotoModal"><span class="glyphicon glyphicon-fullscreen"></span></button>
                                 @Html.Hidden("categorie", cat)
                                 @Html.Hidden("Image", Photo)
+                                <span hidden class="nomUtil" item="@nomUtil"></span>
+                                <span hidden class="commentaire" item="@commentaire"></span> 
                             }
                         }
                         else
                         {
                             <img src="@Photo" class="img-thumbnail" alt="Image inaccessible" width="100%"/>
-                            <button type="submit" class="close boutonliker" title="J'aime"><span class="glyphicon glyphicon-heart"></span><span class="badge">@NbJaime</span></button> 
+                            <button type="submit" class="close boutonliker" title="J'aime"><span class="glyphicon glyphicon-heart"></span><span class="badge">@NbJaime</span></button>
+                            <button type="button" class="fullscreen close boutonsupprimer" data-toggle="modal" data-target="#PhotoModal"><span class="glyphicon glyphicon-fullscreen"></span></button>
+                            <span hidden class="nomUtil" item="@nomUtil"></span>
+                            <span hidden class="commentaire" item="@commentaire"></span> 
                         }
+
+
                     }
-            </div>  
+            </div>
+            
         }
+        <div class="modal fade bs-example-modal-lg" id="PhotoModal">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close boutonsupprimer" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title">
+                          <a href="" id="nomUtil"></a>
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <img src="" alt="Image inaccessible" width="100%"/>
+                    </div>
+                    <div class="modal-footer">
+                        <p id="commentaire"></p>
+                    </div>
+                </div>
+             </div>
+         </div>  
     }
     else
     {

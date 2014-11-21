@@ -145,12 +145,73 @@ namespace PhotoFun.Controllers
                         }
                     }
                 }
+                else
+                {
+                    if (image != null && actionAFaire == "EDIT")
+                    {
+                        return RedirectToAction("EditCommentaireUtil", "Account", new { image = image });
+                    }
+                }
+            }
+            return RedirectToAction("Erreur", "Home");
+        }
+
+        public ActionResult EditCommentaireUtil(string image)
+        {
+            string commentaire;
+            PhotoFunBD photoFunBD = new PhotoFunBD();
+            commentaire=photoFunBD.ExtraireCommentaireSelonPhoto(image);
+            ViewData["commentaire"] = commentaire;
+            ViewData["image"] = image;
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult EditCommentaireUtil(string Image, string Commentaire)
+        {
+            PhotoFunBD photoFunBD=new PhotoFunBD();
+            string nouveaucommentaire = Commentaire; 
+            string image= Image;
+            if (photoFunBD.MettreAJourLeCommentaireDeLaPhoto(nouveaucommentaire, image))
+            {
+                return RedirectToAction("PhotoUtil", "Account", new { nom = User.Identity.Name });
             }
             return RedirectToAction("Erreur", "Home");
         }
 
         public ActionResult Profil()
         {
+            return View();
+        }
+
+        [AllowAnonymous]
+        public ActionResult ProfilUtil(string nomUtil)
+        {
+            var photoFunBD = new PhotoFunBD();
+            var profilModel = new ProfilModel();
+            var retour = new List<string>();
+            int nbAbonnement;
+            if (photoFunBD.ExtraireUtil(nomUtil, out retour))
+            {
+                if (retour.Count > 0)
+                {
+                    profilModel.IdUtilRechercher = nomUtil;
+
+                    if (photoFunBD.CompteNbAbonnement(profilModel, out nbAbonnement))
+                    {
+                        profilModel.NbAbonnement = nbAbonnement;
+                    }
+                    profilModel.Abonner = photoFunBD.VerifAbonnement(profilModel.IdUtilRechercher, User.Identity.Name);
+                    ViewData["Rechercher"] = profilModel;
+                }
+                else
+                {
+                    profilModel.Abonner = false;
+                    profilModel.IdUtilRechercher = "Utilisateur Inexistant";
+                    profilModel.NbAbonnement = 0;
+                    ViewData["Rechercher"] = profilModel;
+                }
+            }
             return View();
         }
 
