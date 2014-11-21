@@ -51,8 +51,7 @@
    position:fixed;
    padding-left: 0;
    margin-bottom: 0;
-   list-style: none; 
-   background-color:Lime;   
+   list-style: none;   
 }
     
 .menucotegauche > li {
@@ -79,7 +78,7 @@ bottom: 0;
 left: 0;
 z-index: 1000;
 display: block;
-padding: 20px;
+padding: 2%;
 overflow-x: hidden;
 overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
 background-color: #101010;

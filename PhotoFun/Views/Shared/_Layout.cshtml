@@ -33,7 +33,7 @@
                             </div>
                         </form>
                     </div>
-                    <ul class="nav navbar-nav navbar-right" style="margin-left:2%">
+                    <ul class="nav navbar-nav navbar-right">
                             @Html.Partial("_LoginPartial")
                         <li>@Html.ActionLink("Accueil", "Index", "Home")</li>
                         <li>@Html.ActionLink("Importer", "Importer", "Home")</li>
@@ -41,7 +41,7 @@
                     </ul>
                     @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" })){
                     @Html.AntiForgeryToken()}
-                    </div>
+                </div>
              </div>
         </div>
         <div class="container-fluid">
@@ -57,7 +57,7 @@
                         <li>@Html.ActionLink("Autres", "RetourneLaVueSelonCategorie", "Home", new { categorie = "Autres" }, null)</li>
                     </ul>
                 </div>
-                <div class="col-xs-8 col-sm-8 col-md-9 col-lg-9 main">
+                <div class="col-xs-8  col-sm-8  col-md-9 col-lg-10  main" style="margin-left:2%">
                     @RenderSection("featured", required: false)
                     @RenderBody()
                 </div>   
