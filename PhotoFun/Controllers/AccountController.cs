@@ -181,6 +181,7 @@ namespace PhotoFun.Controllers
 
         public ActionResult Profil()
         {
+            ViewData["Utilisateur"] = User.Identity.Name;
             return View();
         }
 
