@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PhotoFun.Controllers;
+using PhotoFun.Models;
 
 namespace TestPhotoFun
 {
@@ -42,6 +43,22 @@ namespace TestPhotoFun
             var result = controller.ProfilUtil("UnNom") as ActionResult;
             //then
             Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void TestAjoutUtilBD()
+        {
+            //given
+            var requeteutilBD = new RequeteUtilBD();
+            var rm = new RegisterModel();
+            rm.Courriel = "nic@hotmail.com";
+            rm.NomUtil = "Pandolfo";
+            rm.PrenomUtil = "Nicolas";
+            rm.UserName = "nicpanal";
+            //when
+            var result = requeteutilBD.InsererUtil(rm);
+            //then
+            Assert.IsTrue(result);
         }
     }
 }
