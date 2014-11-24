@@ -7,9 +7,17 @@
     <div class="page-header">
         <h2>Importer des photos</h2>
     </div>
+    if (VerifierImporter == "TransfertReussi")
+    {
+        @Html.Partial("_TransfertReussi")
+    }
+    if (VerifierImporter == "TransfertEchoue")
+    {
+        @Html.Partial("_TransfertEchoue")
+    }
     <input class="btnchoisirfich" type="file" name="file" accept=".jpg,.png,.jpeg"/>
     <input class="btn btn-lg btn-info" type="submit" name="SubImporter" value="Importer"/>
-
+    
    <h3 class="sub-header">Cat&eacute;gorie</h3>
     @model PhotoFun.Models.PhotoModels
     <div class="col-md-2 radio radio-inline">
@@ -41,19 +49,5 @@
         @Html.TextAreaFor(PhotoModels => PhotoModels.Commentaires, new { @maxlength = 200, onkeyup = "reste(this.value);" }) 
         <br/>
         <span id="caracteres">200</span> caractères restants
-    </div>
-    <div>
-    <br/>
-    @using (Html.BeginForm())
-    {
-        if (VerifierImporter == "TransfertReussi")
-        {
-            @Html.Partial("_TransfertReussi")
-        }
-        if (VerifierImporter == "TransfertEchoue")
-        {
-            @Html.Partial("_TransfertEchoue")
-        }
-    }
     </div>
 }

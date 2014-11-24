@@ -1,12 +1,23 @@
 ﻿@{
     ViewBag.Title = "Profil";
+    var nomutil=ViewData["Utilisateur"];
 }
 <div class="page-header">
-    <h2>Profil</h2>
+    <h2>@ViewBag.Title</h2>
 </div>
-<div>
-    @Html.ActionLink("Modifier le mot de passe","Manage","Account")
-</div>
-<div>
-    @Html.ActionLink("Mes photos", "PhotoUtil", "Account", new { nom = User.Identity.Name },null)
+<div class="container-fluid">
+	<div class="row">
+        <div class="col-xs-8 col-sm-6 col-md-3">
+		    <img src="/Images/xxdomxx_Koala2014112474640.jpg" alt="Image inaccessible" class="img-thumbnail" width="100%"/>
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-6">
+            <h2>@nomutil</h2>
+            <h5>Courriel:</h5>
+            <h5>Prénom:</h5>
+            <h5>Nom:</h5>
+            <h5><a href="#">Mes abonnements</a></h5>
+            <h5>@Html.ActionLink("Modifier le mot de passe","Manage","Account")</h5>
+            <h5>@Html.ActionLink("Mes photos", "PhotoUtil", "Account", new { nom = User.Identity.Name },null)</h5>
+        </div>
+    </div>
 </div>
