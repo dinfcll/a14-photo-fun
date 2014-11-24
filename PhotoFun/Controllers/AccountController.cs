@@ -182,7 +182,28 @@ namespace PhotoFun.Controllers
 
         public ActionResult Profil()
         {
-            ViewData["Utilisateur"] = User.Identity.Name;
+            var requeteutilBD = new RequeteUtilBD();
+            var profilModel = new ProfilModel();
+            var courriel = "";
+            var nom = "";
+            var prenom = "";
+
+            profilModel.IdUtilRechercher = User.Identity.Name;
+
+            if (requeteutilBD.ExtraireCourrielSelonUtil(User.Identity.Name, out courriel))
+            {
+                profilModel.Courriel = courriel;
+            }
+            if (requeteutilBD.ExtraireNomSelonUtil(User.Identity.Name, out nom))
+            {
+                profilModel.NomUtil = nom;
+            }
+            if (requeteutilBD.ExtrairePrenomSelonUtil(User.Identity.Name, out prenom))
+            {
+                profilModel.PrenomUtil = prenom;
+            }
+            ViewData["Utilisateur"] = profilModel;
+
             return View();
         }
 
@@ -244,9 +265,12 @@ namespace PhotoFun.Controllers
         {
             var requeteutilBD = new RequeteUtilBD();
             var requeteAbonnementUtilBD = new RequeteAbonnementUtilBD();
-            var requeteUtilBD = new RequeteUtilBD();
             var profilModel = new ProfilModel();
             var retour = new List<string>();
+            var courriel="";
+            var nom="";
+            var prenom="";
+
             int nbAbonnement;
             if (requeteutilBD.ExtraireUtil(nomUtil, out retour))
             {
@@ -259,9 +283,18 @@ namespace PhotoFun.Controllers
                         profilModel.NbAbonnement = nbAbonnement;
                     }
                     profilModel.Abonner = requeteAbonnementUtilBD.VerifAbonnement(profilModel.IdUtilRechercher, User.Identity.Name);
-                    profilModel.Courriel=retour[1];
-                    profilModel.PrenomUtil = retour[2];
-                    profilModel.NomUtil = retour[3];
+                    if (requeteutilBD.ExtraireCourrielSelonUtil(nomUtil,out courriel))
+                    {
+                        profilModel.Courriel = courriel;
+                    }
+                    if (requeteutilBD.ExtraireNomSelonUtil(nomUtil, out nom))
+                    {
+                        profilModel.NomUtil = nom;
+                    }
+                    if (requeteutilBD.ExtrairePrenomSelonUtil(nomUtil, out prenom))
+                    {
+                        profilModel.PrenomUtil = prenom;
+                    }
                     ViewData["Rechercher"] = profilModel;
                 }
             }
@@ -272,7 +305,6 @@ namespace PhotoFun.Controllers
         {
             var requeteAbonnementUtilBD = new RequeteAbonnementUtilBD();
             var profilModel = new ProfilModel();
-            int retour;
             
             if (Abonne)
             {
@@ -284,13 +316,7 @@ namespace PhotoFun.Controllers
                 profilModel.Abonner = true;
             }
 
-            profilModel.IdUtilRechercher = nom;
-            if (requeteAbonnementUtilBD.CompteNbAbonnement(profilModel, out retour))
-            {
-                profilModel.NbAbonnement = retour;
-            }
-            ViewData["Rechercher"] = profilModel;
-            return View("ProfilUtil");
+            return RedirectToAction("ProfilUtil", "Account", new { nomUtil=nom });
         }
 
         // GET: /Account/Manage
