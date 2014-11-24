@@ -9,9 +9,9 @@ namespace PhotoFun.Controllers
     {
         public ActionResult Index()
         {
-            var pfbd = new PhotoFunBD();
+            var requetephotoBD = new RequetePhotoBD();
             List<string> lstimage;
-            if (pfbd.ExtraireDernieresPhotos(5, out lstimage))
+            if (requetephotoBD.ExtraireDernieresPhotos(5, out lstimage))
             {
                 ViewData["lstimage"] = lstimage;
                 return View();
@@ -51,9 +51,9 @@ namespace PhotoFun.Controllers
        
         public ActionResult RetourneLaVueSelonCategorie(string categorie)
         {
-            var pfbd = new PhotoFunBD();
+            var requetephotoBD = new RequetePhotoBD();
             List<string> lstimage;
-            if (pfbd.ExtrairePhotoSelonCategorie(categorie, out lstimage))
+            if (requetephotoBD.ExtrairePhotoSelonCategorie(categorie, out lstimage))
             {
                 ViewData["lstimage"] = lstimage;
                 ViewBag.Title = categorie;
@@ -67,12 +67,13 @@ namespace PhotoFun.Controllers
         {
             if (image != null && categorie != null)
             {
-                var pfbd = new PhotoFunBD();
-                if (pfbd.VerifLiaisonPhotoUtil(User.Identity.Name, image))
+                var requeteRelUtilPhotoBD = new RequeteRelUtilPhotoBD();
+                var requetephotoBD = new RequetePhotoBD();
+                if (requeteRelUtilPhotoBD.VerifLiaisonPhotoUtil(User.Identity.Name, image))
                 {
-                    if (pfbd.AjoutRelationUtilPhoto(User.Identity.Name, image))
+                    if (requeteRelUtilPhotoBD.AjoutRelationUtilPhoto(User.Identity.Name, image))
                     {
-                        if (pfbd.AjouterUnLike(image))
+                        if (requetephotoBD.AjouterUnLike(image))
                         {
                             return RedirectToAction("RetourneLaVueSelonCategorie", "Home", new { categorie = categorie });
                         }
@@ -80,9 +81,9 @@ namespace PhotoFun.Controllers
                 }
                 else
                 {
-                    if(pfbd.EnleveLiaisonPhotoUtil(User.Identity.Name,image))
+                    if (requeteRelUtilPhotoBD.EnleveLiaisonPhotoUtil(User.Identity.Name, image))
                     {
-                        if (pfbd.EnleveUnLike(image))
+                        if (requetephotoBD.EnleveUnLike(image))
                         {
                             return RedirectToAction("RetourneLaVueSelonCategorie", "Home", new { categorie = categorie });
                         }
@@ -100,7 +101,7 @@ namespace PhotoFun.Controllers
         public ActionResult Importer(PhotoModels model)
         {
             model.util = User.Identity.Name;
-            var ajouterphoto = new PhotoFunBD();
+            var requetephotoBD = new RequetePhotoBD();
             string path= Server.MapPath("~/Images/");
             string NouveauNomPhoto = model.util + "_";
 
@@ -119,7 +120,7 @@ namespace PhotoFun.Controllers
                         fichier.SaveAs(path + nomfich);
                         model.image = name;
 
-                        ajouterphoto.EnregistrerPhoto(model);
+                        requetephotoBD.EnregistrerPhoto(model);
                         ViewData["VerifierImporter"] = "TransfertReussi";
                     }
                     else

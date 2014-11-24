@@ -7,24 +7,25 @@
 @{   
     if (lstimage != null && lstimage.Count > 0)
     {
-        var photoFunBD = new PhotoFun.Models.PhotoFunBD();
+        var requetephotoBD = new PhotoFun.Models.RequetePhotoBD();
+        var requeteRelUtilPhotoBD = new PhotoFun.Models.RequeteRelUtilPhotoBD();
         int NbJaime;
         string nomUtil="";
         string commentaire="";
             
         foreach (var Photo in lstimage)
         {
-            NbJaime = photoFunBD.RetourneLeNombreDeJAimeSelonPhoto(Photo);
+            NbJaime = requetephotoBD.RetourneLeNombreDeJAimeSelonPhoto(Photo);
            <div class="divdesimages">
                     @using (Html.BeginForm("RetourneLaVueSelonCategorie", "Home", FormMethod.Post))
                     { 
                         string cat = ViewBag.Title;
-                        nomUtil= photoFunBD.ExtraireUtilSelonPhoto(Photo);
-                        commentaire=photoFunBD.ExtraireCommentaireSelonPhoto(Photo);
+                        nomUtil = requetephotoBD.ExtraireUtilSelonPhoto(Photo);
+                        commentaire = requetephotoBD.ExtraireCommentaireSelonPhoto(Photo);
                         
                         if (User.Identity.IsAuthenticated)
                         {
-                            if (photoFunBD.VerifLiaisonPhotoUtil(User.Identity.Name, Photo))
+                            if (requeteRelUtilPhotoBD.VerifLiaisonPhotoUtil(User.Identity.Name, Photo))
                             {
                                 <button type="submit" class="close boutonliker" title="J'aime"><span class="glyphicon glyphicon-heart"></span><span class="badge">@NbJaime</span></button>
                                 <img src="@Photo" class="img-thumbnail" alt="Image inaccessible" width="100%"/>
