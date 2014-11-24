@@ -12,14 +12,36 @@ namespace TestPhotoFun
     public class TestUnitaire
     {
         [TestMethod]
-        public void TestRetourneAuLoginSiUtilNonConnecteEtVeuxImporter()
+        public void TestRetourneLaVueSelonLaCategorie()
         {
             //given
             var controller = new HomeController();
             //when
-            var result = controller.Importer("TransfertEchoue") as ViewResult;
+            var result = controller.RetourneLaVueSelonCategorie("Autres") as ActionResult;
             //then
-            Assert.AreEqual("Index", result.ViewName);
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void TestControllerPhotoUtilUnParametre()
+        {
+            //given
+            var controller = new AccountController();
+            //when
+            var result = controller.PhotoUtil("UnNom") as ActionResult;
+            //then
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void TestControllerProfilUtilUnParametre()
+        {
+            //given
+            var controller = new AccountController();
+            //when
+            var result = controller.ProfilUtil("UnNom") as ActionResult;
+            //then
+            Assert.IsNotNull(result);
         }
     }
 }
