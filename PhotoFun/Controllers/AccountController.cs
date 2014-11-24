@@ -187,10 +187,64 @@ namespace PhotoFun.Controllers
         }
 
         [AllowAnonymous]
+        [HttpPost]
+        public ActionResult RechercheUtil()
+        {
+            if (Request.TotalBytes > 0)
+            {
+                var profilModel = new ProfilModel();
+                var profilModeltab = new List<ProfilModel>();
+                var requeteutilBD = new RequeteUtilBD();
+                var requeteAbonnementUtilBD = new RequeteAbonnementUtilBD();
+                var retour = new List<string>();
+                int nbAbonnement;
+                var nomUtil = Request.Form.GetValues(0).GetValue(0);
+
+                if (requeteutilBD.ExtraireUtilAvecPourcent(nomUtil.ToString(), out retour))
+                {
+                    if (retour.Count > 0 && (string)nomUtil != "")
+                    {
+                        foreach (string util in retour)
+                        {
+                            profilModel = new ProfilModel();
+                            profilModel.IdUtilRechercher = util;
+                            if (requeteAbonnementUtilBD.CompteNbAbonnement(profilModel, out nbAbonnement))
+                            {
+                                profilModel.NbAbonnement = nbAbonnement;
+                            }
+                            profilModel.Abonner = requeteAbonnementUtilBD.VerifAbonnement(profilModel.IdUtilRechercher, User.Identity.Name);
+                            profilModeltab.Add(profilModel);
+                        }
+                        ViewData["Rechercher"] = profilModeltab;
+                    }
+                    else
+                    {
+                        profilModel.Abonner = false;
+                        profilModel.IdUtilRechercher = "Utilisateur Inexistant";
+                        profilModel.NbAbonnement = 0;
+                        profilModeltab.Add(profilModel);
+                        ViewData["Rechercher"] = profilModeltab;
+                    }
+                }
+                else
+                {
+                    return RedirectToAction("Erreur", "Home");
+                }
+            }
+            else
+            {
+                string erreur = "Une erreur est survenue";
+                ViewData["Rechercher"] = erreur;
+            }
+            return View();
+        }
+
+        [AllowAnonymous]
         public ActionResult ProfilUtil(string nomUtil)
         {
             var requeteutilBD = new RequeteUtilBD();
             var requeteAbonnementUtilBD = new RequeteAbonnementUtilBD();
+            var requeteUtilBD = new RequeteUtilBD();
             var profilModel = new ProfilModel();
             var retour = new List<string>();
             int nbAbonnement;
@@ -205,62 +259,11 @@ namespace PhotoFun.Controllers
                         profilModel.NbAbonnement = nbAbonnement;
                     }
                     profilModel.Abonner = requeteAbonnementUtilBD.VerifAbonnement(profilModel.IdUtilRechercher, User.Identity.Name);
+                    profilModel.Courriel=retour[1];
+                    profilModel.PrenomUtil = retour[2];
+                    profilModel.NomUtil = retour[3];
                     ViewData["Rechercher"] = profilModel;
                 }
-                else
-                {
-                    profilModel.Abonner = false;
-                    profilModel.IdUtilRechercher = "Utilisateur Inexistant";
-                    profilModel.NbAbonnement = 0;
-                    ViewData["Rechercher"] = profilModel;
-                }
-            }
-            return View();
-        }
-
-        [AllowAnonymous]
-        [HttpPost]
-        public ActionResult ProfilUtil()
-        {
-            if (Request.TotalBytes > 0)
-            {
-                var profilModel = new ProfilModel();
-                var requeteutilBD = new RequeteUtilBD();
-                var requeteAbonnementUtilBD = new RequeteAbonnementUtilBD();
-                var retour = new List<string>();
-                int nbAbonnement;
-                var nomUtil = Request.Form.GetValues(0).GetValue(0);
-
-                if (requeteutilBD.ExtraireUtil(nomUtil.ToString(), out retour))
-                {
-                    if (retour.Count > 0)
-                    {
-                        profilModel.IdUtilRechercher = nomUtil.ToString();
-
-                        if (requeteAbonnementUtilBD.CompteNbAbonnement(profilModel, out nbAbonnement))
-                        {
-                            profilModel.NbAbonnement = nbAbonnement;
-                        }
-                        profilModel.Abonner = requeteAbonnementUtilBD.VerifAbonnement(profilModel.IdUtilRechercher, User.Identity.Name);
-                        ViewData["Rechercher"] = profilModel;
-                    }
-                    else
-                    {
-                        profilModel.Abonner = false;
-                        profilModel.IdUtilRechercher = "Utilisateur Inexistant";
-                        profilModel.NbAbonnement = 0;
-                        ViewData["Rechercher"] = profilModel;
-                    }
-                }
-                else
-                {
-                    return RedirectToAction("Erreur", "Home");
-                }
-            }
-            else
-            {
-                string erreur = "Une erreur est survenue";
-                ViewData["Rechercher"] = erreur;
             }
             return View();
         }
@@ -286,7 +289,6 @@ namespace PhotoFun.Controllers
             {
                 profilModel.NbAbonnement = retour;
             }
-            
             ViewData["Rechercher"] = profilModel;
             return View("ProfilUtil");
         }

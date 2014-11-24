@@ -318,6 +318,7 @@
     <Content Include="Views\Account\ProfilUtil.cshtml" />
     <Content Include="Views\Home\RetourneLaVueSelonCategorie.cshtml" />
     <Content Include="Views\Account\EditCommentaireUtil.cshtml" />
+    <Content Include="Views\Account\RechercheUtil.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

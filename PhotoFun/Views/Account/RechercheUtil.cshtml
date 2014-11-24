@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Profil recherché";
+    var NomProfil = ViewData["Rechercher"] as List<PhotoFun.Models.ProfilModel>;
+}
+
+<div class="page-header">
+    <h2>@ViewBag.Title</h2>
+</div>
+@foreach (PhotoFun.Models.ProfilModel util in NomProfil)
+{
+    <div class="divdesprofil">
+    @if (util.IdUtilRechercher != "Utilisateur Inexistant")
+    {
+        <div class="col-xs-8 col-sm-6 col-md-2">
+		    <img src="/Images/xxdomxx_Koala2014112474640.jpg" alt="Image inaccessible" class="img-thumbnail" width="100%"/>
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-6">
+            <h3><a href="/Account/ProfilUtil?nomUtil=@util.IdUtilRechercher" id="nomUtil">@util.IdUtilRechercher</a></h3>
+        </div>
+    }
+    else
+    {
+        <h3>Utilisateur Inexistant</h3>
+    }
+    </div>
+}
