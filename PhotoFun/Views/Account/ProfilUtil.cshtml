@@ -3,36 +3,45 @@
     var NomProfil = ViewData["Rechercher"] as PhotoFun.Models.ProfilModel;
 }
 
-<div class="page-header">
-    <h2>@NomProfil.IdUtilRechercher</h2>
-</div>
-@if (NomProfil.IdUtilRechercher != "Utilisateur Inexistant")
+@if (NomProfil != null)
 {
-    <div class="container-fluid">
-	    <div class="row">
-            <div class="col-xs-8 col-sm-6 col-md-3">
-		        <img src="/Images/xxdomxx_Koala2014112474640.jpg" alt="Image inaccessible" class="img-thumbnail" width="100%"/>
-            </div>
-            <div class="col-xs-4 col-sm-4 col-md-6">
-                <h5>@NomProfil.IdUtilRechercher</h5>
-                <h5>Courriel: @NomProfil.Courriel</h5>
-                <h5>Prénom: @NomProfil.PrenomUtil</h5>
-                <h5>Nom: @NomProfil.NomUtil</h5>
-                <h5>Nombre d'abonnés: @NomProfil.NbAbonnement</h5>
-                @if (NomProfil.IdUtilRechercher != User.Identity.Name && User.Identity.IsAuthenticated)
-                {
-                    if (NomProfil.Abonner)
+    if (NomProfil.IdUtilRechercher != "Utilisateur Inexistant")
+    {
+    <div class="page-header">
+        <h2>@NomProfil.IdUtilRechercher</h2>
+    </div>
+        <div class="container-fluid">
+	        <div class="row">
+                <div class="col-xs-8 col-sm-6 col-md-3">
+		            <img src="/Images/xxdomxx_Koala2014112474640.jpg" alt="Image inaccessible" class="img-thumbnail" width="100%"/>
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-6">
+                    <h5>@NomProfil.IdUtilRechercher</h5>
+                    <h5>Courriel: @NomProfil.Courriel</h5>
+                    <h5>Prénom: @NomProfil.PrenomUtil</h5>
+                    <h5>Nom: @NomProfil.NomUtil</h5>
+                    <h5>Nombre d'abonnés: @NomProfil.NbAbonnement</h5>
+                    @if (NomProfil.IdUtilRechercher != User.Identity.Name && User.Identity.IsAuthenticated)
                     {
-                        <h5>@Html.ActionLink("Ne plus suivre", "Suivre", new { nom = NomProfil.IdUtilRechercher, abonne = NomProfil.Abonner }, null)</h5>
+                        if (NomProfil.Abonner)
+                        {
+                            <h5>@Html.ActionLink("Ne plus suivre", "Suivre", new { nom = NomProfil.IdUtilRechercher, abonne = NomProfil.Abonner }, null)</h5>
+                        }
+                        else
+                        {
+                            <h5>@Html.ActionLink("Suivre", "Suivre", "Account", new { nom = NomProfil.IdUtilRechercher, abonne = NomProfil.Abonner }, null)</h5>
+                        }
                     }
-                    else
-                    {
-                        <h5>@Html.ActionLink("Suivre", "Suivre", "Account", new { nom = NomProfil.IdUtilRechercher, abonne = NomProfil.Abonner }, null)</h5>
-                    }
-                }
-                <h5>@Html.ActionLink("Photos", "PhotoUtil", "Account", new { nom = NomProfil.IdUtilRechercher }, null)</h5>
+                    <h5>@Html.ActionLink("Photos", "PhotoUtil", "Account", new { nom = NomProfil.IdUtilRechercher }, null)</h5>
+                </div>
             </div>
-        </div>
-    </div>   
+        </div>   
+    }
+}
+else
+{
+    <div class="page-header">
+        <h2>Utilisateur Inexistant</h2>
+    </div>
 }
 

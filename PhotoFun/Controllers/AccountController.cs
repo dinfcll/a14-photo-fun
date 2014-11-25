@@ -223,7 +223,7 @@ namespace PhotoFun.Controllers
 
                 if (requeteutilBD.ExtraireUtilAvecPourcent(nomUtil.ToString(), out retour))
                 {
-                    if (retour.Count > 0 && (string)nomUtil != "")
+                    if (retour.Count > 0 && nomUtil.ToString() != "")
                     {
                         foreach (string util in retour)
                         {

@@ -460,4 +460,3 @@ Z:\a14-photo-fun\PhotoFun\bin\fr\Microsoft.Web.WebPages.OAuth.resources.dll
 Z:\a14-photo-fun\PhotoFun\bin\fr\WebMatrix.WebData.resources.dll
 Z:\a14-photo-fun\PhotoFun\obj\Debug\PhotoFun.pdb
 Z:\a14-photo-fun\PhotoFun\obj\Debug\PhotoFun.csprojResolveAssemblyReference.cache
-C:\Users\Dominic\Desktop\a14-photo-fun\PhotoFun\obj\Debug\PhotoFun.csprojResolveAssemblyReference.cache
