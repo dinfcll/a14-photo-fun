@@ -48,6 +48,18 @@ namespace PhotoFun.Controllers
         {
             return View();
         }
+
+        public ActionResult PartagerImage(string image)
+        {
+            string host= Request.Url.Host + (Request.Url.IsDefaultPort ? "" : ":" + Request.Url.Port);
+            string commentaire;
+            RequetePhotoBD requetePhotoBD = new RequetePhotoBD();
+            commentaire=requetePhotoBD.ExtraireCommentaireSelonPhoto(image);
+            ViewData["commentaire"] = commentaire;
+            ViewData["host"] = host;
+            ViewData["image"] = image;
+            return View();
+        }
        
         public ActionResult RetourneLaVueSelonCategorie(string categorie)
         {

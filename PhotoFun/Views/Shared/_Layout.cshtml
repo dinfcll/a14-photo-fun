@@ -26,7 +26,7 @@
                     <div class="col-sm-3 col-md-3">
                         <form class="navbar-form" role="search" action="/Account/RechercheUtil" method="post">
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Chercher quelqu'un" name="RechercheUtil">
+                                <input type="text" class="form-control" placeholder="Chercher quelqu'un" name="RechercheUtil"/>
                                 <div class="input-group-btn">
                                     <button class="btn btn-info" type="submit"><i class="glyphicon glyphicon-search"></i></button>
                                 </div>
@@ -61,8 +61,13 @@
                     @RenderSection("featured", required: false)
                     @RenderBody()
                 </div>   
+            </div>
         </div>
-    </div>
+        <div class="footer">
+        <br/>
+        <br/>
+        <br/>
+        </div>
         @Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/Scripts/bootstrap.js")
         @Scripts.Render("~/Scripts/MonSite.js")
