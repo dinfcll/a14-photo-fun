@@ -12,8 +12,7 @@
     <div>
         @using (Html.BeginForm("EditCommentaireUtil", "Account", FormMethod.Post))
         {
-            <h3>Commentaires</h3>
-            <br/>
+            <h3>Commentaire</h3>
             <textarea autofocus onkeyup = "reste(this.value);" maxlength = "200" rows="5" cols="50" name="Commentaire">@commentaire</textarea> 
             @Html.Hidden("Image", image)
             <br/>

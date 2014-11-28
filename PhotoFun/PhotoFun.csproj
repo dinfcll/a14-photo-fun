@@ -319,6 +319,7 @@
     <Content Include="Views\Home\RetourneLaVueSelonCategorie.cshtml" />
     <Content Include="Views\Account\EditCommentaireUtil.cshtml" />
     <Content Include="Views\Account\RechercheUtil.cshtml" />
+    <Content Include="Views\Home\PartagerImage.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

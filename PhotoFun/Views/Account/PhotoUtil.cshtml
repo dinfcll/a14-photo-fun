@@ -66,6 +66,9 @@
                 @Html.Hidden("Image", PhotoUtil)
             }
         }
+            <div> 
+                @Html.ActionLink("Partager", "PartagerImage", "Home", new { image = PhotoUtil }, new { @class = "btn btn-lg btn-info btn-sm" })
+            </div>
         </div>
     }
 }

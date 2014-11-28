@@ -32,8 +32,6 @@
                                 <button type="button" class="fullscreen close boutonsupprimer" data-toggle="modal" data-target="#PhotoModal"><span class="glyphicon glyphicon-fullscreen"></span></button>
                                 @Html.Hidden("categorie", cat)
                                 @Html.Hidden("Image", Photo)
-                                <span hidden class="nomUtil" item="@nomUtil"></span>
-                                <span hidden class="commentaire" item="@commentaire"></span> 
                             }
                             else
                             {
@@ -42,8 +40,6 @@
                                 <button type="button" class="fullscreen close boutonsupprimer" data-toggle="modal" data-target="#PhotoModal"><span class="glyphicon glyphicon-fullscreen"></span></button>
                                 @Html.Hidden("categorie", cat)
                                 @Html.Hidden("Image", Photo)
-                                <span hidden class="nomUtil" item="@nomUtil"></span>
-                                <span hidden class="commentaire" item="@commentaire"></span> 
                             }
                         }
                         else
@@ -51,12 +47,13 @@
                             <img src="@Photo" class="img-thumbnail" alt="Image inaccessible" width="100%"/>
                             <button type="submit" class="close boutonliker" title="J'aime"><span class="glyphicon glyphicon-heart"></span><span class="badge">@NbJaime</span></button>
                             <button type="button" class="fullscreen close boutonsupprimer" data-toggle="modal" data-target="#PhotoModal"><span class="glyphicon glyphicon-fullscreen"></span></button>
+                        }
                             <span hidden class="nomUtil" item="@nomUtil"></span>
                             <span hidden class="commentaire" item="@commentaire"></span> 
-                        }
-
-
                     }
+                    <div> 
+                        @Html.ActionLink("Partager", "PartagerImage", "Home", new { image = Photo }, new { @class = "btn btn-lg btn-info btn-sm" })
+                    </div>
             </div>
             
         }
