@@ -60,5 +60,21 @@ namespace TestPhotoFun
             //then
             Assert.IsTrue(result);
         }
+
+        [TestMethod]
+        public void TestEnregistrerPhoto()
+        {
+            //Given
+            var requetePhotoBD = new RequetePhotoBD();
+            var photoModel = new PhotoModels();
+            photoModel.Categorie = "Animaux";
+            photoModel.Commentaires = "Gros jambon";
+            photoModel.util = "nicpanal";
+            photoModel.image = photoModel.util + "_Allo" + photoModel.IDUniqueNomPhoto;
+            //when
+            var result = requetePhotoBD.EnregistrerPhoto(photoModel);
+            //then
+            Assert.IsTrue(result);
+        }
     }
 }

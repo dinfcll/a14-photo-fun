@@ -69,19 +69,5 @@ namespace PhotoFun.Models
             m_img = null;
             m_Commentaires = null;
         }
-
-        public bool ReinitialiserPhotoModel()
-        {
-            return true;
-        }
-
-        public bool ConfirmeDonnees()
-        {
-            if (m_cat != null && m_idutil != null && m_img != null)
-            {
-                return true;
-            }
-            return false;
-        }
     }
 }
