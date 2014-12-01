@@ -1,0 +1,20 @@
+﻿@{ 
+    var image = ViewData["image"] as string;
+    var host = ViewData["host"] as string;
+    var commentaire = ViewData["commentaire"] as string;
+    ViewBag.Title = "Partage";
+    var lien = host + "/Home/PartagerImage?image=" + image;
+}
+<div class="page-header">
+    <h2>Lien du partage:</h2><input class="inputPartageImage" type="text" name="image" value="@lien" readonly/>
+</div>
+<div class="divPartagerImage">
+    <img src="@image" class="img-thumbnail" alt="Image inaccessible" width="80%"/>
+    @if (commentaire != "")
+    {
+        <br/>
+        <h4>Commentaire</h4>
+        <textarea rows="5" cols="50" name="Commentaire" readonly>@commentaire</textarea> 
+    }
+</div>
+

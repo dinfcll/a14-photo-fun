@@ -5,6 +5,12 @@
     position:relative;
 }
 
+.divdesprofils
+{
+   display:inline-block;
+   width:45%; 
+}
+
 .boutonsupprimer
 {
     float:right;
@@ -18,7 +24,7 @@
     position:absolute;
     float:left;
     left:2%;
-    bottom:2%;
+    bottom:9%;
 }
 
 .menulorsquepetit
@@ -31,19 +37,19 @@
     float:right;
     position:absolute;
     right:2%;
-    bottom:3%;
+    bottom:10%;
 }
 
-    .btnchoisirfich
-    {
-        border: 1px solid #e2e2e2;
-        background: #fff;
-        color: #333;
-        font-size: 1.2em;
-        margin: 5px 0 6px 0;
-        padding: 5px;
-        width: 450px;
-    }
+.btnchoisirfich
+{
+   border: 1px solid #e2e2e2;
+   background: #fff;
+   color: #333;
+   font-size: 1.2em;
+   margin: 5px 0 6px 0;
+   padding: 5px;
+   width: 450px;
+}
     
 .menucotegauche
 {
@@ -83,4 +89,15 @@ overflow-x: hidden;
 overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
 background-color: #101010;
 border-right: 1px solid #eee;
+}
+
+.divPartagerImage
+{
+   display:inline-block;
+   width:80%;
+}
+
+.inputPartageImage
+{
+    width:1000px !important;
 }

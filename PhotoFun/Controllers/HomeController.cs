@@ -51,6 +51,18 @@ namespace PhotoFun.Controllers
             return View();
         }
 
+        public ActionResult PartagerImage(string image)
+        {
+            string host= Request.Url.Host + (Request.Url.IsDefaultPort ? "" : ":" + Request.Url.Port);
+            string commentaire;
+            RequetePhotoBD requetePhotoBD = new RequetePhotoBD();
+            commentaire=requetePhotoBD.ExtraireCommentaireSelonPhoto(image);
+            ViewData["commentaire"] = commentaire;
+            ViewData["host"] = host;
+            ViewData["image"] = image;
+            return View();
+        }
+		
         public ActionResult RetourneLaVueSelonCategorie(string categorie)
         {
             var requetephotoBD = new RequetePhotoBD();
@@ -116,14 +128,20 @@ namespace PhotoFun.Controllers
                     string ext = Path.GetExtension(fichier.FileName);
                     if (ext == ".jpg" || ext == ".png" || ext == ".jpeg")
                     {
-                        string nomfich = model.util + '_' + Path.GetFileNameWithoutExtension(fichier.FileName) + model.IDUniqueNomPhoto + ext;
-                        string name = "/Images/" + nomfich;
-                        fichier.SaveAs(path + nomfich);
-                        model.image = name;
-
-                        requetephotoBD.EnregistrerPhoto(model);
-                        ViewData["VerifierImporter"] = "TransfertReussi";
-
+                        string nomfich = model.util+ '_' + Path.GetFileNameWithoutExtension(fichier.FileName) + model.IDUniqueNomPhoto + ext;
+                        string name = "/Images/" +nomfich;
+                        var image = Image.FromStream(fichier.InputStream, true, true);
+                        if (image.Height >= 600 && image.Width >= 600)
+                        {
+                            fichier.SaveAs(path + nomfich);
+                            model.image = name;
+                            requetephotoBD.EnregistrerPhoto(model);
+                            ViewData["VerifierImporter"] = "TransfertReussi";
+                        }
+                        else
+                        {
+                            ViewData["VerifierImporter"] = "TransfertEchoue";
+                        }
                     }
                     else
                     {
