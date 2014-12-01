@@ -1,8 +1,4 @@
-﻿using System;
-using System.Web.Mvc;
-using System.Text;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PhotoFun.Controllers;
 using PhotoFun.Models;
@@ -12,6 +8,7 @@ namespace TestPhotoFun
     [TestClass]
     public class TestUnitaire
     {
+        private const string NomUsager="Mouissa";
         [TestMethod]
         public void TestRetourneLaVueSelonLaCategorie()
         {
@@ -39,11 +36,13 @@ namespace TestPhotoFun
         {
             //given
             var requeteutilBD = new RequeteUtilBD();
-            var rm = new RegisterModel();
-            rm.Courriel = "nic@hotmail.com";
-            rm.NomUtil = "Pandolfo";
-            rm.PrenomUtil = "Nicolas";
-            rm.UserName = "Mouissa";
+            var rm = new RegisterModel
+            {
+                Courriel = "nic@hotmail.com",
+                NomUtil = "Pandolfo",
+                PrenomUtil = "Nicolas",
+                UserName = NomUsager
+            };
             //when
             var result = requeteutilBD.InsererUtil(rm);
             //then
@@ -56,7 +55,7 @@ namespace TestPhotoFun
             //given
             var requeUtilBD = new RequeteUtilBD();
             //when
-            var result = requeUtilBD.ExtraireUtil("Mouissa");
+            var result = requeUtilBD.ExtraireUtil(NomUsager);
             //then
             Assert.IsTrue(result);
         }
@@ -66,9 +65,7 @@ namespace TestPhotoFun
         {
             //given
             var requetePhotoBD = new RequetePhotoBD();
-            var photoModel = new PhotoModels();
-            photoModel.util = "Mouissa";
-            photoModel.Categorie = "Autres";;
+            var photoModel = new PhotoModels {util = NomUsager, Categorie = "Autres"};
             photoModel.image = photoModel.util + "_Bateau" + photoModel.IDUniqueNomPhoto;
             //when
             var result = requetePhotoBD.EnregistrerPhoto(photoModel);
@@ -82,7 +79,7 @@ namespace TestPhotoFun
             //given
             var requeteAbonnementUtilBD = new RequeteAbonnementUtilBD();
             //when
-            var result = requeteAbonnementUtilBD.AbonnerUtil("Mouissa", "nicolo");
+            var result = requeteAbonnementUtilBD.AbonnerUtil(NomUsager, "nicolo");
             //then
             Assert.IsTrue(result);
         }
@@ -93,7 +90,7 @@ namespace TestPhotoFun
             //given
             var requeteAbonnementUtilBD = new RequeteAbonnementUtilBD();
             //when
-            var result = requeteAbonnementUtilBD.SupprimerRelAbonnement("nicolo", "Mouissa");
+            var result = requeteAbonnementUtilBD.SupprimerRelAbonnement("nicolo", NomUsager);
             //then
             Assert.IsTrue(result);
         }
