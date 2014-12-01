@@ -24,17 +24,6 @@ namespace TestPhotoFun
         }
 
         [TestMethod]
-        public void TestControllerPhotoUtilUnParametre()
-        {
-            //given
-            var controller = new AccountController();
-            //when
-            var result = controller.PhotoUtil("UnNom") as ActionResult;
-            //then
-            Assert.IsNotNull(result);
-        }
-
-        [TestMethod]
         public void TestControllerProfilUtilUnParametre()
         {
             //given
@@ -57,6 +46,17 @@ namespace TestPhotoFun
             rm.UserName = "nicpanal";
             //when
             var result = requeteutilBD.InsererUtil(rm);
+            //then
+            Assert.IsTrue(result);
+        }
+
+        [TestMethod]
+        public void TestExtraireUtil()
+        {
+            //given
+            var requeUtilBD = new RequeteUtilBD();
+            //when
+            var result = requeUtilBD.ExtraireUtil("nicpanal");
             //then
             Assert.IsTrue(result);
         }
