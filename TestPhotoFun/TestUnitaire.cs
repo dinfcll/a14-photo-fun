@@ -43,7 +43,7 @@ namespace TestPhotoFun
             rm.Courriel = "nic@hotmail.com";
             rm.NomUtil = "Pandolfo";
             rm.PrenomUtil = "Nicolas";
-            rm.UserName = "nicpanal";
+            rm.UserName = "Mouissa";
             //when
             var result = requeteutilBD.InsererUtil(rm);
             //then
@@ -56,7 +56,22 @@ namespace TestPhotoFun
             //given
             var requeUtilBD = new RequeteUtilBD();
             //when
-            var result = requeUtilBD.ExtraireUtil("nicpanal");
+            var result = requeUtilBD.ExtraireUtil("Mouissa");
+            //then
+            Assert.IsTrue(result);
+        }
+
+        [TestMethod]
+        public void TestEnregistrerPhoto()
+        {
+            //given
+            var requetePhotoBD = new RequetePhotoBD();
+            var photoModel = new PhotoModels();
+            photoModel.util = "Mouissa";
+            photoModel.Categorie = "Autres";;
+            photoModel.image = photoModel.util + "_Bateau" + photoModel.IDUniqueNomPhoto;
+            //when
+            var result = requetePhotoBD.EnregistrerPhoto(photoModel);
             //then
             Assert.IsTrue(result);
         }
