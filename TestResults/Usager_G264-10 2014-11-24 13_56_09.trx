@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="2594202e-70c1-4f7e-8797-209f8fa95411" name="Usager@G264-10 2014-11-24 13:56:09" runUser="G264-10\Usager" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="2bdc9e53-d10a-47ce-b5c1-e3b18e2ff5c4">
+    <Description>Il s'agit des paramètres de test par défaut pour une série de tests locale.</Description>
+    <Deployment enabled="false" runDeploymentRoot="Usager_G264-10 2014-11-24 13_56_09">
+      <DeploymentItem filename="Z:\a14-photo-fun\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.Helpers.dll" />
+      <DeploymentItem filename="Z:\a14-photo-fun\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.dll" />
+      <DeploymentItem filename="Z:\a14-photo-fun\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Deployment.dll" />
+      <DeploymentItem filename="Z:\a14-photo-fun\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll" />
+      <DeploymentItem filename="Z:\a14-photo-fun\packages\Microsoft.AspNet.Mvc.4.0.30506.0\lib\net40\System.Web.Mvc.dll" />
+      <DeploymentItem filename="Z:\a14-photo-fun\PhotoFun\bin\PhotoFun.dll" />
+      <DeploymentItem filename="Z:\a14-photo-fun\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll" />
+      <DeploymentItem filename="Z:\a14-photo-fun\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Razor.dll" />
+      <DeploymentItem filename="Z:\a14-photo-fun\packages\Microsoft.AspNet.Razor.2.0.30506.0\lib\net40\System.Web.Razor.dll" />
+      <DeploymentItem filename="Z:\a14-photo-fun\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2014-11-24T13:56:09.4638119-05:00" queuing="2014-11-24T13:56:09.5078144-05:00" start="2014-11-24T13:56:09.5258154-05:00" finish="2014-11-24T13:56:25.8547494-05:00" />
+  <ResultSummary outcome="Completed">
+    <Counters total="1" executed="1" passed="1" error="0" failed="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="TestControllerPhotoUtil" storage="z:\a14-photo-fun\testphotofun\bin\debug\testphotofun.dll" id="92856652-ef00-3ccb-6352-0b611729f6ba">
+      <Execution id="9504cece-84ce-4875-aa71-ea681c2b16c1" />
+      <TestMethod codeBase="Z:/a14-photo-fun/TestPhotoFun/bin/Debug/TestPhotoFun.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestPhotoFun.TestUnitaire, TestPhotoFun, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TestControllerPhotoUtil" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Les résultats ne figurent pas dans une liste" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="Tous les résultats chargés" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="92856652-ef00-3ccb-6352-0b611729f6ba" executionId="9504cece-84ce-4875-aa71-ea681c2b16c1" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="9504cece-84ce-4875-aa71-ea681c2b16c1" testId="92856652-ef00-3ccb-6352-0b611729f6ba" testName="TestControllerPhotoUtil" computerName="G264-10" duration="00:00:16.0637359" startTime="2014-11-24T13:56:09.5488167-05:00" endTime="2014-11-24T13:56:25.8267478-05:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9504cece-84ce-4875-aa71-ea681c2b16c1">
+    </UnitTestResult>
+  </Results>
+</TestRun>

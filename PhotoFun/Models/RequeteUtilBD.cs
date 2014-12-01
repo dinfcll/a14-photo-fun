@@ -194,26 +194,5 @@ namespace PhotoFun.Models
                 return resultat;
             }
         }
-
-        public bool MettreAJourUtil(LocalPasswordModel lpm, string usager)
-        {
-            using (var conn = new SqlConnection(cs))
-            {
-                bool resultat;
-                try
-                {
-                    conn.Open();
-                    var scModifier = new SqlCommand("Update Utilisateurs set MotPasse='" + lpm.NewPassword + "' where IDUtil='" + usager + "';", conn);
-                    scModifier.ExecuteNonQuery();
-                    conn.Close();
-                    resultat = true;
-                }
-                catch
-                {
-                    resultat = false;
-                }
-                return resultat;
-            }
-        }
     }
 }
