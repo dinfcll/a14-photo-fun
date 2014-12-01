@@ -131,7 +131,7 @@ namespace PhotoFun.Controllers
                         string nomfich = model.util+ '_' + Path.GetFileNameWithoutExtension(fichier.FileName) + model.IDUniqueNomPhoto + ext;
                         string name = "/Images/" +nomfich;
                         var image = Image.FromStream(fichier.InputStream, true, true);
-                        if (image.Height >= 400 && image.Width >= 400)
+                        if (image.Height >= 600 && image.Width >= 600)
                         {
                             fichier.SaveAs(path + nomfich);
                             model.image = name;
