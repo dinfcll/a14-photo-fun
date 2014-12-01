@@ -15,7 +15,8 @@
             <h5>Courriel: @nomutil.Courriel</h5>
             <h5>Prénom: @nomutil.PrenomUtil</h5>
             <h5>Nom: @nomutil.NomUtil</h5>
-            <h5><a href="#">Mes abonnements</a></h5>
+            <h5>Nombre d'abonnés: @nomutil.NbAbonnement</h5>
+            <h5>@Html.ActionLink("Mes abonnements", "MesAbonnements", "Account")</h5>
             <h5>@Html.ActionLink("Modifier le mot de passe","Manage","Account")</h5>
             <h5>@Html.ActionLink("Mes photos", "PhotoUtil", "Account", new { nom = User.Identity.Name },null)</h5>
         </div>

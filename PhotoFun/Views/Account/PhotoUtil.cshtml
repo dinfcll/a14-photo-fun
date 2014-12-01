@@ -72,3 +72,15 @@
         </div>
     }
 }
+else
+{
+    var nomutil = nom;
+    if (nomutil == User.Identity.Name)
+    {
+        <h3>Vous n'avez présentement aucune photo. @Html.ActionLink("Importez", "Importer", "Home") en maintenant!</h3> 
+    }
+    else
+    {
+        <h3>Ce profil n'a pas de photo pour l'instant.</h3> 
+    }
+}

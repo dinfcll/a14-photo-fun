@@ -320,6 +320,7 @@
     <Content Include="Views\Account\EditCommentaireUtil.cshtml" />
     <Content Include="Views\Account\RechercheUtil.cshtml" />
     <Content Include="Views\Home\PartagerImage.cshtml" />
+    <Content Include="Views\Account\MesAbonnements.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
