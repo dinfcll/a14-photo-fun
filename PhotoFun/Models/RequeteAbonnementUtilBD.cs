@@ -127,5 +127,33 @@ namespace PhotoFun.Models
                 return resultat;
             }
         }
+
+        public bool ExtraireLesAbonnementsSelonUtil(string NomUtil, out List<string> MesAbonnements)
+        {
+            using (var conn = new SqlConnection(cs))
+            {
+                MesAbonnements = new List<string>();
+                bool resultat;
+                try
+                {
+                    conn.Open();
+                    var scNbAbonnement = new SqlCommand("Select IdUtilAbonner from AbonnementUtil where IdUtilConnecter='"
+                        + NomUtil + "'", conn);
+                    var sdr = scNbAbonnement.ExecuteReader();
+                    while (sdr.Read())
+                    {
+                        MesAbonnements.Add(photofunbd.ReadSingleRow(sdr));
+                    }
+                    sdr.Close();
+                    conn.Close();
+                    resultat = true;
+                }
+                catch
+                {
+                    resultat = false;
+                }
+                return resultat;
+            }
+        }
     }
 }

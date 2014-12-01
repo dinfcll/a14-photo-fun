@@ -183,10 +183,12 @@ namespace PhotoFun.Controllers
         public ActionResult Profil()
         {
             var requeteutilBD = new RequeteUtilBD();
+            var requeteAbonnementUtilBD = new RequeteAbonnementUtilBD();
             var profilModel = new ProfilModel();
             var courriel = "";
             var nom = "";
             var prenom = "";
+            int nbAbonnement;
 
             profilModel.IdUtilRechercher = User.Identity.Name;
 
@@ -202,7 +204,24 @@ namespace PhotoFun.Controllers
             {
                 profilModel.PrenomUtil = prenom;
             }
+            if (requeteAbonnementUtilBD.CompteNbAbonnement(profilModel, out nbAbonnement))
+            {
+                profilModel.NbAbonnement = nbAbonnement;
+            }
             ViewData["Utilisateur"] = profilModel;
+
+            return View();
+        }
+
+        public ActionResult MesAbonnements()
+        {
+            var requeteAbonnementUtilBD = new RequeteAbonnementUtilBD();
+            List<string> MesAbonnements = new List<string>();
+
+            if (requeteAbonnementUtilBD.ExtraireLesAbonnementsSelonUtil(User.Identity.Name, out MesAbonnements))
+            {
+                ViewData["MesAbonnements"] = MesAbonnements;
+            }
 
             return View();
         }
