@@ -75,5 +75,16 @@ namespace TestPhotoFun
             //then
             Assert.IsTrue(result);
         }
+
+        [TestMethod]
+        public void TestAbonnerUtil()
+        {
+            //given
+            var requeteAbonnementUtilBD = new RequeteAbonnementUtilBD();
+            //when
+            var result = requeteAbonnementUtilBD.AbonnerUtil("Mouissa", "nicolo");
+            //then
+            Assert.IsTrue(result);
+        }
     }
 }
