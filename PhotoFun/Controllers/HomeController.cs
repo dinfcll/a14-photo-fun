@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
+using System;
 using PhotoFun.Models;
 using System.IO;
+using System.Drawing;
 
 namespace PhotoFun.Controllers
 {
@@ -60,7 +62,7 @@ namespace PhotoFun.Controllers
             ViewData["image"] = image;
             return View();
         }
-       
+		
         public ActionResult RetourneLaVueSelonCategorie(string categorie)
         {
             var requetephotoBD = new RequetePhotoBD();
@@ -75,7 +77,7 @@ namespace PhotoFun.Controllers
         }
 
         [HttpPost]
-        public ActionResult RetourneLaVueSelonCategorie(string categorie,string image)
+        public ActionResult RetourneLaVueSelonCategorie(string categorie, string image)
         {
             if (image != null && categorie != null)
             {
@@ -114,7 +116,7 @@ namespace PhotoFun.Controllers
         {
             model.util = User.Identity.Name;
             var requetephotoBD = new RequetePhotoBD();
-            string path= Server.MapPath("~/Images/");
+            string path = Server.MapPath("~/Images/");
             string NouveauNomPhoto = model.util + "_";
 
             if (Request.Files.Count > 0)
@@ -124,20 +126,26 @@ namespace PhotoFun.Controllers
                 if (fichier != null && fichier.ContentLength > 0)
                 {
                     string ext = Path.GetExtension(fichier.FileName);
-
                     if (ext == ".jpg" || ext == ".png" || ext == ".jpeg")
                     {
                         string nomfich = model.util+ '_' + Path.GetFileNameWithoutExtension(fichier.FileName) + model.IDUniqueNomPhoto + ext;
                         string name = "/Images/" +nomfich;
-                        fichier.SaveAs(path + nomfich);
-                        model.image = name;
-
-                        requetephotoBD.EnregistrerPhoto(model);
-                        ViewData["VerifierImporter"] = "TransfertReussi";
+                        var image = Image.FromStream(fichier.InputStream, true, true);
+                        if (image.Height >= 600 && image.Width >= 600)
+                        {
+                            fichier.SaveAs(path + nomfich);
+                            model.image = name;
+                            requetephotoBD.EnregistrerPhoto(model);
+                            ViewData["VerifierImporter"] = "TransfertReussi";
+                        }
+                        else
+                        {
+                            ViewData["VerifierImporter"] = "TransfertEchoue";
+                        }
                     }
                     else
                     {
-                         ViewData["VerifierImporter"] = "TransfertEchoue";
+                        ViewData["VerifierImporter"] = "TransfertEchoue";
                     }
                 }
                 else
