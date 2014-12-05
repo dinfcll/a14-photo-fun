@@ -32,6 +32,14 @@ function readURL(input) {
     }
 }
 
+$("button.voulezvousvrm").click(function () {
+    var imgSrc = $(this).siblings('img').attr("src");
+    var nomUtilisateur = $(this).siblings('span.utilisateur').attr("item");
+    $("#imageasupprimer").attr("value", imgSrc);
+    $("#nomutilisateur").attr("value", nomUtilisateur);
+    $("#DELETE img").attr("src", imgSrc);
+});
+
 $("#ChangePhotoProfil").change(function () {
     readURL(this);
     $("#PhotoUtil").modal("show");

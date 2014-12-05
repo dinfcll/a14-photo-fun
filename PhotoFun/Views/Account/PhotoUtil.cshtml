@@ -26,7 +26,7 @@
                     {
                         <button type="submit" class="close boutonliker" title="J'aime" name="actionAFaire" value="LIKE"><span class="glyphicon glyphicon-heart"></span><span class="badge">@nbJaime</span></button>   
                         <button type="submit" class="close boutonediter" name="actionAFaire" value="EDIT"><span class="glyphicon glyphicon-pencil"></span></button>
-                        <button type="submit" class="close boutonsupprimer" name="actionAFaire" value="DELETE"><span class="glyphicon glyphicon-remove"></span></button>                           
+                        <button type="button" class="close boutonsupprimer voulezvousvrm" name="actionAFaire" data-toggle="modal" data-target="#DELETE"><span class="glyphicon glyphicon-remove"></span></button>                         
                         <img src="@PhotoUtil" class="img-thumbnail" alt="Image inaccessible" width="100%"/>                     
                         @Html.Hidden("Image", PhotoUtil)
                         @Html.Hidden("nom", nomutil)
@@ -35,7 +35,7 @@
                     {
                         <button type="submit" class="close boutonliker" title="Je n'aime plus" name="actionAFaire" value="LIKE"><span class="glyphicon glyphicon-heart-empty"></span><span class="badge">@nbJaime</span></button>
                         <button type="submit" class="close boutonediter" name="actionAFaire" value="EDIT"><span class="glyphicon glyphicon-pencil"></span></button>                            
-                        <button type="submit" class="close boutonsupprimer" name="actionAFaire" value="DELETE"><span class="glyphicon glyphicon-remove"></span></button>
+                        <button type="button" class="close boutonsupprimer voulezvousvrm" name="actionAFaire" data-toggle="modal" data-target="#DELETE"><span class="glyphicon glyphicon-remove"></span></button>
                         <img src="@PhotoUtil" class="img-thumbnail" alt="Image inaccessible" width="100%"/>
                         @Html.Hidden("Image", PhotoUtil)
                         @Html.Hidden("nom", nomutil)
@@ -65,9 +65,33 @@
                 <img src="@PhotoUtil" class="img-thumbnail" alt="Image inaccessible" width="100%"/>
                 @Html.Hidden("Image", PhotoUtil)
             }
+            <span hidden class="utilisateur" item="@nomutil"></span>
         }
             <div> 
                 @Html.ActionLink("Partager", "PartagerImage", "Home", new { image = PhotoUtil }, new { @class = "btn btn-lg btn-info btn-sm" })
+            </div>
+        </div>
+    }
+
+    using (Html.BeginForm("PhotoUtil", "Account", FormMethod.Post))
+    {
+        <div class="modal fade bs-example-modal-lg" id="DELETE">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close boutonsupprimer" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title">Voulez-vous vraiment supprimer cette photo?</h4>
+                    </div>
+                    <div class="modal-body">
+                        <img id="photoToShow" src="" alt="Image inaccessible" width="100%"/>
+                        <input type="hidden" id="imageasupprimer" name="Image" value="" />
+                        <input type="hidden" id="nomutilisateur" name="nom" value="" />
+                    </div>
+                    <div class="modal-footer" style="text-align: right;">
+                        <input class="btn btn-lg btn-info" type="button" data-dismiss="modal" name="Annuler" value="Annuler"/>
+                        <input class="btn btn-lg btn-info" type="submit" name="actionAFaire" value="Supprimer"/>
+                    </div>
+                </div>
             </div>
         </div>
     }

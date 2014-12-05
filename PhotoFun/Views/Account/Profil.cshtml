@@ -11,24 +11,8 @@
 <div class="container-fluid">
 	<div class="row">
         <div class="col-xs-8 col-sm-6 col-md-4">
-            @{
-                var requeteUtilBD = new PhotoFun.Models.RequeteUtilBD();
-                var image = "";
-                image = requeteUtilBD.ExtrairePhotoProfil(User.Identity.Name);
-                if(image!="")
-                {
-                    <img src="@image" alt="Image inaccessible" class="img-thumbnail" width="100%"/>
-                }
-                else
-                {
-                    <img src="/Images/defautPhoto.jpg" alt="Image inaccessible" class="img-thumbnail" width="100%"/>
-                }
-             }
+            @Html.Partial("_ImageProfil",ViewData["profil"]=User.Identity.Name)
             <input class="btnchoisirfich PhotoProfil" id="ChangePhotoProfil" type="file" name="file" accept=".jpg,.png,.jpeg" />
-            @if (VerifierImporter == "TransfertReussi")
-            {
-                @Html.Partial("_TransfertReussi")
-            }
             @if (VerifierImporter == "TransfertEchoue")
             {
                 @Html.Partial("_TransfertEchoue")
@@ -65,4 +49,3 @@
         </div>
     </div>
 }
- 
