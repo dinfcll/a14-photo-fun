@@ -137,7 +137,7 @@ namespace PhotoFun.Controllers
             }
             else
             {
-                if (image != null && actionAFaire == "DELETE")
+                if (image != null && actionAFaire == "Supprimer")
                 {
                     if (requeteRelUtilPhotoBD.EnleveTousLesLiaisonsAvecLesUtils(image))
                     {
