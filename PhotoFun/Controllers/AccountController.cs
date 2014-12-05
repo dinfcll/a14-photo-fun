@@ -348,8 +348,15 @@ namespace PhotoFun.Controllers
             var courriel="";
             var nom="";
             var prenom="";
-
             int nbAbonnement;
+
+            if(User.Identity.Name!=null)
+            {
+                if (nomUtil == User.Identity.Name)
+                {
+                    return RedirectToAction("Profil", "Account");
+                }
+            }
             if (requeteutilBD.ExtraireUtil(nomUtil, out retour))
             {
                 if (retour.Count > 0)

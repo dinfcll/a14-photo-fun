@@ -173,7 +173,6 @@
     <Compile Include="Models\ProfilModel.cs" />
     <Compile Include="Models\RequeteAbonnementUtilBD.cs" />
     <Compile Include="Models\RequetePhotoBD.cs" />
-    <Compile Include="Models\RequeteProfilUtilBD.cs" />
     <Compile Include="Models\RequeteRelUtilPhotoBD.cs" />
     <Compile Include="Models\RequeteUtilBD.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
