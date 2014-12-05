@@ -209,16 +209,9 @@ namespace PhotoFun.Controllers
             {
                 profilModel.NbAbonnement = nbAbonnement;
             }
-            if (viewdata == "TransfertReussi")
+            if (viewdata == "TransfertEchoue")
             {
-                ViewData["VerifierImporter"] = "TransfertReussi";
-            }
-            else
-            {
-                if (viewdata == "TransfertEchoue")
-                {
-                    ViewData["VerifierImporter"] = "TransfertEchoue";
-                }
+                ViewData["VerifierImporter"] = "TransfertEchoue";
             }
             ViewData["Utilisateur"] = profilModel;
 
@@ -253,7 +246,6 @@ namespace PhotoFun.Controllers
 
                         requetephotoBD.EnregistrerPhoto(photoModels);
                         requeteUtilBD.MettreAJourPhotoProfil(photoModels.image, photoModels.util);
-                        ViewData["VerifierImporter"] = "TransfertReussi";
                     }
                     else
                     {
