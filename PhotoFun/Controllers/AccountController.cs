@@ -7,6 +7,7 @@ using WebMatrix.WebData;
 using PhotoFun.Filters;
 using PhotoFun.Models;
 using System.Data.SqlClient;
+using System.IO;
 
 namespace PhotoFun.Controllers
 {
@@ -180,7 +181,7 @@ namespace PhotoFun.Controllers
             return RedirectToAction("Erreur", "Home");
         }
 
-        public ActionResult Profil()
+        public ActionResult Profil(string viewdata)
         {
             var requeteutilBD = new RequeteUtilBD();
             var requeteAbonnementUtilBD = new RequeteAbonnementUtilBD();
@@ -208,9 +209,59 @@ namespace PhotoFun.Controllers
             {
                 profilModel.NbAbonnement = nbAbonnement;
             }
+            if (viewdata == "TransfertEchoue")
+            {
+                ViewData["VerifierImporter"] = "TransfertEchoue";
+            }
             ViewData["Utilisateur"] = profilModel;
 
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Profil()
+        {
+            PhotoModels photoModels = new PhotoModels();
+            var requetephotoBD = new RequetePhotoBD();
+            var requeteUtilBD = new RequeteUtilBD();
+            string path = Server.MapPath("~/Images/");
+            photoModels.util = User.Identity.Name;
+            string NouveauNomPhoto = photoModels.util + "_";
+            photoModels.Categorie = "PhotoProfil";
+
+            if (Request.Files.Count > 0)
+            {
+                var fichier = Request.Files[0];
+
+                if (fichier != null && fichier.ContentLength > 0)
+                {
+                    string ext = Path.GetExtension(fichier.FileName);
+
+                    if (ext == ".jpg" || ext == ".png" || ext == ".jpeg")
+                    {
+                        string nomfich = photoModels.util + '_' + Path.GetFileNameWithoutExtension(fichier.FileName) + photoModels.IDUniqueNomPhoto + ext;
+                        string name = "/Images/" + nomfich;
+                        fichier.SaveAs(path + nomfich);
+                        photoModels.image = name;
+
+                        requetephotoBD.EnregistrerPhoto(photoModels);
+                        requeteUtilBD.MettreAJourPhotoProfil(photoModels.image, photoModels.util);
+                    }
+                    else
+                    {
+                        ViewData["VerifierImporter"] = "TransfertEchoue";
+                    }
+                }
+                else
+                {
+                    ViewData["VerifierImporter"] = "TransfertEchoue";
+                }
+            }
+            else
+            {
+                ViewData["VerifierImporter"] = "TransfertEchoue";
+            }
+            return RedirectToAction("Profil", "Account", new { viewdata = ViewData["VerifierImporter"] });
         }
 
         public ActionResult MesAbonnements()
@@ -289,8 +340,15 @@ namespace PhotoFun.Controllers
             var courriel="";
             var nom="";
             var prenom="";
-
             int nbAbonnement;
+
+            if(User.Identity.Name!=null)
+            {
+                if (nomUtil == User.Identity.Name)
+                {
+                    return RedirectToAction("Profil", "Account");
+                }
+            }
             if (requeteutilBD.ExtraireUtil(nomUtil, out retour))
             {
                 if (retour.Count > 0)

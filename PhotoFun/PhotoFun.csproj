@@ -173,7 +173,6 @@
     <Compile Include="Models\ProfilModel.cs" />
     <Compile Include="Models\RequeteAbonnementUtilBD.cs" />
     <Compile Include="Models\RequetePhotoBD.cs" />
-    <Compile Include="Models\RequeteProfilUtilBD.cs" />
     <Compile Include="Models\RequeteRelUtilPhotoBD.cs" />
     <Compile Include="Models\RequeteUtilBD.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -238,7 +237,7 @@
     <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
-    <Content Include="favicon.ico" />
+    <Content Include="favicon2.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
@@ -321,6 +320,7 @@
     <Content Include="Views\Account\RechercheUtil.cshtml" />
     <Content Include="Views\Home\PartagerImage.cshtml" />
     <Content Include="Views\Account\MesAbonnements.cshtml" />
+    <Content Include="Views\Account\_TransfertEchoue.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

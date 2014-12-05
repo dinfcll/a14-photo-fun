@@ -194,5 +194,50 @@ namespace PhotoFun.Models
                 return resultat;
             }
         }
+
+        public bool MettreAJourPhotoProfil(string image, string nomutil)
+        {
+            using (var conn = new SqlConnection(cs))
+            {
+                bool resultat;
+                try
+                {
+                    conn.Open();
+                    var scMettreAJourPhotoProfil = new SqlCommand("Update Utilisateurs set PhotoProfil='" + image + "' where IDUtil='" + nomutil + "';", conn);
+                    scMettreAJourPhotoProfil.ExecuteNonQuery();
+                    conn.Close();
+                    resultat = true;
+                }
+                catch
+                {
+                    resultat = false;
+                }
+                return resultat;
+            }
+        }
+
+        public string ExtrairePhotoProfil(string nomutil)
+        {
+            using (var conn = new SqlConnection(cs))
+            {
+                string image = "";
+                try
+                {
+                    conn.Open();
+                    var scExtrairePhotoProfil = new SqlCommand("Select PhotoProfil from Utilisateurs where IDUtil='" + nomutil + "';", conn);
+                    var sdr = scExtrairePhotoProfil.ExecuteReader();
+                    while (sdr.Read())
+                    {
+                        image=photofunbd.ReadSingleRow(sdr);
+                    }
+                    sdr.Close();
+                    conn.Close();
+                }
+                catch
+                {
+                }
+                return image;
+            }
+        }
     }
 }
