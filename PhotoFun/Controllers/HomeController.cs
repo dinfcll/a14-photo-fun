@@ -30,16 +30,14 @@ namespace PhotoFun.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
-                if (viewdata == "TransfertReussi")
+                switch (viewdata)
                 {
-                    ViewData["VerifierImporter"] = "TransfertReussi";
-                }
-                else
-                {
-                    if (viewdata == "TransfertEchoue")
-                    {
-                        ViewData["VerifierImporter"] = "TransfertEchoue";
-                    }
+                    case "TransfertReussi": ViewData["VerifierImporter"] = "TransfertReussi";
+                        break;
+                    case "TransfertEchoue": ViewData["VerifierImporter"] = "TransfertEchoue";
+                        break;
+                    case "MauvaisFichier": ViewData["VerifierImporter"] = "MauvaisFichier";
+                        break;
                 }
                 return View();
             }
@@ -154,7 +152,6 @@ namespace PhotoFun.Controllers
                         {
                             return RedirectToAction("Erreur", "Home");
                         }
-                        
                     }
                     else
                     {
