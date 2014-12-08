@@ -8,6 +8,7 @@ using PhotoFun.Filters;
 using PhotoFun.Models;
 using System.Data.SqlClient;
 using System.IO;
+using System.Drawing;
 
 namespace PhotoFun.Controllers
 {
@@ -241,11 +242,20 @@ namespace PhotoFun.Controllers
                     {
                         string nomfich = photoModels.util + '_' + Path.GetFileNameWithoutExtension(fichier.FileName) + photoModels.IDUniqueNomPhoto + ext;
                         string name = "/Images/" + nomfich;
-                        fichier.SaveAs(path + nomfich);
-                        photoModels.image = name;
-
-                        requetephotoBD.EnregistrerPhoto(photoModels);
-                        requeteUtilBD.MettreAJourPhotoProfil(photoModels.image, photoModels.util);
+                        var image = Image.FromStream(fichier.InputStream, true, true);
+                        if (image.Height >= 600 && image.Width >= 600)
+                        {
+                            fichier.SaveAs(path + nomfich);
+                            photoModels.image = name;
+                            requetephotoBD.EnregistrerPhoto(photoModels);
+                            requeteUtilBD.MettreAJourPhotoProfil(photoModels.image, photoModels.util);
+                            ViewData["VerifierImporter"] = "TransfertReussi";
+                        }
+                        else
+                        {
+                            ViewData["VerifierImporter"] = "TransfertEchoue";
+                        }
+                        
                     }
                     else
                     {
