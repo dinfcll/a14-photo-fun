@@ -2,18 +2,19 @@
     ViewBag.Title = "Importer";
     var VerifierImporter = ViewData["VerifierImporter"] as string;
 }
-@using (Html.BeginForm("Importer", "Home", FormMethod.Post, new { enctype = "multipart/form-data"}))
+@using (Html.BeginForm("Importer", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
 { 
     <div class="page-header">
         <h2>Importer des photos</h2>
     </div>
-    if (VerifierImporter == "TransfertReussi")
+    switch (VerifierImporter)
     {
-        @Html.Partial("_TransfertReussi")
-    }
-    if (VerifierImporter == "TransfertEchoue")
-    {
-        @Html.Partial("_TransfertEchoue")
+        case "TransfertReussi": @Html.Partial("_TransfertReussi")
+                          break;
+        case "TransfertEchoue": @Html.Partial("_TransfertEchoue")
+                          break;
+        case "MauvaisFichier": @Html.Partial("_ErreurMauvaisFichier")
+                          break;
     }
     <input class="btnchoisirfich" type="file" name="file" accept=".jpg,.png,.jpeg"/>
     <input class="btn btn-lg btn-info" type="submit" name="SubImporter" value="Importer"/>
@@ -34,7 +35,7 @@
             @Html.Label("Cuisine")
             @Html.RadioButtonFor(PhotoModels => PhotoModels.Categorie, "Animaux", new { id = "Animaux" })
             @Html.Label("Animaux")
-            @Html.RadioButtonFor(PhotoModels => PhotoModels.Categorie, "Autres", new { id = "Autres", @checked = "checked"})
+            @Html.RadioButtonFor(PhotoModels => PhotoModels.Categorie, "Autres", new { id = "Autres", @checked = "checked" })
             @Html.Label("Autres")
     </div>
     <br/>

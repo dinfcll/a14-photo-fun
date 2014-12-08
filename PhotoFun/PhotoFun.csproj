@@ -322,6 +322,8 @@
     <Content Include="Views\Account\MesAbonnements.cshtml" />
     <Content Include="Views\Account\_TransfertEchoue.cshtml" />
     <Content Include="Views\Account\_ImageProfil.cshtml" />
+    <Content Include="Views\Home\_ErreurMauvaisFichier.cshtml" />
+    <Content Include="Views\Account\_ErreurMauvaisFichier.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

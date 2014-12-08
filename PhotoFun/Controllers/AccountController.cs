@@ -210,9 +210,12 @@ namespace PhotoFun.Controllers
             {
                 profilModel.NbAbonnement = nbAbonnement;
             }
-            if (viewdata == "TransfertEchoue")
+            switch (viewdata)
             {
-                ViewData["VerifierImporter"] = "TransfertEchoue";
+                case "TransfertEchoue": ViewData["VerifierImporter"] = "TransfertEchoue";
+                    break;
+                case "MauvaisFichier": ViewData["VerifierImporter"] = "MauvaisFichier";
+                    break;
             }
             ViewData["Utilisateur"] = profilModel;
 
@@ -242,18 +245,30 @@ namespace PhotoFun.Controllers
                     {
                         string nomfich = photoModels.util + '_' + Path.GetFileNameWithoutExtension(fichier.FileName) + photoModels.IDUniqueNomPhoto + ext;
                         string name = "/Images/" + nomfich;
-                        var image = Image.FromStream(fichier.InputStream, true, true);
-                        if (image.Height >= 600 && image.Width >= 600)
+                        Image image;
+                        int Hauteur=600, Largeur=600;
+                        try
                         {
-                            fichier.SaveAs(path + nomfich);
-                            photoModels.image = name;
-                            requetephotoBD.EnregistrerPhoto(photoModels);
-                            requeteUtilBD.MettreAJourPhotoProfil(photoModels.image, photoModels.util);
-                            ViewData["VerifierImporter"] = "TransfertReussi";
+                            image = Image.FromStream(fichier.InputStream, true, true);
+                            if (image.Height >= Hauteur && image.Width >= Largeur)
+                            {
+                                fichier.SaveAs(path + nomfich);
+                                photoModels.image = name;
+                                requetephotoBD.EnregistrerPhoto(photoModels);
+                                requeteUtilBD.MettreAJourPhotoProfil(photoModels.image, photoModels.util);
+                            }
+                            else
+                            {
+                                ViewData["VerifierImporter"] = "TransfertEchoue";
+                            }
                         }
-                        else
+                        catch (ArgumentException)
                         {
-                            ViewData["VerifierImporter"] = "TransfertEchoue";
+                            ViewData["VerifierImporter"] = "MauvaisFichier";
+                        }
+                        catch (Exception)
+                        {
+                            return RedirectToAction("Erreur", "Home");
                         }
                         
                     }
