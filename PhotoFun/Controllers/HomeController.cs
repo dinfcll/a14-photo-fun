@@ -130,18 +130,31 @@ namespace PhotoFun.Controllers
                     {
                         string nomfich = model.util+ '_' + Path.GetFileNameWithoutExtension(fichier.FileName) + model.IDUniqueNomPhoto + ext;
                         string name = "/Images/" +nomfich;
-                        var image = Image.FromStream(fichier.InputStream, true, true);
-                        if (image.Height >= 600 && image.Width >= 600)
+                        Image image;
+                        try
                         {
-                            fichier.SaveAs(path + nomfich);
-                            model.image = name;
-                            requetephotoBD.EnregistrerPhoto(model);
-                            ViewData["VerifierImporter"] = "TransfertReussi";
+                            image = Image.FromStream(fichier.InputStream, true, true);
+                            if (image.Height >= 600 && image.Width >= 600)
+                            {
+                                fichier.SaveAs(path + nomfich);
+                                model.image = name;
+                                requetephotoBD.EnregistrerPhoto(model);
+                                ViewData["VerifierImporter"] = "TransfertReussi";
+                            }
+                            else
+                            {
+                              ViewData["VerifierImporter"] = "TransfertEchoue";
+                            }
                         }
-                        else
+                        catch (ArgumentException)
                         {
-                            ViewData["VerifierImporter"] = "TransfertEchoue";
+                            ViewData["VerifierImporter"] = "MauvaisFichier";
                         }
+                        catch(Exception)
+                        {
+                            return RedirectToAction("Erreur", "Home");
+                        }
+                        
                     }
                     else
                     {
