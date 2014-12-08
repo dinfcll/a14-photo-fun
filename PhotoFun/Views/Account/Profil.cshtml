@@ -13,9 +13,12 @@
         <div class="col-xs-8 col-sm-6 col-md-4">
             @Html.Partial("_ImageProfil",ViewData["profil"]=User.Identity.Name)
             <input class="btnchoisirfich PhotoProfil" id="ChangePhotoProfil" type="file" name="file" accept=".jpg,.png,.jpeg" />
-            @if (VerifierImporter == "TransfertEchoue")
+            @switch (VerifierImporter)
             {
-                @Html.Partial("_TransfertEchoue")
+                case "TransfertEchoue": @Html.Partial("_TransfertEchoue")
+                          break;
+                case "MauvaisFichier": @Html.Partial("_ErreurMauvaisFichier")
+                          break;
             }
         </div>
         <div class="col-xs-4 col-sm-4 col-md-6">
