@@ -6,3 +6,8 @@
 *.pdb
 PhotoFun/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
 *.trx
+*.jpeg
+*.png
+*.JPG
+*.JPEG
+*.PNG
