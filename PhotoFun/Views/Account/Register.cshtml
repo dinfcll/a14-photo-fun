@@ -9,8 +9,10 @@
 </div>
 
 @using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary()
+    <div style="color:Red">
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary()
+    </div>
 
     <fieldset>
         <legend>Formulaire d’inscription</legend>
