@@ -2,9 +2,8 @@
     ViewBag.Title = "_ImageProfil";
     var profil = ViewData["profil"] as string;
     
-    var requeteUtilBD = new PhotoFun.Models.RequeteUtilBd();
-    var image = "";
-    image = requeteUtilBD.ExtrairePhotoProfil(profil);
+    var requeteUtilBd = new PhotoFun.Models.RequeteUtilBd();
+    var image = requeteUtilBd.ExtrairePhotoProfil(profil);
     if(image!="")
     {
         <img src="@image" alt="Image inaccessible" class="img-thumbnail" width="100%"/>
