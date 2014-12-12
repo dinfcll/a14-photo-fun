@@ -65,7 +65,7 @@ namespace PhotoFun.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Register(RegisterModel model)
         {
-            var requeteutilBd = new RequeteUtilBD();
+            var requeteutilBd = new RequeteUtilBd();
             if (ModelState.IsValid)
             {
                 try
@@ -182,7 +182,7 @@ namespace PhotoFun.Controllers
 
         public ActionResult Profil(string viewdata)
         {
-            var requeteutilBd = new RequeteUtilBD();
+            var requeteutilBd = new RequeteUtilBd();
             var requeteAbonnementUtilBd = new RequeteAbonnementUtilBd();
             var profilModel = new ProfilModel();
             string courriel;
@@ -225,7 +225,7 @@ namespace PhotoFun.Controllers
         {
             PhotoModels photoModels = new PhotoModels();
             var requetephotoBd = new RequetePhotoBd();
-            var requeteUtilBd = new RequeteUtilBD();
+            var requeteUtilBd = new RequeteUtilBd();
             string path = Server.MapPath("~/Images/");
             photoModels.Util = User.Identity.Name;
             photoModels.Categorie = "PhotoProfil";
@@ -307,7 +307,7 @@ namespace PhotoFun.Controllers
             {
                 var profilModel = new ProfilModel();
                 var profilModeltab = new List<ProfilModel>();
-                var requeteutilBd = new RequeteUtilBD();
+                var requeteutilBd = new RequeteUtilBd();
                 var requeteAbonnementUtilBd = new RequeteAbonnementUtilBd();
                 var strings = Request.Form.GetValues(0);
                 if (strings != null)
@@ -358,7 +358,7 @@ namespace PhotoFun.Controllers
         [AllowAnonymous]
         public ActionResult ProfilUtil(string nomUtil)
         {
-            var requeteutilBd = new RequeteUtilBD();
+            var requeteutilBd = new RequeteUtilBd();
             var requeteAbonnementUtilBd = new RequeteAbonnementUtilBd();
             var profilModel = new ProfilModel();
             List<string> retour;

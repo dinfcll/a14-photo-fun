@@ -35,7 +35,7 @@ namespace TestPhotoFun
         public void TestAjoutUtilBD()
         {
             //given
-            var requeteutilBD = new RequeteUtilBD();
+            var requeteutilBD = new RequeteUtilBd();
             var rm = new RegisterModel
             {
                 Courriel = "nic@hotmail.com",
@@ -53,7 +53,7 @@ namespace TestPhotoFun
         public void TestExtraireUtil()
         {
             //given
-            var requeUtilBD = new RequeteUtilBD();
+            var requeUtilBD = new RequeteUtilBd();
             //when
             var result = requeUtilBD.ExtraireUtil(NomUsager);
             //then
