@@ -78,7 +78,7 @@ namespace PhotoFun.Controllers
         {
             if (image != null && categorie != null)
             {
-                var requeteRelUtilPhotoBd = new RequeteRelUtilPhotoBD();
+                var requeteRelUtilPhotoBd = new RequeteRelUtilPhotoBd();
                 var requetephotoBd = new RequetePhotoBd();
                 if (requeteRelUtilPhotoBd.VerifLiaisonPhotoUtil(User.Identity.Name, image))
                 {

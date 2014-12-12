@@ -110,7 +110,7 @@ namespace PhotoFun.Controllers
         [HttpPost]
         public ActionResult PhotoUtil(string image, string actionAFaire,string nom)
         {
-            var requeteRelUtilPhotoBd = new RequeteRelUtilPhotoBD();
+            var requeteRelUtilPhotoBd = new RequeteRelUtilPhotoBd();
             var requetephotoBd = new RequetePhotoBd();
             if (image != null && actionAFaire == "LIKE")
             {
