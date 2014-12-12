@@ -77,7 +77,7 @@ namespace TestPhotoFun
         public void TestAbonnerUtil()
         {
             //given
-            var requeteAbonnementUtilBD = new RequeteAbonnementUtilBD();
+            var requeteAbonnementUtilBD = new RequeteAbonnementUtilBd();
             //when
             var result = requeteAbonnementUtilBD.AbonnerUtil(NomUsager, "nicolo");
             //then
@@ -88,7 +88,7 @@ namespace TestPhotoFun
         public void TestSupprimerRelAbonnement()
         {
             //given
-            var requeteAbonnementUtilBD = new RequeteAbonnementUtilBD();
+            var requeteAbonnementUtilBD = new RequeteAbonnementUtilBd();
             //when
             var result = requeteAbonnementUtilBD.SupprimerRelAbonnement("nicolo", NomUsager);
             //then

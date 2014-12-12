@@ -183,7 +183,7 @@ namespace PhotoFun.Controllers
         public ActionResult Profil(string viewdata)
         {
             var requeteutilBd = new RequeteUtilBD();
-            var requeteAbonnementUtilBd = new RequeteAbonnementUtilBD();
+            var requeteAbonnementUtilBd = new RequeteAbonnementUtilBd();
             var profilModel = new ProfilModel();
             string courriel;
             string nom;
@@ -288,7 +288,7 @@ namespace PhotoFun.Controllers
 
         public ActionResult MesAbonnements()
         {
-            var requeteAbonnementUtilBd = new RequeteAbonnementUtilBD();
+            var requeteAbonnementUtilBd = new RequeteAbonnementUtilBd();
             List<string> mesAbonnements;
 
             if (requeteAbonnementUtilBd.ExtraireLesAbonnementsSelonUtil(User.Identity.Name, out mesAbonnements))
@@ -308,7 +308,7 @@ namespace PhotoFun.Controllers
                 var profilModel = new ProfilModel();
                 var profilModeltab = new List<ProfilModel>();
                 var requeteutilBd = new RequeteUtilBD();
-                var requeteAbonnementUtilBd = new RequeteAbonnementUtilBD();
+                var requeteAbonnementUtilBd = new RequeteAbonnementUtilBd();
                 var strings = Request.Form.GetValues(0);
                 if (strings != null)
                 {
@@ -359,7 +359,7 @@ namespace PhotoFun.Controllers
         public ActionResult ProfilUtil(string nomUtil)
         {
             var requeteutilBd = new RequeteUtilBD();
-            var requeteAbonnementUtilBd = new RequeteAbonnementUtilBD();
+            var requeteAbonnementUtilBd = new RequeteAbonnementUtilBd();
             var profilModel = new ProfilModel();
             List<string> retour;
 
@@ -404,7 +404,7 @@ namespace PhotoFun.Controllers
 
         public ActionResult Suivre(string nom, bool abonne)
         {
-            var requeteAbonnementUtilBd = new RequeteAbonnementUtilBD();
+            var requeteAbonnementUtilBd = new RequeteAbonnementUtilBd();
             var profilModel = new ProfilModel();
             
             if (abonne)
