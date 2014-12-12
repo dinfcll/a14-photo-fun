@@ -1,7 +1,7 @@
 ﻿@{
     ViewBag.Title = "Profil";
     var nomutil = ViewData["Utilisateur"] as PhotoFun.Models.ProfilModel;
-    var VerifierImporter = ViewData["VerifierImporter"] as string;
+    var verifierImporter = ViewData["VerifierImporter"] as string;
 }
 <div class="page-header">
     <h2>@ViewBag.Title</h2>
@@ -13,7 +13,7 @@
         <div class="col-xs-8 col-sm-6 col-md-4">
             @Html.Partial("_ImageProfil",ViewData["profil"]=User.Identity.Name)
             <input class="btnchoisirfich PhotoProfil" id="ChangePhotoProfil" type="file" name="file" accept=".jpg,.png,.jpeg" />
-            @switch (VerifierImporter)
+            @switch (verifierImporter)
             {
                 case "TransfertEchoue": @Html.Partial("_TransfertEchoue")
                           break;
@@ -22,7 +22,7 @@
             }
         </div>
         <div class="col-xs-4 col-sm-4 col-md-6">
-            <h2 style="margin-top:0px">@nomutil.IdUtilRechercher</h2>
+            <h2 style="margin-top:0">@nomutil.IdUtilRechercher</h2>
             <h5>Courriel: @nomutil.Courriel</h5>
             <h5>Prénom: @nomutil.PrenomUtil</h5>
             <h5>Nom: @nomutil.NomUtil</h5>
