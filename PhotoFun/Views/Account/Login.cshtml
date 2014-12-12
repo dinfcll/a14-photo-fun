@@ -6,7 +6,7 @@
     <h1>@ViewBag.Title.</h1>
 </div>
 <section id="loginForm">
-@using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl })) {
+@using (Html.BeginForm(new {ViewBag.ReturnUrl })) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
     <fieldset>
