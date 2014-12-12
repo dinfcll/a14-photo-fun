@@ -1,22 +1,21 @@
 ﻿@{
     ViewBag.Title = "Mes abonnements";
-    var MesAbonnements=ViewData["MesAbonnements"] as List<string>;
+    var mesAbonnements=ViewData["MesAbonnements"] as List<string>;
 }
 <div class="page-header">
     <h2>@ViewBag.Title</h2>
 </div>
 @{   
-    if (MesAbonnements != null && MesAbonnements.Count > 0)
+    if (mesAbonnements != null && mesAbonnements.Count > 0)
     {
-        foreach (var abonnes in MesAbonnements)
+        foreach (var abonnes in mesAbonnements)
         {
             <div class="divdesprofils">
                 <div class="col-xs-8 col-sm-6 col-md-2">
 		            @{
-                        var requeteUtilBD = new PhotoFun.Models.RequeteUtilBd();
-                        var image = "";
-                        image = requeteUtilBD.ExtrairePhotoProfil(abonnes);
-                        if(image!="")
+                        var requeteUtilBd = new PhotoFun.Models.RequeteUtilBd();
+		                var image = requeteUtilBd.ExtrairePhotoProfil(abonnes);
+		                if(image!="")
                         {
                             <img src="@image" alt="Image inaccessible" class="img-thumbnail" width="100%"/>
                         }
