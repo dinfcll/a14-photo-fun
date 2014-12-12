@@ -9,29 +9,27 @@
 @if (lstimage != null && lstimage.Count > 0)
 {
     var nomutil = nom;
-    var requetephotoBD = new PhotoFun.Models.RequetePhotoBd();
-    var requeteRelUtilPhotoBD = new PhotoFun.Models.RequeteRelUtilPhotoBd();
-    int nbJaime;
-    string commentaire = "";
-    foreach (var PhotoUtil in lstimage)
+    var requetephotoBd = new PhotoFun.Models.RequetePhotoBd();
+    var requeteRelUtilPhotoBd = new PhotoFun.Models.RequeteRelUtilPhotoBd();
+    foreach (var photoUtil in lstimage)
     {
-        nbJaime = requetephotoBD.RetourneLeNombreDeJAimeSelonPhoto(PhotoUtil);
+        var nbJaime = requetephotoBd.RetourneLeNombreDeJAimeSelonPhoto(photoUtil);
         <div class="divdesimages">
         @using (Html.BeginForm("PhotoUtil", "Account", FormMethod.Post))
         {
-            commentaire = requetephotoBD.ExtraireCommentaireSelonPhoto(PhotoUtil);
-            <img src="@PhotoUtil" class="img-thumbnail" alt="Image inaccessible" width="100%"/>
+            var commentaire = requetephotoBd.ExtraireCommentaireSelonPhoto(photoUtil);
+            <img src="@photoUtil" class="img-thumbnail" alt="Image inaccessible" width="100%"/>
             if (User.Identity.IsAuthenticated)
             {
                 if (nomutil == User.Identity.Name)
                 {
-                    if (requeteRelUtilPhotoBD.VerifLiaisonPhotoUtil(User.Identity.Name, PhotoUtil))
+                    if (requeteRelUtilPhotoBd.VerifLiaisonPhotoUtil(User.Identity.Name, photoUtil))
                     {
                         <button type="submit" class="close" title="J'aime" name="actionAFaire" value="LIKE"><span class="glyphicon glyphicon-heart"></span><span class="badge">@nbJaime</span></button>   
                         <button type="submit" class="close" name="actionAFaire" value="EDIT"><span class="glyphicon glyphicon-pencil"></span></button>
                         <button type="button" class="close boutonediter voulezvousvrm" name="actionAFaire" data-toggle="modal" data-target="#DELETE"><span class="glyphicon glyphicon-remove"></span></button> 
                         <button type="button" class="close boutonsupprimer fullscreen" data-toggle="modal" data-target="#PhotoModal"><span class="glyphicon glyphicon-fullscreen"></span></button>                   
-                        @Html.Hidden("Image", PhotoUtil)
+                        @Html.Hidden("Image", photoUtil)
                         @Html.Hidden("nom", nomutil)
                     }
                     else
@@ -40,24 +38,24 @@
                         <button type="submit" class="close" name="actionAFaire" value="EDIT"><span class="glyphicon glyphicon-pencil"></span></button>                            
                         <button type="button" class="close boutonediter voulezvousvrm" name="actionAFaire" data-toggle="modal" data-target="#DELETE"><span class="glyphicon glyphicon-remove"></span></button>
                         <button type="button" class="close boutonsupprimer fullscreen" data-toggle="modal" data-target="#PhotoModal"><span class="glyphicon glyphicon-fullscreen"></span></button>
-                        @Html.Hidden("Image", PhotoUtil)
+                        @Html.Hidden("Image", photoUtil)
                         @Html.Hidden("nom", nomutil)
                     }
                 }
                 else
                 {
-                    if (requeteRelUtilPhotoBD.VerifLiaisonPhotoUtil(User.Identity.Name, PhotoUtil))
+                    if (requeteRelUtilPhotoBd.VerifLiaisonPhotoUtil(User.Identity.Name, photoUtil))
                     {
                         <button type="submit" class="close" title="J'aime" name="actionAFaire" value="LIKE"><span class="glyphicon glyphicon-heart"></span><span class="badge">@nbJaime</span></button>
                         <button type="button" class="close boutonsupprimer fullscreen" data-toggle="modal" data-target="#PhotoModal"><span class="glyphicon glyphicon-fullscreen"></span></button>
-                        @Html.Hidden("Image", PhotoUtil)
+                        @Html.Hidden("Image", photoUtil)
                         @Html.Hidden("nom", nomutil)
                     }
                     else
                     {
                         <button type="submit" class="close" title="Je n'aime plus" name="actionAFaire" value="LIKE"><span class="glyphicon glyphicon-heart-empty"></span><span class="badge">@nbJaime</span></button>
                         <button type="button" class="close boutonsupprimer fullscreen" data-toggle="modal" data-target="#PhotoModal"><span class="glyphicon glyphicon-fullscreen"></span></button>
-                        @Html.Hidden("Image", PhotoUtil)
+                        @Html.Hidden("Image", photoUtil)
                         @Html.Hidden("nom", nomutil)
                     }
                 }
@@ -66,12 +64,12 @@
             {
                 <button type="submit" class="close" title="J'aime" name="actionAFaire" value="LIKE"><span class="glyphicon glyphicon-heart"></span><span class="badge">@nbJaime</span></button>
                 <button type="button" class="close boutonsupprimer fullscreen" data-toggle="modal" data-target="#PhotoModal"><span class="glyphicon glyphicon-fullscreen"></span></button>
-                @Html.Hidden("Image", PhotoUtil)
+                @Html.Hidden("Image", photoUtil)
             }
             <span hidden class="utilisateur" item="@nomutil"></span>
             <span hidden class="nomUtil" item="@nomutil"></span>
             <span hidden class="commentaire" item="@commentaire"></span>
-            @Html.ActionLink("Partager", "PartagerImage", "Home", new { image = PhotoUtil }, new { @class = "btn btn-lg btn-info btn-sm" })
+            @Html.ActionLink("Partager", "PartagerImage", "Home", new { image = photoUtil }, new { @class = "btn btn-lg btn-info btn-sm" })
         }
         </div>
     }
