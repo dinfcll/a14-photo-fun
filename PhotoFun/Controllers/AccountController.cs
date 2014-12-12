@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Web.Mvc;
 using System.Web.Security;
 using Microsoft.Web.WebPages.OAuth;
-using WebMatrix.WebData;
 using PhotoFun.Filters;
 using PhotoFun.Models;
-using System.Data.SqlClient;
-using System.IO;
-using System.Drawing;
+using WebMatrix.WebData;
 
 namespace PhotoFun.Controllers
 {
@@ -66,13 +65,13 @@ namespace PhotoFun.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Register(RegisterModel model)
         {
-            var requeteutilBD = new RequeteUtilBD();
+            var requeteutilBd = new RequeteUtilBD();
             if (ModelState.IsValid)
             {
                 try
                 {
                     WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
-                    if (requeteutilBD.InsererUtil(model))
+                    if (requeteutilBd.InsererUtil(model))
                     {
                         WebSecurity.Login(model.UserName, model.Password);
                         return RedirectToAction("Index", "Home");
@@ -89,9 +88,9 @@ namespace PhotoFun.Controllers
         [AllowAnonymous]
         public ActionResult PhotoUtil(string nom)
         {
-            var requetephotoBD = new RequetePhotoBD();
+            var requetephotoBd = new RequetePhotoBD();
             List<string> lstimage;
-            if (requetephotoBD.ExtrairePhotoSelonUtil(nom, out lstimage))
+            if (requetephotoBd.ExtrairePhotoSelonUtil(nom, out lstimage))
             {
                 ViewData["lstimage"]=lstimage;
                 ViewData["nom"] = nom;
@@ -111,27 +110,27 @@ namespace PhotoFun.Controllers
         [HttpPost]
         public ActionResult PhotoUtil(string image, string actionAFaire,string nom)
         {
-            var requeteRelUtilPhotoBD = new RequeteRelUtilPhotoBD();
-            var requetephotoBD = new RequetePhotoBD();
+            var requeteRelUtilPhotoBd = new RequeteRelUtilPhotoBD();
+            var requetephotoBd = new RequetePhotoBD();
             if (image != null && actionAFaire == "LIKE")
             {
-                if (requeteRelUtilPhotoBD.VerifLiaisonPhotoUtil(User.Identity.Name, image))
+                if (requeteRelUtilPhotoBd.VerifLiaisonPhotoUtil(User.Identity.Name, image))
                 {
-                    if (requeteRelUtilPhotoBD.AjoutRelationUtilPhoto(User.Identity.Name, image))
+                    if (requeteRelUtilPhotoBd.AjoutRelationUtilPhoto(User.Identity.Name, image))
                     {
-                        if (requetephotoBD.AjouterUnLike(image))
+                        if (requetephotoBd.AjouterUnLike(image))
                         {
-                            return RedirectToAction("PhotoUtil", "Account", new { nom = nom });
+                            return RedirectToAction("PhotoUtil", "Account", new {nom });
                         }
                     }
                 }
                 else
                 {
-                    if (requeteRelUtilPhotoBD.EnleveLiaisonPhotoUtil(User.Identity.Name, image))
+                    if (requeteRelUtilPhotoBd.EnleveLiaisonPhotoUtil(User.Identity.Name, image))
                     {
-                        if (requetephotoBD.EnleveUnLike(image))
+                        if (requetephotoBd.EnleveUnLike(image))
                         {
-                            return RedirectToAction("PhotoUtil", "Account", new { nom = nom });
+                            return RedirectToAction("PhotoUtil", "Account", new {nom });
                         }
                     }
                 }
@@ -140,11 +139,11 @@ namespace PhotoFun.Controllers
             {
                 if (image != null && actionAFaire == "Supprimer")
                 {
-                    if (requeteRelUtilPhotoBD.EnleveTousLesLiaisonsAvecLesUtils(image))
+                    if (requeteRelUtilPhotoBd.EnleveTousLesLiaisonsAvecLesUtils(image))
                     {
-                        if (requetephotoBD.DetruirePhotoSelonUtil(User.Identity.Name, image))
+                        if (requetephotoBd.DetruirePhotoSelonUtil(User.Identity.Name, image))
                         {
-                            return RedirectToAction("PhotoUtil", "Account", new { nom = nom });
+                            return RedirectToAction("PhotoUtil", "Account", new {nom });
                         }
                     }
                 }
@@ -152,7 +151,7 @@ namespace PhotoFun.Controllers
                 {
                     if (image != null && actionAFaire == "EDIT")
                     {
-                        return RedirectToAction("EditCommentaireUtil", "Account", new { image = image });
+                        return RedirectToAction("EditCommentaireUtil", "Account", new {image });
                     }
                 }
             }
@@ -161,21 +160,20 @@ namespace PhotoFun.Controllers
 
         public ActionResult EditCommentaireUtil(string image)
         {
-            string commentaire;
-            var requetephotoBD = new RequetePhotoBD();
-            commentaire = requetephotoBD.ExtraireCommentaireSelonPhoto(image);
+            var requetephotoBd = new RequetePhotoBD();
+            var commentaire = requetephotoBd.ExtraireCommentaireSelonPhoto(image);
             ViewData["commentaire"] = commentaire;
             ViewData["image"] = image;
             return View();
         }
 
         [HttpPost]
-        public ActionResult EditCommentaireUtil(string Image, string Commentaire)
+        public ActionResult EditCommentaireUtil(string image, string commentaire)
         {
-            var requetephotoBD = new RequetePhotoBD();
-            string nouveaucommentaire = Commentaire; 
-            string image= Image;
-            if (requetephotoBD.MettreAJourLeCommentaireDeLaPhoto(nouveaucommentaire, image))
+            var requetephotoBd = new RequetePhotoBD();
+            string nouveaucommentaire = commentaire; 
+            string images= image;
+            if (requetephotoBd.MettreAJourLeCommentaireDeLaPhoto(nouveaucommentaire, images))
             {
                 return RedirectToAction("PhotoUtil", "Account", new { nom = User.Identity.Name });
             }
@@ -184,29 +182,29 @@ namespace PhotoFun.Controllers
 
         public ActionResult Profil(string viewdata)
         {
-            var requeteutilBD = new RequeteUtilBD();
-            var requeteAbonnementUtilBD = new RequeteAbonnementUtilBD();
+            var requeteutilBd = new RequeteUtilBD();
+            var requeteAbonnementUtilBd = new RequeteAbonnementUtilBD();
             var profilModel = new ProfilModel();
-            var courriel = "";
-            var nom = "";
-            var prenom = "";
+            string courriel;
+            string nom;
+            string prenom;
             int nbAbonnement;
 
             profilModel.IdUtilRechercher = User.Identity.Name;
 
-            if (requeteutilBD.ExtraireCourrielSelonUtil(User.Identity.Name, out courriel))
+            if (requeteutilBd.ExtraireCourrielSelonUtil(User.Identity.Name, out courriel))
             {
                 profilModel.Courriel = courriel;
             }
-            if (requeteutilBD.ExtraireNomSelonUtil(User.Identity.Name, out nom))
+            if (requeteutilBd.ExtraireNomSelonUtil(User.Identity.Name, out nom))
             {
                 profilModel.NomUtil = nom;
             }
-            if (requeteutilBD.ExtrairePrenomSelonUtil(User.Identity.Name, out prenom))
+            if (requeteutilBd.ExtrairePrenomSelonUtil(User.Identity.Name, out prenom))
             {
                 profilModel.PrenomUtil = prenom;
             }
-            if (requeteAbonnementUtilBD.CompteNbAbonnement(profilModel, out nbAbonnement))
+            if (requeteAbonnementUtilBd.CompteNbAbonnement(profilModel, out nbAbonnement))
             {
                 profilModel.NbAbonnement = nbAbonnement;
             }
@@ -226,11 +224,10 @@ namespace PhotoFun.Controllers
         public ActionResult Profil()
         {
             PhotoModels photoModels = new PhotoModels();
-            var requetephotoBD = new RequetePhotoBD();
-            var requeteUtilBD = new RequeteUtilBD();
+            var requetephotoBd = new RequetePhotoBD();
+            var requeteUtilBd = new RequeteUtilBD();
             string path = Server.MapPath("~/Images/");
             photoModels.util = User.Identity.Name;
-            string NouveauNomPhoto = photoModels.util + "_";
             photoModels.Categorie = "PhotoProfil";
 
             if (Request.Files.Count > 0)
@@ -245,17 +242,17 @@ namespace PhotoFun.Controllers
                     {
                         string nomfich = photoModels.util + '_' + Path.GetFileNameWithoutExtension(fichier.FileName) + photoModels.IDUniqueNomPhoto + ext;
                         string name = "/Images/" + nomfich;
-                        Image image;
-                        int Hauteur=600, Largeur=600;
+                        const int hauteur = 600;
+                        const int largeur = 600;
                         try
                         {
-                            image = Image.FromStream(fichier.InputStream, true, true);
-                            if (image.Height >= Hauteur && image.Width >= Largeur)
+                            var image = Image.FromStream(fichier.InputStream, true, true);
+                            if (image.Height >= hauteur && image.Width >= largeur)
                             {
                                 fichier.SaveAs(path + nomfich);
                                 photoModels.image = name;
-                                requetephotoBD.EnregistrerPhoto(photoModels);
-                                requeteUtilBD.MettreAJourPhotoProfil(photoModels.image, photoModels.util);
+                                requetephotoBd.EnregistrerPhoto(photoModels);
+                                requeteUtilBd.MettreAJourPhotoProfil(photoModels.image, photoModels.util);
                             }
                             else
                             {
@@ -291,12 +288,12 @@ namespace PhotoFun.Controllers
 
         public ActionResult MesAbonnements()
         {
-            var requeteAbonnementUtilBD = new RequeteAbonnementUtilBD();
-            List<string> MesAbonnements = new List<string>();
+            var requeteAbonnementUtilBd = new RequeteAbonnementUtilBD();
+            List<string> mesAbonnements;
 
-            if (requeteAbonnementUtilBD.ExtraireLesAbonnementsSelonUtil(User.Identity.Name, out MesAbonnements))
+            if (requeteAbonnementUtilBd.ExtraireLesAbonnementsSelonUtil(User.Identity.Name, out mesAbonnements))
             {
-                ViewData["MesAbonnements"] = MesAbonnements;
+                ViewData["MesAbonnements"] = mesAbonnements;
             }
 
             return View();
@@ -310,46 +307,49 @@ namespace PhotoFun.Controllers
             {
                 var profilModel = new ProfilModel();
                 var profilModeltab = new List<ProfilModel>();
-                var requeteutilBD = new RequeteUtilBD();
-                var requeteAbonnementUtilBD = new RequeteAbonnementUtilBD();
-                var retour = new List<string>();
-                int nbAbonnement;
-                var nomUtil = Request.Form.GetValues(0).GetValue(0);
-
-                if (requeteutilBD.ExtraireUtilAvecPourcent(nomUtil.ToString(), out retour))
+                var requeteutilBd = new RequeteUtilBD();
+                var requeteAbonnementUtilBd = new RequeteAbonnementUtilBD();
+                var strings = Request.Form.GetValues(0);
+                if (strings != null)
                 {
-                    if (retour.Count > 0 && nomUtil.ToString() != "")
+                    var nomUtil = strings.GetValue(0);
+
+                    List<string> retour;
+                    if (requeteutilBd.ExtraireUtilAvecPourcent(nomUtil.ToString(), out retour))
                     {
-                        foreach (string util in retour)
+                        if (retour.Count > 0 && nomUtil.ToString() != "")
                         {
-                            profilModel = new ProfilModel();
-                            profilModel.IdUtilRechercher = util;
-                            if (requeteAbonnementUtilBD.CompteNbAbonnement(profilModel, out nbAbonnement))
+                            foreach (string util in retour)
                             {
-                                profilModel.NbAbonnement = nbAbonnement;
+                                profilModel = new ProfilModel {IdUtilRechercher = util};
+                                int nbAbonnement;
+                                if (requeteAbonnementUtilBd.CompteNbAbonnement(profilModel, out nbAbonnement))
+                                {
+                                    profilModel.NbAbonnement = nbAbonnement;
+                                }
+                                profilModel.Abonner = requeteAbonnementUtilBd.VerifAbonnement(profilModel.IdUtilRechercher, User.Identity.Name);
+                                profilModeltab.Add(profilModel);
                             }
-                            profilModel.Abonner = requeteAbonnementUtilBD.VerifAbonnement(profilModel.IdUtilRechercher, User.Identity.Name);
-                            profilModeltab.Add(profilModel);
+                            ViewData["Rechercher"] = profilModeltab;
                         }
-                        ViewData["Rechercher"] = profilModeltab;
+                        else
+                        {
+                            profilModel.Abonner = false;
+                            profilModel.IdUtilRechercher = "Utilisateur Inexistant";
+                            profilModel.NbAbonnement = 0;
+                            profilModeltab.Add(profilModel);
+                            ViewData["Rechercher"] = profilModeltab;
+                        }
                     }
                     else
                     {
-                        profilModel.Abonner = false;
-                        profilModel.IdUtilRechercher = "Utilisateur Inexistant";
-                        profilModel.NbAbonnement = 0;
-                        profilModeltab.Add(profilModel);
-                        ViewData["Rechercher"] = profilModeltab;
+                        return RedirectToAction("Erreur", "Home");
                     }
-                }
-                else
-                {
-                    return RedirectToAction("Erreur", "Home");
                 }
             }
             else
             {
-                string erreur = "Une erreur est survenue";
+                const string erreur = "Une erreur est survenue";
                 ViewData["Rechercher"] = erreur;
             }
             return View();
@@ -358,14 +358,10 @@ namespace PhotoFun.Controllers
         [AllowAnonymous]
         public ActionResult ProfilUtil(string nomUtil)
         {
-            var requeteutilBD = new RequeteUtilBD();
-            var requeteAbonnementUtilBD = new RequeteAbonnementUtilBD();
+            var requeteutilBd = new RequeteUtilBD();
+            var requeteAbonnementUtilBd = new RequeteAbonnementUtilBD();
             var profilModel = new ProfilModel();
-            var retour = new List<string>();
-            var courriel="";
-            var nom="";
-            var prenom="";
-            int nbAbonnement;
+            List<string> retour;
 
             if(User.Identity.Name!=null)
             {
@@ -374,47 +370,50 @@ namespace PhotoFun.Controllers
                     return RedirectToAction("Profil", "Account");
                 }
             }
-            if (requeteutilBD.ExtraireUtil(nomUtil, out retour))
-            {
+            if (requeteutilBd.ExtraireUtil(nomUtil, out retour))
                 if (retour.Count > 0)
                 {
                     profilModel.IdUtilRechercher = nomUtil;
 
-                    if (requeteAbonnementUtilBD.CompteNbAbonnement(profilModel, out nbAbonnement))
+                    int nbAbonnement;
+                    if (requeteAbonnementUtilBd.CompteNbAbonnement(profilModel, out nbAbonnement))
                     {
                         profilModel.NbAbonnement = nbAbonnement;
                     }
-                    profilModel.Abonner = requeteAbonnementUtilBD.VerifAbonnement(profilModel.IdUtilRechercher, User.Identity.Name);
-                    if (requeteutilBD.ExtraireCourrielSelonUtil(nomUtil,out courriel))
+                    profilModel.Abonner = requeteAbonnementUtilBd.VerifAbonnement(profilModel.IdUtilRechercher,
+                        User.Identity.Name);
+                    string courriel;
+                    if (requeteutilBd.ExtraireCourrielSelonUtil(nomUtil, out courriel))
                     {
                         profilModel.Courriel = courriel;
                     }
-                    if (requeteutilBD.ExtraireNomSelonUtil(nomUtil, out nom))
+                    string nom;
+                    if (requeteutilBd.ExtraireNomSelonUtil(nomUtil, out nom))
                     {
                         profilModel.NomUtil = nom;
                     }
-                    if (requeteutilBD.ExtrairePrenomSelonUtil(nomUtil, out prenom))
+                    string prenom;
+                    if (requeteutilBd.ExtrairePrenomSelonUtil(nomUtil, out prenom))
                     {
                         profilModel.PrenomUtil = prenom;
                     }
                     ViewData["Rechercher"] = profilModel;
                 }
-            }
             return View();
         }
 
-        public ActionResult Suivre(string nom, bool Abonne)
+        public ActionResult Suivre(string nom, bool abonne)
         {
-            var requeteAbonnementUtilBD = new RequeteAbonnementUtilBD();
+            var requeteAbonnementUtilBd = new RequeteAbonnementUtilBD();
             var profilModel = new ProfilModel();
             
-            if (Abonne)
+            if (abonne)
             {
-                requeteAbonnementUtilBD.SupprimerRelAbonnement(nom, User.Identity.Name);
+                requeteAbonnementUtilBd.SupprimerRelAbonnement(nom, User.Identity.Name);
             }
             else
             {
-                requeteAbonnementUtilBD.AbonnerUtil(User.Identity.Name, nom);
+                requeteAbonnementUtilBd.AbonnerUtil(User.Identity.Name, nom);
                 profilModel.Abonner = true;
             }
 
