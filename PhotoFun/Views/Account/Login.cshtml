@@ -7,8 +7,10 @@
 </div>
 <section id="loginForm">
 @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl })) {
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
+    <div style="color:Red">
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+    </div>
     <fieldset>
         <legend>Formulaire de connexion</legend>
         <ol>
