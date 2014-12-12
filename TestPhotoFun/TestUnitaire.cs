@@ -32,10 +32,10 @@ namespace TestPhotoFun
         }
 
         [TestMethod]
-        public void TestAjoutUtilBD()
+        public void TestAjoutUtilBd()
         {
             //given
-            var requeteutilBD = new RequeteUtilBd();
+            var requeteutilBd = new RequeteUtilBd();
             var rm = new RegisterModel
             {
                 Courriel = "nic@hotmail.com",
@@ -44,7 +44,7 @@ namespace TestPhotoFun
                 UserName = NomUsager
             };
             //when
-            var result = requeteutilBD.InsererUtil(rm);
+            var result = requeteutilBd.InsererUtil(rm);
             //then
             Assert.IsTrue(result);
         }
@@ -53,9 +53,9 @@ namespace TestPhotoFun
         public void TestExtraireUtil()
         {
             //given
-            var requeUtilBD = new RequeteUtilBd();
+            var requeUtilBd = new RequeteUtilBd();
             //when
-            var result = requeUtilBD.ExtraireUtil(NomUsager);
+            var result = requeUtilBd.ExtraireUtil(NomUsager);
             //then
             Assert.IsTrue(result);
         }
@@ -64,11 +64,11 @@ namespace TestPhotoFun
         public void TestEnregistrerPhoto()
         {
             //given
-            var requetePhotoBD = new RequetePhotoBd();
+            var requetePhotoBd = new RequetePhotoBd();
             var photoModel = new PhotoModels {Util = NomUsager, Categorie = "Autres"};
             photoModel.Image = photoModel.Util + "_Bateau" + photoModel.IdUniqueNomPhoto;
             //when
-            var result = requetePhotoBD.EnregistrerPhoto(photoModel);
+            var result = requetePhotoBd.EnregistrerPhoto(photoModel);
             //then
             Assert.IsTrue(result);
         }
@@ -77,9 +77,9 @@ namespace TestPhotoFun
         public void TestAbonnerUtil()
         {
             //given
-            var requeteAbonnementUtilBD = new RequeteAbonnementUtilBd();
+            var requeteAbonnementUtilBd = new RequeteAbonnementUtilBd();
             //when
-            var result = requeteAbonnementUtilBD.AbonnerUtil(NomUsager, "nicolo");
+            var result = requeteAbonnementUtilBd.AbonnerUtil(NomUsager, "nicolo");
             //then
             Assert.IsTrue(result);
         }
@@ -88,9 +88,9 @@ namespace TestPhotoFun
         public void TestSupprimerRelAbonnement()
         {
             //given
-            var requeteAbonnementUtilBD = new RequeteAbonnementUtilBd();
+            var requeteAbonnementUtilBd = new RequeteAbonnementUtilBd();
             //when
-            var result = requeteAbonnementUtilBD.SupprimerRelAbonnement("nicolo", NomUsager);
+            var result = requeteAbonnementUtilBd.SupprimerRelAbonnement("nicolo", NomUsager);
             //then
             Assert.IsTrue(result);
         }
