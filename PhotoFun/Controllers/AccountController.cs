@@ -88,7 +88,7 @@ namespace PhotoFun.Controllers
         [AllowAnonymous]
         public ActionResult PhotoUtil(string nom)
         {
-            var requetephotoBd = new RequetePhotoBD();
+            var requetephotoBd = new RequetePhotoBd();
             List<string> lstimage;
             if (requetephotoBd.ExtrairePhotoSelonUtil(nom, out lstimage))
             {
@@ -111,7 +111,7 @@ namespace PhotoFun.Controllers
         public ActionResult PhotoUtil(string image, string actionAFaire,string nom)
         {
             var requeteRelUtilPhotoBd = new RequeteRelUtilPhotoBD();
-            var requetephotoBd = new RequetePhotoBD();
+            var requetephotoBd = new RequetePhotoBd();
             if (image != null && actionAFaire == "LIKE")
             {
                 if (requeteRelUtilPhotoBd.VerifLiaisonPhotoUtil(User.Identity.Name, image))
@@ -160,7 +160,7 @@ namespace PhotoFun.Controllers
 
         public ActionResult EditCommentaireUtil(string image)
         {
-            var requetephotoBd = new RequetePhotoBD();
+            var requetephotoBd = new RequetePhotoBd();
             var commentaire = requetephotoBd.ExtraireCommentaireSelonPhoto(image);
             ViewData["commentaire"] = commentaire;
             ViewData["image"] = image;
@@ -170,7 +170,7 @@ namespace PhotoFun.Controllers
         [HttpPost]
         public ActionResult EditCommentaireUtil(string image, string commentaire)
         {
-            var requetephotoBd = new RequetePhotoBD();
+            var requetephotoBd = new RequetePhotoBd();
             string nouveaucommentaire = commentaire; 
             string images= image;
             if (requetephotoBd.MettreAJourLeCommentaireDeLaPhoto(nouveaucommentaire, images))
@@ -224,7 +224,7 @@ namespace PhotoFun.Controllers
         public ActionResult Profil()
         {
             PhotoModels photoModels = new PhotoModels();
-            var requetephotoBd = new RequetePhotoBD();
+            var requetephotoBd = new RequetePhotoBd();
             var requeteUtilBd = new RequeteUtilBD();
             string path = Server.MapPath("~/Images/");
             photoModels.Util = User.Identity.Name;

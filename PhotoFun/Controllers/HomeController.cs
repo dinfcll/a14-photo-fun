@@ -11,7 +11,7 @@ namespace PhotoFun.Controllers
     {
         public ActionResult Index()
         {
-            var requetephotoBd = new RequetePhotoBD();
+            var requetephotoBd = new RequetePhotoBd();
             List<string> lstimage;
             if (requetephotoBd.ExtraireDernieresPhotos(5, out lstimage))
             {
@@ -52,7 +52,7 @@ namespace PhotoFun.Controllers
         public ActionResult PartagerImage(string image)
         {
             string host= Request.Url.Host + (Request.Url.IsDefaultPort ? "" : ":" + Request.Url.Port);
-            RequetePhotoBD requetePhotoBd = new RequetePhotoBD();
+            RequetePhotoBd requetePhotoBd = new RequetePhotoBd();
             var commentaire = requetePhotoBd.ExtraireCommentaireSelonPhoto(image);
             ViewData["commentaire"] = commentaire;
             ViewData["host"] = host;
@@ -62,7 +62,7 @@ namespace PhotoFun.Controllers
 		
         public ActionResult RetourneLaVueSelonCategorie(string categorie)
         {
-            var requetephotoBd = new RequetePhotoBD();
+            var requetephotoBd = new RequetePhotoBd();
             List<string> lstimage;
             if (requetephotoBd.ExtrairePhotoSelonCategorie(categorie, out lstimage))
             {
@@ -79,7 +79,7 @@ namespace PhotoFun.Controllers
             if (image != null && categorie != null)
             {
                 var requeteRelUtilPhotoBd = new RequeteRelUtilPhotoBD();
-                var requetephotoBd = new RequetePhotoBD();
+                var requetephotoBd = new RequetePhotoBd();
                 if (requeteRelUtilPhotoBd.VerifLiaisonPhotoUtil(User.Identity.Name, image))
                 {
                     if (requeteRelUtilPhotoBd.AjoutRelationUtilPhoto(User.Identity.Name, image))
@@ -112,7 +112,7 @@ namespace PhotoFun.Controllers
         public ActionResult Importer(PhotoModels model)
         {
             model.Util = User.Identity.Name;
-            var requetephotoBd = new RequetePhotoBD();
+            var requetephotoBd = new RequetePhotoBd();
             string path = Server.MapPath("~/Images/");
 
             if (Request.Files.Count > 0)

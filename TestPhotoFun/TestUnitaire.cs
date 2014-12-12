@@ -64,7 +64,7 @@ namespace TestPhotoFun
         public void TestEnregistrerPhoto()
         {
             //given
-            var requetePhotoBD = new RequetePhotoBD();
+            var requetePhotoBD = new RequetePhotoBd();
             var photoModel = new PhotoModels {Util = NomUsager, Categorie = "Autres"};
             photoModel.Image = photoModel.Util + "_Bateau" + photoModel.IdUniqueNomPhoto;
             //when
