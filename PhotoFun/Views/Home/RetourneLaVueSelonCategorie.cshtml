@@ -7,48 +7,45 @@
 @{   
     if (lstimage != null && lstimage.Count > 0)
     {
-        var requetephotoBD = new PhotoFun.Models.RequetePhotoBd();
-        var requeteRelUtilPhotoBD = new PhotoFun.Models.RequeteRelUtilPhotoBd();
-        int NbJaime;
-        string nomUtil="";
-        string commentaire="";
-            
-        foreach (var Photo in lstimage)
+        var requetephotoBd = new PhotoFun.Models.RequetePhotoBd();
+        var requeteRelUtilPhotoBd = new PhotoFun.Models.RequeteRelUtilPhotoBd();
+
+        foreach (var photo in lstimage)
         {
-            NbJaime = requetephotoBD.RetourneLeNombreDeJAimeSelonPhoto(Photo);
-           <div class="divdesimages">
+            var nbJaime = requetephotoBd.RetourneLeNombreDeJAimeSelonPhoto(photo);
+            <div class="divdesimages">
            
                     @using (Html.BeginForm("RetourneLaVueSelonCategorie", "Home", FormMethod.Post))
                     {  
                         string cat = ViewBag.Title;
-                        nomUtil = requetephotoBD.ExtraireUtilSelonPhoto(Photo);
-                        commentaire = requetephotoBD.ExtraireCommentaireSelonPhoto(Photo);
-                        <img src="@Photo" class="img-thumbnail" alt="Image inaccessible" width="100%"/>
+                        var nomUtil=requetephotoBd.ExtraireUtilSelonPhoto(photo);
+                        var commentaire=requetephotoBd.ExtraireCommentaireSelonPhoto(photo);
+                        <img src="@photo" class="img-thumbnail" alt="Image inaccessible" width="100%"/>
                         if (User.Identity.IsAuthenticated)
                         {
-                            if (requeteRelUtilPhotoBD.VerifLiaisonPhotoUtil(User.Identity.Name, Photo))
+                            if (requeteRelUtilPhotoBd.VerifLiaisonPhotoUtil(User.Identity.Name, photo))
                             {
-                                <button type="submit" class="close" title="J'aime"><span class="glyphicon glyphicon-heart"></span><span class="badge">@NbJaime</span></button>
+                                <button type="submit" class="close" title="J'aime"><span class="glyphicon glyphicon-heart"></span><span class="badge">@nbJaime</span></button>
                                 <button type="button" class="close boutonsupprimer fullscreen" data-toggle="modal" data-target="#PhotoModal"><span class="glyphicon glyphicon-fullscreen"></span></button>
                                 @Html.Hidden("categorie", cat)
-                                @Html.Hidden("Image", Photo)
+                                @Html.Hidden("Image", photo)
                             }
                             else
                             {
-                                <button type="submit" class="close" title="Je n'aime plus"><span class="glyphicon glyphicon-heart-empty"></span><span class="badge">@NbJaime</span></button> 
+                                <button type="submit" class="close" title="Je n'aime plus"><span class="glyphicon glyphicon-heart-empty"></span><span class="badge">@nbJaime</span></button> 
                                 <button type="button" class="close boutonsupprimer fullscreen" data-toggle="modal" data-target="#PhotoModal"><span class="glyphicon glyphicon-fullscreen"></span></button>
                                 @Html.Hidden("categorie", cat)
-                                @Html.Hidden("Image", Photo)
+                                @Html.Hidden("Image", photo)
                             }
                         }
                         else
                         {
-                            <button type="submit" class="close" title="J'aime"><span class="glyphicon glyphicon-heart"></span><span class="badge">@NbJaime</span></button>
+                            <button type="submit" class="close" title="J'aime"><span class="glyphicon glyphicon-heart"></span><span class="badge">@nbJaime</span></button>
                             <button type="button" class="close boutonsupprimer fullscreen" data-toggle="modal" data-target="#PhotoModal"><span class="glyphicon glyphicon-fullscreen"></span></button>
                         }
                             <span hidden class="nomUtil" item="@nomUtil"></span>
                             <span hidden class="commentaire" item="@commentaire"></span>
-                            @Html.ActionLink("Partager", "PartagerImage", "Home", new { image = Photo }, new { @class = "btn btn-lg btn-info btn-sm" }) 
+                            @Html.ActionLink("Partager", "PartagerImage", "Home", new { image = photo }, new { @class = "btn btn-lg btn-info btn-sm" }) 
                     }
             </div>
             
