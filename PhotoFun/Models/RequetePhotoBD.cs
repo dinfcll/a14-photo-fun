@@ -7,7 +7,7 @@ namespace PhotoFun.Models
 {
     public class RequetePhotoBD
     {
-        PhotoFunBD photofunbd = new PhotoFunBD();
+        PhotoFunBd photofunbd = new PhotoFunBd();
         private string cs;
 
         public RequetePhotoBD()
@@ -68,7 +68,7 @@ namespace PhotoFun.Models
                 try
                 {
                     conn.Open();
-                    var scEnregistrerPhoto = new SqlCommand("Insert into Photos (Categorie, Image, IDUtil, Commentaire) values ('" + pm.Categorie + "', '" + pm.image + "', '" + pm.util + "', '" + pm.Commentaires + "');", conn);
+                    var scEnregistrerPhoto = new SqlCommand("Insert into Photos (Categorie, Image, IDUtil, Commentaire) values ('" + pm.Categorie + "', '" + pm.Image + "', '" + pm.Util + "', '" + pm.Commentaires + "');", conn);
                     scEnregistrerPhoto.ExecuteNonQuery();
                     conn.Close();
                     resultat = true;

@@ -111,7 +111,7 @@ namespace PhotoFun.Controllers
         [HttpPost]
         public ActionResult Importer(PhotoModels model)
         {
-            model.util = User.Identity.Name;
+            model.Util = User.Identity.Name;
             var requetephotoBd = new RequetePhotoBD();
             string path = Server.MapPath("~/Images/");
 
@@ -124,7 +124,7 @@ namespace PhotoFun.Controllers
                     string ext = Path.GetExtension(fichier.FileName);
                     if (ext == ".jpg" || ext == ".png" || ext == ".jpeg" || ext==".JPG" || ext==".PNG" || ext==".JPEG")
                     {
-                        string nomfich = model.util+ '_' + Path.GetFileNameWithoutExtension(fichier.FileName) + model.IDUniqueNomPhoto + ext;
+                        string nomfich = model.Util+ '_' + Path.GetFileNameWithoutExtension(fichier.FileName) + model.IdUniqueNomPhoto + ext;
                         string name = "/Images/" +nomfich;
                         const int hauteur = 600;
                         const int largeur = 600;
@@ -134,7 +134,7 @@ namespace PhotoFun.Controllers
                             if (image.Height >= hauteur && image.Width >= largeur)
                             {
                                 fichier.SaveAs(path + nomfich);
-                                model.image = name;
+                                model.Image = name;
                                 requetephotoBd.EnregistrerPhoto(model);
                                 ViewData["VerifierImporter"] = "TransfertReussi";
                             }

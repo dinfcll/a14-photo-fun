@@ -1,20 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Data;
-
 
 namespace PhotoFun.Models
 {
-    public class PhotoFunBD
+    public class PhotoFunBd
     {
-        private const string cs = "Data Source=G264-11\\SQLEXPRESS ;Initial Catalog=tempdb;Integrated Security=True";
+        private const string Cs = "Data Source=G264-11\\SQLEXPRESS ;Initial Catalog=tempdb;Integrated Security=True";
 
         public string ConnexionString
         {
             get
             {
-                return cs;
+                return Cs;
             }
         }
 

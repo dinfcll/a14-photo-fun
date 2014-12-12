@@ -227,7 +227,7 @@ namespace PhotoFun.Controllers
             var requetephotoBd = new RequetePhotoBD();
             var requeteUtilBd = new RequeteUtilBD();
             string path = Server.MapPath("~/Images/");
-            photoModels.util = User.Identity.Name;
+            photoModels.Util = User.Identity.Name;
             photoModels.Categorie = "PhotoProfil";
 
             if (Request.Files.Count > 0)
@@ -240,7 +240,7 @@ namespace PhotoFun.Controllers
 
                     if (ext == ".jpg" || ext == ".png" || ext == ".jpeg" || ext == ".JPG" || ext == ".PNG" || ext == ".JPEG")
                     {
-                        string nomfich = photoModels.util + '_' + Path.GetFileNameWithoutExtension(fichier.FileName) + photoModels.IDUniqueNomPhoto + ext;
+                        string nomfich = photoModels.Util + '_' + Path.GetFileNameWithoutExtension(fichier.FileName) + photoModels.IdUniqueNomPhoto + ext;
                         string name = "/Images/" + nomfich;
                         const int hauteur = 600;
                         const int largeur = 600;
@@ -250,9 +250,9 @@ namespace PhotoFun.Controllers
                             if (image.Height >= hauteur && image.Width >= largeur)
                             {
                                 fichier.SaveAs(path + nomfich);
-                                photoModels.image = name;
+                                photoModels.Image = name;
                                 requetephotoBd.EnregistrerPhoto(photoModels);
-                                requeteUtilBd.MettreAJourPhotoProfil(photoModels.image, photoModels.util);
+                                requeteUtilBd.MettreAJourPhotoProfil(photoModels.Image, photoModels.Util);
                             }
                             else
                             {

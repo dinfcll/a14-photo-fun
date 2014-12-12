@@ -7,7 +7,7 @@ namespace PhotoFun.Models
 {
     public class RequeteAbonnementUtilBD
     {
-        PhotoFunBD photofunbd = new PhotoFunBD();
+        PhotoFunBd photofunbd = new PhotoFunBd();
         private string cs;
 
         public RequeteAbonnementUtilBD()
