@@ -1,4 +1,4 @@
-USE [tempdb]
+USE [DBPhotoFun]
 GO
 
 IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_AbonnementUtil_Utilisateurs]') AND parent_object_id = OBJECT_ID(N'[dbo].[AbonnementUtil]'))
@@ -9,7 +9,7 @@ IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[
 ALTER TABLE [dbo].[AbonnementUtil] DROP CONSTRAINT [FK_AbonnementUtil_Utilisateurs1]
 GO
 
-USE [tempdb]
+USE [DBPhotoFun]
 GO
 
 /****** Object:  Table [dbo].[AbonnementUtil]    Script Date: 11/07/2014 14:04:22 ******/
@@ -17,7 +17,7 @@ IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Abonn
 DROP TABLE [dbo].[AbonnementUtil]
 GO
 
-USE [tempdb]
+USE [DBPhotoFun]
 GO
 
 /****** Object:  Table [dbo].[AbonnementUtil]    Script Date: 11/07/2014 14:04:22 ******/

@@ -1,4 +1,4 @@
-USE [tempdb]
+USE [DBPhotoFun]
 GO
 
 ALTER TABLE [dbo].[relUtilPhoto] DROP CONSTRAINT [FK_relUtilPhoto_Utilisateurs]
