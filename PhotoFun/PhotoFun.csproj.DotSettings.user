@@ -1,5 +1,7 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
 	<s:String x:Key="/Default/CodeInspection/WebPathMapping/IgnoredPaths/=ACCOUNT/@EntryIndexedValue">Account</s:String>
 	<s:String x:Key="/Default/CodeInspection/WebPathMapping/IgnoredPaths/=HOME/@EntryIndexedValue">Home</s:String>
+	<s:String x:Key="/Default/CodeInspection/WebPathMapping/IgnoredPaths/=IMAGES_005CDEFAUTPHOTO_002EJPG/@EntryIndexedValue">Images\defautPhoto.jpg</s:String>
 	<s:String x:Key="/Default/CodeInspection/WebPathMapping/PathsInCorrectCasing/=ACCOUNT/@EntryIndexedValue">Account</s:String>
-	<s:String x:Key="/Default/CodeInspection/WebPathMapping/PathsInCorrectCasing/=HOME/@EntryIndexedValue">Home</s:String></wpf:ResourceDictionary>
+	<s:String x:Key="/Default/CodeInspection/WebPathMapping/PathsInCorrectCasing/=HOME/@EntryIndexedValue">Home</s:String>
+	<s:String x:Key="/Default/CodeInspection/WebPathMapping/PathsInCorrectCasing/=IMAGES_005CDEFAUTPHOTO_002EJPG/@EntryIndexedValue">Images\defautPhoto.jpg</s:String></wpf:ResourceDictionary>

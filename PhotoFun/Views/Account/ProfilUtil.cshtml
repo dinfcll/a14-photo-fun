@@ -1,38 +1,38 @@
 ﻿@{
     ViewBag.Title = "Profil recherché";
-    var NomProfil = ViewData["Rechercher"] as PhotoFun.Models.ProfilModel;
+    var nomProfil = ViewData["Rechercher"] as PhotoFun.Models.ProfilModel;
 }
 
-@if (NomProfil != null)
+@if (nomProfil != null)
 {
-    if (NomProfil.IdUtilRechercher != "Utilisateur Inexistant")
+    if (nomProfil.IdUtilRechercher != "Utilisateur Inexistant")
     {
     <div class="page-header">
-        <h2>@NomProfil.IdUtilRechercher</h2>
+        <h2>@nomProfil.IdUtilRechercher</h2>
     </div>
         <div class="container-fluid">
 	        <div class="row">
                 <div class="col-xs-8 col-sm-6 col-md-3">
-                   @Html.Partial("_ImageProfil",ViewData["profil"]=NomProfil.IdUtilRechercher)
+                   @Html.Partial("_ImageProfil",ViewData["profil"]=nomProfil.IdUtilRechercher)
                 </div>
                 <div class="col-xs-4 col-sm-4 col-md-6">
-                    <h5>@NomProfil.IdUtilRechercher</h5>
-                    <h5>Courriel: @NomProfil.Courriel</h5>
-                    <h5>Prénom: @NomProfil.PrenomUtil</h5>
-                    <h5>Nom: @NomProfil.NomUtil</h5>
-                    <h5>Nombre d'abonnés: @NomProfil.NbAbonnement</h5>
-                    @if (NomProfil.IdUtilRechercher != User.Identity.Name && User.Identity.IsAuthenticated)
+                    <h5>@nomProfil.IdUtilRechercher</h5>
+                    <h5>Courriel: @nomProfil.Courriel</h5>
+                    <h5>Prénom: @nomProfil.PrenomUtil</h5>
+                    <h5>Nom: @nomProfil.NomUtil</h5>
+                    <h5>Nombre d'abonnés: @nomProfil.NbAbonnement</h5>
+                    @if (nomProfil.IdUtilRechercher != User.Identity.Name && User.Identity.IsAuthenticated)
                     {
-                        if (NomProfil.Abonner)
+                        if (nomProfil.Abonner)
                         {
-                            <h5>@Html.ActionLink("Ne plus suivre", "Suivre", new { nom = NomProfil.IdUtilRechercher, abonne = NomProfil.Abonner }, null)</h5>
+                            <h5>@Html.ActionLink("Ne plus suivre", "Suivre", new { nom = nomProfil.IdUtilRechercher, abonne = nomProfil.Abonner }, null)</h5>
                         }
                         else
                         {
-                            <h5>@Html.ActionLink("Suivre", "Suivre", "Account", new { nom = NomProfil.IdUtilRechercher, abonne = NomProfil.Abonner }, null)</h5>
+                            <h5>@Html.ActionLink("Suivre", "Suivre", "Account", new { nom = nomProfil.IdUtilRechercher, abonne = nomProfil.Abonner }, null)</h5>
                         }
                     }
-                    <h5>@Html.ActionLink("Photos", "PhotoUtil", "Account", new { nom = NomProfil.IdUtilRechercher }, null)</h5>
+                    <h5>@Html.ActionLink("Photos", "PhotoUtil", "Account", new { nom = nomProfil.IdUtilRechercher }, null)</h5>
                 </div>
             </div>
         </div>   

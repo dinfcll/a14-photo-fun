@@ -11,9 +11,9 @@ namespace PhotoFun.Controllers
     {
         public ActionResult Index()
         {
-            var requetephotoBD = new RequetePhotoBD();
+            var requetephotoBd = new RequetePhotoBd();
             List<string> lstimage;
-            if (requetephotoBD.ExtraireDernieresPhotos(5, out lstimage))
+            if (requetephotoBd.ExtraireDernieresPhotos(5, out lstimage))
             {
                 ViewData["lstimage"] = lstimage;
                 return View();
@@ -52,9 +52,8 @@ namespace PhotoFun.Controllers
         public ActionResult PartagerImage(string image)
         {
             string host= Request.Url.Host + (Request.Url.IsDefaultPort ? "" : ":" + Request.Url.Port);
-            string commentaire;
-            RequetePhotoBD requetePhotoBD = new RequetePhotoBD();
-            commentaire=requetePhotoBD.ExtraireCommentaireSelonPhoto(image);
+            RequetePhotoBd requetePhotoBd = new RequetePhotoBd();
+            var commentaire = requetePhotoBd.ExtraireCommentaireSelonPhoto(image);
             ViewData["commentaire"] = commentaire;
             ViewData["host"] = host;
             ViewData["image"] = image;
@@ -63,9 +62,9 @@ namespace PhotoFun.Controllers
 		
         public ActionResult RetourneLaVueSelonCategorie(string categorie)
         {
-            var requetephotoBD = new RequetePhotoBD();
+            var requetephotoBd = new RequetePhotoBd();
             List<string> lstimage;
-            if (requetephotoBD.ExtrairePhotoSelonCategorie(categorie, out lstimage))
+            if (requetephotoBd.ExtrairePhotoSelonCategorie(categorie, out lstimage))
             {
                 ViewData["lstimage"] = lstimage;
                 ViewBag.Title = categorie;
@@ -79,25 +78,25 @@ namespace PhotoFun.Controllers
         {
             if (image != null && categorie != null)
             {
-                var requeteRelUtilPhotoBD = new RequeteRelUtilPhotoBD();
-                var requetephotoBD = new RequetePhotoBD();
-                if (requeteRelUtilPhotoBD.VerifLiaisonPhotoUtil(User.Identity.Name, image))
+                var requeteRelUtilPhotoBd = new RequeteRelUtilPhotoBd();
+                var requetephotoBd = new RequetePhotoBd();
+                if (requeteRelUtilPhotoBd.VerifLiaisonPhotoUtil(User.Identity.Name, image))
                 {
-                    if (requeteRelUtilPhotoBD.AjoutRelationUtilPhoto(User.Identity.Name, image))
+                    if (requeteRelUtilPhotoBd.AjoutRelationUtilPhoto(User.Identity.Name, image))
                     {
-                        if (requetephotoBD.AjouterUnLike(image))
+                        if (requetephotoBd.AjouterUnLike(image))
                         {
-                            return RedirectToAction("RetourneLaVueSelonCategorie", "Home", new { categorie = categorie });
+                            return RedirectToAction("RetourneLaVueSelonCategorie", "Home", new {categorie });
                         }
                     }
                 }
                 else
                 {
-                    if (requeteRelUtilPhotoBD.EnleveLiaisonPhotoUtil(User.Identity.Name, image))
+                    if (requeteRelUtilPhotoBd.EnleveLiaisonPhotoUtil(User.Identity.Name, image))
                     {
-                        if (requetephotoBD.EnleveUnLike(image))
+                        if (requetephotoBd.EnleveUnLike(image))
                         {
-                            return RedirectToAction("RetourneLaVueSelonCategorie", "Home", new { categorie = categorie });
+                            return RedirectToAction("RetourneLaVueSelonCategorie", "Home", new {categorie });
                         }
                     }
                 }
@@ -112,10 +111,9 @@ namespace PhotoFun.Controllers
         [HttpPost]
         public ActionResult Importer(PhotoModels model)
         {
-            model.util = User.Identity.Name;
-            var requetephotoBD = new RequetePhotoBD();
+            model.Util = User.Identity.Name;
+            var requetephotoBd = new RequetePhotoBd();
             string path = Server.MapPath("~/Images/");
-            string NouveauNomPhoto = model.util + "_";
 
             if (Request.Files.Count > 0)
             {
@@ -126,18 +124,18 @@ namespace PhotoFun.Controllers
                     string ext = Path.GetExtension(fichier.FileName);
                     if (ext == ".jpg" || ext == ".png" || ext == ".jpeg" || ext==".JPG" || ext==".PNG" || ext==".JPEG")
                     {
-                        string nomfich = model.util+ '_' + Path.GetFileNameWithoutExtension(fichier.FileName) + model.IDUniqueNomPhoto + ext;
+                        string nomfich = model.Util+ '_' + Path.GetFileNameWithoutExtension(fichier.FileName) + model.IdUniqueNomPhoto + ext;
                         string name = "/Images/" +nomfich;
-                        Image image;
-                        int Hauteur = 600, Largeur = 600;
+                        const int hauteur = 600;
+                        const int largeur = 600;
                         try
                         {
-                            image = Image.FromStream(fichier.InputStream, true, true);
-                            if (image.Height >= Hauteur && image.Width >= Largeur)
+                            var image = Image.FromStream(fichier.InputStream, true, true);
+                            if (image.Height >= hauteur && image.Width >= largeur)
                             {
                                 fichier.SaveAs(path + nomfich);
-                                model.image = name;
-                                requetephotoBD.EnregistrerPhoto(model);
+                                model.Image = name;
+                                requetephotoBd.EnregistrerPhoto(model);
                                 ViewData["VerifierImporter"] = "TransfertReussi";
                             }
                             else

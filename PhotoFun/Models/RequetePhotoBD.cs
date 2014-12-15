@@ -1,23 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Data;
 
 namespace PhotoFun.Models
 {
-    public class RequetePhotoBD
+    public class RequetePhotoBd
     {
-        PhotoFunBD photofunbd = new PhotoFunBD();
-        private string cs;
+        readonly PhotoFunBd _photofunbd = new PhotoFunBd();
+        private readonly string _cs;
 
-        public RequetePhotoBD()
+        public RequetePhotoBd()
         {
-            cs = photofunbd.ConnexionString;
+            _cs = _photofunbd.ConnexionString;
         }
 
         public bool MettreAJourLeCommentaireDeLaPhoto(string commentaire, string photo)
         {
-            using (var conn = new SqlConnection(cs))
+            using (var conn = new SqlConnection(_cs))
             {
                 bool resultat;
                 try
@@ -38,7 +37,7 @@ namespace PhotoFun.Models
 
         public string ExtraireCommentaireSelonPhoto(string image)
         {
-            using (var conn = new SqlConnection(cs))
+            using (var conn = new SqlConnection(_cs))
             {
                 string commentaire = "";
                 try
@@ -48,13 +47,14 @@ namespace PhotoFun.Models
                     var sdr = scExtraireCommentaireSelonPhoto.ExecuteReader();
                     while (sdr.Read())
                     {
-                        commentaire = photofunbd.ReadSingleRow(sdr);
+                        commentaire = _photofunbd.ReadSingleRow(sdr);
                     }
                     sdr.Close();
                     conn.Close();
                 }
                 catch
                 {
+                    commentaire = "Une erreur s'est produite.";
                 }
                 return commentaire;
             }
@@ -62,13 +62,13 @@ namespace PhotoFun.Models
 
         public bool EnregistrerPhoto(PhotoModels pm)
         {
-            using (var conn = new SqlConnection(cs))
+            using (var conn = new SqlConnection(_cs))
             {
                 bool resultat;
                 try
                 {
                     conn.Open();
-                    var scEnregistrerPhoto = new SqlCommand("Insert into Photos (Categorie, Image, IDUtil, Commentaire) values ('" + pm.Categorie + "', '" + pm.image + "', '" + pm.util + "', '" + pm.Commentaires + "');", conn);
+                    var scEnregistrerPhoto = new SqlCommand("Insert into Photos (Categorie, Image, IDUtil, Commentaire) values ('" + pm.Categorie + "', '" + pm.Image + "', '" + pm.Util + "', '" + pm.Commentaires + "');", conn);
                     scEnregistrerPhoto.ExecuteNonQuery();
                     conn.Close();
                     resultat = true;
@@ -83,7 +83,7 @@ namespace PhotoFun.Models
 
         public bool DetruirePhotoSelonUtil(string util, string image)
         {
-            using (var conn = new SqlConnection(cs))
+            using (var conn = new SqlConnection(_cs))
             {
                 bool resultat;
                 try
@@ -102,20 +102,20 @@ namespace PhotoFun.Models
             }
         }
 
-        public bool ExtrairePhotoSelonUtil(string NomUtil, out List<string> lstimage)
+        public bool ExtrairePhotoSelonUtil(string nomUtil, out List<string> lstimage)
         {
             lstimage = new List<string>();
-            using (var conn = new SqlConnection(cs))
+            using (var conn = new SqlConnection(_cs))
             {
                 bool resultat;
                 try
                 {
                     conn.Open();
-                    var scExtrairePhotoSelonUtil = new SqlCommand("Select Image from Photos where IDUtil='" + NomUtil + "';", conn);
+                    var scExtrairePhotoSelonUtil = new SqlCommand("Select Image from Photos where IDUtil='" + nomUtil + "';", conn);
                     var sdr = scExtrairePhotoSelonUtil.ExecuteReader();
                     while (sdr.Read())
                     {
-                        lstimage.Add(photofunbd.ReadSingleRow(sdr));
+                        lstimage.Add(_photofunbd.ReadSingleRow(sdr));
                     }
                     sdr.Close();
                     conn.Close();
@@ -131,7 +131,7 @@ namespace PhotoFun.Models
 
         public string ExtraireUtilSelonPhoto(string image)
         {
-            using (var conn = new SqlConnection(cs))
+            using (var conn = new SqlConnection(_cs))
             {
                 string nomUtil = "";
                 try
@@ -141,32 +141,33 @@ namespace PhotoFun.Models
                     var sdr = scExtraireUtilSelonPhoto.ExecuteReader();
                     while (sdr.Read())
                     {
-                        nomUtil = photofunbd.ReadSingleRow(sdr);
+                        nomUtil = _photofunbd.ReadSingleRow(sdr);
                     }
                     sdr.Close();
                     conn.Close();
                 }
                 catch
                 {
+                    nomUtil = "Une erreur s'est produite. Nom d'utilisateur non disponible";
                 }
                 return nomUtil;
             }
         }
 
-        public bool ExtrairePhotoSelonCategorie(string Categorie, out List<string> lstimage)
+        public bool ExtrairePhotoSelonCategorie(string categorie, out List<string> lstimage)
         {
             lstimage = new List<string>();
-            using (var conn = new SqlConnection(cs))
+            using (var conn = new SqlConnection(_cs))
             {
                 bool resultat;
                 try
                 {
                     conn.Open();
-                    var scExtrairePhotoSelonCategorie = new SqlCommand("Select Image from Photos where Categorie='" + Categorie + "';", conn);
+                    var scExtrairePhotoSelonCategorie = new SqlCommand("Select Image from Photos where Categorie='" + categorie + "';", conn);
                     var sdr = scExtrairePhotoSelonCategorie.ExecuteReader();
                     while (sdr.Read())
                     {
-                        lstimage.Add(photofunbd.ReadSingleRow(sdr));
+                        lstimage.Add(_photofunbd.ReadSingleRow(sdr));
                     }
                     sdr.Close();
                     conn.Close();
@@ -180,25 +181,24 @@ namespace PhotoFun.Models
             }
         }
 
-        public int RetourneLeNombreDeJAimeSelonPhoto(string Photo)
+        public int RetourneLeNombreDeJAimeSelonPhoto(string photo)
         {
-            using (var conn = new SqlConnection(cs))
+            using (var conn = new SqlConnection(_cs))
             {
                 string sJaime = "";
-                int Jaime;
                 try
                 {
                     conn.Open();
-                    var scRetourneLeNombreDeJAimeSelonPhoto = new SqlCommand("SELECT NbJaime FROM PHOTOS WHERE Image='" + Photo + "';", conn);
+                    var scRetourneLeNombreDeJAimeSelonPhoto = new SqlCommand("SELECT NbJaime FROM PHOTOS WHERE Image='" + photo + "';", conn);
                     var sdr = scRetourneLeNombreDeJAimeSelonPhoto.ExecuteReader();
                     while (sdr.Read())
                     {
-                        sJaime = photofunbd.ReadSingleRow(sdr);
+                        sJaime = _photofunbd.ReadSingleRow(sdr);
                     }
                     sdr.Close();
                     conn.Close();
-                    Jaime = Convert.ToInt32(sJaime);
-                    return Jaime;
+                    var jaime = Convert.ToInt32(sJaime);
+                    return jaime;
                 }
                 catch
                 {
@@ -210,7 +210,7 @@ namespace PhotoFun.Models
         public bool ExtraireDernieresPhotos(int nbimage, out List<string> lstimage)
         {
             lstimage = new List<string>();
-            using (var conn = new SqlConnection(cs))
+            using (var conn = new SqlConnection(_cs))
             {
                 bool resultat;
                 try
@@ -220,7 +220,7 @@ namespace PhotoFun.Models
                     var sdr = scExtraireDernieresPhotos.ExecuteReader();
                     while (sdr.Read())
                     {
-                        lstimage.Add(photofunbd.ReadSingleRow(sdr));
+                        lstimage.Add(_photofunbd.ReadSingleRow(sdr));
                     }
                     sdr.Close();
                     conn.Close();
@@ -236,11 +236,10 @@ namespace PhotoFun.Models
 
         public bool AjouterUnLike(string nomimage)
         {
-            using (var conn = new SqlConnection(cs))
+            using (var conn = new SqlConnection(_cs))
             {
                 bool resultat;
                 string like = "";
-                int nblike;
                 try
                 {
                     conn.Open();
@@ -248,10 +247,10 @@ namespace PhotoFun.Models
                     var sdr = scAjouterUnLike.ExecuteReader();
                     while (sdr.Read())
                     {
-                        like = photofunbd.ReadSingleRow(sdr);
+                        like = _photofunbd.ReadSingleRow(sdr);
                     }
                     sdr.Close();
-                    nblike = Convert.ToInt32(like);
+                    var nblike = Convert.ToInt32(like);
                     nblike++;
                     scAjouterUnLike = new SqlCommand("UPDATE PHOTOS set NbJaime=" + nblike + " where Image='" + nomimage + "';", conn);
                     scAjouterUnLike.ExecuteNonQuery();
@@ -268,11 +267,10 @@ namespace PhotoFun.Models
 
         public bool EnleveUnLike(string nomimage)
         {
-            using (var conn = new SqlConnection(cs))
+            using (var conn = new SqlConnection(_cs))
             {
                 bool resultat;
                 string like = "";
-                int nblike;
                 try
                 {
                     conn.Open();
@@ -280,10 +278,10 @@ namespace PhotoFun.Models
                     var sdr = scEnleveUnLike.ExecuteReader();
                     while (sdr.Read())
                     {
-                        like = photofunbd.ReadSingleRow(sdr);
+                        like = _photofunbd.ReadSingleRow(sdr);
                     }
                     sdr.Close();
-                    nblike = Convert.ToInt32(like);
+                    var nblike = Convert.ToInt32(like);
                     nblike--;
                     scEnleveUnLike = new SqlCommand("UPDATE PHOTOS set NbJaime=" + nblike + " where Image='" + nomimage + "';", conn);
                     scEnleveUnLike.ExecuteNonQuery();

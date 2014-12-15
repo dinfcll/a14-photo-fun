@@ -1,31 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Data;
 
 namespace PhotoFun.Models
 {
-    public class RequeteAbonnementUtilBD
+    public class RequeteAbonnementUtilBd
     {
-        PhotoFunBD photofunbd = new PhotoFunBD();
-        private string cs;
+        readonly PhotoFunBd _photofunbd = new PhotoFunBd();
+        private readonly string _cs;
 
-        public RequeteAbonnementUtilBD()
+        public RequeteAbonnementUtilBd()
         {
-            cs = photofunbd.ConnexionString;
+            _cs = _photofunbd.ConnexionString;
         }
 
-        public bool AbonnerUtil(string NomUtilCourant, string NomUtilAbonner)
+        public bool AbonnerUtil(string nomUtilCourant, string nomUtilAbonner)
         {
-            using (var conn = new SqlConnection(cs))
+            using (var conn = new SqlConnection(_cs))
             {
                 bool resultat;
                 try
                 {
                     conn.Open();
-                    if (VerifAbonnement(NomUtilAbonner, NomUtilCourant) == false)
+                    if (VerifAbonnement(nomUtilAbonner, nomUtilCourant) == false)
                     {
-                        var scEnregistrerAbonnement = new SqlCommand("Insert into AbonnementUtil (IdUtilConnecter, IdUtilAbonner) values ('" + NomUtilCourant + "', '" + NomUtilAbonner + "');", conn);
+                        var scEnregistrerAbonnement = new SqlCommand("Insert into AbonnementUtil (IdUtilConnecter, IdUtilAbonner) values ('" + nomUtilCourant + "', '" + nomUtilAbonner + "');", conn);
                         scEnregistrerAbonnement.ExecuteNonQuery();
                         conn.Close();
                         resultat = true;
@@ -43,10 +42,10 @@ namespace PhotoFun.Models
             }
         }
 
-        public bool CompteNbAbonnement(ProfilModel pm, out int NbAbonnement)
+        public bool CompteNbAbonnement(ProfilModel pm, out int nbAbonnement)
         {
-            NbAbonnement = 0;
-            using (var conn = new SqlConnection(cs))
+            nbAbonnement = 0;
+            using (var conn = new SqlConnection(_cs))
             {
                 bool resultat;
                 try
@@ -57,7 +56,7 @@ namespace PhotoFun.Models
                     var sdr = scNbAbonnement.ExecuteReader();
                     while (sdr.Read())
                     {
-                        NbAbonnement = Convert.ToInt32(photofunbd.ReadSingleRow(sdr));
+                        nbAbonnement = Convert.ToInt32(_photofunbd.ReadSingleRow(sdr));
                     }
                     sdr.Close();
                     conn.Close();
@@ -71,25 +70,25 @@ namespace PhotoFun.Models
             }
         }
 
-        public bool VerifAbonnement(string pm, string UtilConnecter)
+        public bool VerifAbonnement(string pm, string utilConnecter)
         {
-            int NbAbonnement = 0;
-            using (var conn = new SqlConnection(cs))
+            int nbAbonnement = 0;
+            using (var conn = new SqlConnection(_cs))
             {
                 bool resultat;
                 try
                 {
                     conn.Open();
                     var scNbAbonnement = new SqlCommand("Select count(*) from AbonnementUtil where IdUtilAbonner='"
-                        + pm + "' and IdUtilConnecter='" + UtilConnecter + "'", conn);
+                        + pm + "' and IdUtilConnecter='" + utilConnecter + "'", conn);
                     var sdr = scNbAbonnement.ExecuteReader();
                     while (sdr.Read())
                     {
-                        NbAbonnement = Convert.ToInt32(photofunbd.ReadSingleRow(sdr));
+                        nbAbonnement = Convert.ToInt32(_photofunbd.ReadSingleRow(sdr));
                     }
                     sdr.Close();
                     conn.Close();
-                    if (NbAbonnement > 0)
+                    if (nbAbonnement > 0)
                     {
                         resultat = true;
                     }
@@ -106,16 +105,16 @@ namespace PhotoFun.Models
             }
         }
 
-        public bool SupprimerRelAbonnement(string UtilAbonner, string UtilConnecter)
+        public bool SupprimerRelAbonnement(string utilAbonner, string utilConnecter)
         {
-            using (var conn = new SqlConnection(cs))
+            using (var conn = new SqlConnection(_cs))
             {
                 bool resultat;
                 try
                 {
                     conn.Open();
                     var scSupprimer = new SqlCommand("Delete from AbonnementUtil where IdUtilAbonner='"
-                        + UtilAbonner + "' and IdUtilConnecter='" + UtilConnecter + "'", conn);
+                        + utilAbonner + "' and IdUtilConnecter='" + utilConnecter + "'", conn);
                     scSupprimer.ExecuteNonQuery();
                     conn.Close();
                     resultat = true;
@@ -128,21 +127,21 @@ namespace PhotoFun.Models
             }
         }
 
-        public bool ExtraireLesAbonnementsSelonUtil(string NomUtil, out List<string> MesAbonnements)
+        public bool ExtraireLesAbonnementsSelonUtil(string nomUtil, out List<string> mesAbonnements)
         {
-            using (var conn = new SqlConnection(cs))
+            using (var conn = new SqlConnection(_cs))
             {
-                MesAbonnements = new List<string>();
+                mesAbonnements = new List<string>();
                 bool resultat;
                 try
                 {
                     conn.Open();
                     var scNbAbonnement = new SqlCommand("Select IdUtilAbonner from AbonnementUtil where IdUtilConnecter='"
-                        + NomUtil + "'", conn);
+                        + nomUtil + "'", conn);
                     var sdr = scNbAbonnement.ExecuteReader();
                     while (sdr.Read())
                     {
-                        MesAbonnements.Add(photofunbd.ReadSingleRow(sdr));
+                        mesAbonnements.Add(_photofunbd.ReadSingleRow(sdr));
                     }
                     sdr.Close();
                     conn.Close();

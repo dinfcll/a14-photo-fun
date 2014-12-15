@@ -1,24 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Data;
-using PhotoFun.Models;
 
 namespace PhotoFun.Models
 {
-    public class RequeteRelUtilPhotoBD
+    public class RequeteRelUtilPhotoBd
     {
-        PhotoFunBD photofunbd = new PhotoFunBD();
-        private string cs;
+        readonly PhotoFunBd _photofunbd = new PhotoFunBd();
+        private readonly string _cs;
 
-        public RequeteRelUtilPhotoBD()
+        public RequeteRelUtilPhotoBd()
         {
-            cs=photofunbd.ConnexionString;
+            _cs=_photofunbd.ConnexionString;
         }
 
         public bool EnleveTousLesLiaisonsAvecLesUtils(string nomPhoto)
         {
-            using (var conn = new SqlConnection(cs))
+            using (var conn = new SqlConnection(_cs))
             {
                 bool resultat;
                 try
@@ -39,7 +36,7 @@ namespace PhotoFun.Models
 
         public bool EnleveLiaisonPhotoUtil(string nomUtil, string nomPhoto)
         {
-            using (var conn = new SqlConnection(cs))
+            using (var conn = new SqlConnection(_cs))
             {
                 bool resultat;
                 try
@@ -60,7 +57,7 @@ namespace PhotoFun.Models
 
         public bool VerifLiaisonPhotoUtil(string nomUtil, string nomPhoto)
         {
-            using (var conn = new SqlConnection(cs))
+            using (var conn = new SqlConnection(_cs))
             {
                 bool resultat;
                 try
@@ -71,7 +68,7 @@ namespace PhotoFun.Models
                     var sdr = scAjouterUnLike.ExecuteReader();
                     while (sdr.Read())
                     {
-                        nbrelation = Convert.ToInt32(photofunbd.ReadSingleRow(sdr));
+                        nbrelation = Convert.ToInt32(_photofunbd.ReadSingleRow(sdr));
                     }
                     sdr.Close();
                     conn.Close();
@@ -94,7 +91,7 @@ namespace PhotoFun.Models
 
         public bool AjoutRelationUtilPhoto(string nomUtil, string nomPhoto)
         {
-            using (var conn = new SqlConnection(cs))
+            using (var conn = new SqlConnection(_cs))
             {
                 bool resultat;
                 try

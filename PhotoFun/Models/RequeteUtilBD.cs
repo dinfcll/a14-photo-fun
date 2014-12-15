@@ -1,24 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Data;
-
 
 namespace PhotoFun.Models
 {
-    public class RequeteUtilBD
+    public class RequeteUtilBd
     {
-        PhotoFunBD photofunbd = new PhotoFunBD();
-        private string cs;
+        readonly PhotoFunBd _photofunbd = new PhotoFunBd();
+        private readonly string _cs;
 
-        public RequeteUtilBD()
+        public RequeteUtilBd()
         {
-            cs = photofunbd.ConnexionString;
+            _cs = _photofunbd.ConnexionString;
         }
 
         public bool InsererUtil(RegisterModel rm)
         {
-            using (var conn = new SqlConnection(cs))
+            using (var conn = new SqlConnection(_cs))
             {
                 bool resultat;
                 try
@@ -40,7 +37,7 @@ namespace PhotoFun.Models
 
         public bool ExtraireCourrielSelonUtil(string util, out string courriel)
         {
-            using (var conn = new SqlConnection(cs))
+            using (var conn = new SqlConnection(_cs))
             {
                 courriel="";
                 bool resultat;
@@ -51,7 +48,7 @@ namespace PhotoFun.Models
                     var sdr = scExtraireCourrielSelonUtil.ExecuteReader();
                     while (sdr.Read())
                     {
-                        courriel=photofunbd.ReadSingleRow(sdr);
+                        courriel=_photofunbd.ReadSingleRow(sdr);
                     }
                     sdr.Close();
                     conn.Close();
@@ -65,11 +62,11 @@ namespace PhotoFun.Models
             }
         }
 
-        public bool ExtraireNomSelonUtil(string util, out string Nom)
+        public bool ExtraireNomSelonUtil(string util, out string nom)
         {
-            using (var conn = new SqlConnection(cs))
+            using (var conn = new SqlConnection(_cs))
             {
-                Nom = "";
+                nom = "";
                 bool resultat;
                 try
                 {
@@ -78,7 +75,7 @@ namespace PhotoFun.Models
                     var sdr = scExtraireNomSelonUtil.ExecuteReader();
                     while (sdr.Read())
                     {
-                        Nom = photofunbd.ReadSingleRow(sdr);
+                        nom = _photofunbd.ReadSingleRow(sdr);
                     }
                     sdr.Close();
                     conn.Close();
@@ -92,11 +89,11 @@ namespace PhotoFun.Models
             }
         }
 
-        public bool ExtrairePrenomSelonUtil(string util, out string Prenom)
+        public bool ExtrairePrenomSelonUtil(string util, out string prenom)
         {
-            using (var conn = new SqlConnection(cs))
+            using (var conn = new SqlConnection(_cs))
             {
-                Prenom = "";
+                prenom = "";
                 bool resultat;
                 try
                 {
@@ -105,7 +102,7 @@ namespace PhotoFun.Models
                     var sdr = scExtrairePrenomSelonUtil.ExecuteReader();
                     while (sdr.Read())
                     {
-                        Prenom = photofunbd.ReadSingleRow(sdr);
+                        prenom = _photofunbd.ReadSingleRow(sdr);
                     }
                     sdr.Close();
                     conn.Close();
@@ -119,15 +116,15 @@ namespace PhotoFun.Models
             }
         }
 
-        public bool ExtraireUtil(string IDUtil)
+        public bool ExtraireUtil(string idUtil)
         {
-            using (var conn = new SqlConnection(cs))
+            using (var conn = new SqlConnection(_cs))
             {
                 bool resultat;
                 try
                 {
                     conn.Open();
-                    var scExtraire = new SqlCommand("Select * from Utilisateurs where IDUtil='" + IDUtil + "';", conn);
+                    var scExtraire = new SqlCommand("Select * from Utilisateurs where IDUtil='" + idUtil + "';", conn);
                     scExtraire.ExecuteNonQuery();
                     conn.Close();
                     resultat = true;
@@ -140,20 +137,20 @@ namespace PhotoFun.Models
             }
         }
 
-        public bool ExtraireUtil(string IDUtil, out List<string> NomUtil)
+        public bool ExtraireUtil(string idUtil, out List<string> nomUtil)
         {
-            NomUtil = new List<string>();
-            using (var conn = new SqlConnection(cs))
+            nomUtil = new List<string>();
+            using (var conn = new SqlConnection(_cs))
             {
                 bool resultat;
                 try
                 {
                     conn.Open();
-                    var scExtraire = new SqlCommand("Select * from Utilisateurs where IDUtil='" + IDUtil + "';", conn);
+                    var scExtraire = new SqlCommand("Select * from Utilisateurs where IDUtil='" + idUtil + "';", conn);
                     var sdr = scExtraire.ExecuteReader();
                     while (sdr.Read())
                     {
-                        NomUtil.Add(photofunbd.ReadSingleRow(sdr));
+                        nomUtil.Add(_photofunbd.ReadSingleRow(sdr));
                     }
                     sdr.Close();
                     conn.Close();
@@ -167,21 +164,21 @@ namespace PhotoFun.Models
             }
         }
 
-        public bool ExtraireUtilAvecPourcent(string IDUtil, out List<string> NomUtil)
+        public bool ExtraireUtilAvecPourcent(string idUtil, out List<string> nomUtil)
         {
-            NomUtil = new List<string>();
-            IDUtil = "%" + IDUtil + "%";
-            using (var conn = new SqlConnection(cs))
+            nomUtil = new List<string>();
+            idUtil = "%" + idUtil + "%";
+            using (var conn = new SqlConnection(_cs))
             {
                 bool resultat;
                 try
                 {
                     conn.Open();
-                    var scExtraire = new SqlCommand("Select * from Utilisateurs where IDUtil like'" + IDUtil + "';", conn);
+                    var scExtraire = new SqlCommand("Select * from Utilisateurs where IDUtil like'" + idUtil + "';", conn);
                     var sdr = scExtraire.ExecuteReader();
                     while (sdr.Read())
                     {
-                        NomUtil.Add(photofunbd.ReadSingleRow(sdr));
+                        nomUtil.Add(_photofunbd.ReadSingleRow(sdr));
                     }
                     sdr.Close();
                     conn.Close();
@@ -197,7 +194,7 @@ namespace PhotoFun.Models
 
         public bool MettreAJourPhotoProfil(string image, string nomutil)
         {
-            using (var conn = new SqlConnection(cs))
+            using (var conn = new SqlConnection(_cs))
             {
                 bool resultat;
                 try
@@ -218,7 +215,7 @@ namespace PhotoFun.Models
 
         public string ExtrairePhotoProfil(string nomutil)
         {
-            using (var conn = new SqlConnection(cs))
+            using (var conn = new SqlConnection(_cs))
             {
                 string image = "";
                 try
@@ -228,13 +225,14 @@ namespace PhotoFun.Models
                     var sdr = scExtrairePhotoProfil.ExecuteReader();
                     while (sdr.Read())
                     {
-                        image=photofunbd.ReadSingleRow(sdr);
+                        image=_photofunbd.ReadSingleRow(sdr);
                     }
                     sdr.Close();
                     conn.Close();
                 }
                 catch
                 {
+                    image = null;
                 }
                 return image;
             }

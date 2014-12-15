@@ -1,12 +1,12 @@
 ﻿@{
     ViewBag.Title = "Profil recherché";
-    var NomProfil = ViewData["Rechercher"] as List<PhotoFun.Models.ProfilModel>;
+    var nomProfil = ViewData["Rechercher"] as List<PhotoFun.Models.ProfilModel>;
 }
 
 <div class="page-header">
     <h2>@ViewBag.Title</h2>
 </div>
-@foreach (PhotoFun.Models.ProfilModel util in NomProfil)
+@foreach (PhotoFun.Models.ProfilModel util in nomProfil)
 {
     <div class="divdesprofils">
     @if (util.IdUtilRechercher != "Utilisateur Inexistant")

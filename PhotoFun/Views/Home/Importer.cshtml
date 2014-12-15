@@ -1,13 +1,13 @@
 @{
     ViewBag.Title = "Importer";
-    var VerifierImporter = ViewData["VerifierImporter"] as string;
+    var verifierImporter = ViewData["VerifierImporter"] as string;
 }
 @using (Html.BeginForm("Importer", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
 { 
     <div class="page-header">
         <h2>Importer des photos</h2>
     </div>
-    switch (VerifierImporter)
+    switch (verifierImporter)
     {
         case "TransfertReussi": @Html.Partial("_TransfertReussi")
                           break;
@@ -21,21 +21,21 @@
    <h3 class="sub-header">Cat&eacute;gorie</h3>
     @model PhotoFun.Models.PhotoModels
     <div class="col-md-2 radio radio-inline">
-            @Html.RadioButtonFor(PhotoModels => PhotoModels.Categorie, "Sport", new { id = "Sport" })
+            @Html.RadioButtonFor(photoModels => photoModels.Categorie, "Sport", new { id = "Sport" })
             @Html.Label("Sport")
-            @Html.RadioButtonFor(PhotoModels => PhotoModels.Categorie, "Nature", new { id = "Nature" })
+            @Html.RadioButtonFor(photoModels => photoModels.Categorie, "Nature", new { id = "Nature" })
             @Html.Label("Nature")
-            @Html.RadioButtonFor(PhotoModels => PhotoModels.Categorie, "Famille", new { id = "Famille" })
+            @Html.RadioButtonFor(photoModels => photoModels.Categorie, "Famille", new { id = "Famille" })
             @Html.Label("Famille")
-            @Html.RadioButtonFor(PhotoModels => PhotoModels.Categorie, "Paysage", new { id = "Paysage" })
+            @Html.RadioButtonFor(photoModels => photoModels.Categorie, "Paysage", new { id = "Paysage" })
             @Html.Label("Paysage")
     </div>
     <div class="col-md-2 radio radio-inline" style="padding-top:10px">
-        @Html.RadioButtonFor(PhotoModels => PhotoModels.Categorie, "Cuisine", new { id = "Cuisine" })
+        @Html.RadioButtonFor(photoModels => photoModels.Categorie, "Cuisine", new { id = "Cuisine" })
             @Html.Label("Cuisine")
-            @Html.RadioButtonFor(PhotoModels => PhotoModels.Categorie, "Animaux", new { id = "Animaux" })
+            @Html.RadioButtonFor(photoModels => photoModels.Categorie, "Animaux", new { id = "Animaux" })
             @Html.Label("Animaux")
-            @Html.RadioButtonFor(PhotoModels => PhotoModels.Categorie, "Autres", new { id = "Autres", @checked = "checked" })
+            @Html.RadioButtonFor(photoModels => photoModels.Categorie, "Autres", new { id = "Autres", @checked = "checked" })
             @Html.Label("Autres")
     </div>
     <br/>
@@ -46,7 +46,7 @@
     <br/>
     <div>
         @Html.Label("Commentaires")
-        @Html.TextAreaFor(PhotoModels => PhotoModels.Commentaires, new { @maxlength = 200, onkeyup = "reste(this.value);" }) 
+        @Html.TextAreaFor(photoModels => photoModels.Commentaires, new { @maxlength = 200, onkeyup = "reste(this.value);" }) 
         <br/>
         <span id="caracteres">200</span> caractères restants
     </div>

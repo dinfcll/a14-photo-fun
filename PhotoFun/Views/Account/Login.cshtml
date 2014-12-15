@@ -7,7 +7,7 @@
 </div>
 <section id="loginForm">
 @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl })) {
-    <div style="color:Red">
+    <div class="couleurrouge">
         @Html.AntiForgeryToken()
         @Html.ValidationSummary(true)
     </div>

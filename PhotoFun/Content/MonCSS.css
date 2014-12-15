@@ -97,6 +97,11 @@ border-right: 1px solid #eee;
    width:80%;
 }
 
+.couleurrouge
+{
+    color:Red;
+}
+
 .inputPartageImage
 {
     width:1000px !important;
