@@ -1,4 +1,4 @@
-USE [tempdb]
+USE [DBPhotoFun]
 GO
 
 IF  EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[DF_Photos_NbJaime]') AND type = 'D')
@@ -8,7 +8,7 @@ END
 
 GO
 
-USE [tempdb]
+USE [DBPhotoFun]
 GO
 
 /****** Object:  Table [dbo].[Photos]    Script Date: 11/07/2014 13:06:06 ******/
@@ -16,7 +16,7 @@ IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Photo
 DROP TABLE [dbo].[Photos]
 GO
 
-USE [tempdb]
+USE [DBPhotoFun]
 GO
 
 /****** Object:  Table [dbo].[Photos]    Script Date: 11/07/2014 13:06:07 ******/

@@ -5,7 +5,7 @@ namespace PhotoFun.Models
 {
     public class PhotoFunBd
     {
-        private const string Cs = "Data Source=EQUIPE-01\\SQLEXPRESS ;Initial Catalog=tempdb;Integrated Security=True";
+        private const string Cs = "Data Source=EQUIPE-01\\SQLEXPRESS ;Initial Catalog=DBPhotoFun;Integrated Security=True";
 
         public string ConnexionString
         {

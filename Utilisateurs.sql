@@ -1,4 +1,4 @@
-USE [tempdb]
+USE [DBPhotoFun]
 GO
 
 /****** Object:  Table [dbo].[Utilisateurs]    Script Date: 12/01/2014 12:30:22 ******/
@@ -6,7 +6,7 @@ IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Utili
 DROP TABLE [dbo].[Utilisateurs]
 GO
 
-USE [tempdb]
+USE [DBPhotoFun]
 GO
 
 /****** Object:  Table [dbo].[Utilisateurs]    Script Date: 12/01/2014 12:30:22 ******/
